@@ -14,9 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('taikhoan', function (Blueprint $table) {
-            $table->string('TenTaiKhoan', 50)->primary();
-            $table->string('MatKhau', 50);
-            $table->string('email', 50)->unique();
+            $table->id();
+            $table->string('TenTaiKhoan', 50)->unique()->nullable();
+            $table->string('MatKhau', 50)->nullable();
+            $table->string('Email', 50)->unique()->nullable();
             $table->timestamps();
         });
     }

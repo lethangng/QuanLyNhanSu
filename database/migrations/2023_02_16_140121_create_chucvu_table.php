@@ -14,9 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('chucvu', function (Blueprint $table) {
-            $table->char('MaChucVu', 10)->primary()->unique();
-            $table->string('TenChucVu', 50);
-            $table->float('LuongCoBan', 10, 2); // Kieu float 10 số trước dấy phẩy, 2 số sau dấu phẩy
+            $table->id();
+            $table->char('MaChucVu', 10)->unique()->nullable();
+            $table->string('TenChucVu', 50)->nullable();
+            $table->float('LuongCoBan', 10, 2)->nullable(); // Kieu float 10 số trước dấy phẩy, 2 số sau dấu phẩy
             $table->timestamps();
         });
     }
