@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('chamcong', function (Blueprint $table) {
             $table->id();
-            $table->char('MaCaNhan', 10)->nullable();
+            $table->string('MaCaNhan', 10)->nullable();
             $table->date('Ngay')->nullable();
             $table->time('GioVao')->nullable();
             $table->time('GioRa')->nullable();

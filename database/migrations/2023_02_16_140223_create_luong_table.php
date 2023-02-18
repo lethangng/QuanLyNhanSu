@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('luong', function (Blueprint $table) {
             $table->id();
-            $table->char('MaCaNhan', 10)->unique()->nullable();
+            $table->string('MaCaNhan', 10)->unique()->nullable();
             $table->float('HSL', 3, 3)->nullable();
             $table->integer('TongSoGioLamViec')->nullable();
             $table->bigInteger('TongTienPhat')->nullable();

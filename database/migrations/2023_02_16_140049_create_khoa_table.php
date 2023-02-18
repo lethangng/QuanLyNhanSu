@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('khoa', function (Blueprint $table) {
             $table->id();
-            $table->char('MaKhoa', 10)->unique()->nullable();
+            $table->string('MaKhoa', 10)->unique()->nullable();
             $table->string('TenKhoa', 50)->nullable();
             $table->timestamps();
         });
