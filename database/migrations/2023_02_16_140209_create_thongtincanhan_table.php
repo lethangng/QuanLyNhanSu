@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('MaKhoa', 10)->nullable();
             $table->string('AnhDaiDien')->nullable();
             $table->boolean('TrangThai')->nullable();
-            $table->string('TenTaiKhoan', 10)->unique()->nullable();
+            $table->bigInteger('User_id', 10)->unsigned()->nullable();
             $table->timestamps();
         });
     }
