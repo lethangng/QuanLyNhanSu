@@ -16,3 +16,27 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+Route::get('/admin',function(){
+    return view('admin/manager');
+})->name('admin');
+Route::get('/nhansu',function(){
+    return view('nhansu/manager');
+})->name('nhansu');
+Route::get('/nhanvien',function(){
+    return view('nhanvien/manager');
+})->name('nhanvien');
+
+Route::get('/thongtincanhan',function(){
+    return view('admin/thongtincanhan');
+})->name('thongtincanhan');
+
+Route::get('/thongtincanhan',function(){
+    return view('nhanvien/thongtincanhan');
+})->name('thongtinnhanvien');
+
+Route::get('/quanlynhanvien',function (){
+ return view('nhansu/quanlynhanvien');
+})->name('quanlynhanvien');
