@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('chamcong', function (Blueprint $table) {
             $table->id();
-            $table->string('MaCaNhan', 10)->nullable();
+            $table->bigInteger('ThongTinCaNhan_id')->unsigned()->nullable();
             $table->date('Ngay')->nullable();
             $table->time('GioVao')->nullable();
             $table->time('GioRa')->nullable();
