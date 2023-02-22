@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="css/style.css">
@@ -10,7 +11,6 @@
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
    
-
     <!------ Include the above in your HEAD tag ---------->
     
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -36,7 +36,7 @@
                               <div class="form-group">
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                                  <input id="email" name="email" placeholder="email address" class="form-control"  type="email">
+                                  <input id="email1" name="email" placeholder="email address" class="form-control"  type="email">
                                 </div>
                               </div>
                               <div class="form-group">
@@ -66,28 +66,73 @@
             </div>
             <div class="column login">
                 <h2>User Login</h2>
-                <form action="" class="form-login">
+                <form action="{{route('submitLogin')}}"  method="POST" class="form-login" id='loginForm'>
+                    @csrf
                     <div class="form-group">
                         <i class="far fa-user"></i>
-                        <input type="text" class="form-input" placeholder="Email Id">
+                        <input type="text" name='email' id='email' class="form-input" placeholder="Email Id">
+                        <i class="ik ik-user"></i>
+                        <small class="text-danger error-text email_err"></small>
                     </div>
                     <div class="form-group">
                         <i class="fas fa-key"></i>
-                        <input type="password" class="form-input" placeholder="Password">
+                        <input type="password" name='password' id='password' class="form-input" placeholder="Password">
+                        <i class="ik ik-lock"></i>
+                        <small class="text-danger error-text password_err"></small>
+                    </div>
+                    <div class="container-btn">
+                        <button type="submit" class="btn-login">Login</button>
                     </div>
                 </form>
-                <div class="container-btn">
-                    <a href="{{route('nhansu')}}" class="btn-login"> Login</a>
-                </div>
                 <div class="footer">
                     <a class="text-forgot textjs">Forgot Username / Password?</a>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+
 </body>
 </html>
 <script>
+    
+    $("#loginForm").on('submit', function(e){
+        e.preventDefault();
+        $.ajax({
+            url:$(this).attr('action'),
+            method:$(this).attr('method'),
+            data: $(this).serialize(),
+            headers: {'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')},
+            processData:false,
+            success:function(data){
+                var error = document.querySelectorAll(".error-text");
+                for (var i = 0; i < error.length; i++) {
+                    error[i].innerHTML = "";
+                }
+                if(data.error_check==true){
+                    checklogin(data.checkUser , data.msg)
+                }
+                else if(data.error_check==false){
+                    window.location.href = data.url;
+                }
+                else{
+                    printErrorMsg(data.error);
+                } 
+            }
+        });
+    });
+    function checklogin (checkUser,msg) {
+            if(checkUser){
+                $('.'+'password'+'_err').text(msg);
+            }else{
+                $('.'+"email"+'_err').text(msg);
+            }
+        }
+    function printErrorMsg (msg) {
+            $.each( msg, function( key, value ) {
+                $('.'+key+'_err').text(value);
+            });
+        }
     const formforgot = document.querySelector('.form-forgot-js');
     const panelbody = document.querySelector('.forgotpw-js');
     const textforgot = document.querySelector('.textjs');
@@ -101,4 +146,7 @@
     textforgot.addEventListener("click",() =>{
         formforgot.classList.add("open");
     })
+
+
+
 </script>
