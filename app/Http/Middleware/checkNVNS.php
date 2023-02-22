@@ -18,14 +18,11 @@ class checkNVNS
      */
     public function handle(Request $request, Closure $next)
     {
-        $user = DB::table('thongtincanhan')->where('User_id', Auth::user()->id)->get();
-        foreach ($user as $data) {
-            $a = $data->MaChucVu;
-        }
-        if (Auth::check() && $a == 4) {
+        Auth::user()->findRoleId(Auth::user()->id);
+        if (Auth::check() && Auth::user()->roleId == 4) {
             return $next($request);
         } else {
-            return redirect("/");
+            return back();
         }
     }
 }

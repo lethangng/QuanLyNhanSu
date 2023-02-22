@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -18,10 +19,18 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    public function findRoleId($id)
+    {
+        $user = DB::table('thongtincanhan')->where('User_id', $id)->get();
+        foreach ($user as $data) {
+            return $this->roleId = $data->MaChucVu;
+        }
+    }
     protected $fillable = [
         'name',
         'email',
         'password',
+        'roleId'
 
     ];
 
