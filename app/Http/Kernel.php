@@ -53,6 +53,12 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $routeMiddleware = [
+
+        'checkNVNS' => \App\Http\Middleware\checkNVNS::class,
+        'checkNV' => \App\Http\Middleware\checkNV::class,
+        'checkGV' => \App\Http\Middleware\checkGV::class,
+        'checkNVTC' => \App\Http\Middleware\checkNVTC::class,
+        'checkHT' => \App\Http\Middleware\CheckRole::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
