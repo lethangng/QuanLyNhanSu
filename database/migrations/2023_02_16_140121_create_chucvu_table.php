@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('chucvu', function (Blueprint $table) {
             $table->id();
-            $table->string('MaChucVu', 10)->unique()->nullable();
-            $table->string('TenChucVu', 50)->nullable();
-            $table->float('LuongCoBan', 15, 2)->nullable(); // Kieu float 10 số trước dấy phẩy, 2 số sau dấu phẩy
+            $table->string('MaChucVu')->unique()->nullable();
+            $table->string('TenChucVu')->nullable();
+            $table->bigInteger('LuongCoBan')->unsigned()->nullable();
             $table->timestamps();
         });
     }

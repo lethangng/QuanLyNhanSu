@@ -15,6 +15,20 @@ class KhenThuongSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $khenThuongs = [
+            [
+                'TenKhenThuong' => 'Đi làm đầy đủ',
+                'TienThuong' => 1000000
+            ],
+            [
+                'TenKhenThuong' => 'Kỷ luật tốt',
+                'TienThuong' => 300000
+            ],
+            [
+                'TenKhenThuong' => 'Suất sắc trong công việc',
+                'TienThuong' => 500000
+            ]
+        ];
+        DB::table('khenthuong')->insert($khenThuongs);
     }
 }

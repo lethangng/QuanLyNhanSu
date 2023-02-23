@@ -15,12 +15,10 @@ return new class extends Migration
     {
         Schema::create('chamcong', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('ThongTinCaNhan_id')->unsigned()->nullable();
-            $table->date('Ngay')->nullable();
-            $table->time('GioVao')->nullable();
-            $table->time('GioRa')->nullable();
-            $table->integer('ThoiGianLamViec')->nullable();
-            $table->string('TrangThai')->nullable();
+            $table->bigInteger('ThongTinCaNhan_id')->nullable();
+            $table->integer('Ngay')->unsigned()->nullable();
+            $table->integer('Thang')->unsigned()->nullable();
+            $table->string('NghiPhep')->nullable();
             $table->timestamps();
         });
     }
