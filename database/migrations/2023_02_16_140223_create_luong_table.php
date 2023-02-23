@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('luong', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('ThongTinCaNhan_id')->unsigned()->nullable();
-            $table->float('HSL', 3, 3)->nullable();
-            $table->integer('TongSoGioLamViec')->nullable();
-            $table->bigInteger('TongTienPhat')->nullable();
-            $table->bigInteger('TongTienThuong')->nullable();
-            $table->float('TongTienLuong', 10, 3)->nullable();
+            $table->float('HSL')->nullable();
+            $table->integer('Thang')->unsigned()->nullable();
+            $table->bigInteger('TongTienPhat')->unsigned()->nullable();
+            $table->bigInteger('TongTienThuong')->unsigned()->nullable();
+            $table->bigInteger('TongTienLuong')->unsigned()->nullable();
             $table->timestamps();
         });
     }

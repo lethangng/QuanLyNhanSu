@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\loginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KhenThuongController;
+use App\Http\Controllers\KhenThuong_CaNhanController;
 
 /*
 |--------------------------------------------------------------------------

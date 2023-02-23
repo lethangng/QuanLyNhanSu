@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kyluat_luong', function (Blueprint $table) {
+        Schema::create('khenthuong_thongtincanhan', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('KyLuat_id')->unsigned()->nullable();
-            $table->bigInteger('Luong_id')->unsigned()->nullable();
-            $table->text('ChiTietKyLuat')->nullable();
+            $table->bigInteger('KhenThuong_id')->unsigned()->nullable();
+            $table->bigInteger('ThongTinCaNhan_id')->unsigned()->nullable();
+            $table->date('NgayKhenThuong')->nullable();
+            $table->text('ChiTietKhenThuong')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kyluat_luong');
+        Schema::dropIfExists('khenthuong_thongtincanhan');
     }
 };
