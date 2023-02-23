@@ -39,7 +39,4 @@ Route::get('/thongtincanhan',function(){
     return view('nhanvien/thongtincanhan');
 })->name('thongtinnhanvien');
 
-Route::get('/quanlynhanvien',function (){
- return view('nhansu/quanlynhanvien');
-})->name('quanlynhanvien');
 
