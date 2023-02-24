@@ -39,14 +39,14 @@ Route::middleware(['checkNVNS'])->group(function () {
     })->name('quanlynhanvien');
 
     // Thong tin ca nhan
-    Route::prefix('thongtincanhan')->group(function() {
+    Route::prefix('thongtincanhan')->group(function () {
         Route::get('/', [ThongTinCaNhanController::class, 'index'])->name('canhan.index');
         Route::get('chitietluong', [ThongTinCaNhanController::class, 'chiTietLuong'])->name('canhan.chiTietLuong');
         Route::post('/', [ThongTinCaNhanController::class, 'addPhoto'])->name('canhan.addPhoto');
     });
 
     // Khen thuong cua nhan vien phong nhan su
-    Route::prefix('khenthuong')->group(function() {
+    Route::prefix('khenthuong')->group(function () {
         Route::get('/', [KhenThuongController::class, 'index'])->name('khenthuong.index');
         Route::get('create', [KhenThuongController::class, 'create'])->name('khenthuong.create');
         Route::post('create', [KhenThuongController::class, 'store']);
@@ -56,7 +56,7 @@ Route::middleware(['checkNVNS'])->group(function () {
     });
 
     // Danh sach khen thuong cua nhan vien phong nhan su
-    Route::prefix('khenthuong-canhan')->group(function() {
+    Route::prefix('khenthuong-canhan')->group(function () {
         Route::get('/', [KhenThuong_CaNhanController::class, 'index'])->name('khenthuong_canhan.index');
         Route::get('create', [KhenThuong_CaNhanController::class, 'create'])->name('khenthuong_canhan.create');
         Route::post('create', [KhenThuong_CaNhanController::class, 'store']);
@@ -69,19 +69,12 @@ Route::middleware(['checkNVNS'])->group(function () {
 
 // các mục nào viết về nhân viên thì cho route trong này
 Route::middleware(['checkNV'])->group(function () {
-
 });
 
-// các mục nào viết về giáo viên thì cho route trong này
-Route::middleware(['checkGV'])->group(function () {
-    Route::get('/nhanvien', function () {
-        return view('nhanvien/manager');
-    })->name('nhanvien');
-});
+
 
 // các mục nào viết về nhân viên tài chính thì cho route trong này
 Route::middleware(['checkNVTC'])->group(function () {
-
 });
 
 // Route::get('/thongtincanhan', function () {

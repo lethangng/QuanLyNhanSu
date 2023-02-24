@@ -19,7 +19,7 @@ class checkNV
     public function handle(Request $request, Closure $next)
     {
         Auth::user()->findRoleId(Auth::user()->id);
-        if (Auth::check() && Auth::user()->roleId == 3) {
+        if (Auth::check() && (Auth::user()->roleId == 3 || Auth::user()->roleId == 2)) {
             return $next($request);
         } else {
             return back();

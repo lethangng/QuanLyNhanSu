@@ -38,21 +38,7 @@ class loginController extends Controller
         if ($validator->passes()) {
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password], false)) {
                 Auth::user()->findRoleId(Auth::user()->id);
-<<<<<<< HEAD
                 return  Auth::user()->controller(Auth::user()->roleId);
-=======
-                if (Auth::user()->roleId == 1) {
-                    return response()->json(['error_check' => false, 'url' => "/quanlynhanvien"]);
-                } else if (Auth::user()->roleId == 2) {
-                    return response()->json(['error_check' => false, 'url' => "/nhanvien"]);
-                } else if (Auth::user()->roleId == 3) {
-                    return response()->json(['error_check' => false, 'url' => "/nhanvien"]);
-                } else if (Auth::user()->roleId == 4) {
-                    return response()->json(['error_check' => false, 'url' => "/thongtincanhan"]);
-                } else {
-                    return response()->json(['error_check' => false, 'url' => ""]);
-                }
->>>>>>> fef0aee3c65ad648b5bac41d3085c861d66ea944
             } else {
                 if (User::where('email', $request->email)->first()) {
                     return response()->json(['error_check' => true, 'checkUser' => true, 'msg' => "Mật khẩu không chính xác"]);
@@ -115,7 +101,7 @@ class loginController extends Controller
         // $user->updateToken('');
         abort(404);
     }
-    
+
     public function postFormFogotPassword(Request $request, $id, $token)
     {
         $messsages = array(
@@ -138,11 +124,12 @@ class loginController extends Controller
                 if (Auth::attempt(['email' => $user->email, 'password' => $request->password])) {
                     Auth::user()->findRoleId(Auth::user()->id);
                     return  Auth::user()->controller(Auth::user()->roleId);
+                } else {
+                    return response()->json(['error_check' => true,  'msg' => 'Bạn nhập sai! Vui lòng nhập lại']);
+                }
             } else {
-                return response()->json(['error_check' => true,  'msg' => 'Bạn nhập sai! Vui lòng nhập lại']);
+                return response()->json(['error' => $validator->errors()]);
             }
-        } else {
-            return response()->json(['error' => $validator->errors()]);
         }
     }
 }

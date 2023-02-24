@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
                 'email' => 'admin@gmail.com',
                 'password' => '$2a$12$b4vKJAnSVrz.ahpkHaQqOe8e.laE6zuJLe.OyilnYAufPvPKH9RbK',
                 'name' => 'admin'
+                
             ],
             [
                 'email' => 'giangvien@gmail.com',

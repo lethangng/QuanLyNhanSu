@@ -50,12 +50,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-<<<<<<< HEAD
         'roleId',
         'token'
-=======
-        'roleId'
->>>>>>> fef0aee3c65ad648b5bac41d3085c861d66ea944
     ];
     public function controller($roleId)
     {
@@ -66,7 +62,7 @@ class User extends Authenticatable
         } else if ($roleId == 3) {
             return response()->json(['error_check' => false, 'url' => "/nhanvien"]);
         } else if ($roleId == 4) {
-            return response()->json(['error_check' => false, 'url' => "/nhansu"]);
+            return response()->json(['error_check' => false, 'url' => "/thongtincanhan"]);
         } else {
             return response()->json(['error_check' => false, 'url' => ""]);
         }

@@ -108,7 +108,7 @@
             headers: {'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')},
             processData:false,
             success:function(data){
-                // console.log(data)
+                console.log(data)
                 var error = document.querySelectorAll(".error-text");
                 for (var i = 0; i < error.length; i++) {
                     error[i].innerHTML = "";
@@ -118,6 +118,7 @@
                     checklogin(data.checkUser , data.msg)
                 }
                 else if(data.error_check==false){
+                    console.log(data.msg)
                     window.location.href = data.url;
                 }
                 else{
