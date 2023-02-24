@@ -21,7 +21,7 @@ class KyLuatSeeder extends Seeder
                 'TienPhat' => 10
             ], // Đi muộn phạt 10% lương
             [
-                'TenKyLuat' => 'Nghỉ làm 1 ngày',
+                'TenKyLuat' => 'Nghỉ làm 3 ngày',
                 'TienPhat' => 5
             ]
         ];

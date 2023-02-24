@@ -105,6 +105,7 @@
             headers: {'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')},
             processData:false,
             success:function(data){
+                // console.log(data)
                 var error = document.querySelectorAll(".error-text");
                 for (var i = 0; i < error.length; i++) {
                     error[i].innerHTML = "";

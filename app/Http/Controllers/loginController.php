@@ -35,13 +35,13 @@ class loginController extends Controller
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password], false)) {
                 Auth::user()->findRoleId(Auth::user()->id);
                 if (Auth::user()->roleId == 1) {
-                    return response()->json(['error_check' => false, 'url' => "/admin"]);
+                    return response()->json(['error_check' => false, 'url' => "/quanlynhanvien"]);
                 } else if (Auth::user()->roleId == 2) {
                     return response()->json(['error_check' => false, 'url' => "/nhanvien"]);
                 } else if (Auth::user()->roleId == 3) {
                     return response()->json(['error_check' => false, 'url' => "/nhanvien"]);
                 } else if (Auth::user()->roleId == 4) {
-                    return response()->json(['error_check' => false, 'url' => "/nhansu"]);
+                    return response()->json(['error_check' => false, 'url' => "/thongtincanhan"]);
                 } else {
                     return response()->json(['error_check' => false, 'url' => ""]);
                 }

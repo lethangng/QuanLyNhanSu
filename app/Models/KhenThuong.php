@@ -15,7 +15,7 @@ class KhenThuong extends Model
         'TenKhenThuong',
         'TienThuong'
     ];
-    public function khenThuong_ThongTinCaNhan() {
-        return $this->hasMany(KhenThuong_ThongTinCaNhan::class, 'id', 'KhenThuong_id');
-    }
+    // public function khenThuong_ThongTinCaNhan() {
+    //     return $this->hasMany(KhenThuong_ThongTinCaNhan::class, 'id', 'KhenThuong_id');
+    // }
 }
