@@ -38,7 +38,21 @@ class loginController extends Controller
         if ($validator->passes()) {
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password], false)) {
                 Auth::user()->findRoleId(Auth::user()->id);
+<<<<<<< HEAD
                 return  Auth::user()->controller(Auth::user()->roleId);
+=======
+                if (Auth::user()->roleId == 1) {
+                    return response()->json(['error_check' => false, 'url' => "/quanlynhanvien"]);
+                } else if (Auth::user()->roleId == 2) {
+                    return response()->json(['error_check' => false, 'url' => "/nhanvien"]);
+                } else if (Auth::user()->roleId == 3) {
+                    return response()->json(['error_check' => false, 'url' => "/nhanvien"]);
+                } else if (Auth::user()->roleId == 4) {
+                    return response()->json(['error_check' => false, 'url' => "/thongtincanhan"]);
+                } else {
+                    return response()->json(['error_check' => false, 'url' => ""]);
+                }
+>>>>>>> fef0aee3c65ad648b5bac41d3085c861d66ea944
             } else {
                 if (User::where('email', $request->email)->first()) {
                     return response()->json(['error_check' => true, 'checkUser' => true, 'msg' => "Mật khẩu không chính xác"]);

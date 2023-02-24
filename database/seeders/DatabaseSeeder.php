@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\KhenThuong;
+use App\Models\ThongTinCaNhan;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,17 +17,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
         $this->call([
             ChucVuSeeder::class,
             KhoaSeeder::class,
             PhongBanSeeder::class,
-            KyLuatSeeder::class
+            KyLuatSeeder::class,
+            LuongSeeder::class,
+            ThongTinCaNhanSeeder::class,
+            KhenThuongSeeder::class,
+            KhenThuong_ThongTinCaNhanSeeder::class,
+            KyLuat_ThongTinCaNhanSeeder::class,
+            UserSeeder::class
         ]);
     }
 }

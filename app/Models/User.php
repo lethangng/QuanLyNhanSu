@@ -24,7 +24,7 @@ class User extends Authenticatable
     {
         $user = DB::table('thongtincanhan')->where('User_id', $id)->get();
         foreach ($user as $data) {
-            return $this->roleId = $data->MaChucVu;
+            return $this->roleId = $data->ChucVu_id;
         }
     }
     public function updateToken($str)
@@ -50,8 +50,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+<<<<<<< HEAD
         'roleId',
         'token'
+=======
+        'roleId'
+>>>>>>> fef0aee3c65ad648b5bac41d3085c861d66ea944
     ];
     public function controller($roleId)
     {
