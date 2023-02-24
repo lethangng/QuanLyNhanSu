@@ -31,17 +31,21 @@
                           <p>You can reset your password here.</p>
                           <div class="panel-body">
             
-                            <form id="register-form" role="form" autocomplete="off" class="form" method="post">
-            
+                            <form id="register-form" role="form" autocomplete="off" class="form" method="POST" action="{{route('fogotPassword')}}">
+                                @csrf
                               <div class="form-group">
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                                  <input id="email1" name="email" placeholder="email address" class="form-control"  type="email">
+                                  <input name="email" placeholder="email address" class="form-control"  type="email">
+                                  <i class="ik ik-user"></i>
+                                  <small class="text-danger error-text email_err_forgot_pass"></small>
                                 </div>
                               </div>
                               <div class="form-group">
-                                <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" type="submit">
+                                {{-- <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" type="submit"> --}}
+                                <button type="submit" class="btn btn-lg btn-primary btn-block">Reset Password</button>
                               </div>
+                              
                               
                               <input type="hidden" class="hide" name="token" id="token" value=""> 
                             </form>
@@ -95,7 +99,6 @@
 </body>
 </html>
 <script>
-    
     $("#loginForm").on('submit', function(e){
         e.preventDefault();
         $.ajax({
@@ -110,14 +113,39 @@
                     error[i].innerHTML = "";
                 }
                 if(data.error_check==true){
+                    console.log(data.msg)
                     checklogin(data.checkUser , data.msg)
                 }
                 else if(data.error_check==false){
                     window.location.href = data.url;
                 }
                 else{
-                    printErrorMsg(data.error);
+                    printErrorMsg(data.error , '_err');
                 } 
+            }
+        });
+    });
+    $("#register-form").on('submit', function(e){
+        e.preventDefault();
+        $.ajax({
+            url:$(this).attr('action'),
+            method:$(this).attr('method'),
+            data: $(this).serialize(),
+            headers: {'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')},
+            processData:false,
+            success:function(data){
+                var error = document.querySelectorAll(".error-text");
+                error.innerHTML = "";
+                if(data.error_check==true){
+                    $('.email_err_forgot_pass').text(data.msg);
+                }
+                else if(data.error_check==false){
+                    console.log(data.msg)
+                    formforgot.classList.remove("open");
+                    // window.location.href = data.url;
+                }else{
+                    printErrorMsg(data.error , '_err_forgot_pass');
+                }
             }
         });
     });
@@ -128,9 +156,9 @@
                 $('.'+"email"+'_err').text(msg);
             }
         }
-    function printErrorMsg (msg) {
+    function printErrorMsg (msg , $err) {
             $.each( msg, function( key, value ) {
-                $('.'+key+'_err').text(value);
+                $('.'+key+$err).text(value);
             });
         }
     const formforgot = document.querySelector('.form-forgot-js');

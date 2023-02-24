@@ -17,17 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [loginController::class, "home"])->name('login');
 Route::post('/', [loginController::class, "submitLogin"])->name('submitLogin');
 
+Route::post('/fogotPassword', [loginController::class, "fogotPassword"])->name('fogotPassword');
+
+Route::get('/fogotPassword/{id}/{token}', [loginController::class, "formFogotPassword"])->name('formFogotPassword');
+Route::post('/fogotPassword/{id}/{token}', [loginController::class, "postFormFogotPassword"])->name('postFormFogotPassword');
+
 // các mục nào viết về admin thì cho route trong này
 Route::middleware(['checkHT'])->group(function () {
-    // Route::get('/admin', function () {
-    //     return view('admin/manager');
-    // })->name('admin');
-    // Route::get('/nhansu', function () {
-    //     return view('nhansu/manager');
-    // })->name('nhansu');
-    // Route::get('/nhanvien', function () {
-    //     return view('nhanvien/manager');
-    // })->name('nhanvien');
+    Route::get('/quanlynhanvien', function () {
+        return view('nhansu/quanlynhanvien');
+    })->name('quanlynhanvien');
 });
 
 // các mục nào viết về Nhân viên nhân sự thì cho route trong này
