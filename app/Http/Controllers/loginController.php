@@ -101,6 +101,7 @@ class loginController extends Controller
         // $user->updateToken('');
         abort(404);
     }
+    
     public function postFormFogotPassword(Request $request, $id, $token)
     {
         $messsages = array(
