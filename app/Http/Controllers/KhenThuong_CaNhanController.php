@@ -7,7 +7,8 @@ use App\Models\KhenThuong_ThongTinCaNhan;
 use App\Models\KhenThuong;
 use App\Models\ThongTinCaNhan;
 use Illuminate\Support\Facades\DB;
-
+use App\Http\Requests\KhenThuong_CaNhanRequest;
+use Carbon\Carbon;
 class KhenThuong_CaNhanController extends Controller
 {
     /**
@@ -17,10 +18,11 @@ class KhenThuong_CaNhanController extends Controller
      */
     public function index()
     {
-        $khenThuong_CaNhans = KhenThuong_ThongTinCaNhan::paginate(5);
+        // dd(Carbon::now()->year);
         $title = 'Danh sách khen thưởng của nhân viên';
-        // dd($khenThuong_Luongs);
-        return view('nhansu.khenThuong_CaNhan.index', compact('khenThuong_CaNhans', 'title')); 
+        $khenThuong_CaNhans = KhenThuong_ThongTinCaNhan::paginate(5);
+        $caNhans = ThongTinCaNhan::select(DB::raw('id, HoTen'))->get();
+        return view('nhansu.khenThuong_CaNhan.index', compact('khenThuong_CaNhans', 'title', 'caNhans')); 
     }
 
     /**
@@ -42,7 +44,7 @@ class KhenThuong_CaNhanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(KhenThuong_CaNhanRequest $request)
     {
         KhenThuong_ThongTinCaNhan::create([
             'KhenThuong_id' => $request->KhenThuong_id,
@@ -50,18 +52,10 @@ class KhenThuong_CaNhanController extends Controller
             'NgayKhenThuong' => $request->NgayKhenThuong,
             'ChiTietKhenThuong' => $request->ChiTietKhenThuong
         ]);
-        return redirect()->route('khenthuong_canhan.index')->with('message', 'Thêm mới thành công.');
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $hoTen = ThongTinCaNhan::select('HoTen')->where('id', '=', $request->ThongTinCaNhan_id)->first()->HoTen;
+        toastr()->success('Thêm khen thưởng cho nhân viên '. $hoTen .' thành công.', 'Thêm thành công');
+        return redirect()->route('khenthuong_canhan.index');
     }
 
     /**
@@ -87,7 +81,7 @@ class KhenThuong_CaNhanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(KhenThuong_CaNhanRequest $request, $id)
     {
         // dd($request);
         KhenThuong_ThongTinCaNhan::where('id', $id)
@@ -97,7 +91,10 @@ class KhenThuong_CaNhanController extends Controller
             'NgayKhenThuong' => $request->NgayKhenThuong,
             'ChiTietKhenThuong' => $request->ChiTietKhenThuong
         ]);
-        return redirect()->route('khenthuong_canhan.index')->with('message', 'Sửa thành công.');
+        $hoTen = ThongTinCaNhan::select('HoTen')->where('id', '=', $request->ThongTinCaNhan_id)->first()->HoTen;
+        // dd($hoTen);
+        toastr()->success('Sửa khen thưởng của nhân viên '. $hoTen .' thành công.', 'Sửa thành công');
+        return redirect()->route('khenthuong_canhan.index');
     }
 
     /**
@@ -106,28 +103,37 @@ class KhenThuong_CaNhanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         KhenThuong_ThongTinCaNhan::where('id', $id)->delete();
-        return redirect()->route('khenthuong_canhan.index')->with('message', 'Xóa thành công.');
+        toastr()->success('Xóa khen thưởng của nhân viên '. $request->HoTen . ' thành công.', 'Xóa thành công');
+
+        return redirect()->route('khenthuong_canhan.index');
     }
 
     public function search(Request $request) {
+        $caNhans = ThongTinCaNhan::select(DB::raw('id, HoTen'))->get();
+        // dd($request);
         $data = [
             'Thang' => $request->Thang,
             'Nam' => $request->Nam,
             'HoTen' => $request->HoTen
         ];
+        // dd($data['Thang']);
+        // dd($data);
+
+        // Lấy ra các ThongTinCaNhan_id trong bảng khenthuong_thongtincanhan khi biết HoTen trong bảng thongtincanhan
         $thongTinCaNhan_ids = KhenThuong_ThongTinCaNhan::select('ThongTinCaNhan_id')
         ->join('thongtincanhan', 'KhenThuong_ThongTinCaNhan.ThongTinCaNhan_id', '=', 'thongtincanhan.id')
-        ->where('thongtincanhan.HoTen', '=', $request->HoTen);
-        // dd($luong_id);
+        ->where('thongtincanhan.HoTen', '=', $request->HoTen)->get();
+        // dd($thongTinCaNhan_ids);
 
+        // Tìm ra trong bảng khenthuong_thongtincanhan có id nào gióng với id của thongtincanhan_id bên trên
         $khenThuong_CaNhans = KhenThuong_ThongTinCaNhan::select('*')
         ->whereMonth('NgayKhenThuong', $request->Thang)
         ->orwhereYear('NgayKhenThuong', $request->Nam)
         ->orwhereIn('ThongTinCaNhan_id', $thongTinCaNhan_ids)->paginate(5);
-        // dd($khenThuong_Luongs);
-        return view('nhansu.khenThuong_CaNhan.index', compact('khenThuong_CaNhans', 'data'));
+        // dd($khenThuong_CaNhans);
+        return view('nhansu.khenThuong_CaNhan.index', compact('khenThuong_CaNhans', 'data', 'caNhans'));
     }
 }

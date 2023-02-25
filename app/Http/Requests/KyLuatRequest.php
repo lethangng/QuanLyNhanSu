@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class KhenThuongRequest extends FormRequest
+class KyLuatRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class KhenThuongRequest extends FormRequest
     public function rules()
     {
         return [
-            'TenKhenThuong' => 'required',
-            'TienThuong' => 'required|integer'
+            'TenKyLuat' => 'required',
+            'TienPhat' => 'required|integer'
         ];
     }
 
@@ -40,8 +40,8 @@ class KhenThuongRequest extends FormRequest
     public function attributes()
     {
         return [
-            'TenKhenThuong' => 'Tên khen thưởng',
-            'TienThuong' => 'Tiền thưởng'
+            'TenKyLuat' => 'Tên kỷ luật',
+            'TienPhat' => 'Tiền phạt'
         ];
     }
 }

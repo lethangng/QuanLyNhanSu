@@ -13,7 +13,7 @@ class KhenThuongController extends Controller
         $khenthuongs = KhenThuong::paginate(5);
         return view('nhansu.khenThuong.index', compact('khenthuongs', 'title'));
     }
-
+    
     public function create() {
         $title = 'Thêm mới khen thưởng';
         return view('nhansu.khenThuong.create', compact('title'));

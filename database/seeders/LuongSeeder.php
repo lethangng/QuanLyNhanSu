@@ -39,6 +39,22 @@ class LuongSeeder extends Seeder
                 'TongTienPhat' => 300000,
                 'TongTienThuong' => 200000,
                 'TongTienLuong' => 500000
+            ],
+            [
+                'ThongTinCaNhan_id' => 4,
+                'HSL' => 3.0,
+                'Thang' => 2,
+                'TongTienPhat' => 300000,
+                'TongTienThuong' => 200000,
+                'TongTienLuong' => 500000
+            ],
+            [
+                'ThongTinCaNhan_id' => 5,
+                'HSL' => 3.0,
+                'Thang' => 2,
+                'TongTienPhat' => 300000,
+                'TongTienThuong' => 200000,
+                'TongTienLuong' => 500000
             ]
         ];
         DB::table('luong')->insert($luongs);

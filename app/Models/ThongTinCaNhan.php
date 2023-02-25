@@ -27,6 +27,9 @@ class ThongTinCaNhan extends Model
     public function khenThuong_ThongTinCaNhan() {
         return $this->hasMany(KhenThuong_ThongTinCaNhan::class, 'id', 'ThongTinCaNhan_id');
     }
+    public function kyLuat_ThongTinCaNhan() {
+        return $this->hasMany(KyLuat_ThongTinCaNhan::class, 'id', 'ThongTinCaNhan_id');
+    }
 
     public function chucVu() {
         return $this->belongsTo(ChucVu::class, 'ChucVu_id', 'id');
