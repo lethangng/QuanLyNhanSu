@@ -14,11 +14,11 @@
     <label for="">Số ngày làm việc</label>
     <input type="text" value="10">
     <label for="">Tổng tiền thưởng</label>
-    <input type="text" value="100000">
+    <input type="text" value="{{ $caNhan->luong->TongTienThuong }}">
     <label for="">Tổng tiền phạt</label>
-    <input type="text" value="200000">
+    <input type="text" value="{{ $caNhan->luong->TongTienPhat }}">
     <label for="">Tổng tiền lương</label>
-    <input type="text" value="500000">
+    <input type="text" value="{{ $caNhan->luong->TongTienLuong }}">
 
     <a class="btn btn-primary" href="{{ route('canhan.index') }}">Quay lại</a>
 @endsection

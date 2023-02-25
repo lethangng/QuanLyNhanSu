@@ -18,6 +18,7 @@ return new class extends Migration
             $table->bigInteger('ThongTinCaNhan_id')->unsigned()->nullable();
             $table->float('HSL')->nullable();
             $table->integer('Thang')->unsigned()->nullable();
+            $table->integer('SoNgayLamViec')->unsigned()->nullable();
             $table->bigInteger('TongTienPhat')->unsigned()->nullable();
             $table->bigInteger('TongTienThuong')->unsigned()->nullable();
             $table->bigInteger('TongTienLuong')->unsigned()->nullable();
