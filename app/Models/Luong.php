@@ -17,4 +17,10 @@ class Luong extends Model
         'TongTienThuong',
         'TongTienLuong'
     ];
+    public function thongTinCaNhan() {
+        return $this->belongsTo(ThongTinCaNhan::class, 'ThongTinCaNhan_id', 'id');
+    }
+    // public function chucVu() {
+    //     return $this->belongsTo(ChucVu::class, 'ThongTinCaNhan_id', 'id');
+    // }
 }

@@ -13,7 +13,7 @@ class LuongRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,8 +24,9 @@ class LuongRequest extends FormRequest
     public function rules()
     {
         return [
-            'MaCaNhan' => 'required',
-            'HeSoLuong' => 'required|decimal:0,3'
+            'Thang' => 'required',
+            'Nam' => 'required',
+            'HSL' => 'required|decimal:0,3'
         ];
     }
 
@@ -38,8 +39,9 @@ class LuongRequest extends FormRequest
 
     public function attributes() {
         return [
-            'MaCaNhan' => 'Mã cá nhân',
-            'HeSoLuong' => 'Hệ số lương'
+            'Thang' => 'Tháng',
+            'Nam' => 'Năm',
+            'HSL' => 'Hệ số lương'
         ];
     }
 }

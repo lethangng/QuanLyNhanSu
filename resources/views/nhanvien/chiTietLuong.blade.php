@@ -20,5 +20,5 @@
     <label for="">Tổng tiền lương</label>
     <input type="text" value="{{ $caNhan->luong->TongTienLuong }}">
 
-    <a class="btn btn-primary" href="{{ route('canhan.index') }}">Quay lại</a>
+    <a class="btn btn-primary" href="{{ url()->previous() }}">Quay lại</a>
 @endsection

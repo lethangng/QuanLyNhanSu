@@ -8,7 +8,6 @@ use App\Models\KhenThuong;
 use App\Models\ThongTinCaNhan;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\KhenThuong_CaNhanRequest;
-use Carbon\Carbon;
 class KhenThuong_CaNhanController extends Controller
 {
     /**
@@ -18,7 +17,6 @@ class KhenThuong_CaNhanController extends Controller
      */
     public function index()
     {
-        // dd(Carbon::now()->year);
         $title = 'Danh sách khen thưởng của nhân viên';
         $khenThuong_CaNhans = KhenThuong_ThongTinCaNhan::paginate(5);
         $caNhans = ThongTinCaNhan::select(DB::raw('id, HoTen'))->get();

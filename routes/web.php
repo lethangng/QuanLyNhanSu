@@ -7,6 +7,7 @@ use App\Http\Controllers\KhenThuong_CaNhanController;
 use App\Http\Controllers\ThongTinCaNhanController;
 use App\Http\Controllers\KyLuatController;
 use App\Http\Controllers\KyLuat_CaNhanController;
+use App\Http\Controllers\LuongController;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,12 +98,19 @@ Route::middleware(['checkNV'])->group(function () {
 
 // các mục nào viết về nhân viên tài chính thì cho route trong này
 Route::middleware(['checkNVTC'])->group(function () {
+    // Danh sach luong cua nhan vien
+    Route::prefix('luong')->group(function () {
+        Route::get('/', [LuongController::class, 'index'])->name('luong.index');
+        Route::get('create', [LuongController::class, 'create'])->name('luong.create');
+        Route::post('create', [LuongController::class, 'store']);
+        Route::get('{id}/edit', [LuongController::class, 'edit'])->whereNumber('id')->name('luong.edit');
+        Route::put('{id}/edit', [LuongController::class, 'update'])->whereNumber('id')->name('luong.update');
+        Route::delete('{id}/destroy', [LuongController::class, 'destroy'])->whereNumber('id')->name('luong.destroy');
+        Route::post('search', [LuongController::class, 'search'])->name('luong.search');
+        
+        // Chi tiet luong
+        Route::get('chitietluong', [LuongController::class, 'indexLuong'])->name('chitietluong.index');
+        Route::get('{id}/chitietluong', [LuongController::class, 'chiTietLuong'])->name('chitietluong.chitiet');
+        Route::post('chitietluong/search', [LuongController::class, 'searchChiTiet'])->name('chitietluong.search');
+    });
 });
-
-// Route::get('/thongtincanhan', function () {
-//     return view('admin/thongtincanhan');
-// })->name('thongtincanhan');
-
-// Route::get('/thongtincanhan', function () {
-//     return view('nhanvien/thongtincanhan');
-// })->name('thongtinnhanvien');

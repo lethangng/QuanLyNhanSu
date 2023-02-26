@@ -20,6 +20,8 @@ class LuongSeeder extends Seeder
                 'ThongTinCaNhan_id' => 1,
                 'HSL' => 3.4,
                 'Thang' => 2,
+                'Nam' => 2022,
+                'SoNgayLamViec' => 28,
                 'TongTienPhat' => 300000,
                 'TongTienThuong' => 500000,
                 'TongTienLuong' => 10000000
@@ -28,6 +30,8 @@ class LuongSeeder extends Seeder
                 'ThongTinCaNhan_id' => 2,
                 'HSL' => 3.2,
                 'Thang' => 1,
+                'Nam' => 2022,
+                'SoNgayLamViec' => 28,
                 'TongTienPhat' => 400000,
                 'TongTienThuong' => 300000,
                 'TongTienLuong' => 1000000
@@ -36,6 +40,8 @@ class LuongSeeder extends Seeder
                 'ThongTinCaNhan_id' => 3,
                 'HSL' => 3.0,
                 'Thang' => 2,
+                'Nam' => 2022,
+                'SoNgayLamViec' => 28,
                 'TongTienPhat' => 300000,
                 'TongTienThuong' => 200000,
                 'TongTienLuong' => 500000
@@ -44,6 +50,8 @@ class LuongSeeder extends Seeder
                 'ThongTinCaNhan_id' => 4,
                 'HSL' => 3.0,
                 'Thang' => 2,
+                'Nam' => 2022,
+                'SoNgayLamViec' => 28,
                 'TongTienPhat' => 300000,
                 'TongTienThuong' => 200000,
                 'TongTienLuong' => 500000
@@ -52,6 +60,8 @@ class LuongSeeder extends Seeder
                 'ThongTinCaNhan_id' => 5,
                 'HSL' => 3.0,
                 'Thang' => 2,
+                'Nam' => 2022,
+                'SoNgayLamViec' => 28,
                 'TongTienPhat' => 300000,
                 'TongTienThuong' => 200000,
                 'TongTienLuong' => 500000
