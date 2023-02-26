@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kyluat_luong', function (Blueprint $table) {
-            $table->bigInteger('MaKyLuat');
-            $table->bigInteger('MaBangLuong');
-            $table->text('ChiTietKyLuat');
+        Schema::create('kyluat_thongtincanhan', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('KyLuat_id')->unsigned()->nullable();
+            $table->bigInteger('ThongTinCaNhan_id')->unsigned()->nullable();
+            $table->date('NgayKyLuat')->nullable();
+            $table->text('ChiTietKyLuat')->nullable();
             $table->timestamps();
-            $table->foreign('MaKyLuat')->references('MaKyLuat')->on('kyluat');
-            $table->foreign('MaBangLuong')->references('MaBangLuong')->on('luong');
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kyluat_luong');
+        Schema::dropIfExists('kyluat_thongtincanhan');
     }
 };

@@ -14,15 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('luong', function (Blueprint $table) {
-            $table->id('MaBangLuong');
-            $table->char('MaCaNhan', 10)->unique();
-            $table->float('HSL', 3, 3);
-            $table->integer('TongSoGioLamViec');
-            $table->integer('TongTienPhat');
-            $table->integer('TongTienThuong');
-            $table->float('TongTienLuong', 10, 3);
+            $table->id();
+            $table->bigInteger('ThongTinCaNhan_id')->unsigned()->nullable();
+            $table->float('HSL')->nullable();
+            $table->integer('Thang')->unsigned()->nullable();
+            $table->integer('SoNgayLamViec')->unsigned()->nullable();
+            $table->bigInteger('TongTienPhat')->unsigned()->nullable();
+            $table->bigInteger('TongTienThuong')->unsigned()->nullable();
+            $table->bigInteger('TongTienLuong')->unsigned()->nullable();
             $table->timestamps();
-            $table->foreign('MaCaNhan')->references('MaCaNhan')->on('thongtincanhan');
         });
     }
 

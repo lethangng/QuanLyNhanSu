@@ -1,0 +1,153 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.text-header{
+    text-align: center;
+}
+.container{
+    border: 1px #ccc solid;
+    padding: 16px;
+    margin-left: 32px;
+    margin-right: 32px;
+}
+.container-content-1{
+    
+    display: flex;
+}
+
+.text-content {
+    color: orange;
+    text-transform: uppercase;
+    margin-left: 24px;
+    line-height: 41px;
+    font-weight: 400;
+    font-size: 18px;
+}
+.image{
+    width: 100%;
+    border-radius: 110px;
+}
+.name_and_img{
+    margin-left: 20px;
+}
+.container-form-1
+{
+    margin-left: 12%;
+}
+.container-form-2
+{
+    margin-left: 100px;
+}
+
+.container-form label{
+    font-size: 20px;
+}
+.container-form-1 .form-1 select {
+    padding: 5px;
+    margin-top: 5px;
+    border: solid 1px #ccc;
+    background-color: #e2eced;
+    width: 50%;
+}
+.container-form-1 .form-2 select {
+    padding: 5px;
+    margin-top: 5px;
+    border: solid 1px #ccc;
+    background-color: #e2eced;
+    width: 70%;
+}
+
+label.label-1 {
+    padding-left: 15px;
+}
+
+form.form-3 {
+    margin: 19px 15px 10px 1px;
+}
+form.form-4 {
+    margin: 19px 15px 8px -25px;
+}
+#fname {
+    width: 19%;
+    padding: 5px 15px;
+    background-color: #e2eced;
+    border: solid 1px #ccc;
+}
+.label-3 {
+    margin-left: -9px;
+}
+.label-4 {
+    margin-left: -30px;
+}
+.btn{
+    text-align: center;
+}
+.btn-changePassword,
+.btn-seen,
+.btn-update {
+    padding: 5px;
+    margin: 5px;
+    background-color: aqua;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+}
+
+.btn-changePassword:hover,
+.btn-seen:hover,
+.btn-update:hover{
+    background-color: var(--primary-color);;
+    color: #fff;
+}
+.container-content-3 {
+    padding-left: 20px;
+}
+.container-form-4,
+.container-form-5,
+.container-form-3{
+    padding: 16px;
+}
+.label-5{
+    margin-left: 10px;
+    padding-left: 10px;
+}
+.label-6{
+    margin-left: 83px;
+}
+.label-7{
+    margin-left: 100px;
+}
+.label-8 {
+    margin-left: -25px;
+}
+.label-9 {
+    margin-left: 52px;
+}
+.label-10 {
+    margin-left: 103px;
+}
+.container-form-5 .form-7 select {
+    width: 300px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    background-color: #e2eced;
+    border: solid 1px #ccc;
+}
+
+label.label-11 {
+    margin-left: -10px;
+}
+label.label-12 {
+    margin-left: 51px;
+}
+label.label-13{
+    margin-left: 77px;
+}
+input {
+    min-width: 20%;
+}
+.container-content-3 select {
+max-width: 20%;
+}

@@ -14,23 +14,20 @@ return new class extends Migration
     public function up()
     {
         Schema::create('thongtincanhan', function (Blueprint $table) {
-            $table->char('MaCaNhan', 10)->primary();
-            $table->string('HoTen', 50);
-            $table->date('NgaySinh');
-            $table->char('GioiTinh', 5);
-            $table->string('CCDD', 12)->unique();
-            $table->string('DiaChi', 50);
-            $table->char('MaPhongBan', 10)->nullable();
-            $table->char('MaChucVu', 10);
-            $table->char('MaKhoa', 10)->nullable();
+            $table->id();
+            $table->string('MaCaNhan')->unique()->nullable();
+            $table->string('HoTen')->nullable();
+            $table->date('NgaySinh')->nullable();
+            $table->string('GioiTinh')->nullable();
+            $table->string('CCCD')->unique()->nullable();
+            $table->string('DiaChi')->nullable();
+            $table->bigInteger('PhongBan_id')->unsigned()->nullable();
+            $table->bigInteger('ChucVu_id')->unsigned()->nullable();
+            $table->bigInteger('Khoa_id')->unsigned()->nullable();
             $table->string('AnhDaiDien')->nullable();
-            $table->boolean('TrangThai');
-            $table->char('TenTaiKhoan', 10)->unique();
+            $table->boolean('TrangThai')->nullable();
+            $table->bigInteger('User_id')->unsigned()->nullable();
             $table->timestamps();
-            $table->foreign('TenTaiKhoan')->references('TenTaiKhoan')->on('taikhoan');
-            $table->foreign('MaPhongBan')->references('MaPhongBan')->on('phongban');
-            $table->foreign('MaChucVu')->references('MaChucVu')->on('chucvu');
-            $table->foreign('MaKhoa')->references('MaKhoa')->on('khoa');
         });
     }
 

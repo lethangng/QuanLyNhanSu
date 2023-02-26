@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('taikhoan', function (Blueprint $table) {
-            $table->string('TenTaiKhoan', 50)->primary();
-            $table->string('MatKhau', 50);
-            $table->string('email', 50)->unique();
+        Schema::create('khenthuong_thongtincanhan', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('KhenThuong_id')->unsigned()->nullable();
+            $table->bigInteger('ThongTinCaNhan_id')->unsigned()->nullable();
+            $table->date('NgayKhenThuong')->nullable();
+            $table->text('ChiTietKhenThuong')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('taikhoan');
+        Schema::dropIfExists('khenthuong_thongtincanhan');
     }
 };

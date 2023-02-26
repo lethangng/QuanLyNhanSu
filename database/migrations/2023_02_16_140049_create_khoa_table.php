@@ -14,8 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('khoa', function (Blueprint $table) {
-            $table->char('MaKhoa', 10)->primary()->unique();
-            $table->string('TenKhoa', 50);
+            $table->id();
+            $table->string('MaKhoa')->unique()->nullable();
+            $table->string('TenKhoa')->nullable();
             $table->timestamps();
         });
     }
