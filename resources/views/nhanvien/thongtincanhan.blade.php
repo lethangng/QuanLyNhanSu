@@ -152,18 +152,19 @@
                         <div class="modal-body">
                             {{-- <input class="btn-update" id="file" name="filePhoto" type="file"
                                 accept="image/*" style="display: none">
-                            <label for="file" class="btn btn-primary text-wrap"
-                                style="height: 100px">Chọn ảnh để
+                            <label for="file" class="btn btn-primary text-wrap" style="height: 100px">Chọn ảnh để
                                 tải lên</label> --}}
                             {{-- <div class="row">
                                 <label for="" class="col">Hình đã chọn:</label>
                                 <p class="col">hình ảnh</p>
                             </div> --}}
-                            <input id="file" name="photo" type="file" accept="image/*">
+                            <input id="photo" name="photo" type="file" accept="image/*"
+                                onchange="upload()">
+                            <div id="passwordHelp" class="form-text text-danger d-none">Ảnh phải nhỏ hơn 1MB</div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-danger">Cập nhập</a>
+                            <button type="submit" class="btn btn-danger" id="update">Cập nhập</a>
                         </div>
                     </div>
                 </div>
@@ -187,7 +188,8 @@
                                 <label class="form-label">Mật khẩu cũ</label>
                                 <input type="text"
                                     class="form-control @error('MatKhauCu') border border-danger border-3 @enderror"
-                                    name="MatKhauCu" value="{{ old('MatKhauCu') }}">
+                                    name="MatKhauCu" value="{{ old('MatKhauCu') }}"
+                                    placeholder="Nhập mật khẩu cũ...">
                                 @error('MatKhauCu')
                                     <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
                                 @enderror
@@ -196,7 +198,8 @@
                                 <label class="form-label">Mật khẩu mới</label>
                                 <input type="text"
                                     class="form-control @error('MatKhauMoi') border border-danger border-3 @enderror"
-                                    name="MatKhauMoi" value="{{ old('Mật khẩu mới') }}">
+                                    name="MatKhauMoi" value="{{ old('Mật khẩu mới') }}"
+                                    placeholder="Nhập mật khẩu cũ...">
                                 @error('MatKhauMoi')
                                     <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
                                 @enderror
@@ -213,6 +216,10 @@
     </section>
     {{-- Link bootstrap --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    {{-- Link jquery --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         const body = document.querySelector('body'),
             sidebar = body.querySelector('nav'),
@@ -223,6 +230,23 @@
         toggle.addEventListener("click", () => {
             sidebar.classList.toggle("close");
         })
+
+        function upload() {
+            var fuData = document.getElementById('photo');
+            var update = document.getElementById('update');
+            var size = fuData.files[0].size;
+            console.log(size);
+
+            if (size > 10 ** 6) {
+                console.log(size);
+                $('#passwordHelp').removeClass('d-none')
+                update.disabled = true;
+            } else {
+                $('#passwordHelp').addClass('d-none')
+                update.disabled = false;
+                return true
+            }
+        }
     </script>
 </body>
 

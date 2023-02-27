@@ -10,7 +10,7 @@
         <h3 for="" class="pb-2">Tìm kiếm</h3>
         <div class="row">
             <div id="input-thang" class="col-2 row">
-                <label for="thang" class="form-label col" style="padding: 6px 12px; margin: 0">Tháng</label>
+                <label for="thang" class="form-label col-auto" style="padding: 6px 12px; margin: 0">Tháng</label>
                 <select class="form-select col" aria-label="Default select example" name="Thang">
                     <option value="">MM</option>
                     @for ($i = 1; $i < 13; $i++)
@@ -19,12 +19,12 @@
                     @endfor
                 </select>
             </div>
-            <div id="input-nam" class="col-2 row">
+            <div id="input-nam" class="col-2 row ms-3">
                 @php
                     use Carbon\Carbon;
                     $nam = Carbon::now()->year;
                 @endphp
-                <label for="nam" class="form-label col" style="padding: 6px 12px; margin: 0; width: 2rem">Năm</label>
+                <label for="nam" class="form-label col-auto" style="padding: 6px 12px; margin: 0;">Năm</label>
                 <select class="form-select col" aria-label="Default select example" name="Nam">
                     <option value="">YYYY</option>
                     @for ($i = 2000; $i < $nam + 1; $i++)
@@ -34,17 +34,39 @@
                 </select>
             </div>
         </div>
-        <div class="row mt-2">
-            <div class="col-3">
-                <select class="form-select select2" aria-label="Default select example" name="HoTen">
-                    <option value="">Nhập tên nhân viên cần tìm...</option>
-                    @foreach ($caNhans as $caNhan)
-                        <option @isset($data) @selected( $caNhan->HoTen == $data['HoTen']) @endisset
-                            value="{{ $caNhan->HoTen }}">{{ $caNhan->HoTen }}</option>
-                    @endforeach
-                </select>
+        <div class="row row-cols-auto mt-2">
+            <label for="" class="col-auto">Tìm kiếm theo:</label>
+            <div class="form-check col-auto">
+                <input class="form-check-input" type="radio" name="search" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Mã cá nhân
+                </label>
             </div>
-            <div class="col-1">
+            <div class="form-check col-auto">
+                <input class="form-check-input" type="radio" name="search" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Họ tên
+                </label>
+            </div>
+        </div>
+        <div class="row mt-2">
+            @if (true)
+                <div class="col-auto">
+                    <select class="form-select select2" aria-label="Default select example" name="HoTen">
+                        <option value="">Nhập tên nhân viên cần tìm...</option>
+                        @foreach ($caNhans as $caNhan)
+                            <option
+                                @isset($data) @selected( $caNhan->HoTen == $data['HoTen']) @endisset
+                                value="{{ $caNhan->HoTen }}">{{ $caNhan->HoTen }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            @else
+                <input type="text" placeholder="Nhập mã cá nhân cần tìm..." value="" name="MaCaNhan"
+                    class="col-2 form-control">
+            @endif
+
+            <div class="col-auto">
                 <button type="submit" id="search" class="btn btn-success text-light">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>

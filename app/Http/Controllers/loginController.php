@@ -58,7 +58,7 @@ class loginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return view('login');
+        return view('login/login');
     }
     public function fogotPassword(Request $request)
     {

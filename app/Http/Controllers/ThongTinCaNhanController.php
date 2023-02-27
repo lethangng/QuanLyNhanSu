@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PublicRequest;
 use Illuminate\Support\Facades\Hash;
 
 class ThongTinCaNhanController extends Controller
@@ -25,7 +26,12 @@ class ThongTinCaNhanController extends Controller
 
     public function addPhoto(Request $request) {
         $caNhan = ThongTinCaNhan::select(DB::raw('*'))->where('User_id', '=', Auth::user()->id)->first();
+        // dd($request);
         if($request->has('photo')) {
+            // $request->validate([
+            //     'photo' => 'required|mimes:png,jpg,jpeg|max:1024'
+            // ]);
+
             $file = $request->photo;
             $ext = $request->photo->extension();
             $file_name = time().'-'.$caNhan->MaCaNhan.'.'.$ext;
@@ -37,10 +43,9 @@ class ThongTinCaNhanController extends Controller
             ->update([
                 'AnhDaiDien' => $file_name
             ]);
-            return redirect()->route('canhan.index')->with('message', 'Sửa thành công.');
-        } else {
+            toastr()->success('Sửa mật khẩu thành công.', 'Sửa thành công');
             return redirect()->route('canhan.index');
-        }
+        } 
     }
 
     public function updatePassword(Request $request) {
@@ -49,9 +54,10 @@ class ThongTinCaNhanController extends Controller
         if(Hash::check($request->MatKhauCu, $matKhauCu)) {
             User::where('id', $caNhan->User_id)
             ->update([
-                'passwork' => Hash::make($request->MatKhauMoi)
+                'password' => Hash::make($request->MatKhauMoi)
             ]);
         }
-        return redirect()->route('canhan.index')->with('message', 'Sửa thành công.');
+        toastr()->success('Sửa mật khẩu thành công.', 'Sửa thành công');
+        return redirect()->route('canhan.index');
     }
 }
