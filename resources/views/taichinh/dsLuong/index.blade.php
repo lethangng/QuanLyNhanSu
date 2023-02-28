@@ -50,21 +50,15 @@
             </div>
         </div>
         <div class="row mt-2">
-            @if (true)
-                <div class="col-auto">
-                    <select class="form-select select2" aria-label="Default select example" name="HoTen">
-                        <option value="">Nhập tên nhân viên cần tìm...</option>
-                        @foreach ($caNhans as $caNhan)
-                            <option
-                                @isset($data) @selected( $caNhan->HoTen == $data['HoTen']) @endisset
-                                value="{{ $caNhan->HoTen }}">{{ $caNhan->HoTen }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            @else
-                <input type="text" placeholder="Nhập mã cá nhân cần tìm..." value="" name="MaCaNhan"
-                    class="col-2 form-control">
-            @endif
+            <div class="col-auto">
+                <select class="form-select select2" aria-label="Default select example" name="HoTen">
+                    <option value="">Nhập tên nhân viên cần tìm...</option>
+                    @foreach ($caNhans as $caNhan)
+                        <option @isset($data) @selected( $caNhan->HoTen == $data['HoTen']) @endisset
+                            value="{{ $caNhan->HoTen }}">{{ $caNhan->HoTen . ' - ' . $caNhan->MaCaNhan }}</option>
+                    @endforeach
+                </select>
+            </div>
 
             <div class="col-auto">
                 <button type="submit" id="search" class="btn btn-success text-light">
@@ -78,6 +72,14 @@
             </div>
         </div>
         @csrf
+    </form>
+    <form action="{{ route('luong.tinhluong') }}" method="post" class="mb-3">
+        @csrf
+        @php
+            $now = Carbon::now()->day;
+        @endphp
+        <input type="text" name="Ngay" value="{{ $now }}" hidden>
+        <button type="submit">Tính lương</button>
     </form>
 
     <hr>
@@ -96,7 +98,7 @@
                 <tr class="table-info">
                     <td>{{ $luong->thongTinCaNhan->MaCaNhan }}</td>
                     <td>{{ $luong->thongTinCaNhan->HoTen }}</td>
-                    <td>{{ $luong->Thang . '-' . $luong->Nam }}</td>
+                    <td>{{ $luong->ThoiGian }}</td>
                     <td>{{ $luong->HSL }}</td>
                     <td>{{ $luong->SoNgayLamViec }}</td>
                     <td>{{ $luong->TongTienLuong }}</td>

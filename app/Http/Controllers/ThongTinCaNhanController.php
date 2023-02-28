@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\PublicRequest;
+// use App\Http\Requests\PublicRequest;
 use Illuminate\Support\Facades\Hash;
 
 class ThongTinCaNhanController extends Controller
@@ -21,6 +21,7 @@ class ThongTinCaNhanController extends Controller
 
     public function chiTietLuong() {
         $caNhan = ThongTinCaNhan::select(DB::raw('*'))->where('User_id', '=', Auth::user()->id)->first();
+        // dd($caNhan);
         return view('nhanvien.chiTietLuong', compact('caNhan'));
     }
 

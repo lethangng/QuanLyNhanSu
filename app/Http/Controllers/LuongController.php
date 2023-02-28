@@ -9,6 +9,7 @@ use App\Models\ThongTinCaNhan;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\LuongRequest;
 use App\Models\Luong;
+use Illuminate\Support\Facades\Auth;
 class LuongController extends Controller
 {
     /**
@@ -132,9 +133,12 @@ class LuongController extends Controller
     }
 
     public function indexLuong() {
+        if(Auth::check()) {
+
+        }
         $title = 'Danh sách lương của nhân viên';
         $luongs = Luong::paginate(5);
-        $caNhans = ThongTinCaNhan::select(DB::raw('id, HoTen'))->get();
+        $caNhans = ThongTinCaNhan::select(DB::raw('id, MaCaNhan, HoTen'))->get();
         return view('taichinh.dsLuong.index', compact('luongs', 'title', 'caNhans')); 
     }
     public function chiTietLuong($id) {
@@ -161,10 +165,20 @@ class LuongController extends Controller
 
         // Tìm ra trong bảng khenthuong_thongtincanhan có id nào gióng với id của thongtincanhan_id bên trên
         $luongs = Luong::select('*')
-        ->orwhere('Thang', $request->Thang)
-        ->orwhere('Nam', $request->Nam)
+        ->whereMonth('ThoiGian', $request->Thang)
+        ->orwhereYear('ThoiGian', $request->Nam)
         ->orwhereIn('ThongTinCaNhan_id', $thongTinCaNhan_ids)->paginate(5);
         // dd($luongs);
         return view('taichinh.dsLuong.index', compact('luongs', 'data', 'caNhans'));
+    }
+
+    public function tinhLuong(Request $request) {
+        if($request->Ngay == 5) {
+            toastr()->success('Tính lương thành công', 'Thành công');
+            return redirect()->route('chitietluong.index');
+        } else {
+            toastr()->success('Chưa đến ngày mùng 5 để tính lương.', 'Thất bại công');
+            return redirect()->route('chitietluong.index');
+        }
     }
 }

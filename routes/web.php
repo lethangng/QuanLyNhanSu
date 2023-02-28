@@ -32,19 +32,13 @@ Route::post('/fogotPassword/{id}/{token}', [loginController::class, "postFormFog
 
 // các mục nào viết về admin thì cho route trong này
 Route::middleware(['checkHT'])->group(function () {
-    Route::prefix('hieutruong/thongtincanhan')->group(function () {
-        Route::get('/', [ThongTinCaNhanController::class, 'index'])->name('canhan.index');
-    });
+    //
 });
 
 // các mục nào viết về Nhân viên nhân sự thì cho route trong này
 Route::middleware(['checkNVNS'])->group(function () {
     Route::get('/login/user', function() {
         return view('welcome')->name('login.user');
-    });
-    // Thong tin ca nhan
-    Route::prefix('nhansu/thongtincanhan')->group(function () {
-        Route::get('/', [ThongTinCaNhanController::class, 'index'])->name('canhan.index');
     });
 
     // Khen thuong cua nhan vien phong nhan su
@@ -77,6 +71,7 @@ Route::middleware(['checkNVNS'])->group(function () {
         Route::delete('{id}/destroy', [KhenThuong_CaNhanController::class, 'destroy'])->whereNumber('id')->name('khenthuong_canhan.destroy');
         Route::post('search', [KhenThuong_CaNhanController::class, 'search'])->name('khenthuong_canhan.search');
     });
+
     // Danh sach ky luat cua nhan vien phong nhan su
     Route::prefix('nhansu/kyluat-canhan')->group(function () {
         Route::get('/', [KyLuat_CaNhanController::class, 'index'])->name('kyluat_canhan.index');
@@ -99,10 +94,6 @@ Route::middleware(['checkNV'])->group(function () {
 
 // các mục nào viết về nhân viên tài chính thì cho route trong này
 Route::middleware(['checkNVTC'])->group(function () {
-    // Thong tin ca nhan
-    Route::prefix('taichinh/thongtincanhan')->group(function () {
-        Route::get('/', [ThongTinCaNhanController::class, 'index'])->name('canhan.index');
-    });
     // Danh sach luong cua nhan vien
     Route::prefix('taichinh/luong')->group(function () {
         Route::get('/', [LuongController::class, 'index'])->name('luong.index');
@@ -112,16 +103,17 @@ Route::middleware(['checkNVTC'])->group(function () {
         Route::put('{id}/edit', [LuongController::class, 'update'])->whereNumber('id')->name('luong.update');
         Route::delete('{id}/destroy', [LuongController::class, 'destroy'])->whereNumber('id')->name('luong.destroy');
         Route::post('search', [LuongController::class, 'search'])->name('luong.search');
-        
+        Route::post('tinhluong', [LuongController::class, 'tinhLuong'])->name('luong.tinhluong');
     });
+    Route::get('chitietluong', [LuongController::class, 'indexLuong'])->name('chitietluong.index');
+    Route::get('{id}/chitietluong', [LuongController::class, 'chiTietLuong'])->name('chitietluong.chitiet');
+    Route::post('chitietluong/search', [LuongController::class, 'searchChiTiet'])->name('chitietluong.search');
 });
 
-// Chi tiet luong
-Route::get('chitietluong', [LuongController::class, 'indexLuong'])->name('chitietluong.index');
-Route::get('{id}/chitietluong', [LuongController::class, 'chiTietLuong'])->name('chitietluong.chitiet');
-Route::post('chitietluong/search', [LuongController::class, 'searchChiTiet'])->name('chitietluong.search');
+// Thong tin ca nhan(dung chung)
 Route::prefix('thongtincanhan')->group(function () {
+    Route::get('/', [ThongTinCaNhanController::class, 'index']);
+    Route::get('luong', [ThongTinCaNhanController::class, 'chiTietLuong'])->name('canhan.luong');
     Route::post('addPhoto', [ThongTinCaNhanController::class, 'addPhoto'])->name('canhan.addPhoto');
-    // Route::get('chitietluong', [ThongTinCaNhanController::class, 'chiTietLuong'])->name('canhan.chiTietLuong');
     Route::post('update-password', [ThongTinCaNhanController::class, 'updatePassword'])->name('canhan.updatePassword');
 });

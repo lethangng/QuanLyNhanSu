@@ -56,15 +56,15 @@ class User extends Authenticatable
     public function controller($roleId)
     {
         if ($roleId == 1) {
-            return response()->json(['error_check' => false, 'url' => "/hieutruong/thongtincanhan"]);
+            return response()->json(['error_check' => false, 'url' => "thongtincanhan"]);
         } else if ($roleId == 2) {
-            return response()->json(['error_check' => false, 'url' => "/nhanvien/thongtincanhan"]);
+            return response()->json(['error_check' => false, 'url' => "thongtincanhan"]);
         } else if ($roleId == 3) {
-            return response()->json(['error_check' => false, 'url' => "/nhanvien/thongtincanhan"]);
+            return response()->json(['error_check' => false, 'url' => "thongtincanhan"]);
         } else if ($roleId == 4) {
-            return response()->json(['error_check' => false, 'url' => "/nhansu/thongtincanhan"]);
+            return response()->json(['error_check' => false, 'url' => "thongtincanhan"]);
         } else if ($roleId == 5) {
-            return response()->json(['error_check' => false, 'url' => "/taichinh/thongtincanhan"]);
+            return response()->json(['error_check' => false, 'url' => "thongtincanhan"]);
         } else {
             return response()->json(['error_check' => false, 'url' => ""]);
         }

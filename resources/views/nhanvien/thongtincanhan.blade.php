@@ -77,7 +77,11 @@
             <div class="container-content-1">
                 <div class="name_and_img">
                     <h3 class="text-content">{{ $caNhan->HoTen }}</h3>
-                    <img class="image" src="{{ asset('uploads/' . $caNhan->AnhDaiDien) }}" alt="">
+                    @if ($caNhan->AnhDaiDien)
+                        <img class="image" src="{{ asset('uploads/' . $caNhan->AnhDaiDien) }}" alt="">
+                    @else
+                        <img class="image" src="{{ asset('uploads/facebook.jpg') }}" alt="">
+                    @endif
                 </div>
                 <div class="container-form-1 mt-5 row">
                     <div class="col-4 row">
@@ -126,7 +130,7 @@
                         data-bs-target="#exampleModal">
                         Cập nhập ảnh đại điện
                     </button>
-                    <a class="btn-seen" href="{{ route('canhan.chiTietLuong') }}">Xem bảng lương</a>
+                    <a class="btn-seen" href="{{ route('canhan.luong') }}">Xem bảng lương</a>
                     {{-- <button class="btn-changePassword">Đổi mật khẩu</button> --}}
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-danger col-4" data-bs-toggle="modal"
