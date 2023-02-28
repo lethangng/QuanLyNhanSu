@@ -6,11 +6,11 @@
 .text-header{
     text-align: center;
 }
-.container{
+/* .container{
     border: 1px #ccc solid;
     padding: 16px;
     max-width: 1138px !important
-}
+} */
 .container-content-1{
     display: flex;
 }
@@ -25,9 +25,15 @@
     font-size: 18px;
 }
 .image{
-    width: 111%;
-    height: 84%;
-    border-radius: 110px;
+    width: 254px;
+    height: 254px;
+    background-color: #ccccccc1;
+}
+.image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
 }
 .name_and_img{
     width: 24%;
@@ -82,11 +88,12 @@
 .label-10 {
     margin-left: 104px;
 }
-#fname {
+.fname {
     width: 28%;
     padding: 5px 15px;
     background-color: #e2eced;
     border: solid 1px #ccc;
+    outline: none;
 }
 .btn-info{
     margin-top: 24px;

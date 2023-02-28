@@ -1,0 +1,16 @@
+
+
+
+.input  {
+    border-radius: 20px ;
+    border: 1px solid #000;
+    padding: 10px 15px;
+    font-size: 18px;
+}
+.img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
