@@ -108,4 +108,6 @@ Route::middleware(['checkNVTC'])->group(function () {
 // })->name('thongtinnhanvien');
 //@@
 Route::get('/sm',[ThongTinCaNhanController::class,'index2']);
+Route::get('/sendtextfind',[ThongTinCaNhanController::class,'find2']);
+Route::get('/create',[ThongTinCaNhanController::class,'create2']);
 //@@

@@ -57,9 +57,38 @@ class ThongTinCaNhanController extends Controller
     //@@ qlnv
     public function index2()
     {
-        $caNhan = ThongTinCaNhan::all();
+        $caNhan = DB::select('SELECT thongtincanhan.id,HoTen,NgaySinh,GioiTinh,CCCD,DiaChi,phongban.TenPhongBan,chucvu.TenChucVu,khoa.TenKhoa,TrangThai FROM thongtincanhan,chucvu,khoa,phongban WHERE thongtincanhan.ChucVu_id=chucvu.id and thongtincanhan.Khoa_id=khoa.id and thongtincanhan.PhongBan_id=phongban.id');
 
         return view('nhansu.quanlynhanvien', ['caNhan' => $caNhan]);
+    }
+    public function find2(Request $request)
+
+    {
+        if($request->input('aa')==2 or $request->input('aa')=="")//trangthai tat ca or ko
+        {
+            if($request->input('bb')==""){//ko tim kiem theo gi
+                $caNhan = DB::select('SELECT thongtincanhan.id,HoTen,NgaySinh,GioiTinh,CCCD,DiaChi,phongban.TenPhongBan,chucvu.TenChucVu,khoa.TenKhoa,TrangThai FROM thongtincanhan,chucvu,khoa,phongban WHERE thongtincanhan.ChucVu_id=chucvu.id and thongtincanhan.Khoa_id=khoa.id and thongtincanhan.PhongBan_id=phongban.id');
+            }
+            else//tim kiem theo..
+            {
+                $caNhan = DB::select('SELECT thongtincanhan.id,HoTen,NgaySinh,GioiTinh,CCCD,DiaChi,phongban.TenPhongBan,chucvu.TenChucVu,khoa.TenKhoa,TrangThai FROM thongtincanhan,chucvu,khoa,phongban WHERE thongtincanhan.ChucVu_id=chucvu.id and thongtincanhan.Khoa_id=khoa.id and thongtincanhan.PhongBan_id=phongban.id and '.$request->input('bb').'='.$request->input('textFind'));
+            }
+        }
+        else//dang lam viec or nghi viec
+        {
+            if($request->input('bb')==""){//ko tim kiem theo gi
+                $caNhan = DB::select('SELECT thongtincanhan.id,HoTen,NgaySinh,GioiTinh,CCCD,DiaChi,phongban.TenPhongBan,chucvu.TenChucVu,khoa.TenKhoa,TrangThai FROM thongtincanhan,chucvu,khoa,phongban WHERE thongtincanhan.ChucVu_id=chucvu.id and thongtincanhan.Khoa_id=khoa.id and thongtincanhan.PhongBan_id=phongban.id and TrangThai='.$request->input('aa'));
+            }
+            else//tim kiem theo
+            {
+                $caNhan = DB::select('SELECT thongtincanhan.id,HoTen,NgaySinh,GioiTinh,CCCD,DiaChi,phongban.TenPhongBan,chucvu.TenChucVu,khoa.TenKhoa,TrangThai FROM thongtincanhan,chucvu,khoa,phongban WHERE thongtincanhan.ChucVu_id=chucvu.id and thongtincanhan.Khoa_id=khoa.id and thongtincanhan.PhongBan_id=phongban.id and TrangThai='.$request->input('aa').' and '.$request->input('bb').'='.$request->input('textFind'));
+
+            }
+        }
+        return view('nhansu.quanlynhanvien', ['caNhan' => $caNhan]);
+    }
+    public function create2(){
+        return view('nhansu.themnhanvien');
     }
     //
 }
