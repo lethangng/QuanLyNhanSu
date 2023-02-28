@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('GioiTinh')->nullable();
             $table->string('CCCD')->unique()->nullable();
             $table->string('DiaChi')->nullable();
+            $table->string('QueQuan')->nullable();
+            $table->string('SDT')->nullable();
             $table->bigInteger('PhongBan_id')->unsigned()->nullable();
             $table->bigInteger('ChucVu_id')->unsigned()->nullable();
             $table->bigInteger('Khoa_id')->unsigned()->nullable();

@@ -113,15 +113,15 @@ Route::middleware(['checkNVTC'])->group(function () {
         Route::delete('{id}/destroy', [LuongController::class, 'destroy'])->whereNumber('id')->name('luong.destroy');
         Route::post('search', [LuongController::class, 'search'])->name('luong.search');
         
-        // Chi tiet luong
-        Route::get('chitietluong', [LuongController::class, 'indexLuong'])->name('chitietluong.index');
-        Route::get('{id}/chitietluong', [LuongController::class, 'chiTietLuong'])->name('chitietluong.chitiet');
-        Route::post('chitietluong/search', [LuongController::class, 'searchChiTiet'])->name('chitietluong.search');
     });
 });
 
+// Chi tiet luong
+Route::get('chitietluong', [LuongController::class, 'indexLuong'])->name('chitietluong.index');
+Route::get('{id}/chitietluong', [LuongController::class, 'chiTietLuong'])->name('chitietluong.chitiet');
+Route::post('chitietluong/search', [LuongController::class, 'searchChiTiet'])->name('chitietluong.search');
 Route::prefix('thongtincanhan')->group(function () {
     Route::post('addPhoto', [ThongTinCaNhanController::class, 'addPhoto'])->name('canhan.addPhoto');
-    Route::get('chitietluong', [ThongTinCaNhanController::class, 'chiTietLuong'])->name('canhan.chiTietLuong');
+    // Route::get('chitietluong', [ThongTinCaNhanController::class, 'chiTietLuong'])->name('canhan.chiTietLuong');
     Route::post('update-password', [ThongTinCaNhanController::class, 'updatePassword'])->name('canhan.updatePassword');
 });

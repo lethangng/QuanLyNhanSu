@@ -16,9 +16,8 @@ return new class extends Migration
         Schema::create('chamcong', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('ThongTinCaNhan_id')->nullable();
-            $table->integer('Ngay')->unsigned()->nullable();
-            $table->integer('Thang')->unsigned()->nullable();
-            $table->string('NghiPhep')->nullable();
+            $table->dateTime('ThoiGian')->nullable();
+            $table->boolean('DiMuon')->nullable();
             $table->timestamps();
         });
     }

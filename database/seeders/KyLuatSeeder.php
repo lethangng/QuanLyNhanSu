@@ -17,12 +17,12 @@ class KyLuatSeeder extends Seeder
     {
         $kyluats = [
             [
-                'TenKyLuat' => 'Đi muộn 5 lần',
-                'TienPhat' => 10
-            ], // Đi muộn phạt 10% lương
+                'MaKyLuat' => 'KL01',
+                'TenKyLuat' => 'Đi muộn 5 lần'
+            ], 
             [
-                'TenKyLuat' => 'Nghỉ làm 3 ngày',
-                'TienPhat' => 5
+                'MaKyLuat' => 'KL02',
+                'TenKyLuat' => 'Nghỉ làm 3 ngày'
             ]
         ];
         DB::table('kyluat')->insert($kyluats);

@@ -19,8 +19,7 @@ class LuongSeeder extends Seeder
             [
                 'ThongTinCaNhan_id' => 1,
                 'HSL' => 3.4,
-                'Thang' => 2,
-                'Nam' => 2022,
+                'ThoiGian' => '2023-02-16',
                 'SoNgayLamViec' => 28,
                 'TongTienPhat' => 300000,
                 'TongTienThuong' => 500000,
@@ -29,8 +28,7 @@ class LuongSeeder extends Seeder
             [
                 'ThongTinCaNhan_id' => 2,
                 'HSL' => 3.2,
-                'Thang' => 1,
-                'Nam' => 2022,
+                'ThoiGian' => '2023-02-16',
                 'SoNgayLamViec' => 28,
                 'TongTienPhat' => 400000,
                 'TongTienThuong' => 300000,
@@ -39,8 +37,7 @@ class LuongSeeder extends Seeder
             [
                 'ThongTinCaNhan_id' => 3,
                 'HSL' => 3.0,
-                'Thang' => 2,
-                'Nam' => 2022,
+                'ThoiGian' => '2023-02-16',
                 'SoNgayLamViec' => 28,
                 'TongTienPhat' => 300000,
                 'TongTienThuong' => 200000,
@@ -49,8 +46,7 @@ class LuongSeeder extends Seeder
             [
                 'ThongTinCaNhan_id' => 4,
                 'HSL' => 3.0,
-                'Thang' => 2,
-                'Nam' => 2022,
+                'ThoiGian' => '2023-02-16',
                 'SoNgayLamViec' => 28,
                 'TongTienPhat' => 300000,
                 'TongTienThuong' => 200000,
@@ -59,8 +55,7 @@ class LuongSeeder extends Seeder
             [
                 'ThongTinCaNhan_id' => 5,
                 'HSL' => 3.0,
-                'Thang' => 2,
-                'Nam' => 2022,
+                'ThoiGian' => '2023-02-16',
                 'SoNgayLamViec' => 28,
                 'TongTienPhat' => 300000,
                 'TongTienThuong' => 200000,

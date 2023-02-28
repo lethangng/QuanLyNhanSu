@@ -27,7 +27,8 @@ class DatabaseSeeder extends Seeder
             KhenThuongSeeder::class,
             KhenThuong_ThongTinCaNhanSeeder::class,
             KyLuat_ThongTinCaNhanSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            ChamCongSeeder::class
         ]);
     }
 }

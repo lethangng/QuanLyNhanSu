@@ -18,7 +18,8 @@ return new class extends Migration
             $table->bigInteger('KyLuat_id')->unsigned()->nullable();
             $table->bigInteger('ThongTinCaNhan_id')->unsigned()->nullable();
             $table->date('NgayKyLuat')->nullable();
-            $table->text('ChiTietKyLuat')->nullable();
+            $table->bigInteger('TienPhat')->unsigned()->nullable();
+            $table->text('LyDo')->nullable();
             $table->timestamps();
         });
     }
