@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="{{ asset('css/style1.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style3.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style2.css') }}">
+    <link rel="stylesheet" href="{{ asset('fonts/themify-icons/themify-icons.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
@@ -79,58 +79,58 @@
                     <h3 class="text-content">{{ $caNhan->HoTen }}</h3>
                     <img class="image" src="{{ asset('uploads/' . $caNhan->AnhDaiDien) }}" alt="">
                 </div>
-                <div class="container-form-1 mt-5 row">
-                    <div class="col-4 row">
-                        <label class="label-1 form-label col-4" for="">Mã cá nhân:</label>
-                        <input type="text" id="fname" class="form-control col" value="{{ $caNhan->MaCaNhan }}"
-                            readonly>
+                <div class="container-form-1">
+                    <div class="form-1">
+                        <label class="label-1 " for="">Mã cá nhân:</label>
+                        <input type="text" id="fname" value="{{ $caNhan->MaCaNhan }}"readonly>
+                        
+                        <label class="label-2 " for="">Chức vụ:</label>
+                        <input type="text" id="fname" value="{{ $caNhan->chucVu->TenChucVu }}" readonly>
                     </div>
-                    <div class="col-4 row">
-                        <label class="label-1 form-label col-4" for="">Chức vụ:</label>
-                        <input type="text" id="fname" class="form-control col"
-                            value="{{ $caNhan->chucVu->TenChucVu }}" readonly>
-                    </div>
+                    <div class="form-2">
+                        <label class="label-3" for="">Phòng ban:</label>
+                        <input type="text" id="fname" value="{{ $caNhan->phongBan->TenPhongBan }}" readonly>
 
-                    <div class="col-4 row">
-                        <label class="label-2 col-5" for="">Phòng ban:</label>
-                        <input type="text" id="fname" class="form-control col"
-                            value="{{ $caNhan->phongBan->TenPhongBan }}" readonly>
+                        <label class="label-4" for="">Khoa:</label>
+                        <input type="text" id="fname" value="{{ $caNhan->khoa->TenKhoa }}">
                     </div>
 
                     <div class="form-3">
-                        <label class="label-3" for="">Khoa:</label>
-                        <input type="text" id="fname" style="width: 200px" value="{{ $caNhan->khoa->TenKhoa }}">
-                    </div>
-                </div>
-            </div>
+                        <label class="label-5" for="">CCCD:</label>
+                        <input type="text" id="fname" value="{{ $caNhan->CCCD }}">
 
-            <div class="container-content-3">
-                <div class="container-form-4">
-                    <form class="form-6">
-                        <label for="">CCCD</label>
-                        <input type="text" value="{{ $caNhan->CCCD }}">
-                        <label class="label-8" for="">Ngày sinh:</label>
+                        <label class="label-6" for="">Ngày sinh:</label>
                         <input type="text" id="fname" value="{{ $caNhan->NgaySinh }}">
-                        <label class="label-9" for="">Giới tính:</label>
+                    </div>
+
+                    <div class="form-4">
+                        <label class="label-7" for="">Giới tính:</label>
                         <input type="text" id="fname" value="{{ $caNhan->GioiTinh }}">
-                        <label class="label-10" for="">Địa chỉ:</label>
+
+                        <label class="label-8" for="">Địa chỉ:</label>
                         <input type="text" id="fname" value="{{ $caNhan->DiaChi }}">
-                    </form>
+                    </div>
+                    <div class="form-5">
+                        <label class="label-9" for="">Quê quán:</label>
+                        <input type="text" id="fname" value="">
+
+                        <label class="label-10" for="">SĐT:</label>
+                        <input type="text" id="fname" value="">
+                    </div>
+
                 </div>
             </div>
-            <div class="container-content-2">
 
-                <div class="btn">
+            <div class="container-content-2">
+                <div class="btn-info">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger col-4" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">
+                    <button class="update-avt" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Cập nhập ảnh đại điện
                     </button>
-                    <a class="btn-seen" href="{{ route('canhan.chiTietLuong') }}">Xem bảng lương</a>
+                    <button class="see-salary js-buy-ticket">Xem bảng lương</button>
                     {{-- <button class="btn-changePassword">Đổi mật khẩu</button> --}}
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger col-4" data-bs-toggle="modal"
-                        data-bs-target="#updatePassword">
+                    <button class="change-password" data-bs-toggle="modal" data-bs-target="#updatePassword">
                         Đổi mật khẩu
                     </button>
                 </div>
@@ -163,13 +163,50 @@
                             <div id="passwordHelp" class="form-text text-danger d-none">Ảnh phải nhỏ hơn 1MB</div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
                             <button type="submit" class="btn btn-danger" id="update">Cập nhập</a>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
+        {{-- Xem lương --}}
+        <div class="modal-salary js-modal ">
+            <div class="modal-container-salary js-modal-container">
+                <div class="modal-close js-modal-close">
+                    <i class="ti-close"></i>
+                </div>
+    
+                <div class="header-text">
+                    <h2>Phiếu lương tháng 6</h2>
+                </div>
+                <table>
+                    <tr>
+                        <th class="th1" colspan="2">Họ và tên: Vũ Trí Thành</th>
+                        <th class="th1" >Mã NV: 1</th>
+                    </tr>
+                    <tr>
+                        <th class="th1">Chức vụ: Giám đốc</th>
+                        <th class="th1">Phòng ban: Phòng tài chính</th>
+                        <th class="th1">Lương cơ bản: 10000000</th>
+                        
+                    </tr>
+                    <tr>
+                        <th class="th1" colspan="2">Tổng tiền thưởng: 200000</th>
+                        <th class="th1" >Tổng tiền phạt: 10000</th>
+                    </tr>
+                    <tr>
+                        <th class="th1" colspan="2">Tổng số thời gian làm việc:180h</th>
+                        <th class="th1" >Thành tiền: 130000000</th>
+                    </tr>
+                    <tr>
+                        <th  class="th1"colspan="3" >Tổng số tiền nhân lương của tháng 6 là: 30000000</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+       
         {{-- Form đổi mật khẩu --}}
         <form action="{{ route('canhan.addPhoto') }}" method="post">
             @csrf
@@ -206,7 +243,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
                             <button type="submit" class="btn btn-danger">Cập nhập</a>
                         </div>
                     </div>
@@ -214,6 +251,8 @@
             </div>
         </form>
     </section>
+    
+
     {{-- Link bootstrap --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     {{-- Link jquery --}}
@@ -247,6 +286,35 @@
                 return true
             }
         }
+    </script>
+
+    {{-- xem lương --}}
+    <script>
+        const buyBtns = document.querySelectorAll('.js-buy-ticket');
+        const modal = document.querySelector('.js-modal');
+        const modalContainer = document.querySelector('.js-modal-container')
+        const modalClose = document.querySelector('.js-modal-close');
+
+        function showSalary(){
+            modal.classList.add('open')
+        }
+
+        function hideSalary(){
+            modal.classList.remove('open')
+        }
+
+        for (const buyBtn of buyBtns){
+            buyBtn.addEventListener('click', showSalary)
+        }
+
+        modalClose.addEventListener('click', hideSalary)
+
+        modal.addEventListener('click', hideSalary)
+        
+        modalContainer.addEventListener('click', function(event)
+        {
+            event.stopPropagation()
+        })
     </script>
 </body>
 

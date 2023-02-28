@@ -74,30 +74,30 @@
     <div class="login-box">
         <div class="row">
             <div class="column img">
-                <img src="css/Img/a1.png" alt="">
+                <img src="css/Img/download.jpeg" alt="">
             </div>
             <div class="column login">
-                <h2>User Login</h2>
+                <h2></h2>
                 <form action="{{ route('submitLogin') }}" method="POST" class="form-login" id='loginForm'>
                     @csrf
-                    <div class="form-group">
+                    <div class="form-group-1">
                         <i class="far fa-user"></i>
-                        <input type="text" name='email' id='email' class="form-input" placeholder="Email Id">
+                        <input type="text" name='email' id='email' class="form-input" placeholder="Email ">
                         <i class="ik ik-user"></i>
                         <small class="text-danger error-text email_err"></small>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group-2">
                         <i class="fas fa-key"></i>
-                        <input type="password" name='password' id='password' class="form-input" placeholder="Password">
+                        <input type="password" name='password' id='password' class="form-input" placeholder="Mật khẩu">
                         <i class="ik ik-lock"></i>
                         <small class="text-danger error-text password_err"></small>
                     </div>
                     <div class="container-btn">
-                        <button type="submit" class="btn-login">Login</button>
+                        <button type="submit" class="btn-login">Đăng nhập</button>
                     </div>
                 </form>
                 <div class="footer">
-                    <a class="text-forgot textjs">Forgot Username / Password?</a>
+                    <a class="text-forgot textjs">Quên mật khẩu</a>
                 </div>
             </div>
         </div>

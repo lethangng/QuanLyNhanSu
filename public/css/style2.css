@@ -9,145 +9,218 @@
 .container{
     border: 1px #ccc solid;
     padding: 16px;
-    margin-left: 32px;
-    margin-right: 32px;
+    max-width: 1138px !important
 }
 .container-content-1{
-    
     display: flex;
 }
+
 
 .text-content {
     color: orange;
     text-transform: uppercase;
-    margin-left: 24px;
+    margin-left: 34px;
     line-height: 41px;
     font-weight: 400;
     font-size: 18px;
 }
 .image{
-    width: 100%;
+    width: 111%;
+    height: 84%;
     border-radius: 110px;
 }
 .name_and_img{
+    width: 24%;
     margin-left: 20px;
 }
 .container-form-1
 {
+    width: 100%;
     margin-left: 12%;
-}
-.container-form-2
-{
-    margin-left: 100px;
+    margin-top: 2%;
+    
 }
 
+.container-form-2
+{
+    margin-top: 5%;
+    margin-left: 100px;
+}
 .container-form label{
     font-size: 20px;
 }
-.container-form-1 .form-1 select {
-    padding: 5px;
-    margin-top: 5px;
-    border: solid 1px #ccc;
-    background-color: #e2eced;
-    width: 50%;
-}
-.container-form-1 .form-2 select {
-    padding: 5px;
-    margin-top: 5px;
-    border: solid 1px #ccc;
-    background-color: #e2eced;
-    width: 70%;
+.form-1, .form-2,
+.form-3, .form-4 {
+    margin: 14px 0;
 }
 
-label.label-1 {
-    padding-left: 15px;
+.label-2 {
+    margin-left: 67px;
+}
+.label-3 {
+    margin-left: 1%;
+}
+.label-4 {
+    margin-left: 92px;
+}
+.label-5 {
+    margin-left: 46px;
+}
+.label-6 {
+    margin-left: 54px;
+}
+.label-7 {
+    margin-left: 28px;
 }
 
-form.form-3 {
-    margin: 19px 15px 10px 1px;
+.label-8 {
+    margin-left: 78px;
 }
-form.form-4 {
-    margin: 19px 15px 8px -25px;
+.label-9 {
+    margin-left: 14px;
+}
+.label-10 {
+    margin-left: 104px;
 }
 #fname {
-    width: 19%;
+    width: 28%;
     padding: 5px 15px;
     background-color: #e2eced;
     border: solid 1px #ccc;
 }
-.label-3 {
-    margin-left: -9px;
-}
-.label-4 {
-    margin-left: -30px;
-}
-.btn{
-    text-align: center;
-}
-.btn-changePassword,
-.btn-seen,
-.btn-update {
-    padding: 5px;
-    margin: 5px;
-    background-color: aqua;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
+.btn-info{
+    margin-top: 24px;
+    margin-left: 38%;
 }
 
-.btn-changePassword:hover,
-.btn-seen:hover,
-.btn-update:hover{
-    background-color: var(--primary-color);;
+.btn-info .update-avt
+{   
+    color: #000;
+    background-color: aqua;
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin: 0 16px;
+}
+.btn-info .see-salary{
+    margin: 0 16px;
+    padding: 10px 16px;
+    background-color: aqua;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+.btn-info .see-salary a{
+    text-decoration: none;
+    color: #000;
+    padding: 10px 16px;
+    
+}
+.btn-info .change-password{
+    color: #000;
+    background-color: aqua;
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin: 0 16px;
+}
+.update-avt:hover,
+.see-salary:hover a,
+.see-salary:hover,
+.change-password:hover{
+    background-color: #ccc !important;
     color: #fff;
 }
-.container-content-3 {
-    padding-left: 20px;
+/* modal-salary */
+
+.modal-salary{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    align-items: center;
+    justify-content: center;
+    display: none;
 }
-.container-form-4,
-.container-form-5,
-.container-form-3{
-    padding: 16px;
+.modal-salary.open{
+    display: flex;
 }
-.label-5{
-    margin-left: 10px;
-    padding-left: 10px;
+.modal-container-salary{
+    background-color: #fff;
+    width: 900px;
+    max-width: calc(100% - 32px);
+    min-height: 200px;
+    position: relative;
+    animation: modalFadeIn ease 0.5s;
 }
-.label-6{
-    margin-left: 83px;
+/* .modal-header{
+    background-color: #009688;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #fff;
+} */
+.modal-heading-icon{
+    margin-right: 16px;
 }
-.label-7{
-    margin-left: 100px;
+.modal-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #333;
+    padding: 12px;
+    cursor: pointer;
+    opacity: 0.8;
 }
-.label-8 {
-    margin-left: -25px;
-}
-.label-9 {
-    margin-left: 52px;
-}
-.label-10 {
-    margin-left: 103px;
-}
-.container-form-5 .form-7 select {
-    width: 300px;
-    padding-top: 9px;
-    padding-bottom: 9px;
-    background-color: #e2eced;
-    border: solid 1px #ccc;
+.modal-close:hover{
+    color: #000;
+    opacity: 1;
+    background-color: #ccc;
 }
 
-label.label-11 {
-    margin-left: -10px;
+@keyframes modalFadeIn {
+    from{
+        opacity: 0;
+        transform: translateY(-140px);
+
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-label.label-12 {
-    margin-left: 51px;
+
+.header-text{
+    text-align: center;
 }
-label.label-13{
-    margin-left: 77px;
+.header-text h2{
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 14px;
 }
-input {
-    min-width: 20%;
+table, .th1{
+    border:1px solid #ccc;
+   
 }
-.container-content-3 select {
-max-width: 20%;
+table{
+    border-collapse: collapse;
+    width: 70%;
+    margin-left: 15%;
+    margin-bottom: 5%;
+}
+.th1{
+    padding:10px;
+    text-align: center;
+    font-weight: 500;
+    border:1px solid #ccc;
+}
+.modal-container-salary{
+    background-color: #fff;
+    width: 1052px;
+    max-width: calc(100% - 32px);
+    min-height: 200px;
+    position: relative;
 }
