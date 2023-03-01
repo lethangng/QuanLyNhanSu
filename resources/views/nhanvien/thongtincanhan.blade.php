@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/style3.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style2.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style1.css') }}">
-    
+
     <!----===== Boxicons CSS ===== -->
 
     <!--<title>Dashboard Sidebar Menu</title>-->
@@ -66,66 +66,6 @@
                             <span class="text nav-text">Logout</span>
                         </a>
                     </li>
-<<<<<<< HEAD
-
-                    <li class="nav-link">
-                        <a href="{{ route('canhan.index') }}">
-                            <i class='bx bx-bar-chart-alt-2 icon'></i>
-                            <span class="text nav-text">Thông tin cái nhân</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="bottom-content">
-                <li class="">
-                    <a href="{{ route('login') }}">
-                        <i class='bx bx-log-out icon'></i>
-                        <span class="text nav-text">Logout</span>
-                    </a>
-                </li>
-            </div>
-        </div>
-
-    </nav>
-    <section class="home">
-        <div class="text-header">
-            <h1>Thông tin cái nhân</h1>
-        </div>
-        <div class="container">
-            <div class="container-content-1">
-                <div class="name_and_img">
-                    <h3 class="text-content">{{ $caNhan->HoTen }}</h3>
-                    @if ($caNhan->AnhDaiDien)
-                        <img class="image" src="{{ asset('uploads/' . $caNhan->AnhDaiDien) }}" alt="">
-                    @else
-                        <img class="image" src="{{ asset('uploads/facebook.jpg') }}" alt="">
-                    @endif
-                </div>
-                <div class="container-form-1 mt-5 row">
-                    <div class="col-4 row">
-                        <label class="label-1 form-label col-4" for="">Mã cá nhân:</label>
-                        <input type="text" id="fname" class="form-control col" value="{{ $caNhan->MaCaNhan }}"
-                            readonly>
-                    </div>
-                    <div class="col-4 row">
-                        <label class="label-1 form-label col-4" for="">Chức vụ:</label>
-                        <input type="text" id="fname" class="form-control col"
-                            value="{{ $caNhan->chucVu->TenChucVu }}" readonly>
-                    </div>
-
-                    <div class="col-4 row">
-                        <label class="label-2 col-5" for="">Phòng ban:</label>
-                        <input type="text" id="fname" class="form-control col"
-                            value="{{ $caNhan->phongBan->TenPhongBan }}" readonly>
-                    </div>
-
-                    <div class="form-3">
-                        <label class="label-3" for="">Khoa:</label>
-                        <input type="text" id="fname" style="width: 200px" value="{{ $caNhan->khoa->TenKhoa }}">
-                    </div>
-=======
->>>>>>> dd6bdae87f475221882292624fd1efe9308522be
                 </div>
             </div>
 
@@ -135,114 +75,26 @@
                 <div class="text-header">
                     <h1>Thông tin cái nhân</h1>
                 </div>
-<<<<<<< HEAD
-            </div>
-            <div class="container-content-2">
-
-                <div class="btn">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger col-4" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">
-                        Cập nhập ảnh đại điện
-                    </button>
-                    <a class="btn-seen" href="{{ route('canhan.luong') }}">Xem bảng lương</a>
-                    {{-- <button class="btn-changePassword">Đổi mật khẩu</button> --}}
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger col-4" data-bs-toggle="modal"
-                        data-bs-target="#updatePassword">
-                        Đổi mật khẩu
-                    </button>
-                </div>
-            </div>
-        </div>
-        {{-- Form cập nhập ảnh đại diện --}}
-        <form action="{{ route('canhan.addPhoto') }}" method="post" enctype="multipart/form-data">
-            @csrf
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Cập nhập ảnh đại diện</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            {{-- <input class="btn-update" id="file" name="filePhoto" type="file"
-                                accept="image/*" style="display: none">
-                            <label for="file" class="btn btn-primary text-wrap" style="height: 100px">Chọn ảnh để
-                                tải lên</label> --}}
-                            {{-- <div class="row">
-                                <label for="" class="col">Hình đã chọn:</label>
-                                <p class="col">hình ảnh</p>
-                            </div> --}}
-                            <input id="photo" name="photo" type="file" accept="image/*"
-                                onchange="upload()">
-                            <div id="passwordHelp" class="form-text text-danger d-none">Ảnh phải nhỏ hơn 1MB</div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-danger" id="update">Cập nhập</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-        {{-- Form đổi mật khẩu --}}
-        <form action="{{ route('canhan.addPhoto') }}" method="post">
-            @csrf
-            <!-- Modal -->
-            <div class="modal fade" id="updatePassword" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Đổi mật khẩu</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label class="form-label">Mật khẩu cũ</label>
-                                <input type="text"
-                                    class="form-control @error('MatKhauCu') border border-danger border-3 @enderror"
-                                    name="MatKhauCu" value="{{ old('MatKhauCu') }}"
-                                    placeholder="Nhập mật khẩu cũ...">
-                                @error('MatKhauCu')
-                                    <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Mật khẩu mới</label>
-                                <input type="text"
-                                    class="form-control @error('MatKhauMoi') border border-danger border-3 @enderror"
-                                    name="MatKhauMoi" value="{{ old('Mật khẩu mới') }}"
-                                    placeholder="Nhập mật khẩu cũ...">
-                                @error('MatKhauMoi')
-                                    <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
-                                @enderror
-=======
                 <div class="container-infor">
                     <div class="container-content-1">
                         <div class="name_and_img">
                             <h3 class="text-content">{{ $caNhan->HoTen }}</h3>
                             <div class="image">
                                 <img class="" src="{{ asset('uploads/' . $caNhan->AnhDaiDien) }}" alt="">
->>>>>>> dd6bdae87f475221882292624fd1efe9308522be
                             </div>
                         </div>
                         <div class="container-form-1">
                             <div class="form-1">
                                 <label class="label-1 " for="">Mã cá nhân:</label>
                                 <input type="text" class="fname" value="{{ $caNhan->MaCaNhan }}"readonly>
-                                
+
                                 <label class="label-2 " for="">Chức vụ:</label>
                                 <input type="text" class="fname" value="{{ $caNhan->chucVu->TenChucVu }}" readonly>
                             </div>
                             <div class="form-2">
                                 <label class="label-3" for="">Phòng ban:</label>
-                                <input type="text" class="fname" value="{{ $caNhan->phongBan->TenPhongBan }}" readonly>
+                                <input type="text" class="fname" value="{{ $caNhan->phongBan->TenPhongBan }}"
+                                    readonly>
 
                                 <label class="label-4" for="">Khoa:</label>
                                 <input type="text" class="fname" value="{{ $caNhan->khoa->TenKhoa }}">
@@ -330,37 +182,37 @@
                     <div class="modal-close js-modal-close">
                         <i class="ti-close"></i>
                     </div>
-        
+
                     <div class="header-text">
                         <h2>Phiếu lương tháng 6</h2>
                     </div>
                     <table>
                         <tr>
                             <th class="th1" colspan="2">Họ và tên: Vũ Trí Thành</th>
-                            <th class="th1" >Mã NV: 1</th>
+                            <th class="th1">Mã NV: 1</th>
                         </tr>
                         <tr>
                             <th class="th1">Chức vụ: Giám đốc</th>
                             <th class="th1">Phòng ban: Phòng tài chính</th>
                             <th class="th1">Lương cơ bản: 10000000</th>
-                            
+
                         </tr>
                         <tr>
                             <th class="th1" colspan="2">Tổng tiền thưởng: 200000</th>
-                            <th class="th1" >Tổng tiền phạt: 10000</th>
+                            <th class="th1">Tổng tiền phạt: 10000</th>
                         </tr>
                         <tr>
                             <th class="th1" colspan="2">Tổng số thời gian làm việc:180h</th>
-                            <th class="th1" >Thành tiền: 130000000</th>
+                            <th class="th1">Thành tiền: 130000000</th>
                         </tr>
                         <tr>
-                            <th  class="th1"colspan="3" >Tổng số tiền nhân lương của tháng 6 là: 30000000</th>
+                            <th class="th1"colspan="3">Tổng số tiền nhân lương của tháng 6 là: 30000000</th>
                         </tr>
                     </table>
                 </div>
             </div>
-            
-        
+
+
             {{-- Form đổi mật khẩu --}}
             <form action="{{ route('canhan.addPhoto') }}" method="post">
                 @csrf
@@ -405,8 +257,8 @@
                 </div>
             </form>
         </section>
-</div>
-    
+    </div>
+
 
     {{-- Link bootstrap --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -450,24 +302,23 @@
         const modalContainer = document.querySelector('.js-modal-container')
         const modalClose = document.querySelector('.js-modal-close');
 
-        function showSalary(){
+        function showSalary() {
             modal.classList.add('open')
         }
 
-        function hideSalary(){
+        function hideSalary() {
             modal.classList.remove('open')
         }
 
-        for (const buyBtn of buyBtns){
+        for (const buyBtn of buyBtns) {
             buyBtn.addEventListener('click', showSalary)
         }
 
         modalClose.addEventListener('click', hideSalary)
 
         modal.addEventListener('click', hideSalary)
-        
-        modalContainer.addEventListener('click', function(event)
-        {
+
+        modalContainer.addEventListener('click', function(event) {
             event.stopPropagation()
         })
     </script>

@@ -104,10 +104,8 @@ Route::middleware(['checkNVTC'])->group(function () {
         Route::put('{id}/edit', [LuongController::class, 'update'])->whereNumber('id')->name('luong.update');
         Route::delete('{id}/destroy', [LuongController::class, 'destroy'])->whereNumber('id')->name('luong.destroy');
         Route::post('search', [LuongController::class, 'search'])->name('luong.search');
-<<<<<<< HEAD
         Route::post('tinhluong', [LuongController::class, 'tinhLuong'])->name('luong.tinhluong');
-=======
->>>>>>> dd6bdae87f475221882292624fd1efe9308522be
+
     });
     Route::get('chitietluong', [LuongController::class, 'indexLuong'])->name('chitietluong.index');
     Route::get('{id}/chitietluong', [LuongController::class, 'chiTietLuong'])->name('chitietluong.chitiet');
