@@ -20,6 +20,30 @@ use Illuminate\Routing\Router;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/quanlykhoa', function () {
+    return view('nhansu.danhsachkhoa.quanlykhoa');
+});
+Route::get('/quanlychitietkhenthuong', function () {
+    return view('nhansu.khenThuong_CaNhan.chitietkhenthuong');
+});
+Route::get('/quanlychitietkyluat', function () {
+    return view('nhansu.kyLuat_CaNhan.chitietkyluat');
+});
+Route::get('/danhsachkhenthuong', function () {
+    return view('nhansu.khenThuong.danhsachkhenthuong');
+});
+Route::get('/danhsachkyluat', function () {
+    return view('nhansu.kyLuat.danhsachkyluat');
+});
+Route::get('/danhsachphongban', function () {
+    return view('nhansu.danhsachphongban.danhsachphongban');
+});
+Route::get('/danhsachnhanvien', function () {
+    return view('nhansu.danhsachnhanvien.danhsachnhanvien');
+});
+Route::get('/danhsachchucvu', function () {
+    return view('nhansu.danhsachchucvu.danhsachchucvu');
+});
 
 Route::get('/', [loginController::class, "home"])->name('login');
 Route::post('/', [loginController::class, "submitLogin"])->name('submitLogin');

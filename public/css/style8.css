@@ -1,0 +1,97 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.header{
+    background:linear-gradient(90deg, blue, white);
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    color: white;
+}
+
+.header h1{
+    font-weight: 400;
+}
+
+.container-btn{
+    padding-top: 32px;
+    padding-left: 30px;
+}
+.btn-add
+{
+    padding: 12px 20px;
+    color: #fff;
+    background-color: rgb(35, 147, 147);
+    border-radius: 4px;
+    border: solid 1px #ccc;
+}
+.btn-add:hover{
+    background-color: #ccc;
+    color: #333;
+}
+.container-status{
+    padding-top: 32px;
+    padding-left: 30px;
+}
+.container-status .status{
+    font-weight: 900;
+    padding-right: 12px;
+}
+
+input.inp-stt {
+    margin-right: 10px;
+    margin-left: 33px;
+}
+.container-search {
+    padding-top: 10px;
+}
+.container-search .search{
+    font-weight: 900;
+    padding-right: 12px;
+    padding-left:  30px ;
+}
+.input-search{
+    padding-top: 12px;
+    padding-right: 12px;
+    padding-left:  30px;
+}
+
+input#inp-search {
+    width: 25%;
+    padding: 9px 14px;
+    border-radius: 30px;
+    border: solid 1px #ccc;
+}
+
+.btn-search {
+    padding: 12px;
+    background-color: #8cc6c6;
+    border-radius: 11px;
+    color: white;
+    font-size: 13px;
+    border: none;
+}
+.btn-search:hover{
+    background-color: #ccc;
+}
+
+.container-table{
+    padding: 10px;
+}
+input.check-box {
+    margin-left: 38%;
+}
+.icon-edit{
+    padding:2px;
+    border: none;
+    background: #e3ac6c;
+    color: white;
+    border-radius: 4px;
+    margin-left: 16px;
+}
+.menu-links{
+    padding-left: 0;
+}
