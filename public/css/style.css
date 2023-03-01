@@ -18,6 +18,9 @@ body{
     padding: 10px;
     height: 300px; 
 }
+.login{
+    margin-top: 2%;
+}
 .row:after {
     content: "";
     display: table;
@@ -40,6 +43,7 @@ body{
 }
 .img {
     text-align: center;
+    margin-top: 6%;
 }
 .login h2{
     text-align: center;
@@ -50,10 +54,13 @@ input[type=text], input[type=password] {
     width: 270px;
     padding: 13px 28px;
   }
-.form-group{
-    margin-top: 15px;
-    margin-bottom: 20px;
-    position: relative;
+.form-group-1{
+    position: absolute;
+    top: 24%;
+}
+.form-group-2{
+   position: absolute;
+   top: 44%;
 
 }
 .form-input{
@@ -76,23 +83,26 @@ i.fas.fa-key ,
 i.far.fa-user {
     position: absolute;
     left: 95px;
-    top: 13px;
+    top: 18px;
 }
 .btn-login {
     color: #fff;
     background-color: rgb(150 203 70);
     text-decoration: none;
-    padding: 10px 108px 10px 120px;
+    padding: 12px 100px 10px 93px;
     border-radius: 30px;
+    margin-left: -20px;
+    position: absolute;
+    top: 68%;
 }
 .footer a{
     color: #333;
     opacity: 0.6;
-    padding-left: 134px;
+    padding-left: 202px;
     padding-top: 25px;
     text-decoration: none;
-    display: block;
-
+    position: absolute;
+    top: 78%;
 }
 .form-gap {
     position: relative;
@@ -114,4 +124,11 @@ i.far.fa-user {
 }
 .form-group i{
     line-height: 22px!important;
+}
+
+.text-danger {
+    display: block;
+    margin-left: 26%;
+    margin-top: 1%;
+    font-size: 16px;
 }

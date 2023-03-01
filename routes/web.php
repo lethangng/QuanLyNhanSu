@@ -8,6 +8,7 @@ use App\Http\Controllers\ThongTinCaNhanController;
 use App\Http\Controllers\KyLuatController;
 use App\Http\Controllers\KyLuat_CaNhanController;
 use App\Http\Controllers\LuongController;
+use Illuminate\Routing\Router;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +38,7 @@ Route::middleware(['checkHT'])->group(function () {
 
 // các mục nào viết về Nhân viên nhân sự thì cho route trong này
 Route::middleware(['checkNVNS'])->group(function () {
-    Route::get('/login/user', function() {
+    Route::get('/login/user', function () {
         return view('welcome')->name('login.user');
     });
 
@@ -103,7 +104,10 @@ Route::middleware(['checkNVTC'])->group(function () {
         Route::put('{id}/edit', [LuongController::class, 'update'])->whereNumber('id')->name('luong.update');
         Route::delete('{id}/destroy', [LuongController::class, 'destroy'])->whereNumber('id')->name('luong.destroy');
         Route::post('search', [LuongController::class, 'search'])->name('luong.search');
+<<<<<<< HEAD
         Route::post('tinhluong', [LuongController::class, 'tinhLuong'])->name('luong.tinhluong');
+=======
+>>>>>>> dd6bdae87f475221882292624fd1efe9308522be
     });
     Route::get('chitietluong', [LuongController::class, 'indexLuong'])->name('chitietluong.index');
     Route::get('{id}/chitietluong', [LuongController::class, 'chiTietLuong'])->name('chitietluong.chitiet');
@@ -116,4 +120,14 @@ Route::prefix('thongtincanhan')->group(function () {
     Route::get('luong', [ThongTinCaNhanController::class, 'chiTietLuong'])->name('canhan.luong');
     Route::post('addPhoto', [ThongTinCaNhanController::class, 'addPhoto'])->name('canhan.addPhoto');
     Route::post('update-password', [ThongTinCaNhanController::class, 'updatePassword'])->name('canhan.updatePassword');
+});
+Route::get('/abc', function () {
+    return view('welcom');
+});
+
+
+
+// dev 
+Route::get('dev/dsnv', function () {
+    return view('nhanvien.danhsachluong');
 });

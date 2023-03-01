@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail as FacadesMail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-
+use Session;
 
 class loginController extends Controller
 {
@@ -37,6 +37,7 @@ class loginController extends Controller
         $validator = Validator::make($request->all(), $rules, $messsages);
         if ($validator->passes()) {
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password], false)) {
+                $request->session()->put('user', Auth::user());
                 Auth::user()->findRoleId(Auth::user()->id);
                 return  Auth::user()->controller(Auth::user()->roleId);
             } else {
@@ -53,6 +54,8 @@ class loginController extends Controller
     public function getLogout(Request $request)
     {
         Auth::logout();
+
+        $request->session()->forget('user');
 
         $request->session()->invalidate();
 
