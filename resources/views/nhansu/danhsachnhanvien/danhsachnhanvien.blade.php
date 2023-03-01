@@ -98,7 +98,7 @@
                       <tr>
                         <th class="head-table" scope="col">Mã giảng viên</th>
                         <th class="head-table" scope="col">Họ tên</th>
-                        <th class="head-table" scope="col">Tên tài khoản</th>
+                        <th class="head-table" scope="col">Email</th>
                         <th class="head-table" scope="col">CMND</th>
                         <th class="head-table" scope="col">Giới tính</th>
                         <th class="head-table" scope="col">Chức vụ</th>
@@ -127,42 +127,32 @@
                             </button>
                         </td>
                       </tr>
-                      <tr>
-                        <th class="number-table" scope="row">2</th>
-                        <td>Vũ Trí Thành</td>
-                        <td>ThanhVu</td>
-                        <td>12323232</td>
-                        <td>Nam</td>
-                        <td>Nhân viên</td>
-                        <td>Phòng CNTT</td>
-                        <td>CNTT</td>
-                        <td>
-                            <input type="checkbox" name="" value="" class="check-box">
-                        </td> 
-                        <td>
-                            <button class="icon-edit">
-                                <i class='bx bx-edit'></i>
-                            </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th class="number-table" scope="row">3</th>
-                        <td>Vũ Trí Thành</td>
-                        <td>ThanhVu</td>
-                        <td>12323232</td>
-                        <td>Nam</td>
-                        <td>Nhân viên</td>
-                        <td>Phòng CNTT</td>
-                        <td>CNTT</td>
-                        <td>
-                            <input type="checkbox" name="" value="" class="check-box">
-                        </td> 
-                        <td>
-                            <button class="icon-edit">
-                                <i class='bx bx-edit'></i>
-                            </button>
-                        </td>
-                      </tr>
+                      @foreach ($caNhan as $item)
+              <tr>
+                <td>{{ $item->id }}</td>
+                <td>{{ $item->HoTen }}</td>
+                <td>{{ $item->email }}</td>
+		<td>{{ $item->CCCD }}</td>
+                <td>{{ $item->GioiTinh }}</td>
+		<td>{{ $item->TenChucVu }}</td>
+                <td>{{ $item->TenPhongBan }}</td>
+                <td>{{ $item->TenKhoa }}</td>
+                @if($item->TrangThai==1)
+                <td>
+                    <input type="checkbox" name="" value="" class="check-box" checked disabled="disabled">
+                </td>
+                @else
+                <td>
+                    <input type="checkbox" name="" value="" class="check-box" disabled="disabled">
+                </td>
+                @endif
+                <td>
+                    <button class="icon-edit">
+                        <i class='bx bx-edit'></i>
+                    </button>
+                </td>
+              </tr>
+              @endforeach
                     </tbody>
                   </table>
             </div>

@@ -61,4 +61,11 @@ class ThongTinCaNhanController extends Controller
         toastr()->success('Sửa mật khẩu thành công.', 'Sửa thành công');
         return redirect()->route('canhan.index');
     }
+     //qlns test
+    public function index2()
+    {
+	        $caNhan = DB::select('SELECT thongtincanhan.id,HoTen,users.email,CCCD,GioiTinh,phongban.TenPhongBan,chucvu.TenChucVu,phongban.TenPhongBan,khoa.TenKhoa,TrangThai FROM thongtincanhan,users,chucvu,khoa,phongban WHERE thongtincanhan.ChucVu_id=chucvu.id and thongtincanhan.Khoa_id=khoa.id and thongtincanhan.PhongBan_id=phongban.id and thongtincanhan.User_id=users.id');
+
+        return view('nhansu.danhsachnhanvien.danhsachnhanvien', ['caNhan' => $caNhan]);
+    }
 }

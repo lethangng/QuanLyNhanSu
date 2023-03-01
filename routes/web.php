@@ -153,3 +153,7 @@ Route::get('/abc', function () {
 Route::get('dev/dsnv', function () {
     return view('nhanvien.danhsachluong');
 });
+
+//test qlns
+Route::get('/sm',[ThongTinCaNhanController::class,'index2']);
+//Route::get('/sendtextfind',[ThongTinCaNhanController::class,'find2']);
