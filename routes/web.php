@@ -8,6 +8,7 @@ use App\Http\Controllers\ThongTinCaNhanController;
 use App\Http\Controllers\KyLuatController;
 use App\Http\Controllers\KyLuat_CaNhanController;
 use App\Http\Controllers\LuongController;
+use App\Http\Controllers\KhoaController;
 use Illuminate\Routing\Router;
 
 /*
@@ -157,3 +158,4 @@ Route::get('dev/dsnv', function () {
 //test qlns
 Route::get('/sm',[ThongTinCaNhanController::class,'index2']);
 //Route::get('/sendtextfind',[ThongTinCaNhanController::class,'find2']);
+Route::get('/smkhoa',[KhoaController::class,'index']);

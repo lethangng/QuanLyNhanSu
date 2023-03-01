@@ -86,9 +86,10 @@
                   </tr>
                 </thead>
                 <tbody>
+			@foreach ($khoa as $item)
                   <tr>
-                    <th class="number-table" scope="row">1</th>
-                    <td>CNTT</td>
+                    <th class="number-table" scope="row">{{ $item->id }}</th>
+                    <td>{{ $item->TenKhoa }}</td>
 
                     <td>
                         <button class="icon-edit">
@@ -100,6 +101,8 @@
 
                     </td>
                   </tr>
+		 @endforeach
+                  
                 </tbody>
               </table>
         </div>

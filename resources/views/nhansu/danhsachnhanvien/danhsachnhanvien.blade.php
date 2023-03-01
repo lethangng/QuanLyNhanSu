@@ -109,24 +109,6 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th class="number-table" scope="row">1</th>
-                        <td>Vũ Trí Thành</td>
-                        <td>ThanhVu</td>
-                        <td>12323232</td>
-                        <td>Nam</td>
-                        <td>Nhân viên</td>
-                        <td>Phòng CNTT</td>
-                        <td>CNTT</td>
-                        <td>
-                            <input type="checkbox" name="" value="" class="check-box">
-                        </td> 
-                        <td>
-                            <button class="icon-edit">
-                                <i class='bx bx-edit'></i>
-                            </button>
-                        </td>
-                      </tr>
                       @foreach ($caNhan as $item)
               <tr>
                 <td>{{ $item->id }}</td>
