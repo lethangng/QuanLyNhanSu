@@ -95,8 +95,8 @@
                     }
                     @endphp
                     <div class="component-dsl">
-                        <form action="" method="Get" id="luong-form">
-                            @csrf
+                        <form action="" id="luong-form">
+                            {{-- @csrf --}}
                             <div>
                                 <div class="date" style="margin-bottom: 20px">
                                     <label for="">Tháng</label>
