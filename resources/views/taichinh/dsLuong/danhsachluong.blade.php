@@ -97,6 +97,8 @@
                             <button type="submit" class="btn-icon-search">
                                 <i class='bx bx-search'></i>
                             </button>
+                        </div>
+                        <div class="i-con" > 
                             <button type="reset" class="btn-icon-rotate">
                                 <i class='bx bx-rotate-right'></i>
                             </button>

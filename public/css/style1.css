@@ -1,13 +1,14 @@
 /* Google Font Import - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
 
-:root{
+:root {
     /* ===== Colors ===== */
     --body-color: #E4E9F7;
     --sidebar-color: #FFF;
@@ -23,18 +24,19 @@
     --tran-05: all 0.3s ease;
 }
 
-body{
+body {
     min-height: 100vh;
     background-color: var(--body-color);
     transition: var(--tran-05);
+    overflow-x: hidden;
 }
 
-::selection{
+::selection {
     background-color: var(--primary-color);
     color: #fff;
 }
 
-body.dark{
+body.dark {
     --body-color: #18191a;
     --sidebar-color: #242526;
     --primary-color: #3a3b3c;
@@ -44,7 +46,7 @@ body.dark{
 }
 
 /* ===== Sidebar ===== */
- .sidebar{
+.sidebar {
     /* position: relative; */
     /* top: 0;
     left: 0; */
@@ -53,14 +55,15 @@ body.dark{
     padding: 10px 14px;
     background: var(--sidebar-color);
     transition: var(--tran-05);
-    z-index: 100;  
+    z-index: 100;
 }
-.sidebar.close{
+
+.sidebar.close {
     width: 88px;
 }
 
 /* ===== Reusable code - Here ===== */
-.sidebar li{
+.sidebar li {
     min-height: 50px;
     list-style: none;
     display: flex;
@@ -68,17 +71,19 @@ body.dark{
     margin-top: 10px;
     flex-direction: column;
 }
+
 .sub-nav-link {
     /* align-self: flex-end; */
     margin-left: 56px;
 }
+
 .sidebar header .image,
-.sidebar .icon{
+.sidebar .icon {
     min-width: 60px;
     border-radius: 6px;
 }
 
-.sidebar .icon{
+.sidebar .icon {
     min-width: 60px;
     border-radius: 6px;
     height: 100%;
@@ -89,60 +94,64 @@ body.dark{
 }
 
 .sidebar .text,
-.sidebar .icon{
+.sidebar .icon {
     color: var(--text-color);
     transition: var(--tran-03);
 }
 
-.sidebar .text{
+.sidebar .text {
     font-size: 17px;
     font-weight: 500;
     white-space: nowrap;
     opacity: 1;
 }
-.sidebar.close .text{
+
+.sidebar.close .text {
     opacity: 0;
 }
+
 /* =========================== */
 
-.sidebar header{
+.sidebar header {
     position: relative;
 }
 
-.sidebar header .image-text{
+.sidebar header .image-text {
     display: flex;
     align-items: center;
     justify-content: end;
     margin-right: 10px;
 }
-.sidebar header .logo-text{
+
+.sidebar header .logo-text {
     display: flex;
     flex-direction: column;
 }
+
 header .image-text .name {
     margin-top: 2px;
     font-size: 18px;
     font-weight: 600;
 }
 
-header .image-text .profession{
+header .image-text .profession {
     font-size: 16px;
     margin-top: -2px;
     display: block;
 }
 
-.sidebar header .image{
+.sidebar header .image {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.sidebar header .image img{
+.sidebar header .image img {
     width: 40px;
     border-radius: 6px;
 }
 
-.sidebar header .toggle{
+.sidebar header .toggle {
     position: absolute;
     top: 50%;
     right: -25px;
@@ -160,26 +169,26 @@ header .image-text .profession{
     transition: var(--tran-05);
 }
 
-body.dark .sidebar header .toggle{
+body.dark .sidebar header .toggle {
     color: var(--text-color);
 }
 
-.sidebar.close .toggle{
+.sidebar.close .toggle {
     transform: translateY(-50%) rotate(0deg);
 }
 
-.sidebar .menu{
+.sidebar .menu {
     margin-top: 40px;
 }
 
-.sidebar li.search-box{
+.sidebar li.search-box {
     border-radius: 6px;
     background-color: var(--primary-color-light);
     cursor: pointer;
     transition: var(--tran-05);
 }
 
-.sidebar li.search-box input{
+.sidebar li.search-box input {
     height: 100%;
     width: 100%;
     outline: none;
@@ -191,7 +200,8 @@ body.dark .sidebar header .toggle{
     font-weight: 500;
     transition: var(--tran-05);
 }
-.sidebar li a{
+
+.sidebar li a {
     list-style: none;
     height: 100%;
     background-color: transparent;
@@ -206,36 +216,40 @@ body.dark .sidebar header .toggle{
 
 }
 
-.sidebar li a:hover{
+.sidebar li a:hover {
     background-color: var(--primary-color);
 }
+
 .sidebar li a:hover .icon,
-.sidebar li a:hover .text{
+.sidebar li a:hover .text {
     color: var(--sidebar-color);
 }
+
 body.dark .sidebar li a:hover .icon,
-body.dark .sidebar li a:hover .text{
+body.dark .sidebar li a:hover .text {
     color: var(--text-color);
 }
 
-.sidebar .menu-bar{
+.sidebar .menu-bar {
     height: calc(100% - 55px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     overflow-y: scroll;
 }
-.menu-bar::-webkit-scrollbar{
+
+.menu-bar::-webkit-scrollbar {
     display: none;
 }
-.sidebar .menu-bar .mode{
+
+.sidebar .menu-bar .mode {
     border-radius: 6px;
     background-color: var(--primary-color-light);
     position: relative;
     transition: var(--tran-05);
 }
 
-.menu-bar .bottom-content .toggle-switch{
+.menu-bar .bottom-content .toggle-switch {
     position: absolute;
     right: 0;
     height: 100%;
@@ -246,7 +260,8 @@ body.dark .sidebar li a:hover .text{
     border-radius: 6px;
     cursor: pointer;
 }
-.toggle-switch .switch{
+
+.toggle-switch .switch {
     position: relative;
     height: 22px;
     width: 40px;
@@ -255,7 +270,7 @@ body.dark .sidebar li a:hover .text{
     transition: var(--tran-05);
 }
 
-.switch::before{
+.switch::before {
     content: '';
     position: absolute;
     height: 15px;
@@ -268,11 +283,11 @@ body.dark .sidebar li a:hover .text{
     transition: var(--tran-04);
 }
 
-body.dark .switch::before{
+body.dark .switch::before {
     left: 20px;
 }
 
-.home{
+.home {
     /* position: absolute; */
     /* top: 0; */
     /* top: 0; */
@@ -283,41 +298,48 @@ body.dark .switch::before{
     transition: var(--tran-05);
     width: 100% !important;
 }
-.home .text{
+
+.home .text {
     font-size: 30px;
     font-weight: 500;
     color: var(--text-color);
 }
-.user p{
+
+.user p {
     margin: 0;
     padding-right: 20%;
 }
-.sidebar.close ~ .home{
+
+.sidebar.close~.home {
     left: 78px;
     height: 100vh;
     width: calc(100% - 78px);
 }
-body.dark .home .text{
+
+body.dark .home .text {
     color: var(--text-color);
 }
-.header{
+
+.header {
     background-color: #070362;
 }
-.user{
+
+.user {
     text-align: right;
     font-size: 16px;
 }
 
 
 
-.title-header{
-    background:linear-gradient(90deg, blue, white);
+.title-header {
+    background: linear-gradient(90deg, blue, white);
     height: 60px;
     text-align: center;
     line-height: 60px;
     color: white;
 }
-.content{
+
+.content {
     padding: 12px;
 }
 
@@ -332,18 +354,21 @@ body.dark .home .text{
     margin: 14px 10px;
     cursor: pointer;
 }
+
 .button1 {
     background-color: #274e80;
     border-radius: 4px;
 }
-.inp-search{
+
+.inp-search {
     padding: 9px 0px;
     padding-left: 15px;
     padding-right: 190px;
     border-radius: 20px;
     border: solid 1px #ccc;
 }
-.btn-icon{
+
+.btn-icon {
     padding: 10px;
     background-color: #8cc6c6;
     border-radius: 11px;
@@ -355,11 +380,13 @@ body.dark .home .text{
 .container-search {
     padding: 13px 0px 16px 10px;
 }
-.container-table{
+
+.container-table {
     padding: 10px;
 }
+
 .icon-delete {
-    padding:2px;
+    padding: 2px;
     border: none;
     background: #e67272;
     color: white;
@@ -367,29 +394,32 @@ body.dark .home .text{
     margin-left: 16px;
 }
 
-.icon-edit{
-    padding:2px;
+.icon-edit {
+    padding: 2px;
     border: none;
     background: #e3ac6c;
     color: white;
     border-radius: 4px;
     margin-left: 16px;
 }
+
 td {
     text-align: center;
 }
+
 .number-table,
-.head-table{
+.head-table {
     text-align: center;
 }
 
-.menu-links{
-    padding: 0!important;
+.menu-links {
+    padding: 0 !important;
 }
 
 .wrap-thongtincanhan {
     display: flex;
 }
+
 .home-wrap {
     display: flex;
     justify-content: center;
@@ -398,11 +428,13 @@ td {
     height: 100%;
     gap: 50px;
 }
-.container-infor{
+
+.container-infor {
     padding: 30px 20px;
     border: 1px solid #000;
     min-width: 1200px;
 }
+
 /* .image2 {
 
 } */
@@ -413,122 +445,145 @@ td {
     width: 100%;
 
 }
+
 .ctl-title,
 .dsl-title {
     text-align: center;
     padding: 8px 0;
-    background:linear-gradient(90deg, blue, white);
+    background: linear-gradient(90deg, blue, white);
 }
+
 .ctl-title,
-.dsl-title h1 
-{
+.dsl-title h1 {
     font-size: 32px;
     font-weight: 400;
     color: white;
 }
 
-.container-input-search
-{
-    position: relative;
-    margin-left: 16%;
-    margin-top: 3%;
+.container-input-search {
+    /* position: relative; */
+    /* margin-left: 16%; */
+    /* margin-top: 3%; */
 }
 
-.input-search{
+/* .input-search{
     width: 400px;
     height: 40px;
     border-radius: 20px;
     padding: 6px 10px;
     font-size: 14px;
     border: 1px solid #ccc;
+} */
+.i-con {
+    /* position: relative; */
+    /* left: 635px; */
+    /* bottom: 38px; */
 }
-.i-con{
-    position: relative;
-    left: 635px;
-    bottom: 38px;
-}
-.btn-icon-search{
+
+.btn-icon-search {
     background-color: #8cc6c6;
     padding: 4px 6px;
     border-radius: 10px;
     border: 1px solid #000;
 }
-.btn-icon-rotate{
+
+.btn-icon-rotate {
     background-color: #e07979;
     padding: 4px 6px;
     border-radius: 10px;
     border: 1px solid #000;
 }
-.btn-icon-rotate:hover,
+
+/* .btn-icon-rotate:hover,
 .btn-icon-search:hover{
     background-color: #ccc;
     color: #fff;
+} */
+
+.table-dsl {
+    border: 1px solid #333;
 }
 
-.table-dsl
-{
-    border: 1px solid #333; 
-}
-
-.h1{
+.h1 {
     text-align: center;
     font-size: 16px;
     padding: 8px 8px;
     font-weight: 400;
 }
 
-.h1 .i-edit{
-    padding: 2px 4px;
-    background-color: #619dcb;
+.h1 .i-edit,
+.h1 .i-save {
+    padding: 5px 8px;
+    background-color: #E3AC6C;
     border: 1px solid #ccc;
-    border-radius: 7px;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s linear;
+
 }
-.h1 .i-rotate{
-    padding: 2px 4px;
-    background-color: #d38f47;
+
+.h1 .i-edit i,
+.h1 .i-rotate i,
+.h1 .i-save i {
+    background-color: #fff;
+}
+
+.h1 .i-rotate {
+    padding: 5px 8px;
+    background-color: #4A6EEB;
     border: 1px solid #ccc;
-    border-radius: 7px;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s linear;
 }
+
 .i-rotate:hover,
-.i-edit:hover{
+.i-edit:hover {
     background-color: #ccc;
 }
 
 /* *********************danh sach luong nhan vien ************* */
-
+/* 
 .container-dsl {
     position: relative;
     top: 15px;
     left: 2%;
+} */
+/* .date {
+    margin-left: 30px;
+} */
+
+.date label {
+    font-size: 18px;
 }
-.date{
-    position: relative;
-    top: 10px;
-    left: 215px;
-}
-.date label{
-    font-size:18px;
-}
+
 .input-year,
-.input-month{
+.input-month {
     width: 88px;
     padding: 1px 6px;
 }
-.h1 .i-save{
+
+.h1 .i-save {
     background-color: red;
-    padding: 3px 4px;
-    border: 1px solid #ccc;
-    color: #fff;
+    color: #000;
 }
-.i-save:hover{
+.h1 .i-save i {
+    color: #000;
+}
+/* .i-save:hover{
     background-color: #ccc;
     color: #333;
-}
+} */
 
 .btn-payroll {
     position: absolute;
     right: 24%;
 }
+
 .payroll {
     width: 134px;
     padding: 8px;
@@ -538,16 +593,30 @@ td {
     border-radius: 6px;
 }
 
+.component-dsl {
+    padding: 30px 0 30px 30px;
+}
+
+.component-dsl form {
+    display: flex;
+    gap: 15px;
+}
+
+
+
+
+
 
 
 /*************** Chi tiết lương ************/
-.text-title h1{
-   font-size: 22px;
+.text-title h1 {
+    font-size: 22px;
     text-align: center;
     padding: 14px 0;
     font-weight: 400;
 }
-.table-container{
+
+.table-container {
     border: 1px solid #333;
     background-color: #fff;
     width: 1052px;
@@ -556,46 +625,50 @@ td {
     top: 25px;
     left: 11%;
 }
-.ctl-table{
+
+.ctl-table {
     position: absolute;
     top: 58px;
 }
 
-.btn-salary{
+.btn-salary {
     position: relative;
     top: 80px;
     left: 80%;
 }
-.salary{
+
+.salary {
     padding: 8px 12px;
     background-color: #3BC9C9;
     color: #fff;
     border: 1px solid #000;
     border-radius: 5px;
 }
-.salary:hover{
+
+.salary:hover {
     background-color: rgb(199, 116, 116);
     color: #333;
 }
 
 /************** Chấm công  **************/
-.chamcong-main{
+.chamcong-main {
     width: 100%;
 }
+
 .cc-title {
     text-align: center;
     padding: 8px 0;
-    background:linear-gradient(90deg, blue, white);
+    background: linear-gradient(90deg, blue, white);
 }
 
-.cc-title h1{
+.cc-title h1 {
     font-size: 32px;
     font-weight: 400;
     color: white;
     line-height: 35px;
 }
 
-.text-inf{
+.text-inf {
     margin-top: 32px;
     padding-top: 10px;
     padding-left: 10px;
@@ -603,29 +676,752 @@ td {
     height: 148px;
     background-color: aqua;
 }
-.text-inf h4{
+
+.text-inf h4 {
     font-size: 12px;
     padding-bottom: 8px;
     font-weight: 400;
     line-height: 20px;
 }
+
 .container-inf {
     margin-left: 30px;
 }
-.btn-cc{
+
+.btn-cc {
     margin-left: 47%;
 }
-.timekeeping{
+
+.timekeeping {
     padding: 8px 10px;
     background-color: #3BC9C9;
     border: none;
     border-radius: 4px;
     font-weight: 300;
 }
-.date-cc{
+
+.date-cc {
     margin-left: 39%;
     margin-top: 1%;
 }
-.container-icon{
-    
+
+.container-icon {}
+
+/* Google Font Import - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    /* ===== Colors ===== */
+    --body-color: #E4E9F7;
+    --sidebar-color: #FFF;
+    --primary-color: #695CFE;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #707070;
+
+    /* ====== Transition ====== */
+    --tran-03: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+    overflow-x: hidden;
+}
+
+::selection {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+body.dark {
+    --body-color: #18191a;
+    --sidebar-color: #242526;
+    --primary-color: #3a3b3c;
+    --primary-color-light: #3a3b3c;
+    --toggle-color: #fff;
+    --text-color: #ccc;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+    /* position: relative; */
+    /* top: 0;
+    left: 0; */
+    height: 100vh;
+    width: 250px;
+    padding: 10px 14px;
+    background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 100;
+}
+
+.sidebar.close {
+    width: 88px;
+}
+
+/* ===== Reusable code - Here ===== */
+.sidebar li {
+    min-height: 50px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    flex-direction: column;
+}
+
+.sub-nav-link {
+    /* align-self: flex-end; */
+    margin-left: 56px;
+}
+
+.sidebar header .image,
+.sidebar .icon {
+    min-width: 60px;
+    border-radius: 6px;
+}
+
+.sidebar .icon {
+    min-width: 60px;
+    border-radius: 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+}
+
+.sidebar .text,
+.sidebar .icon {
+    color: var(--text-color);
+    transition: var(--tran-03);
+}
+
+.sidebar .text {
+    font-size: 17px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+}
+
+.sidebar.close .text {
+    opacity: 0;
+}
+
+/* =========================== */
+
+.sidebar header {
+    position: relative;
+}
+
+.sidebar header .image-text {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-right: 10px;
+}
+
+.sidebar header .logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+header .image-text .name {
+    margin-top: 2px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+header .image-text .profession {
+    font-size: 16px;
+    margin-top: -2px;
+    display: block;
+}
+
+.sidebar header .image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar header .image img {
+    width: 40px;
+    border-radius: 6px;
+}
+
+.sidebar header .toggle {
+    position: absolute;
+    top: 50%;
+    right: -25px;
+    transform: translateY(-50%) rotate(180deg);
+    height: 25px;
+    width: 25px;
+    background-color: var(--primary-color);
+    color: var(--sidebar-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+
+body.dark .sidebar header .toggle {
+    color: var(--text-color);
+}
+
+.sidebar.close .toggle {
+    transform: translateY(-50%) rotate(0deg);
+}
+
+.sidebar .menu {
+    margin-top: 40px;
+}
+
+.sidebar li.search-box {
+    border-radius: 6px;
+    background-color: var(--primary-color-light);
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+
+.sidebar li.search-box input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: var(--primary-color-light);
+    color: var(--text-color);
+    border-radius: 6px;
+    font-size: 17px;
+    font-weight: 500;
+    transition: var(--tran-05);
+}
+
+.sidebar li a {
+    list-style: none;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: var(--tran-03);
+    padding: 10px 0;
+
+}
+
+.sidebar li a:hover {
+    background-color: var(--primary-color);
+}
+
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text {
+    color: var(--sidebar-color);
+}
+
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text {
+    color: var(--text-color);
+}
+
+.sidebar .menu-bar {
+    height: calc(100% - 55px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: scroll;
+}
+
+.menu-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar .menu-bar .mode {
+    border-radius: 6px;
+    background-color: var(--primary-color-light);
+    position: relative;
+    transition: var(--tran-05);
+}
+
+.menu-bar .bottom-content .toggle-switch {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.toggle-switch .switch {
+    position: relative;
+    height: 22px;
+    width: 40px;
+    border-radius: 25px;
+    background-color: var(--toggle-color);
+    transition: var(--tran-05);
+}
+
+.switch::before {
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    background-color: var(--sidebar-color);
+    transition: var(--tran-04);
+}
+
+body.dark .switch::before {
+    left: 20px;
+}
+
+.home {
+    /* position: absolute; */
+    /* top: 0; */
+    /* top: 0; */
+    /* left: 250px; */
+    height: 100vh;
+    /* width: calc(100% - 250px); */
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+    width: 100% !important;
+}
+
+.home .text {
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.user p {
+    margin: 0;
+    padding-right: 20%;
+}
+
+.sidebar.close~.home {
+    left: 78px;
+    height: 100vh;
+    width: calc(100% - 78px);
+}
+
+body.dark .home .text {
+    color: var(--text-color);
+}
+
+.header {
+    background-color: #070362;
+}
+
+.user {
+    text-align: right;
+    font-size: 16px;
+}
+
+
+
+.title-header {
+    background: linear-gradient(90deg, blue, white);
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    color: white;
+}
+
+.content {
+    padding: 12px;
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 14px 10px;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: #274e80;
+    border-radius: 4px;
+}
+
+.inp-search {
+    padding: 9px 0px;
+    padding-left: 15px;
+    padding-right: 190px;
+    border-radius: 20px;
+    border: solid 1px #ccc;
+}
+
+.btn-icon {
+    padding: 10px;
+    background-color: #8cc6c6;
+    border-radius: 11px;
+    color: white;
+    font-size: 13px;
+    border: none;
+}
+
+.container-search {
+    padding: 13px 0px 16px 10px;
+}
+
+.container-table {
+    padding: 10px;
+}
+
+.icon-delete {
+    padding: 2px;
+    border: none;
+    background: #e67272;
+    color: white;
+    border-radius: 4px;
+    margin-left: 16px;
+}
+
+.icon-edit {
+    padding: 2px;
+    border: none;
+    background: #e3ac6c;
+    color: white;
+    border-radius: 4px;
+    margin-left: 16px;
+}
+
+td {
+    text-align: center;
+}
+
+.number-table,
+.head-table {
+    text-align: center;
+}
+
+.menu-links {
+    padding: 0 !important;
+}
+
+.wrap-thongtincanhan {
+    display: flex;
+}
+
+.home-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    gap: 50px;
+}
+
+.container-infor {
+    padding: 30px 20px;
+    border: 1px solid #000;
+    min-width: 1200px;
+}
+
+/* .image2 {
+
+} */
+
+
+/* ********************* danh sach luong ************* */
+.dsl-main {
+    width: 100%;
+
+}
+
+.ctl-title,
+.dsl-title {
+    text-align: center;
+    padding: 8px 0;
+    background: linear-gradient(90deg, blue, white);
+}
+
+.ctl-title,
+.dsl-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+}
+
+.container-input-search {
+    /* position: relative; */
+    /* margin-left: 16%; */
+    /* margin-top: 3%; */
+}
+
+.input-search {
+    width: 400px;
+    height: 40px;
+    border-radius: 20px;
+    padding: 6px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+}
+
+.i-con {
+    /* position: relative; */
+    /* left: 635px; */
+    /* bottom: 38px; */
+    align-self: flex-end;
+}
+
+.btn-icon-search {
+    background-color: #8cc6c6;
+    padding: 4px 6px;
+    border-radius: 10px;
+    border: 1px solid #000;
+}
+
+.btn-icon-rotate {
+    background-color: #e07979;
+    padding: 4px 6px;
+    border-radius: 10px;
+    border: 1px solid #000;
+}
+
+.table-dsl {
+    border: 1px solid #333;
+}
+
+.h1 {
+    text-align: center;
+    font-size: 16px;
+    padding: 8px 8px;
+    font-weight: 400;
+}
+
+/* .h1 .i-edit{
+    padding: 2px 4px;
+    background-color: #619dcb;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+} */
+/* .h1 .i-rotate{
+    padding: 2px 4px;
+    background-color: #d38f47;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+} */
+.i-rotate:hover,
+.i-edit:hover {
+    background-color: #ccc;
+}
+
+/* *********************danh sach luong nhan vien ************* */
+
+.container-dsl {
+    margin-top: 60px;
+}
+
+/* .date{
+    position: relative;
+    top: 10px;
+    left: 215px;
+} */
+.date label {
+    font-size: 18px;
+}
+
+.input-year,
+.input-month {
+    width: 88px;
+    padding: 1px 6px;
+}
+
+.h1 .i-save {
+    background-color: red;
+    padding: 3px 4px;
+    border: 1px solid #ccc;
+    color: #fff;
+}
+
+.i-save:hover {
+    background-color: #ccc;
+    color: #333;
+}
+
+.btn-payroll {
+    position: absolute;
+    right: 24%;
+}
+
+.payroll {
+    width: 134px;
+    padding: 8px;
+    background-color: #EB6B6B;
+    color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.component-dsl {
+    padding: 30px 0 30px 30px;
+}
+
+.component-dsl form {
+    display: flex;
+    gap: 15px;
+}
+
+.i-con button {
+    padding: 8px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 46px;
+    transition: .3s linear;
+}
+
+.i-con button i {
+    font-size: 22px;
+    background: #fff;
+    transition: .3s linear;
+}
+
+.i-con button:hover i {
+    font-size: 23px;
+}
+
+.container-input-search input {
+    padding: 22px 32px;
+    border: 1px solid #000;
+    outline: none;
+    border-radius: 100px;
+}
+
+
+
+
+
+/*************** Chi tiết lương ************/
+.text-title h1 {
+    font-size: 22px;
+    text-align: center;
+    padding: 14px 0;
+    font-weight: 400;
+}
+
+.table-container {
+    border: 1px solid #333;
+    background-color: #fff;
+    width: 1052px;
+    height: 324px;
+    position: relative;
+    top: 25px;
+    left: 11%;
+}
+
+.ctl-table {
+    position: absolute;
+    top: 58px;
+}
+
+.btn-salary {
+    position: relative;
+    top: 80px;
+    left: 80%;
+}
+
+.salary {
+    padding: 8px 12px;
+    background-color: #3BC9C9;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.salary:hover {
+    background-color: rgb(199, 116, 116);
+    color: #333;
+}
+
+/************** Chấm công  **************/
+.chamcong-main {
+    width: 100%;
+}
+
+.cc-title {
+    text-align: center;
+    padding: 8px 0;
+    background: linear-gradient(90deg, blue, white);
+}
+
+.cc-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+    line-height: 35px;
+}
+
+.text-inf {
+    margin-top: 32px;
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 296px;
+    height: 148px;
+    background-color: aqua;
+}
+
+.text-inf h4 {
+    font-size: 12px;
+    padding-bottom: 8px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.container-inf {
+    margin-left: 30px;
+}
+
+.btn-cc {
+    margin-left: 47%;
+}
+
+.timekeeping {
+    padding: 8px 10px;
+    background-color: #3BC9C9;
+    border: none;
+    border-radius: 4px;
+    font-weight: 300;
+}
+
+.date-cc {
+    margin-left: 39%;
+    margin-top: 1%;
+}
+
+.container-icon {}
+
+
+
+/*  */
+.list-dsl table {
+    width: 98%;
+    margin: 0 auto;
 }

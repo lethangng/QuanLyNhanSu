@@ -248,10 +248,12 @@ i.far.fa-user {
     font-size: 24px;
     font-weight: 600;
 }
-.container-btn  {
+
+.container-btn {
     width: 100%;
 }
-.container-btn button{
+
+.container-btn button {
     width: 100%;
     display: block;
     background-color: #59B747;
@@ -264,13 +266,15 @@ i.far.fa-user {
     font-weight: 500;
     color: #fff;
 }
-.forget-pass{
+
+.forget-pass {
     margin-top: 30px;
     text-align: center;
 }
+
 .forget-pass a {
     font-size: 18px;
-    color: #797777 ;
+    color: #797777;
 
 }
 
@@ -279,26 +283,29 @@ i.far.fa-user {
     position: fixed;
     top: 30%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     z-index: 99;
     max-width: 600px;
     opacity: 0;
-    pointer-events: 0;
+    pointer-events: none;
     transition: .5s linear;
 }
+
 .form-forgot-js.opend {
     top: 50%;
     opacity: 1;
     pointer-events: all;
 }
 
-.input-email{
-    margin-bottom:40px;
+.input-email {
+    margin-bottom: 40px;
     position: relative;
 }
-.input-email > div {
+
+.input-email>div {
     display: flex;
 }
+
 .input-email input {
     padding: 10px 20px;
     font-size: 18px;
@@ -307,6 +314,7 @@ i.far.fa-user {
     height: 40px;
     border-radius: 5px;
 }
+
 .addon {
     background-color: transparent;
     border: 1px solid #000 !important;
@@ -333,19 +341,31 @@ i.far.fa-user {
     z-index: 1;
     padding: 5px;
 }
+
 .over-lay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,.4);
+    background: rgba(0, 0, 0, .4);
     z-index: 9;
     opacity: 0;
     pointer-events: none;
     transition: .5s linear;
 }
+
 .over-lay.active {
     opacity: 1;
     pointer-events: all;
+}
+
+.password_err, .email_err {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 15px;
+    width: 100%;
+    text-align: center;
 }

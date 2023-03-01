@@ -34,7 +34,7 @@
                     <p>Bạn cần nhập email để lấy lại mật khẩu</p>
                     <div class="panel-body">
                         <form id="register-form" role="form" autocomplete="off" class="form"
-                            method="POST" action="{{ route('fogotPassword') }}">
+                            method="POST" action="{{ route('fogotPassword') }}" autocomplete="off">
                             @csrf
                             <div class="">
                                 <div class="input-email">

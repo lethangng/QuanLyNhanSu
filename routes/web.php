@@ -21,6 +21,7 @@ use Illuminate\Routing\Router;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/quanlykhoa', function () {
     return view('nhansu.danhsachkhoa.quanlykhoa');
 });
@@ -130,7 +131,6 @@ Route::middleware(['checkNVTC'])->group(function () {
         Route::delete('{id}/destroy', [LuongController::class, 'destroy'])->whereNumber('id')->name('luong.destroy');
         Route::post('search', [LuongController::class, 'search'])->name('luong.search');
         Route::post('tinhluong', [LuongController::class, 'tinhLuong'])->name('luong.tinhluong');
-
     });
     Route::get('chitietluong', [LuongController::class, 'indexLuong'])->name('chitietluong.index');
     Route::get('{id}/chitietluong', [LuongController::class, 'chiTietLuong'])->name('chitietluong.chitiet');
@@ -158,9 +158,11 @@ Route::get('dev/dsnv', function () {
 Route::get('dev/dsl', function () {
     return view('taichinh.dsLuong.danhsachluong');
 });
+
 Route::get('dev/dslnv', function () {
     return view('taichinh.dsLuong.danhsachluongnv');
 });
+Route::get('dev/dslnv/', [LuongController::class, 'search2']);
 Route::get('dev/ctl', function () {
     return view('taichinh.luong.chitietluong');
 });
@@ -170,8 +172,8 @@ Route::get('dev/chamcong', function () {
 });
 
 //test qlns
-Route::get('/sm',[ThongTinCaNhanController::class,'index2']);
+Route::get('/sm', [ThongTinCaNhanController::class, 'index2']);
 //Route::get('/sendtextfind',[ThongTinCaNhanController::class,'find2']);
-Route::get('/smkhoa',[KhoaController::class,'index']);
+Route::get('/smkhoa', [KhoaController::class, 'index']);
 Route::view('/smkhoa2', 'nhansu.danhsachkhoa.quanlykhoa');
 Route::view('/sm2', 'nhansu.danhsachnhanvien.danhsachnhanvien');

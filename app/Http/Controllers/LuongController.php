@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\LuongRequest;
 use App\Models\Luong;
 use Illuminate\Support\Facades\Auth;
+
 class LuongController extends Controller
 {
     /**
@@ -22,7 +23,7 @@ class LuongController extends Controller
         $title = 'Danh sách lương của nhân viên';
         $luongs = Luong::paginate(5);
         $caNhans = ThongTinCaNhan::select(DB::raw('id, HoTen'))->get();
-        return view('taichinh.luong.index', compact('luongs', 'title', 'caNhans')); 
+        return view('taichinh.luong.index', compact('luongs', 'title', 'caNhans'));
     }
 
     /**
@@ -54,7 +55,7 @@ class LuongController extends Controller
         ]);
 
         $hoTen = ThongTinCaNhan::select('HoTen')->where('id', '=', $request->ThongTinCaNhan_id)->first()->HoTen;
-        toastr()->success('Thêm lương cho nhân viên '. $hoTen .' thành công.', 'Thêm thành công');
+        toastr()->success('Thêm lương cho nhân viên ' . $hoTen . ' thành công.', 'Thêm thành công');
         return redirect()->route('luong.index');
     }
 
@@ -84,15 +85,15 @@ class LuongController extends Controller
     {
         // dd($request);
         Luong::where('id', $id)
-        ->update([
-            'ThongTinCaNhan_id' => $request->ThongTinCaNhan_id,
-            'HSL' => $request->HSL,
-            'Thang' => $request->Thang,
-            'Nam' => $request->Nam
-        ]);
+            ->update([
+                'ThongTinCaNhan_id' => $request->ThongTinCaNhan_id,
+                'HSL' => $request->HSL,
+                'Thang' => $request->Thang,
+                'Nam' => $request->Nam
+            ]);
         $hoTen = ThongTinCaNhan::select('HoTen')->where('id', '=', $request->ThongTinCaNhan_id)->first()->HoTen;
         // dd($hoTen);
-        toastr()->success('Sửa lương của nhân viên '. $hoTen .' thành công.', 'Sửa thành công');
+        toastr()->success('Sửa lương của nhân viên ' . $hoTen . ' thành công.', 'Sửa thành công');
         return redirect()->route('luong.index');
     }
 
@@ -105,12 +106,13 @@ class LuongController extends Controller
     public function destroy(Request $request, $id)
     {
         Luong::where('id', $id)->delete();
-        toastr()->success('Xóa lương của nhân viên '. $request->HoTen . ' thành công.', 'Xóa thành công');
+        toastr()->success('Xóa lương của nhân viên ' . $request->HoTen . ' thành công.', 'Xóa thành công');
 
         return redirect()->route('luong.index');
     }
 
-    public function search(Request $request) {
+    public function search(Request $request)
+    {
         $caNhans = ThongTinCaNhan::select(DB::raw('id, HoTen'))->get();
         // dd($request);
         $data = [
@@ -121,32 +123,34 @@ class LuongController extends Controller
 
         // Lấy ra các ThongTinCaNhan_id trong bảng khenthuong_thongtincanhan khi biết HoTen trong bảng thongtincanhan
         $thongTinCaNhan_ids = Luong::select('ThongTinCaNhan_id')
-        ->join('thongtincanhan', 'luong.ThongTinCaNhan_id', '=', 'thongtincanhan.id')
-        ->where('thongtincanhan.HoTen', '=', $request->HoTen)->get();
+            ->join('thongtincanhan', 'luong.ThongTinCaNhan_id', '=', 'thongtincanhan.id')
+            ->where('thongtincanhan.HoTen', '=', $request->HoTen)->get();
         // dd($thongTinCaNhan_ids);
 
         // Tìm ra trong bảng khenthuong_thongtincanhan có id nào gióng với id của thongtincanhan_id bên trên
         $luongs = Luong::select('*')
-        ->whereIn('ThongTinCaNhan_id', $thongTinCaNhan_ids)->paginate(5);
+            ->whereIn('ThongTinCaNhan_id', $thongTinCaNhan_ids)->paginate(5);
         // dd($luongs);
         return view('taichinh.luong.index', compact('luongs', 'data', 'caNhans'));
     }
 
-    public function indexLuong() {
-        if(Auth::check()) {
-
+    public function indexLuong()
+    {
+        if (Auth::check()) {
         }
         $title = 'Danh sách lương của nhân viên';
         $luongs = Luong::paginate(5);
         $caNhans = ThongTinCaNhan::select(DB::raw('id, MaCaNhan, HoTen'))->get();
-        return view('taichinh.dsLuong.index', compact('luongs', 'title', 'caNhans')); 
+        return view('taichinh.dsLuong.index', compact('luongs', 'title', 'caNhans'));
     }
-    public function chiTietLuong($id) {
+    public function chiTietLuong($id)
+    {
         $caNhan = ThongTinCaNhan::select(DB::raw('*'))->where('id', '=', $id)->first();
         return view('nhanvien.chiTietLuong', compact('caNhan'));
     }
 
-    public function searchChiTiet(Request $request) {
+    public function searchChiTiet(Request $request)
+    {
         $caNhans = ThongTinCaNhan::select(DB::raw('id, HoTen'))->get();
         // dd($request);
         $data = [
@@ -159,26 +163,38 @@ class LuongController extends Controller
 
         // Lấy ra các ThongTinCaNhan_id trong bảng khenthuong_thongtincanhan khi biết HoTen trong bảng thongtincanhan
         $thongTinCaNhan_ids = Luong::select('ThongTinCaNhan_id')
-        ->join('thongtincanhan', 'luong.ThongTinCaNhan_id', '=', 'thongtincanhan.id')
-        ->where('thongtincanhan.HoTen', '=', $request->HoTen)->get();
+            ->join('thongtincanhan', 'luong.ThongTinCaNhan_id', '=', 'thongtincanhan.id')
+            ->where('thongtincanhan.HoTen', '=', $request->HoTen)->get();
         // dd($thongTinCaNhan_ids);
 
         // Tìm ra trong bảng khenthuong_thongtincanhan có id nào gióng với id của thongtincanhan_id bên trên
         $luongs = Luong::select('*')
-        ->whereMonth('ThoiGian', $request->Thang)
-        ->orwhereYear('ThoiGian', $request->Nam)
-        ->orwhereIn('ThongTinCaNhan_id', $thongTinCaNhan_ids)->paginate(5);
+            ->whereMonth('ThoiGian', $request->Thang)
+            ->orwhereYear('ThoiGian', $request->Nam)
+            ->orwhereIn('ThongTinCaNhan_id', $thongTinCaNhan_ids)->paginate(5);
         // dd($luongs);
         return view('taichinh.dsLuong.index', compact('luongs', 'data', 'caNhans'));
     }
 
-    public function tinhLuong(Request $request) {
-        if($request->Ngay == 5) {
+    public function tinhLuong(Request $request)
+    {
+        if ($request->Ngay == 5) {
             toastr()->success('Tính lương thành công', 'Thành công');
             return redirect()->route('chitietluong.index');
         } else {
             toastr()->success('Chưa đến ngày mùng 5 để tính lương.', 'Thất bại công');
             return redirect()->route('chitietluong.index');
         }
+    }
+
+    public function search2(Request $request)
+    {
+        $search = $request->s;
+
+        $m = $request->m ? $request->m : date('m');
+        $y = $request->y ? $request->y : date('Y');
+        $nhanvien = DB::table('thongtincanhan')->join('luong', 'thongtincanhan.id', '=', 'luong.ThongTinCaNhan_id')
+            ->where('thongtincanhan.HoTen', 'Like', "%$search%")->whereMonth('luong.ThoiGian', "$m")->whereYear('luong.ThoiGian', "$y")->get();
+        return view('taichinh.dsLuong.danhsachluongnv', compact('nhanvien'));
     }
 }

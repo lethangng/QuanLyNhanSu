@@ -36,7 +36,6 @@
                         <span class="profession">Web developer</span>
                     </div>
                 </div>
-
                 <i class='bx bx-chevron-right toggle'></i>
             </header>
 
@@ -83,95 +82,84 @@
                     <h1>Danh sách lương nhân viên</h1>
                 </div>
                 <div class="container-dsl">
-                    <div class="date">
-                        <label for="">Tháng</label>
-                        <input class="input-month" type="text" placeholder="MM">
-                        <label for="">Năm</label>
-                        <input class="input-year" type="text" placeholder="YYYY">
-                    </div>
-
                     <div class="btn-payroll">
                         <button class="payroll">Tính lương</button>
                     </div>
+                    @php
+                    if(isset($_GET['s'])) {
+                        // print_r($nhanvien);
+                        $search = $_GET['s'];
+                    }
+                    else {
+                        $search = '';
+                    }
+                    @endphp
                     <div class="component-dsl">
-                        <form action="#">
-                            <div class="container-input-search">
-                                <input type="text" class="input-search" placeholder="Nhập tên nhân viên cần tìm">
+                        <form action="" method="Get">
+                            @csrf
+                            <div>
+                                <div class="date" style="margin-bottom: 20px">
+                                    <label for="">Tháng</label>
+                                    <input class="input-month" type="text" placeholder="MM" name="m" value='<?php if(isset($_GET['s'])){echo $_GET['m']; }?>'>
+                                    <label for="">Năm</label>
+                                    <input class="input-year" type="text" placeholder="YYYY" name="y" value='<?php if(isset($_GET['s'])){echo $_GET['y']; }?>'>
+                                </div>
+                                <div class="container-input-search">
+                                    <input type="text" name="s" class="input-search" placeholder="Nhập tên nhân viên cần tìm"
+                                    value='<?php if(isset($_GET['s'])){echo $_GET['s']; }?>'>
+                                </div>
                             </div>
                             <div class="i-con" > 
                                 <button type="submit" class="btn-icon-search">
                                     <i class='bx bx-search'></i>
                                 </button>
+                            </div>
+                            <div class="i-con" > 
                                 <button type="reset" class="btn-icon-rotate">
                                     <i class='bx bx-rotate-right'></i>
                                 </button>
                             </div>
                         </form>
                     </div>
-                    <div class="list-dsl">
-                        <table class="table-dsl table-bordered">
-                            <thead>
-                              <tr class = "bg-info">
-                                <th class="head-table" scope="col">Mã nhân viên</th>
-                                <th class="head-table" scope="col">Họ tên</th>
-                                <th class="head-table" scope="col">HSL</th>
-                                <th class="head-table" scope="col">Số ngày làm việc</th>
-                                <th class="head-table" scope="col">Tổng lương</th>
-                                <th class="head-table" scope="col"></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr class="">
-                                <th class="h1" scope="row">1</th>
-                                <th class="h1" scope="row">Vũ Trí Thành</th>
-                                <th class="h1" scope="row">4.2</th>
-                                <th class="h1" scope="row">100</th>
-                                <th class="h1" scope="row">2000000</th>
-                                <th class="h1" scope="row">
-                                    <button class="i-save">
-                                        <i class='bx bx-save'></i>
-                                    </button>
-                                </th>
-                              </tr>
-                              <tr>
-                                <th class="h1" scope="row">2</th>
-                                <th class="h1" scope="row">Nguyễn Văn A</th>
-                                <th class="h1" scope="row">4.2</th>
-                                <th class="h1" scope="row">10</th>
-                                <th class="h1" scope="row">3000000</th>
-                                <th class="h1" scope="row">
-                                    <button class="i-save">
-                                        <i class='bx bx-save'></i>
-                                    </button>
-                                </th>
-                              </tr>
-                              <tr>
-                                <th class="h1" scope="row">2</th>
-                                <th class="h1" scope="row">Nguyễn Văn B</th>
-                                <th class="h1" scope="row">1.2</th>
-                                <th class="h1" scope="row">10</th>
-                                <th class="h1" scope="row">100000</th>
-                                <th class="h1" scope="row">
-                                    <button class="i-save">
-                                        <i class='bx bx-save'></i>
-                                    </button>
-                                </th>
-                              </tr>
-                              <tr>
-                                <th class="h1" scope="row">2</th>
-                                <th class="h1" scope="row">Nguyễn Văn C</th>
-                                <th class="h1" scope="row">3.3</th>
-                                <th class="h1" scope="row">10</th>
-                                <th class="h1" scope="row">2000000</th>
-                                <th class="h1" scope="row">
-                                    <button class="i-save">
-                                        <i class='bx bx-save'></i>
-                                    </button>
-                                </th>
-                              </tr>
-                            </tbody>
-                          </table>
-                    </div>
+                </div>
+                
+                <div class="list-dsl">
+                    <table class="table-dsl table-bordered">
+                        <thead>
+                          <tr class = "bg-info">
+                            <th class="head-table" style="max-width: 100px" scope="col">Mã nhân viên</th>
+                            <th class="head-table" scope="col">Họ tên</th>
+                            <th class="head-table" scope="col">HSL</th>
+                            <th class="head-table" scope="col">Số ngày làm việc</th>
+                            <th class="head-table" scope="col">Tổng lương</th>
+                            <th class="head-table" scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                           @if (isset($nhanvien))
+                                @foreach ($nhanvien as $v)
+                                    <tr class="">
+                                        <th class="h1" scope="row">{{$v->id}}</th>
+                                        <th class="h1" scope="row">{{$v->HoTen}}</th>
+                                        <th class="h1" scope="row">{{$v->HSL}}</th>
+                                        <th class="h1" scope="row">{{$v->SoNgayLamViec}}</th>
+                                        <th class="h1" scope="row">{{$v->TongTienLuong}}</th>
+                                        <th class="h1" scope="row">
+                                            <button class="i-save">
+                                                <i class='bx bx-save'></i>
+                                            </button>
+                                        </th>
+                                    </tr>
+                                @endforeach
+                           @else
+                           <tr class="">
+                                <th class="h1" scope="row">Không tìm thấy nhân viên</th>
+                           </tr>
+                           @endif
+                        
+                          
+                        </tbody>
+                      </table>
                 </div>
             </div>
         </div>
@@ -192,6 +180,10 @@
 
         toggle.addEventListener("click", () => {
             sidebar.classList.toggle("close");
+        })
+
+        $('.btn-icon-rotate').click(funtion(){
+            $('.input-search').val('')
         })
     </script>
 </body>
