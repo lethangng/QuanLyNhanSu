@@ -95,14 +95,14 @@
                     }
                     @endphp
                     <div class="component-dsl">
-                        <form action="" method="Get">
+                        <form action="" method="Get" id="luong-form">
                             @csrf
                             <div>
                                 <div class="date" style="margin-bottom: 20px">
                                     <label for="">Tháng</label>
-                                    <input class="input-month" type="text" placeholder="MM" name="m" value='<?php if(isset($_GET['s'])){echo $_GET['m']; }?>'>
+                                    <input pattern="[0-9]+" class="input-month" type="text" placeholder="MM" name="m" id="m" value='<?php if(isset($_GET['s'])){echo $_GET['m']; }?>'>
                                     <label for="">Năm</label>
-                                    <input class="input-year" type="text" placeholder="YYYY" name="y" value='<?php if(isset($_GET['s'])){echo $_GET['y']; }?>'>
+                                    <input pattern="[0-9]+" class="input-year" type="text" placeholder="YYYY" name="y" id="y" value='<?php if(isset($_GET['s'])){echo $_GET['y']; }?>'>
                                 </div>
                                 <div class="container-input-search">
                                     <input type="text" name="s" class="input-search" placeholder="Nhập tên nhân viên cần tìm"
@@ -132,7 +132,7 @@
                             <th class="head-table" scope="col">HSL</th>
                             <th class="head-table" scope="col">Số ngày làm việc</th>
                             <th class="head-table" scope="col">Tổng lương</th>
-                            <th class="head-table" scope="col"></th>
+                            <th class="head-table" scope="col" style="min-width: 70px"></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -144,7 +144,7 @@
                                         <th class="h1" scope="row">{{$v->HSL}}</th>
                                         <th class="h1" scope="row">{{$v->SoNgayLamViec}}</th>
                                         <th class="h1" scope="row">{{$v->TongTienLuong}}</th>
-                                        <th class="h1" scope="row">
+                                        <th class="h1" scope="row" style="min-width: 70px">
                                             <button class="i-save">
                                                 <i class='bx bx-save'></i>
                                             </button>
@@ -166,13 +166,12 @@
     </div>
     
     {{-- Link bootstrap --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> --}}
     {{-- Link jquery --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
-        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+    crossorigin="anonymous"></script>
     <script>
-        const body = document.querySelector('body'),
+    const body = document.querySelector('body'), 
             sidebar = body.querySelector('nav'),
             toggle = body.querySelector(".toggle"),
             // modeSwitch = body.querySelector(".toggle-switch"),
@@ -182,8 +181,22 @@
             sidebar.classList.toggle("close");
         })
 
-        $('.btn-icon-rotate').click(funtion(){
-            $('.input-search').val('')
+        $('.btn-icon-rotate').click(function (){
+            $('.input-search').val('');
+        })
+        console.log('ashfjahf')
+        $('#luong-form').submit(function (){
+            var m = $('#m').val();
+            var y = $('#y').val();
+            if(m.length > 2 || parseInt(m) > 12) {
+                alert("Nhập sai tháng rồi bạn ơi");
+                return false;
+            }
+            if(y.length > 4 || m <= Date().getFullYear()){
+                alert("Nhập sai năm rồi bạn ơi");
+                return false;
+            }
+            return true;
         })
     </script>
 </body>

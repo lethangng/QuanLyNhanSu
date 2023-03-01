@@ -162,7 +162,9 @@ Route::get('dev/dsl', function () {
 Route::get('dev/dslnv', function () {
     return view('taichinh.dsLuong.danhsachluongnv');
 });
+
 Route::get('dev/dslnv/', [LuongController::class, 'search2']);
+
 Route::get('dev/ctl', function () {
     return view('taichinh.luong.chitietluong');
 });
