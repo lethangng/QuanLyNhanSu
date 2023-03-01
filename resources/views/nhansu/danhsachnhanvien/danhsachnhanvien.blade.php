@@ -109,7 +109,8 @@
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($caNhan as $item)
+			@isset($caNhan)
+			 @foreach ($caNhan as $item)
               <tr>
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->HoTen }}</td>
@@ -135,6 +136,13 @@
                 </td>
               </tr>
               @endforeach
+			@endisset
+ 
+			@empty($caNhan)
+			<h1> chạy đúng router để hiện dl: /sm</h1>
+			@endempty
+
+                     
                     </tbody>
                   </table>
             </div>

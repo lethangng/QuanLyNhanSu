@@ -86,7 +86,8 @@
                   </tr>
                 </thead>
                 <tbody>
-			@foreach ($khoa as $item)
+			@isset($khoa)
+		@foreach ($khoa as $item)
                   <tr>
                     <th class="number-table" scope="row">{{ $item->id }}</th>
                     <td>{{ $item->TenKhoa }}</td>
@@ -103,6 +104,13 @@
                   </tr>
 		 @endforeach
                   
+			@endisset
+ 
+			@empty($khoa)
+			<h1> chạy đúng router để hiện dl: /smkhoa</h1>
+			@endempty
+
+			
                 </tbody>
               </table>
         </div>

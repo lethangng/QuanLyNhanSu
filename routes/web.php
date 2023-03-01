@@ -159,3 +159,5 @@ Route::get('dev/dsnv', function () {
 Route::get('/sm',[ThongTinCaNhanController::class,'index2']);
 //Route::get('/sendtextfind',[ThongTinCaNhanController::class,'find2']);
 Route::get('/smkhoa',[KhoaController::class,'index']);
+Route::view('/smkhoa2', 'nhansu.danhsachkhoa.quanlykhoa');
+Route::view('/sm2', 'nhansu.danhsachnhanvien.danhsachnhanvien');
