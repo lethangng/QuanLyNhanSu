@@ -58,7 +58,6 @@
 
     </nav>
     <section class="home">
-        <div class="text"></div>
         <div class="container">
             <div class="header">
                 <h1>Danh sách chi tiết khen thưởng</h1>

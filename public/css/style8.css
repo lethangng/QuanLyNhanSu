@@ -64,6 +64,7 @@ input#inp-search {
     padding: 9px 14px;
     border-radius: 30px;
     border: solid 1px #ccc;
+    margin-top: 10px;
 }
 
 .btn-search {

@@ -45,8 +45,7 @@
                     <ul class="menu-links">
                         <li class="nav-link">
                             <a href="#">
-                                <i class='bx bx-coin-stack icon'></i>
-                                {{-- <i class='bx bx-home-alt icon'></i> --}}
+                                <i class='bx bx-home-alt icon'></i>
                                 <span class="text nav-text">Quản lý tài chính</span>
                             </a>
                             <div class="sub-nav-link">
@@ -58,15 +57,10 @@
                                 </a>  
                             </div>
                         </li>
+
                         <li class="nav-link">
                             <a href="{{ route('canhan.index') }}">
                                 <i class='bx bx-bar-chart-alt-2 icon'></i>
-                                <span class="text nav-text">Chấm công</span>
-                            </a>
-                        </li>
-                        <li class="nav-link">
-                            <a href="{{ route('canhan.index') }}">
-                                <i class='bx bxs-user icon'></i>
                                 <span class="text nav-text">Thông tin cái nhân</span>
                             </a>
                         </li>
@@ -83,82 +77,102 @@
                 </div>
             </div>
         </nav>
-        <div class="chamcong-main">
+        <div class="dsl-main">
             <div class="wrap">
-                <div class="cc-title">
-                    <h1>Chấm công nhân viên</h1>
+                <div class="dsl-title">
+                    <h1>Danh sách lương nhân viên</h1>
                 </div>
-
-                <div class="container-inf">
-                    <div class="text-inf">
-                        <h4>Mã nhân viên: 5</h4>
-                        <h4>Họ tên: Nguyễn Văn A</h4>
-                        <h4>Phòng ban: Phòng CNTT</h4>
-                        <h4>Chức vụ: Giám Đốc</h4>
-                    </div>
-                </div>
-
-                <div class="btn-cc">
-                    <button class="timekeeping">Chấm công</button>
-                </div>
-
-                <div class="date-cc">
-                    <form action="" class="">
+                <div class="container-dsl">
+                    <div class="date">
                         <label for="">Tháng</label>
-                        <input type="text" class="input-month" placeholder="MM">
+                        <input class="input-month" type="text" placeholder="MM">
                         <label for="">Năm</label>
-                        <input type="text" class="input-year"  placeholder="YYY">
-                    </form>
-                    
-                </div>
-                <div class="container-icon">
-                    <button class="icon-btn">
-                        <i class='bx bx-search-alt-2'></i>
-                    </button>
-                </div>
+                        <input class="input-year" type="text" placeholder="YYYY">
+                    </div>
 
-                <div class="list-cc">
+                    <div class="btn-payroll">
+                        <button class="payroll">Tính lương</button>
+                    </div>
+                    <div class="component-dsl">
+                        <form action="#">
+                            <div class="container-input-search">
+                                <input type="text" class="input-search" placeholder="Nhập tên nhân viên cần tìm">
+                            </div>
+                            <div class="i-con" > 
+                                <button type="submit" class="btn-icon-search">
+                                    <i class='bx bx-search'></i>
+                                </button>
+                                <button type="reset" class="btn-icon-rotate">
+                                    <i class='bx bx-rotate-right'></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                     <div class="list-dsl">
                         <table class="table-dsl table-bordered">
                             <thead>
                               <tr class = "bg-info">
-                                <th class="head-table" scope="col">STT</th>
-                                <th class="head-table" scope="col">Ngày</th>
-                                <th class="head-table" scope="col">Thời gian làm việc</th>
-                                <th class="head-table" scope="col">Trạng thái</th>
-                                
+                                <th class="head-table" scope="col">Mã nhân viên</th>
+                                <th class="head-table" scope="col">Họ tên</th>
+                                <th class="head-table" scope="col">HSL</th>
+                                <th class="head-table" scope="col">Số ngày làm việc</th>
+                                <th class="head-table" scope="col">Tổng lương</th>
+                                <th class="head-table" scope="col"></th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr class="">
                                 <th class="h1" scope="row">1</th>
                                 <th class="h1" scope="row">Vũ Trí Thành</th>
-                                <th class="h1" scope="row">10</th>
-                                <th class="h1" scope="row"></th>
+                                <th class="h1" scope="row">4.2</th>
+                                <th class="h1" scope="row">100</th>
+                                <th class="h1" scope="row">2000000</th>
+                                <th class="h1" scope="row">
+                                    <button class="i-save">
+                                        <i class='bx bx-save'></i>
+                                    </button>
+                                </th>
                               </tr>
                               <tr>
                                 <th class="h1" scope="row">2</th>
                                 <th class="h1" scope="row">Nguyễn Văn A</th>
-                                <th class="h1" scope="row"></th>
-                                <th class="h1" scope="row"></th>
+                                <th class="h1" scope="row">4.2</th>
+                                <th class="h1" scope="row">10</th>
+                                <th class="h1" scope="row">3000000</th>
+                                <th class="h1" scope="row">
+                                    <button class="i-save">
+                                        <i class='bx bx-save'></i>
+                                    </button>
+                                </th>
                               </tr>
                               <tr>
                                 <th class="h1" scope="row">2</th>
-                                <th class="h1" scope="row">Nguyễn Văn b</th>
-                                <th class="h1" scope="row"></th>
-                                <th class="h1" scope="row"></th>
+                                <th class="h1" scope="row">Nguyễn Văn B</th>
+                                <th class="h1" scope="row">1.2</th>
+                                <th class="h1" scope="row">10</th>
+                                <th class="h1" scope="row">100000</th>
+                                <th class="h1" scope="row">
+                                    <button class="i-save">
+                                        <i class='bx bx-save'></i>
+                                    </button>
+                                </th>
                               </tr>
                               <tr>
                                 <th class="h1" scope="row">2</th>
                                 <th class="h1" scope="row">Nguyễn Văn C</th>
-                                <th class="h1" scope="row"></th>
-                                <th class="h1" scope="row"></th>
+                                <th class="h1" scope="row">3.3</th>
+                                <th class="h1" scope="row">10</th>
+                                <th class="h1" scope="row">2000000</th>
+                                <th class="h1" scope="row">
+                                    <button class="i-save">
+                                        <i class='bx bx-save'></i>
+                                    </button>
+                                </th>
                               </tr>
                             </tbody>
                           </table>
                     </div>
                 </div>
-                
             </div>
         </div>
     </div>

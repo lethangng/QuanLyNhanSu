@@ -155,6 +155,20 @@ Route::get('dev/dsnv', function () {
     return view('nhanvien.danhsachluong');
 });
 
+Route::get('dev/dsl', function () {
+    return view('taichinh.dsLuong.danhsachluong');
+});
+Route::get('dev/dslnv', function () {
+    return view('taichinh.dsLuong.danhsachluongnv');
+});
+Route::get('dev/ctl', function () {
+    return view('taichinh.luong.chitietluong');
+});
+
+Route::get('dev/chamcong', function () {
+    return view('.chamcong');
+});
+
 //test qlns
 Route::get('/sm',[ThongTinCaNhanController::class,'index2']);
 //Route::get('/sendtextfind',[ThongTinCaNhanController::class,'find2']);

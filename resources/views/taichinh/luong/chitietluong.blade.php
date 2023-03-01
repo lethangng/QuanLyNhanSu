@@ -79,58 +79,60 @@
         </nav>
         <div class="dsl-main">
             <div class="wrap">
-                <div class="dsl-title">
-                    <h1>Danh sách lương</h1>
+                <div class="ctl-title">
+                    <h1>Chi tiết lương</h1>
                 </div>
-                <div class="component-dsl">
-                    <form action="#">
-                        <div>
-                            <input type="text" placeholder="Nhập tên nhân viên cần tìm">
-                        </div>
-                        <div>
-                            <button type="submit" class="btn ">
-                                <img src="/icon/search.svg" alt="">
-                            </button>
-                            <button type="reset" class="btn ">
-                                <img src="/icon/reset.svg" alt="">
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div class="list-dsl">
-                    <table>
-                        <thead>
-                            <th>Mã nhân viên</th>
-                            <th>Họ và tên</th>
-                            <th>Hsl</th>
-                            <th>Lương cơ bản</th>
-                            <th></th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Vũ Chí Thành</td>
-                                <td>4.2</td>
-                                <td>20000000đ</td>
-                                <td>
-                                    <a href=""> <i class='bx bx-edit'></i> </a> 
-                                    <a href=""> icon2</a> 
-                                </td>
-                            </tr>
-                        </tbody>
+                <div class="table-container">
+                    <div class="text-title">
+                        <h1>Phiếu lương tháng 6</h1>
+                    </div>
+                    
+                    <table class="ctl-table">
+                        <tr>
+                            <th class="th1" colspan="2">Họ và tên: Vũ Trí Thành</th>
+                            <th class="th1" >Mã NV: 1</th>
+                        </tr>
+                        <tr>
+                            <th class="th1">Chức vụ: Giám đốc</th>
+                            <th class="th1">Phòng ban: Phòng tài chính</th>
+                            <th class="th1">Lương cơ bản: 10000000</th>
+                            
+                        </tr>
+                        <tr>
+                            <th class="th1" colspan="2">Tổng tiền thưởng: 200000</th>
+                            <th class="th1" >Tổng tiền phạt: 10000</th>
+                        </tr>
+                        <tr>
+                            <th class="th1" colspan="2">Tổng số thời gian làm việc:180h</th>
+                            <th class="th1" >Thành tiền: 130000000</th>
+                        </tr>
+                        <tr>
+                            <th  class="th1"colspan="3" >Tổng số tiền nhân lương của tháng 6 là: 30000000</th>
+                        </tr>
                     </table>
+                </div>
+                <div class="btn-salary">
+                    <button class="salary">Xuất lương</button>
                 </div>
             </div>
         </div>
-    </div>
-    
     {{-- Link bootstrap --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     {{-- Link jquery --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
         integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+    <script>
+        const body = document.querySelector('body'),
+            sidebar = body.querySelector('nav'),
+            toggle = body.querySelector(".toggle"),
+            // modeSwitch = body.querySelector(".toggle-switch"),
+            modeText = body.querySelector(".mode-text");
+
+        toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        })
+    </script>
 </body>
 
 </html>

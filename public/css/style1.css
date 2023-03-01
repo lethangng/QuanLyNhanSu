@@ -69,7 +69,8 @@ body.dark{
     flex-direction: column;
 }
 .sub-nav-link {
-    align-self: flex-end;
+    /* align-self: flex-end; */
+    margin-left: 56px;
 }
 .sidebar header .image,
 .sidebar .icon{
@@ -232,24 +233,6 @@ body.dark .sidebar li a:hover .text{
     background-color: var(--primary-color-light);
     position: relative;
     transition: var(--tran-05);
-}
-
-.menu-bar .mode .sun-moon{
-    height: 50px;
-    width: 60px;
-}
-
-.mode .sun-moon i{
-    position: absolute;
-}
-.mode .sun-moon i.sun{
-    opacity: 0;
-}
-body.dark .mode .sun-moon i.sun{
-    opacity: 1;
-}
-body.dark .mode .sun-moon i.moon{
-    opacity: 0;
 }
 
 .menu-bar .bottom-content .toggle-switch{
@@ -420,26 +403,229 @@ td {
     border: 1px solid #000;
     min-width: 1200px;
 }
-.image2 {
+/* .image2 {
 
-}
+} */
 
 
-/* *********************danh sach luong ************* */
+/* ********************* danh sach luong ************* */
 .dsl-main {
     width: 100%;
 
 }
+.ctl-title,
 .dsl-title {
     text-align: center;
-    padding: 20px 0;
-    background:linear-gradient(90deg, blue, white);}
+    padding: 8px 0;
+    background:linear-gradient(90deg, blue, white);
+}
+.ctl-title,
 .dsl-title h1 
 {
     font-size: 32px;
-    font-weight: 600;
+    font-weight: 400;
     color: white;
+}
+
+.container-input-search
+{
+    position: relative;
+    margin-left: 16%;
+    margin-top: 3%;
+}
+
+.input-search{
+    width: 400px;
+    height: 40px;
+    border-radius: 20px;
+    padding: 6px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+}
+.i-con{
+    position: relative;
+    left: 635px;
+    bottom: 38px;
+}
+.btn-icon-search{
+    background-color: #8cc6c6;
+    padding: 4px 6px;
+    border-radius: 10px;
+    border: 1px solid #000;
+}
+.btn-icon-rotate{
+    background-color: #e07979;
+    padding: 4px 6px;
+    border-radius: 10px;
+    border: 1px solid #000;
+}
+.btn-icon-rotate:hover,
+.btn-icon-search:hover{
+    background-color: #ccc;
+    color: #fff;
+}
+
+.table-dsl
+{
+    border: 1px solid #333; 
+}
+
+.h1{
+    text-align: center;
+    font-size: 16px;
+    padding: 8px 8px;
+    font-weight: 400;
+}
+
+.h1 .i-edit{
+    padding: 2px 4px;
+    background-color: #619dcb;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+}
+.h1 .i-rotate{
+    padding: 2px 4px;
+    background-color: #d38f47;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+}
+.i-rotate:hover,
+.i-edit:hover{
+    background-color: #ccc;
+}
+
+/* *********************danh sach luong nhan vien ************* */
+
+.container-dsl {
+    position: relative;
+    top: 15px;
+    left: 2%;
+}
+.date{
+    position: relative;
+    top: 10px;
+    left: 215px;
+}
+.date label{
+    font-size:18px;
+}
+.input-year,
+.input-month{
+    width: 88px;
+    padding: 1px 6px;
+}
+.h1 .i-save{
+    background-color: red;
+    padding: 3px 4px;
+    border: 1px solid #ccc;
+    color: #fff;
+}
+.i-save:hover{
+    background-color: #ccc;
+    color: #333;
+}
+
+.btn-payroll {
+    position: absolute;
+    right: 24%;
+}
+.payroll {
+    width: 134px;
+    padding: 8px;
+    background-color: #EB6B6B;
+    color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
 }
 
 
 
+/*************** Chi tiết lương ************/
+.text-title h1{
+   font-size: 22px;
+    text-align: center;
+    padding: 14px 0;
+    font-weight: 400;
+}
+.table-container{
+    border: 1px solid #333;
+    background-color: #fff;
+    width: 1052px;
+    height: 324px;
+    position: relative;
+    top: 25px;
+    left: 11%;
+}
+.ctl-table{
+    position: absolute;
+    top: 58px;
+}
+
+.btn-salary{
+    position: relative;
+    top: 80px;
+    left: 80%;
+}
+.salary{
+    padding: 8px 12px;
+    background-color: #3BC9C9;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+.salary:hover{
+    background-color: rgb(199, 116, 116);
+    color: #333;
+}
+
+/************** Chấm công  **************/
+.chamcong-main{
+    width: 100%;
+}
+.cc-title {
+    text-align: center;
+    padding: 8px 0;
+    background:linear-gradient(90deg, blue, white);
+}
+
+.cc-title h1{
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+    line-height: 35px;
+}
+
+.text-inf{
+    margin-top: 32px;
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 296px;
+    height: 148px;
+    background-color: aqua;
+}
+.text-inf h4{
+    font-size: 12px;
+    padding-bottom: 8px;
+    font-weight: 400;
+    line-height: 20px;
+}
+.container-inf {
+    margin-left: 30px;
+}
+.btn-cc{
+    margin-left: 47%;
+}
+.timekeeping{
+    padding: 8px 10px;
+    background-color: #3BC9C9;
+    border: none;
+    border-radius: 4px;
+    font-weight: 300;
+}
+.date-cc{
+    margin-left: 39%;
+    margin-top: 1%;
+}
+.container-icon{
+    
+}

@@ -95,19 +95,32 @@
             <div class="container-table">
                 <table class="table table-bordered">
                     <thead>
-                      <tr>
-                        <th class="head-table" scope="col">Mã giảng viên</th>
-                        <th class="head-table" scope="col">Họ tên</th>
-                        <th class="head-table" scope="col">Email</th>
-                        <th class="head-table" scope="col">CMND</th>
-                        <th class="head-table" scope="col">Giới tính</th>
-                        <th class="head-table" scope="col">Chức vụ</th>
-                        <th class="head-table" scope="col">Tên phòng ban</th>
-                        <th class="head-table" scope="col">Khoa</th>
-                        <th class="head-table" scope="col">Trạng thái</th>
-                        <th class="head-table" scope="col"></th>
+                      <tr class = "bg-info">
+                        <th class="header-table" scope="col">Mã giảng viên</th>
+                        <th class="header-table" scope="col">Họ tên</th>
+                        <th class="header-table" scope="col">Email</th>
+                        <th class="header-table" scope="col">CMND</th>
+                        <th class="header-table" scope="col">Giới tính</th>
+                        <th class="header-table" scope="col">Chức vụ</th>
+                        <th class="header-table" scope="col">Tên phòng ban</th>
+                        <th class="header-table" scope="col">Khoa</th>
+                        <th class="header-table" scope="col">Trạng thái</th>
+                        <th class="header-table" scope="col"></th>
                       </tr>
                     </thead>
+                    <tbody>
+                        <tr>
+                            <th>1</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tbody>
                     <tbody>
 			@isset($caNhan)
 			 @foreach ($caNhan as $item)
@@ -139,7 +152,6 @@
 			@endisset
  
 			@empty($caNhan)
-			<h1> chạy đúng router để hiện dl: /sm</h1>
 			@endempty
 
                      
