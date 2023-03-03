@@ -8,6 +8,8 @@ use App\Http\Controllers\KyLuatController;
 use App\Http\Controllers\KyLuat_CaNhanController;
 use App\Http\Controllers\LuongController;
 use App\Http\Controllers\NhanVienController;
+use App\Http\Controllers\KhoaController;
+
 use Illuminate\Routing\Router;
 
 /*
@@ -20,6 +22,31 @@ use Illuminate\Routing\Router;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/quanlykhoa', function () {
+    return view('nhansu.danhsachkhoa.quanlykhoa');
+});
+Route::get('/quanlychitietkhenthuong', function () {
+    return view('nhansu.khenThuong_CaNhan.chitietkhenthuong');
+});
+Route::get('/quanlychitietkyluat', function () {
+    return view('nhansu.kyLuat_CaNhan.chitietkyluat');
+});
+Route::get('/danhsachkhenthuong', function () {
+    return view('nhansu.khenThuong.danhsachkhenthuong');
+});
+Route::get('/danhsachkyluat', function () {
+    return view('nhansu.kyLuat.danhsachkyluat');
+});
+Route::get('/danhsachphongban', function () {
+    return view('nhansu.danhsachphongban.danhsachphongban');
+});
+Route::get('/danhsachnhanvien', function () {
+    return view('nhansu.danhsachnhanvien.danhsachnhanvien');
+});
+Route::get('/danhsachchucvu', function () {
+    return view('nhansu.danhsachchucvu.danhsachchucvu');
+});
 
 Route::get('/', [loginController::class, "home"])->name('login');
 Route::post('/', [loginController::class, "submitLogin"])->name('submitLogin');
@@ -95,21 +122,7 @@ Route::middleware(['checkNV'])->group(function () {
 
 // các mục nào viết về nhân viên tài chính thì cho route trong này
 Route::middleware(['checkNVTC'])->group(function () {
-    // Danh sach luong cua nhan vien
-    Route::prefix('taichinh/luong')->group(function () {
-        Route::get('/', [LuongController::class, 'index'])->name('luong.index');
-        Route::get('create', [LuongController::class, 'create'])->name('luong.create');
-        Route::post('create', [LuongController::class, 'store']);
-        Route::get('{id}/edit', [LuongController::class, 'edit'])->whereNumber('id')->name('luong.edit');
-        Route::put('{id}/edit', [LuongController::class, 'update'])->whereNumber('id')->name('luong.update');
-        Route::delete('{id}/destroy', [LuongController::class, 'destroy'])->whereNumber('id')->name('luong.destroy');
-        Route::post('search', [LuongController::class, 'search'])->name('luong.search');
-        Route::post('tinhluong', [LuongController::class, 'tinhLuong'])->name('luong.tinhluong');
 
-    });
-    Route::get('chitietluong', [LuongController::class, 'indexLuong'])->name('chitietluong.index');
-    Route::get('{id}/chitietluong', [LuongController::class, 'chiTietLuong'])->name('chitietluong.chitiet');
-    Route::post('chitietluong/search', [LuongController::class, 'searchChiTiet'])->name('chitietluong.search');
 });
 
 // Thong tin ca nhan(dung chung)
@@ -118,16 +131,12 @@ Route::prefix('thongtincanhan')->group(function () {
     Route::post('/', [NhanVienController::class, 'addPhoto'])->name('canhan.addPhoto');
     Route::post('update-password', [NhanVienController::class, 'updatePassword'])->name('canhan.updatePassword');
 });
-Route::get('/abc', function () {
-    return view('welcom');
-});
-
-
-
-// dev 
-Route::get('dev/dsnv', function () {
-    return view('nhanvien.danhsachluong');
-});
-
 
 Route::post('upfile', [ThongTinCaNhanController::class, 'upfile'])->name('upfile');
+//test qlns
+Route::get('/sm', [ThongTinCaNhanController::class, 'index2']);
+//Route::get('/sendtextfind',[ThongTinCaNhanController::class,'find2']);
+Route::get('/smkhoa', [KhoaController::class, 'index']);
+Route::view('/smkhoa2', 'nhansu.danhsachkhoa.quanlykhoa');
+Route::view('/sm2', 'nhansu.danhsachnhanvien.danhsachnhanvien');
+
