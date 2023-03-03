@@ -9,5 +9,5 @@ class ChucVu extends Model
 {
     use HasFactory;
     protected $table = "chucvu";
-    protected $fillable = ["MaChucVu", "TenChucVu", "LuongCoBan"];
+    protected $fillable = ["machucvu", "tenchucvu"];
 }

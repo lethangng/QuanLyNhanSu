@@ -6,16 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\NhanVien;
 
-class KhenThuong extends Model
+class HopDong extends Model
 {
     use HasFactory;
 
-    protected $table = 'khenthuong';
+    protected $table = 'hopdong';
 
     protected $fillable = [
         'manv',
-        'ngaykhenthuong',
-        'lydo',
+        'ngaybatdau',
+        'ngaykethuc',
+        'tenhopdong',
         'chitietkhenthuong'
     ];
 

@@ -6,17 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\NhanVien;
 
-class KhenThuong extends Model
+class TangLuong extends Model
 {
     use HasFactory;
 
-    protected $table = 'khenthuong';
+    protected $table = 'tangluong';
 
     protected $fillable = [
         'manv',
-        'ngaykhenthuong',
+        'ngaytangluong',
         'lydo',
-        'chitietkhenthuong'
+        'chitiettangluong'
     ];
 
     public function nhanvien() {

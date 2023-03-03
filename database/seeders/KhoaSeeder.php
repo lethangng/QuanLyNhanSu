@@ -17,28 +17,28 @@ class KhoaSeeder extends Seeder
     {
         $khoas = [
             [
-                'MaKhoa' => 'CNTT',
-                'TenKhoa' => 'Khoa công nghệ thông tin'
+                'makhoa' => 'CNTT',
+                'tenkhoa' => 'Khoa công nghệ thông tin'
             ],
             [
-                'MaKhoa' => 'KT',
-                'TenKhoa' => 'Khoa kinh tế'
+                'makhoa' => 'KT',
+                'tenkhoa' => 'Khoa kinh tế'
             ],
             [
-                'MaKhoa' => 'CT',
-                'TenKhoa' => 'Khoa công trình'
+                'makhoa' => 'CT',
+                'tenkhoa' => 'Khoa công trình'
             ],
             [
-                'MaKhoa' => 'CK',
-                'TenKhoa' => 'Khoa cơ khí'
+                'makhoa' => 'CK',
+                'tenkhoa' => 'Khoa cơ khí'
             ],
             [
-                'MaKhoa' => 'MT',
-                'TenKhoa' => 'Khoa hóa và môi trường'
+                'makhoa' => 'MT',
+                'tenkhoa' => 'Khoa hóa và môi trường'
             ],
             [
-                'MaKhoa' => 'DT',
-                'TenKhoa' => 'Khoa điện tử'
+                'makhoa' => 'DT',
+                'tenkhoa' => 'Khoa điện tử'
             ]
         ];
         DB::table('khoa')->insert($khoas);

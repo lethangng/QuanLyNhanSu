@@ -15,9 +15,8 @@ return new class extends Migration
     {
         Schema::create('chucvu', function (Blueprint $table) {
             $table->id();
-            $table->string('MaChucVu')->unique()->nullable();
-            $table->string('TenChucVu')->nullable();
-            $table->bigInteger('LuongCoBan')->unsigned()->nullable();
+            $table->string('machucvu')->unique()->nullable();
+            $table->string('tenchucvu')->nullable();
             $table->timestamps();
         });
     }

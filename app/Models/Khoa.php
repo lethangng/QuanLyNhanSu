@@ -10,7 +10,7 @@ class Khoa extends Model
     use HasFactory;
     protected $table = 'khoa';
     protected  $filable = [
-        'MaKhoa',
-        'TenKhoa'
+        'makhoa',
+        'tenkhoa'
     ];
 }

@@ -24,8 +24,9 @@ class KyLuatRequest extends FormRequest
     public function rules()
     {
         return [
-            'TenKyLuat' => 'required',
-            'TienPhat' => 'required|integer'
+            'KyLuat_id' => 'required|exists:khenthuong,id',
+            'ThongTinCaNhan_id' => 'required|exists:thongtincanhan,id',
+            'NgayKyLuat' => 'required|date'
         ];
     }
 
@@ -33,15 +34,16 @@ class KyLuatRequest extends FormRequest
     {
         return [
             'required' => ':attribute bắt buộc phải nhập',
-            'integer' => ':attribute phải là số'
+            'date' => ':attribute phải là định dạng ngày tháng'
         ];
     }
 
     public function attributes()
     {
         return [
-            'TenKyLuat' => 'Tên kỷ luật',
-            'TienPhat' => 'Tiền phạt'
+            'KyLuat_id' => 'Tên kỷ luật',
+            'ThongTinCaNhan_id' => 'Tên nhân viên',
+            'NgayKyLuat' => 'Ngày kỷ luật'
         ];
     }
 }

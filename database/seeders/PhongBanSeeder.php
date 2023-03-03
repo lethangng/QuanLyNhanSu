@@ -17,12 +17,24 @@ class PhongBanSeeder extends Seeder
     {
         $phongbans = [
             [
-                'MaPhongBan' => 'TC',
-                'TenPhongBan' => 'Phòng tài chính'
+                'maphongban' => 'TC',
+                'tenphongban' => 'Phòng tài chính'
             ],
             [
-                'MaPhongBan' => 'NS',
-                'TenPhongBan' => 'Phòng nhân sự'
+                'maphongban' => 'NS',
+                'tenphongban' => 'Phòng nhân sự'
+            ],
+            [
+                'maphongban' => 'HC',
+                'tenphongban' => 'Phòng hành chính'
+            ],
+            [
+                'maphongban' => 'CCSV',
+                'tenphongban' => 'Phòng công tác sinh viên'
+            ],
+            [
+                'maphongban' => 'QTTB',
+                'tenphongban' => 'Phòng quản trị thiết bị'
             ]
         ];
         DB::table('phongban')->insert($phongbans);

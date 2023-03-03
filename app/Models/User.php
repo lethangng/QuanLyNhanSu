@@ -51,7 +51,8 @@ class User extends Authenticatable
         'email',
         'password',
         'roleId',
-        'token'
+        'token',
+        'manv'
     ];
     public function controller($roleId)
     {

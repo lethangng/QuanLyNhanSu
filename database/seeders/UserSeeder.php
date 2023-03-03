@@ -17,29 +17,29 @@ class UserSeeder extends Seeder
     {
         $users = [
             [
-                'email' => 'admin@gmail.com',
+                'email' => 'thang@gmail.com',
                 'password' => '$2a$12$b4vKJAnSVrz.ahpkHaQqOe8e.laE6zuJLe.OyilnYAufPvPKH9RbK',
-                'name' => 'admin'
+                'manv' => 1
             ],
             [
-                'email' => 'giangvien@gmail.com',
+                'email' => 'huy@gmail.com',
                 'password' => '$2a$12$b4vKJAnSVrz.ahpkHaQqOe8e.laE6zuJLe.OyilnYAufPvPKH9RbK',
-                'name' => 'giangvien'
+                'manv' => 2
             ],
             [
-                'email' => 'nhanvien@gmail.com',
+                'email' => 'thuan@gmail.com',
                 'password' => '$2a$12$b4vKJAnSVrz.ahpkHaQqOe8e.laE6zuJLe.OyilnYAufPvPKH9RbK',
-                'name' => 'nhanvien'
+                'manv' => 3
             ],
             [
-                'email' => 'nhansu@gmail.com',
+                'email' => 'hoang@gmail.com',
                 'password' => '$2a$12$b4vKJAnSVrz.ahpkHaQqOe8e.laE6zuJLe.OyilnYAufPvPKH9RbK', // Password = 1234
-                'name' => 'nhansu'
+                'manv' => 4
             ],
             [
-                'email' => 'taichinh@gmail.com',
+                'email' => 'thanh@gmail.com',
                 'password' => '$2a$12$b4vKJAnSVrz.ahpkHaQqOe8e.laE6zuJLe.OyilnYAufPvPKH9RbK',
-                'name' => 'taichinh'
+                'manv' => 5
             ]
         ];
         DB::table('users')->insert($users);

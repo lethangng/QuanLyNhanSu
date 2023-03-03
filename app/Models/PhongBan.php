@@ -10,7 +10,7 @@ class PhongBan extends Model
     use HasFactory;
     protected $table = 'phongban';
     protected $fillable = [
-        'MaPhongBan',
-        'TenPhongBan'
+        'maphongban',
+        'tenphongban'
     ];
 }

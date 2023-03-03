@@ -17,13 +17,15 @@ class KyLuatSeeder extends Seeder
     {
         $kyluats = [
             [
-                'MaKyLuat' => 'KL01',
-                'TenKyLuat' => 'Đi muộn 5 lần'
-            ], 
+                'manv' => 1,
+                'ngaykyluat' => '2023-02-16',
+                'lydo' => 'Vi phạm điều lệ'
+            ],
             [
-                'MaKyLuat' => 'KL02',
-                'TenKyLuat' => 'Nghỉ làm 3 ngày'
-            ]
+                'manv' => 2,
+                'ngaykyluat' => '2023-02-16',
+                'lydo' => 'Bỏ giờ'
+            ]  
         ];
         DB::table('kyluat')->insert($kyluats);
     }

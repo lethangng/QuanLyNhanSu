@@ -4,10 +4,10 @@ use App\Http\Controllers\loginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KhenThuongController;
 use App\Http\Controllers\KhenThuong_CaNhanController;
-use App\Http\Controllers\ThongTinCaNhanController;
 use App\Http\Controllers\KyLuatController;
 use App\Http\Controllers\KyLuat_CaNhanController;
 use App\Http\Controllers\LuongController;
+use App\Http\Controllers\NhanVienController;
 use Illuminate\Routing\Router;
 
 /*
@@ -114,10 +114,9 @@ Route::middleware(['checkNVTC'])->group(function () {
 
 // Thong tin ca nhan(dung chung)
 Route::prefix('thongtincanhan')->group(function () {
-    Route::get('/', [ThongTinCaNhanController::class, 'index']);
-    Route::get('luong', [ThongTinCaNhanController::class, 'chiTietLuong'])->name('canhan.luong');
-    Route::post('addPhoto', [ThongTinCaNhanController::class, 'addPhoto'])->name('canhan.addPhoto');
-    Route::post('update-password', [ThongTinCaNhanController::class, 'updatePassword'])->name('canhan.updatePassword');
+    Route::get('/', [NhanVienController::class, 'index']);
+    Route::post('/', [NhanVienController::class, 'addPhoto'])->name('canhan.addPhoto');
+    Route::post('update-password', [NhanVienController::class, 'updatePassword'])->name('canhan.updatePassword');
 });
 Route::get('/abc', function () {
     return view('welcom');
@@ -129,3 +128,6 @@ Route::get('/abc', function () {
 Route::get('dev/dsnv', function () {
     return view('nhanvien.danhsachluong');
 });
+
+
+Route::post('upfile', [ThongTinCaNhanController::class, 'upfile'])->name('upfile');

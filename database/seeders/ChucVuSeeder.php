@@ -17,29 +17,36 @@ class ChucVuSeeder extends Seeder
     {
         $chucvus = [
             [
-                'MaChucVu' => 'HC',
-                'TenChucVu' => 'Hiệu trưởng',
-                'LuongCoBan' => 100000000
+                'machucvu' => 'GV',
+                'tenchucvu' => 'Giảng viên'
             ],
             [
-                'MaChucVu' => 'GV',
-                'TenChucVu' => 'Giảng viên',
-                'LuongCoBan' => 10000000
+                'machucvu' => 'NV',
+                'tenchucvu' => 'Nhân viên'
             ],
             [
-                'MaChucVu' => 'NV',
-                'TenChucVu' => 'Nhân viên',
-                'LuongCoBan' => 1000000
+                'machucvu' => 'CP',
+                'tenchucvu' => 'Trưởng phòng'
             ],
             [
-                'MaChucVu' => 'NVNS',
-                'TenChucVu' => 'Nhân viên phòng nhân sự',
-                'LuongCoBan' => 10000000
+                'machucvu' => 'PP',
+                'tenchucvu' => 'Phó phòng'
             ],
             [
-                'MaChucVu' => 'NVTC',
-                'TenChucVu' => 'Nhân viên phòng tài chính',
-                'LuongCoBan' => 10000000
+                'machucvu' => 'TK',
+                'tenchucvu' => 'Trưởng khoa'
+            ],
+            [
+                'machucvu' => 'PK',
+                'tenchucvu' => 'Phó khoa'
+            ],
+            [
+                'machucvu' => 'TBM',
+                'tenchucvu' => 'Trưởng bộ môn'
+            ],
+            [
+                'machucvu' => 'PBM',
+                'tenchucvu' => 'Phó bộ môn'
             ]
         ];
         DB::table('chucvu')->insert($chucvus);

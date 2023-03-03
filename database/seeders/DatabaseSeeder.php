@@ -4,8 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\KhenThuong;
-use App\Models\ThongTinCaNhan;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,14 +19,13 @@ class DatabaseSeeder extends Seeder
             ChucVuSeeder::class,
             KhoaSeeder::class,
             PhongBanSeeder::class,
-            KyLuatSeeder::class,
-            LuongSeeder::class,
-            ThongTinCaNhanSeeder::class,
+            NhanVienSeeder::class,
             KhenThuongSeeder::class,
-            KhenThuong_ThongTinCaNhanSeeder::class,
-            KyLuat_ThongTinCaNhanSeeder::class,
+            KyLuatSeeder::class,
             UserSeeder::class,
-            ChamCongSeeder::class
+            HopDongSeeder::class,
+            TangLuongSeeder::class,
+            // NghiSeeder::class
         ]);
     }
 }

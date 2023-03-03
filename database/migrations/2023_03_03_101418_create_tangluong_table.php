@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('khoa', function (Blueprint $table) {
+        Schema::create('tangluong', function (Blueprint $table) {
             $table->id();
-            $table->string('makhoa')->unique()->nullable();
-            $table->string('tenkhoa')->nullable();
+            $table->bigInteger('manv')->unsigned()->nullable();
+            $table->date('ngaytangluong')->nullable();
+            $table->string('lydo')->nullable();
+            $table->string('chitiettangluong')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('khoa');
+        Schema::dropIfExists('tangluong');
     }
 };

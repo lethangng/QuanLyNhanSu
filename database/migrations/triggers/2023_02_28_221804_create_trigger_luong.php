@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -12,13 +13,12 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('khoa', function (Blueprint $table) {
-            $table->id();
-            $table->string('makhoa')->unique()->nullable();
-            $table->string('tenkhoa')->nullable();
-            $table->timestamps();
-        });
+    {     
+        DB::unprepared(
+            'CREATE TRIGGER insert_canhan AFTER INSERT ON `thongtincanhan` FOR EACH ROW
+            BEGIN
+                INSERT INTO luong (`ThongTinCaNhan_id`, `HSL`) VALUES (NEW.id, 3.00);
+            END');
     }
 
     /**
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('khoa');
+        DB::unprepared('DROP TRIGGER `insert_canhan`');
     }
 };

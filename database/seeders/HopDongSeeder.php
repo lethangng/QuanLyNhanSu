@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class KhenThuongSeeder extends Seeder
+class HopDongSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,23 +15,28 @@ class KhenThuongSeeder extends Seeder
      */
     public function run()
     {
-        $khenthuongs = [
+        $hopdongs = [
             [
                 'manv' => 1,
-                'ngaykhenthuong' => '2023-02-16',
-                'lydo' => 'Suất sắc trong thi đua'
+                'ngaybatdau' => '2023-02-16'
             ],
             [
                 'manv' => 2,
-                'ngaykhenthuong' => '2023-02-16',
-                'lydo' => 'Không vi phạm kỷ luật'
+                'ngaybatdau' => '2023-02-16'
             ],
             [
                 'manv' => 3,
-                'ngaykhenthuong' => '2023-02-16',
-                'lydo' => 'Người tốt, việc tốt'
+                'ngaybatdau' => '2023-02-16'
+            ],
+            [
+                'manv' => 4,
+                'ngaybatdau' => '2023-02-16'
+            ],
+            [
+                'manv' => 5,
+                'ngaybatdau' => '2023-02-16'
             ]
         ];
-        DB::table('khenthuong')->insert($khenthuongs);
+        DB::table('hopdong')->insert($hopdongs);
     }
 }
