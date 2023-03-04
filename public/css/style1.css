@@ -385,7 +385,7 @@ td {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100%;
+    /* height: 100%; */
     gap: 50px;
 }
 
@@ -708,7 +708,7 @@ body.dark {
 
 /* ===== Sidebar ===== */
 .sidebar {
-    /* position: relative; */
+    position: absolute;
     /* top: 0;
     left: 0; */
     height: 100vh;
@@ -1079,17 +1079,18 @@ td {
     border: 1px solid #000;
     min-width: 1200px;
     background-color: #fff;
+    margin-left: 64px;
 }
 
 
 /* ********************* danh sach luong ************* */
-.dsl-main {
+.dsnv-main {
     width: 100%;
 
 }
 
 .ctl-title,
-.dsl-title {
+.dsnv-title {
     text-align: center;
     padding: 8px 0;
     background: linear-gradient(90deg, blue, white);
@@ -1144,19 +1145,6 @@ td {
     padding: 8px 8px;
     font-weight: 400;
 }
-
-/* .h1 .i-edit{
-    padding: 2px 4px;
-    background-color: #619dcb;
-    border: 1px solid #ccc;
-    border-radius: 7px;
-} */
-/* .h1 .i-rotate{
-    padding: 2px 4px;
-    background-color: #d38f47;
-    border: 1px solid #ccc;
-    border-radius: 7px;
-} */
 .i-rotate:hover,
 .i-edit:hover {
     background-color: #ccc;

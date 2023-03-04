@@ -214,9 +214,9 @@
                             {{-- <button class="see-salary js-buy-ticket">Xem bảng lương</button> --}}
                             {{-- <button class="btn-changePassword">Đổi mật khẩu</button> --}}
                             <!-- Button trigger modal -->
-                            {{-- <button class="change-password" data-bs-toggle="modal" data-bs-target="#updatePassword">
+                            <button class="change-password" data-bs-toggle="modal" data-bs-target="#updatePassword">
                                 Đổi mật khẩu
-                            </button> --}}
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -249,7 +249,7 @@
                             </div>
                             <div class="modal-footer">
                                 {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
-                                <button type="submit" class="btn btn-danger" id="update">Cập nhập</a>
+                                <button type="submit" class="btn btn-danger js-buy-ticket" id="update">Cập nhập</a>
                             </div>
                         </div>
                     </div>
@@ -302,6 +302,29 @@
         </section>
     </div>
 
+    {{-- Form cập nhật thành công --}}
+
+    <div class="modal js-modal ">
+        <div class="modal-container js-modal-container">
+            <div class="modal-close js-modal-close">
+                <i class="ti-close"></i>
+            </div>
+
+            <div class="Update-successful">
+                <span class="icon-successfull">
+                    <img src="{{ asset('css/Img/image 36.png') }}" alt="">
+                </span>
+                <div class="text-dmk">
+                    <span>Cập nhật thành công</span>
+                </div>
+
+                <div class="footer-Update-successful">
+                   <button class="confirm"> Xác nhận</button>
+                </div>
+            </div>
+           
+        </div>
+    </div>
 
     {{-- Link bootstrap --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -405,6 +428,34 @@
                 });
             });
         });
+    </script>
+
+    <script>
+        const buyBtns = document.querySelectorAll('.js-buy-ticket');
+        const modal = document.querySelector('.js-modal');
+        const modalContainer = document.querySelector('.js-modal-container')
+        const modalClose = document.querySelector('.js-modal-close');
+
+        function showBuyTickets(){
+            modal.classList.add('open')
+        }
+
+        function hideBuyTickets(){
+            modal.classList.remove('open')
+        }
+
+        for (const buyBtn of buyBtns){
+            buyBtn.addEventListener('click', showBuyTickets)
+        }
+
+        modalClose.addEventListener('click', hideBuyTickets)
+
+        modal.addEventListener('click', hideBuyTickets)
+        
+        modalContainer.addEventListener('click', function(event)
+        {
+            event.stopPropagation()
+        })
     </script>
 </body>
 
