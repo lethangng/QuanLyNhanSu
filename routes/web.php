@@ -25,26 +25,26 @@ use Illuminate\Routing\Router;
 
 Route::get('/danhsachnhanvien', function () {
     return view('nhansu.danhsachnhanvien.danhsachnhanvien');
-});
+})->name('danhsachnhanvien');
 Route::get('/danhsachchucvu', function () {
     return view('nhansu.danhsachchucvu.danhsachchucvu');
-});
+})->name('danhsachchucvu');
 Route::get('/quanlykhoa', function () {
     return view('nhansu.danhsachkhoa.quanlykhoa');
-});
+})->name('danhsachkhoa');
 Route::get('/danhsachkhenthuong', function () {
     return view('nhansu.danhsachkhenthuong.danhsachkhenthuong');
-});
+})->name('danhsachkhenthuong');
 Route::get('/danhsachkyluat', function () {
     return view('nhansu.danhsachkyluat.danhsachkyluat');
-});
+})->name('danhsachkyluat');
 Route::get('/danhsachphongban', function () {
     return view('nhansu.danhsachphongban.danhsachphongban');
-});
+})->name('danhsachphongban');;
 
 Route::get('/danhsachtangluong', function () {
     return view('nhansu.danhsachtangluong.danhsachtangluong');
-});
+})->name('danhsachtangluong');;
 
 Route::get('/', [loginController::class, "home"])->name('login');
 Route::post('/', [loginController::class, "submitLogin"])->name('submitLogin');

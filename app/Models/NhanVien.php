@@ -43,7 +43,7 @@ class NhanVien extends Model
         } else {
             // return DB::raw('SELECT * FROM nhanvien WHERE id = ' . Auth::user()->manv) . ' LIMIT 1';
             // return NhanVien::select(DB::raw('*'))->where('id', Auth::user()->manv)->first();
-            return NhanVien::select(DB::raw('*'))->where('id', 1)->first();
+            return NhanVien::select(DB::raw('*'))->where('id', 1001)->first();
         }
     }
 }
