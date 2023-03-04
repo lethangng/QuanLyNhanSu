@@ -5,9 +5,11 @@
                 <div class="dsnv-title">
                     <h1>Danh sách nhân viên</h1>
                 </div>
-                <div class="btn-tnv">
-                    <button class="nv">Thêm mới nhân viên</button>
-                </div>
+                <form action="{{ route('themmoinhanvien') }}">
+                    <div class="btn-tnv">
+                        <button class="nv">Thêm mới nhân viên</button>
+                    </div>
+                </form>
 
                 <div class="text-filter">
                     <span>Lọc theo:</span>

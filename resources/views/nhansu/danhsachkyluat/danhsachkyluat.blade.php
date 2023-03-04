@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="custom-input">
-                    <span class="icon-reset-1">
+                    <span class="icon-reset-2">
                         <img src="{{ asset('icon/reset.png') }}" alt="">
                     </span>
                     <span class="icon-search-1">

@@ -1051,7 +1051,7 @@ td {
 }
 .icon-reset-1 {
     margin-top: -8px;
-    padding-right: 785px;
+    padding-right: 776px;
     float: right;
 }
 
@@ -1223,6 +1223,34 @@ td {
     padding-left: 8px;
     width: 130px;
 }
+.icon-search-1{
+    margin-top: -8px;
+    padding: 0 12px;
+    float: right;
+    
+}
+.icon-search-1 img {
+    height: 52px;
+    width: 50px;
+    background-color: #8CC6C6;
+    padding: 0px;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+.icon-reset-1 {
+    margin-top: -8px;
+    padding-right: 776px;
+    float: right;
+}
+
+.icon-reset-1 img{
+    width: 50px;
+    height: 52px;
+    background-color: #EE7048;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
 .icon-search-1 img:hover{
     background-color: #D2F0F0;
 }
@@ -1306,6 +1334,20 @@ td {
 .date select{
     padding-left: 8px;
     width: 130px;
+}
+
+.icon-reset-2 {
+    margin-top: -8px;
+    padding-right: 780px;
+    float: right;
+}
+.icon-reset-2 img{
+    width: 50px;
+    height: 52px;
+    background-color: #EE7048;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #333;
 }
 .icon-search-1 img:hover{
     background-color: #D2F0F0;

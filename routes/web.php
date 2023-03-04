@@ -40,11 +40,15 @@ Route::get('/danhsachkyluat', function () {
 })->name('danhsachkyluat');
 Route::get('/danhsachphongban', function () {
     return view('nhansu.danhsachphongban.danhsachphongban');
-})->name('danhsachphongban');;
+})->name('danhsachphongban');
 
 Route::get('/danhsachtangluong', function () {
     return view('nhansu.danhsachtangluong.danhsachtangluong');
-})->name('danhsachtangluong');;
+})->name('danhsachtangluong');
+
+Route::get('/themmoinhanvien', function () {
+    return view('nhansu.danhsachnhanvien.themmoinhanvien');
+})->name('themmoinhanvien');
 
 Route::get('/', [loginController::class, "home"])->name('login');
 Route::post('/', [loginController::class, "submitLogin"])->name('submitLogin');
