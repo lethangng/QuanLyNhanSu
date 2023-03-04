@@ -26,15 +26,15 @@ class checkNVNS
         // } else {
         //     return back();
         // }
-        
-        $user = $request->session()->get('user', false);
-        if ($user) {
+
+        if (Auth::check()) {
             Auth::user()->findRoleId(Auth::user()->id);
-            if (Auth::check() && Auth::user()->roleId == 4) {
+            if (Auth::user()->roleId == 4) {
                 return $next($request);
             } else {
                 return back();
             }
         }
+        return abort(404);
     }
 }
