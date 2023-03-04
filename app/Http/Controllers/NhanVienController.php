@@ -20,7 +20,7 @@ class NhanVienController extends Controller
     public function index() {
         // if(Auth::user()->manv){
             $title = 'Thông tin cá nhân';
-            $canhan = $this->nhanvien->thongTincanhan();
+            $canhan = $this->nhanvien->info();
             return view('thongtincanhan', compact('canhan', 'title'));
         // } else {
         //     return abort(404);
@@ -28,7 +28,7 @@ class NhanVienController extends Controller
     }
 
     public function addPhoto(Request $request) {
-        $canhan = $this->nhanvien->thongTincanhan();
+        $canhan = $this->nhanvien->info();
         $messsages = array(
             'required' => ':attribute bắt buộc phải nhập',
             'mimes' => ':attribute phải là ảnh đuôi png, jpg hoặc jpeg',
@@ -59,9 +59,10 @@ class NhanVienController extends Controller
     }
 
     public function updatePassword(Request $request) {
-        $canhan = $this->nhanvien->thongTincanhan();
+        $canhan = $this->nhanvien->info();
         // $matKhauCu = Auth::user()->password;
-        $matKhauCu = DB::raw('SELECT password ');
+        $matKhauCu = User::select('password')->where('id', 1)->get();
+        // dd($matKhauCu);
         if(Hash::check($request->matkhaucu, $matKhauCu)) {
             // User::where('id', $canhan->id)
             // ->update([
@@ -71,8 +72,6 @@ class NhanVienController extends Controller
         } else {
             return response()->json(['error' => 'Mật khẩu không chính xác']);
         }
-        // toastr()->success('Sửa mật khẩu thành công.', 'Sửa thành công');
-        // return redirect()->route('canhan.index');
     }
 
     public function upfile(Request $request) {

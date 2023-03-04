@@ -3,10 +3,7 @@
 use App\Http\Controllers\loginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KhenThuongController;
-use App\Http\Controllers\KhenThuong_CaNhanController;
 use App\Http\Controllers\KyLuatController;
-use App\Http\Controllers\KyLuat_CaNhanController;
-use App\Http\Controllers\LuongController;
 use App\Http\Controllers\NhanVienController;
 use App\Http\Controllers\KhoaController;
 
@@ -68,48 +65,6 @@ Route::middleware(['checkNVNS'])->group(function () {
     Route::get('/login/user', function () {
         return view('welcome')->name('login.user');
     });
-
-    // Khen thuong cua nhan vien phong nhan su
-    Route::prefix('nhansu/khenthuong')->group(function () {
-        Route::get('/', [KhenThuongController::class, 'index'])->name('khenthuong.index');
-        Route::get('create', [KhenThuongController::class, 'create'])->name('khenthuong.create');
-        Route::post('create', [KhenThuongController::class, 'store']);
-        Route::get('{id}/edit', [KhenThuongController::class, 'edit'])->whereNumber('id')->name('khenthuong.edit');
-        Route::put('{id}/edit', [KhenThuongController::class, 'update'])->whereNumber('id')->name('khenthuong.update');
-        Route::delete('{id}/destroy', [KhenThuongController::class, 'destroy'])->whereNumber('id')->name('khenthuong.destroy');
-    });
-
-    // Ky luat cua nhan vien phong nhan su
-    Route::prefix('nhansu/kyluat')->group(function () {
-        Route::get('/', [KyLuatController::class, 'index'])->name('kyluat.index');
-        Route::get('create', [KyLuatController::class, 'create'])->name('kyluat.create');
-        Route::post('create', [KyLuatController::class, 'store']);
-        Route::get('{id}/edit', [KyLuatController::class, 'edit'])->whereNumber('id')->name('kyluat.edit');
-        Route::put('{id}/edit', [KyLuatController::class, 'update'])->whereNumber('id')->name('kyluat.update');
-        Route::delete('{id}/destroy', [KyLuatController::class, 'destroy'])->whereNumber('id')->name('kyluat.destroy');
-    });
-
-    // Danh sach khen thuong cua nhan vien phong nhan su
-    Route::prefix('nhansu/khenthuong-canhan')->group(function () {
-        Route::get('/', [KhenThuong_CaNhanController::class, 'index'])->name('khenthuong_canhan.index');
-        Route::get('create', [KhenThuong_CaNhanController::class, 'create'])->name('khenthuong_canhan.create');
-        Route::post('create', [KhenThuong_CaNhanController::class, 'store']);
-        Route::get('{id}/edit', [KhenThuong_CaNhanController::class, 'edit'])->whereNumber('id')->name('khenthuong_canhan.edit');
-        Route::put('{id}/edit', [KhenThuong_CaNhanController::class, 'update'])->whereNumber('id')->name('khenthuong_canhan.update');
-        Route::delete('{id}/destroy', [KhenThuong_CaNhanController::class, 'destroy'])->whereNumber('id')->name('khenthuong_canhan.destroy');
-        Route::post('search', [KhenThuong_CaNhanController::class, 'search'])->name('khenthuong_canhan.search');
-    });
-
-    // Danh sach ky luat cua nhan vien phong nhan su
-    Route::prefix('nhansu/kyluat-canhan')->group(function () {
-        Route::get('/', [KyLuat_CaNhanController::class, 'index'])->name('kyluat_canhan.index');
-        Route::get('create', [KyLuat_CaNhanController::class, 'create'])->name('kyluat_canhan.create');
-        Route::post('create', [KyLuat_CaNhanController::class, 'store']);
-        Route::get('{id}/edit', [KyLuat_CaNhanController::class, 'edit'])->whereNumber('id')->name('kyluat_canhan.edit');
-        Route::put('{id}/edit', [KyLuat_CaNhanController::class, 'update'])->whereNumber('id')->name('kyluat_canhan.update');
-        Route::delete('{id}/destroy', [KyLuat_CaNhanController::class, 'destroy'])->whereNumber('id')->name('kyluat_canhan.destroy');
-        Route::post('search', [KyLuat_CaNhanController::class, 'search'])->name('kyluat_canhan.search');
-    });
 });
 
 // các mục nào viết về nhân viên thì cho route trong này
@@ -131,6 +86,31 @@ Route::prefix('thongtincanhan')->group(function () {
     Route::post('/', [NhanVienController::class, 'addPhoto'])->name('canhan.addPhoto');
     Route::post('update-password', [NhanVienController::class, 'updatePassword'])->name('canhan.updatePassword');
 });
+
+// Danh sach khen thuong 
+Route::prefix('khenthuong')->group(function () {
+    Route::get('/', [KhenThuongController::class, 'index'])->name('khenthuong.index');
+    Route::get('create', [KhenThuongController::class, 'create'])->name('khenthuong.create');
+    Route::post('create', [KhenThuongController::class, 'store']);
+    Route::get('{id}/edit', [KhenThuongController::class, 'edit'])->whereNumber('id')->name('khenthuong.edit');
+    Route::put('{id}/edit', [KhenThuongController::class, 'update'])->whereNumber('id')->name('khenthuong.update');
+    Route::delete('{id}/destroy', [KhenThuongController::class, 'destroy'])->whereNumber('id')->name('khenthuong.destroy');
+    Route::post('search', [KhenThuongController::class, 'search'])->name('khenthuong.search');
+});
+
+// Danh sach ky luat 
+Route::prefix('kyluat')->group(function () {
+    Route::get('/', [KyLuatController::class, 'index'])->name('kyluat.index');
+    Route::get('create', [KyLuatController::class, 'create'])->name('kyluat.create');
+    Route::post('create', [KyLuatController::class, 'store']);
+    Route::get('{id}/edit', [KyLuatController::class, 'edit'])->whereNumber('id')->name('kyluat.edit');
+    Route::put('{id}/edit', [KyLuatController::class, 'update'])->whereNumber('id')->name('kyluat.update');
+    Route::delete('{id}/destroy', [KyLuatController::class, 'destroy'])->whereNumber('id')->name('kyluat.destroy');
+    Route::post('search', [KyLuatController::class, 'search'])->name('kyluat.search');
+});
+
+
+
 
 // Route::post('upfile', [ThongTinCaNhanController::class, 'upfile'])->name('upfile');
 //test qlns

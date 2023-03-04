@@ -46,17 +46,7 @@ body.dark {
 }
 
 /* ===== Sidebar ===== */
-.sidebar {
-    /* position: relative; */
-    /* top: 0;
-    left: 0; */
-    height: 100vh;
-    width: 250px;
-    padding: 10px 14px;
-    background: var(--sidebar-color);
-    transition: var(--tran-05);
-    z-index: 100;
-}
+
 
 .sidebar.close {
     width: 88px;
@@ -104,6 +94,7 @@ body.dark {
     font-weight: 500;
     white-space: nowrap;
     opacity: 1;
+    margin-left: 4px;
 }
 
 .sidebar.close .text {
@@ -114,13 +105,6 @@ body.dark {
 
 .sidebar header {
     position: relative;
-}
-
-.sidebar header .image-text {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    margin-right: 10px;
 }
 
 .sidebar header .logo-text {
@@ -140,13 +124,13 @@ header .image-text .profession {
     display: block;
 }
 
-.sidebar header .image {
+.sidebar header .image-2 {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.sidebar header .image img {
+.sidebar header .image-2 img {
     width: 40px;
     border-radius: 6px;
 }
@@ -177,10 +161,6 @@ body.dark .sidebar header .toggle {
     transform: translateY(-50%) rotate(0deg);
 }
 
-.sidebar .menu {
-    margin-top: 40px;
-}
-
 .sidebar li.search-box {
     border-radius: 6px;
     background-color: var(--primary-color-light);
@@ -201,20 +181,7 @@ body.dark .sidebar header .toggle {
     transition: var(--tran-05);
 }
 
-.sidebar li a {
-    list-style: none;
-    height: 100%;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: var(--tran-03);
-    padding: 10px 0;
 
-}
 
 .sidebar li a:hover {
     background-color: var(--primary-color);
@@ -230,13 +197,7 @@ body.dark .sidebar li a:hover .text {
     color: var(--text-color);
 }
 
-.sidebar .menu-bar {
-    height: calc(100% - 55px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow-y: scroll;
-}
+
 
 .menu-bar::-webkit-scrollbar {
     display: none;
@@ -312,7 +273,6 @@ body.dark .switch::before {
 
 .sidebar.close~.home {
     left: 78px;
-    height: 100vh;
     width: calc(100% - 78px);
 }
 
@@ -425,7 +385,7 @@ td {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100%;
+    /* height: 100%; */
     gap: 50px;
 }
 
@@ -460,11 +420,7 @@ td {
     color: white;
 }
 
-.container-input-search {
-    /* position: relative; */
-    /* margin-left: 16%; */
-    /* margin-top: 3%; */
-}
+
 
 /* .input-search{
     width: 400px;
@@ -474,11 +430,7 @@ td {
     font-size: 14px;
     border: 1px solid #ccc;
 } */
-.i-con {
-    /* position: relative; */
-    /* left: 635px; */
-    /* bottom: 38px; */
-}
+
 
 .btn-icon-search {
     background-color: #8cc6c6;
@@ -705,7 +657,7 @@ td {
     margin-top: 1%;
 }
 
-.container-icon {}
+
 
 /* Google Font Import - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -756,20 +708,17 @@ body.dark {
 
 /* ===== Sidebar ===== */
 .sidebar {
-    /* position: relative; */
+    position: absolute;
     /* top: 0;
     left: 0; */
     height: 100vh;
-    width: 250px;
+    width: auto;
     padding: 10px 14px;
     background: var(--sidebar-color);
     transition: var(--tran-05);
     z-index: 100;
 }
 
-.sidebar.close {
-    width: 88px;
-}
 
 /* ===== Reusable code - Here ===== */
 .sidebar li {
@@ -777,7 +726,7 @@ body.dark {
     list-style: none;
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 4px;
     flex-direction: column;
 }
 
@@ -786,7 +735,7 @@ body.dark {
     margin-left: 56px;
 }
 
-.sidebar header .image,
+.sidebar header .image-2,
 .sidebar .icon {
     min-width: 60px;
     border-radius: 6px;
@@ -808,13 +757,6 @@ body.dark {
     transition: var(--tran-03);
 }
 
-.sidebar .text {
-    font-size: 17px;
-    font-weight: 500;
-    white-space: nowrap;
-    opacity: 1;
-}
-
 .sidebar.close .text {
     opacity: 0;
 }
@@ -828,7 +770,6 @@ body.dark {
 .sidebar header .image-text {
     display: flex;
     align-items: center;
-    justify-content: end;
     margin-right: 10px;
 }
 
@@ -842,7 +783,10 @@ header .image-text .name {
     font-size: 18px;
     font-weight: 600;
 }
-
+.logo-tlu img{
+    width: 73px;
+    height: 59px;
+}
 header .image-text .profession {
     font-size: 16px;
     margin-top: -2px;
@@ -887,7 +831,7 @@ body.dark .sidebar header .toggle {
 }
 
 .sidebar .menu {
-    margin-top: 40px;
+    margin-top: 22px;
 }
 
 .sidebar li.search-box {
@@ -912,7 +856,6 @@ body.dark .sidebar header .toggle {
 
 .sidebar li a {
     list-style: none;
-    height: 100%;
     background-color: transparent;
     display: flex;
     align-items: center;
@@ -945,6 +888,7 @@ body.dark .sidebar li a:hover .text {
     flex-direction: column;
     justify-content: space-between;
     overflow-y: scroll;
+   
 }
 
 .menu-bar::-webkit-scrollbar {
@@ -996,6 +940,13 @@ body.dark .switch::before {
     left: 20px;
 }
 
+.sidebar .icon-home img
+{
+    width: 51px;
+    height: 45px;
+    margin-left: 4px;
+}
+
 .home {
     /* position: absolute; */
     /* top: 0; */
@@ -1017,12 +968,6 @@ body.dark .switch::before {
 .user p {
     margin: 0;
     padding-right: 20%;
-}
-
-.sidebar.close~.home {
-    left: 78px;
-    height: 100vh;
-    width: calc(100% - 78px);
 }
 
 body.dark .home .text {
@@ -1129,34 +1074,23 @@ td {
     display: flex;
 }
 
-.home-wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100%;
-    gap: 50px;
-}
-
 .container-infor {
     padding: 30px 20px;
     border: 1px solid #000;
     min-width: 1200px;
+    background-color: #fff;
+    margin-left: 64px;
 }
-
-/* .image2 {
-
-} */
 
 
 /* ********************* danh sach luong ************* */
-.dsl-main {
+.dsnv-main {
     width: 100%;
 
 }
 
 .ctl-title,
-.dsl-title {
+.dsnv-title {
     text-align: center;
     padding: 8px 0;
     background: linear-gradient(90deg, blue, white);
@@ -1169,11 +1103,7 @@ td {
     color: white;
 }
 
-.container-input-search {
-    /* position: relative; */
-    /* margin-left: 16%; */
-    /* margin-top: 3%; */
-}
+
 
 .input-search {
     width: 400px;
@@ -1215,19 +1145,6 @@ td {
     padding: 8px 8px;
     font-weight: 400;
 }
-
-/* .h1 .i-edit{
-    padding: 2px 4px;
-    background-color: #619dcb;
-    border: 1px solid #ccc;
-    border-radius: 7px;
-} */
-/* .h1 .i-rotate{
-    padding: 2px 4px;
-    background-color: #d38f47;
-    border: 1px solid #ccc;
-    border-radius: 7px;
-} */
 .i-rotate:hover,
 .i-edit:hover {
     background-color: #ccc;
@@ -1314,8 +1231,6 @@ td {
     outline: none;
     border-radius: 100px;
 }
-
-
 
 
 
@@ -1416,12 +1331,5 @@ td {
     margin-top: 1%;
 }
 
-.container-icon {}
 
 
-
-/*  */
-.list-dsl table {
-    width: 98%;
-    margin: 0 auto;
-}

@@ -28,9 +28,9 @@
         <nav class="sidebar close">
             <header>
                 <div class="image-text">
-                    {{-- <span class="image2">
+                    <span class="image-2">
                         <img src="{{ asset('css/Img/download.jpeg') }}" alt="">
-                    </span> --}}
+                    </span>
                     <div class="text logo-text">
                         <span class="name">Team 3</span>
                         <span class="profession">Web developer</span>
@@ -45,15 +45,82 @@
                     <ul class="menu-links">
                         <li class="nav-link">
                             <a href="#">
-                                <i class='bx bx-home-alt icon'></i>
-                                <span class="text nav-text">Chấm công</span>
+                                <span class="icon-home">
+                                    <img src="{{ asset('icon/nhanvien.png') }}" alt="">
+                                </span>
+                                <span class="text nav-text">Quản lý nhân viên</span>
                             </a>
                         </li>
 
                         <li class="nav-link">
                             <a href="{{ route('canhan.index') }}">
-                                <i class='bx bx-bar-chart-alt-2 icon'></i>
-                                <span class="text nav-text">Thông tin cái nhân</span>
+                                <span class="icon-home">
+                                    <img src="{{ asset('icon/chucvu.png') }}" alt="">
+                                </span>
+                                <span class="text nav-text">Quản lý chức vụ</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="{{ route('canhan.index') }}">
+                                <span class="icon-home">
+                                    <img src="{{ asset('icon/phongban.png') }}" alt="">
+                                </span>
+                                <span class="text nav-text">Quản lý phòng ban</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="{{ route('canhan.index') }}">
+                                <span class="icon-home">
+                                    <img src="{{ asset('icon/khoa.png') }}" alt="">
+                                </span>
+                                <span class="text nav-text">Quản lý khoa</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="{{ route('canhan.index') }}">
+                                <span class="icon-home">
+                                    <img src="{{ asset('icon/khenthuong.png') }}" alt="">
+                                </span>
+                                <span class="text nav-text">Quản lý khen thưởng</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="{{ route('canhan.index') }}">
+                                <span class="icon-home">
+                                    <img src="{{ asset('icon/kyluat.png') }}" alt="">
+                                </span>
+                                <span class="text nav-text">Quản lý kỷ luật</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="{{ route('canhan.index') }}">
+                                <span class="icon-home">
+                                    <img src="{{ asset('icon/luong.png') }}" alt="">
+                                </span>
+                                <span class="text nav-text">Quản lý tăng lương</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="{{ route('canhan.index') }}">
+                                <span class="icon-home">
+                                    <img src="{{ asset('icon/hopdong.png') }}" alt="">
+                                </span>
+                                <span class="text nav-text">Quản lý hợp đồng</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="{{ route('canhan.index') }}">
+                                <span class="icon-home">
+                                    <img src="{{ asset('icon/thongtincanhan.png') }}" alt="">
+                                </span>
+                                <span class="text nav-text">Quản lý thông tin cái nhân</span>
                             </a>
                         </li>
                     </ul>
@@ -62,7 +129,9 @@
                 <div class="bottom-content">
                     <li class="">
                         <a href="{{ route('login') }}">
-                            <i class='bx bx-log-out icon'></i>
+                            <span class="icon-home">
+                                <img src="{{ asset('icon/logout.png') }}" alt="">
+                            </span>
                             <span class="text nav-text">Logout</span>
                         </a>
                     </li>
@@ -73,7 +142,7 @@
         <section class="home">
             <div class="home-wrap">
                 <div class="text-header">
-                    <h1>Thông tin cái nhân</h1>
+                    <h1>Thông tin cá nhân</h1>
                 </div>
                 <div class="container-infor">
                     <div class="container-content-1">
@@ -96,7 +165,8 @@
                                 <input type="text" class="fname" value="{{ $canhan->id }}"readonly>
 
                                 <label class="label-2 " for="">Chức vụ:</label>
-                                <input type="text" class="fname" value="{{ $canhan->chucVu->tenchucvu }}" readonly>
+                                <input type="text" class="fname" value="{{ $canhan->chucVu->tenchucvu }}"
+                                    readonly>
                             </div>
                             <div class="form-2">
                                 <label class="label-3" for="">Phòng ban:</label>
@@ -131,6 +201,13 @@
 
                                 <label class="label-10" for="">SĐT:</label>
                                 <input type="text" class="fname" value="{{ $canhan->sdt }}">
+                            </div>
+                            <div class="form-6">
+                                <label class="label-11" for="">Lương cơ bản:</label>
+                                <input type="text" class="fname" value="">
+
+                                <label class="label-12" for="">HSL:</label>
+                                <input type="text" class="fname" value="">
                             </div>
 
                         </div>
@@ -179,8 +256,8 @@
                                 <div id="passwordHelp" class="form-text text-danger error-text photo_err"></div>
                             </div>
                             <div class="modal-footer">
-                                {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
-                                <button type="submit" class="btn btn-danger" id="update">Cập nhập</a>
+                                <button type="submit" class="btn btn-danger js-buy-ticket" id="update">Cập
+                                    nhập</a>
                             </div>
                         </div>
                     </div>
@@ -188,7 +265,7 @@
             </form>
 
             {{-- Form đổi mật khẩu --}}
-            <form action="{{ route('canhan.updatePassword') }}" method="post" id="updatePassword">
+            <form action="{{ route('canhan.updatePassword') }}" method="post" id="update-password">
                 @csrf
                 <!-- Modal -->
                 <div class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
@@ -205,21 +282,21 @@
                                     <label class="form-label">Mật khẩu cũ</label>
                                     <input type="password" class="form-control" name="matkhaucu"
                                         placeholder="Nhập mật khẩu cũ...">
-                                    <div id="passwordHelp" class="form-text text-danger error-text old_password">
+                                    <div id="passwordHelp" class="form-text text-danger error-text old-password">
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Mật khẩu mới</label>
                                     <input type="password" class="form-control" name="matkhaumoi"
-                                        placeholder="Nhập mật khẩu mới...">
-                                    <div id="passwordHelp" class="form-text text-danger error-text new_password">
+                                        placeholder="Nhập mật khẩu mới..." id="new-password">
+                                    <div id="passwordHelp" class="form-text text-danger error-text new-password">
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Nhập lại mật khẩu mới</label>
                                     <input type="password" class="form-control" name="nhaplai"
-                                        placeholder="Nhập lại mật khẩu mới...">
-                                    <div id="passwordHelp" class="form-text text-danger error-text">
+                                        placeholder="Nhập lại mật khẩu mới..." id="re-new-password">
+                                    <div id="passwordHelp" class="form-text text-danger error-text re-new-password">
                                     </div>
                                 </div>
                             </div>
@@ -234,6 +311,29 @@
         </section>
     </div>
 
+    {{-- Form cập nhật thành công --}}
+
+    <div class="modal js-modal ">
+        <div class="modal-container js-modal-container">
+            <div class="modal-close js-modal-close">
+                <i class="ti-close"></i>
+            </div>
+
+            <div class="Update-successful">
+                <span class="icon-successfull">
+                    <img src="{{ asset('css/Img/image 36.png') }}" alt="">
+                </span>
+                <div class="text-dmk">
+                    <span>Cập nhật thành công</span>
+                </div>
+
+                <div class="footer-Update-successful">
+                    <button class="confirm"> Xác nhận</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     {{-- Link bootstrap --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -246,10 +346,6 @@
             toggle = body.querySelector(".toggle"),
             // modeSwitch = body.querySelector(".toggle-switch"),
             modeText = body.querySelector(".mode-text");
-
-        toggle.addEventListener("click", () => {
-            sidebar.classList.toggle("close");
-        })
     </script>
     {{-- script modal form addphoto --}}
     <script type="text/javascript">
@@ -292,38 +388,38 @@
         });
     </script>
     <script type="text/javascript">
-        function checkpassword(checkUser, msg) {
-            if (checkUser) {
-                $('.' + 'old_password' + '_err').text(msg);
-            } else {
-                $('.' + "new_password" + '_err').text(msg);
-            }
-        }
         $(document).ready(function(e) {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            $('#updatepassword').submit(function(e) {
+            $('#update-password').submit(function(e) {
                 e.preventDefault();
                 var formData = new FormData(this);
                 $.ajax({
                     type: 'POST',
                     url: $(this).attr('action'),
+                    method: $(this).attr('method'),
                     data: formData,
                     cache: false,
                     contentType: false,
                     processData: false,
                     success: (data) => {
-                        this.reset();
+                        // this.reset();
                         var error = document.querySelectorAll(".error-text");
                         error.innerHTML = "";
                         if (data.check == true) {
                             window.location = $(this).attr('action')
                         } else {
-                            checkpassword(data.error, '_err')
+                            $(".old-password").text(data.error);
                             console.log(data);
+                            const new_password = $('#new-password');
+                            // console.log(new_password)
+                            const re_new_password = $("#re-new-password");
+                            if (re_new_password.val() !== new_password.val()) {
+                                $('.re-new-password').text("Mật khẩu nhập lại không chính xác.")
+                            }
                         }
                     }
                 });
@@ -331,33 +427,32 @@
         });
     </script>
 
-    {{-- xem lương --}}
-    {{-- <script>
+    <script>
         const buyBtns = document.querySelectorAll('.js-buy-ticket');
         const modal = document.querySelector('.js-modal');
         const modalContainer = document.querySelector('.js-modal-container')
         const modalClose = document.querySelector('.js-modal-close');
 
-        function showSalary() {
+        function showBuyTickets() {
             modal.classList.add('open')
         }
 
-        function hideSalary() {
+        function hideBuyTickets() {
             modal.classList.remove('open')
         }
 
         for (const buyBtn of buyBtns) {
-            buyBtn.addEventListener('click', showSalary)
+            buyBtn.addEventListener('click', showBuyTickets)
         }
 
-        modalClose.addEventListener('click', hideSalary)
+        modalClose.addEventListener('click', hideBuyTickets)
 
-        modal.addEventListener('click', hideSalary)
+        modal.addEventListener('click', hideBuyTickets)
 
         modalContainer.addEventListener('click', function(event) {
             event.stopPropagation()
         })
-    </script> --}}
+    </script>
 </body>
 
 </html>
