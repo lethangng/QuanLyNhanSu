@@ -37,7 +37,6 @@ class loginController extends Controller
         $validator = Validator::make($request->all(), $rules, $messsages);
         if ($validator->passes()) {
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password], false)) {
-                $request->session()->put('user', Auth::user());
                 Auth::user()->findRoleId(Auth::user()->id);
                 return  Auth::user()->controller(Auth::user()->roleId);
             } else {

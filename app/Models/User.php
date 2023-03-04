@@ -22,9 +22,9 @@ class User extends Authenticatable
      */
     public function findRoleId($id)
     {
-        $user = DB::table('thongtincanhan')->where('User_id', $id)->get();
+        $user = DB::table('nhanvien')->where('machucvu', $id)->get();
         foreach ($user as $data) {
-            return $this->roleId = $data->ChucVu_id;
+            return $this->roleId = $data->machucvu;
         }
     }
     public function updateToken($str)
@@ -36,7 +36,7 @@ class User extends Authenticatable
     public function updatePass($str)
     {
         $this::update([
-            // 'token' => '',
+            'token' => '',
             'password' => bcrypt($str),
         ]);
     }

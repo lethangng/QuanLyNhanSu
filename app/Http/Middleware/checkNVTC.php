@@ -19,15 +19,14 @@ class checkNVTC
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()) {
+        if (Auth::check()) {
             Auth::user()->findRoleId(Auth::user()->id);
-            if (Auth::check() && Auth::user()->roleId == 5) {
+            if (Auth::user()->roleId == 5) {
                 return $next($request);
             } else {
                 return back();
             }
-        } else {
-            return abort(404);
         }
+        return abort(404);
     }
 }
