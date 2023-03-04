@@ -142,7 +142,7 @@
         <section class="home">
             <div class="home-wrap">
                 <div class="text-header">
-                    <h1>Thông tin cái nhân</h1>
+                    <h1>Thông tin cá nhân</h1>
                 </div>
                 <div class="container-infor">
                     <div class="container-content-1">
@@ -194,6 +194,13 @@
                                 <label class="label-10" for="">SĐT:</label>
                                 <input type="text" class="fname" value="{{ $canhan->sdt }}">
                             </div>
+                            <div class="form-6">
+                                <label class="label-11" for="">Lương cơ bản:</label>
+                                <input type="text" class="fname" value="">
+
+                                <label class="label-12" for="">HSL:</label>
+                                <input type="text" class="fname" value="">
+                            </div>
 
                         </div>
                     </div>
@@ -207,9 +214,9 @@
                             {{-- <button class="see-salary js-buy-ticket">Xem bảng lương</button> --}}
                             {{-- <button class="btn-changePassword">Đổi mật khẩu</button> --}}
                             <!-- Button trigger modal -->
-                            <button class="change-password" data-bs-toggle="modal" data-bs-target="#updatePassword">
+                            {{-- <button class="change-password" data-bs-toggle="modal" data-bs-target="#updatePassword">
                                 Đổi mật khẩu
-                            </button>
+                            </button> --}}
                         </div>
                     </div>
                 </div>

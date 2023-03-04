@@ -273,7 +273,6 @@ body.dark .switch::before {
 
 .sidebar.close~.home {
     left: 78px;
-    height: 100vh;
     width: calc(100% - 78px);
 }
 
@@ -421,11 +420,7 @@ td {
     color: white;
 }
 
-.container-input-search {
-    /* position: relative; */
-    /* margin-left: 16%; */
-    /* margin-top: 3%; */
-}
+
 
 /* .input-search{
     width: 400px;
@@ -435,11 +430,7 @@ td {
     font-size: 14px;
     border: 1px solid #ccc;
 } */
-.i-con {
-    /* position: relative; */
-    /* left: 635px; */
-    /* bottom: 38px; */
-}
+
 
 .btn-icon-search {
     background-color: #8cc6c6;
@@ -728,9 +719,6 @@ body.dark {
     z-index: 100;
 }
 
-.sidebar.close {
-    width: 88px;
-}
 
 /* ===== Reusable code - Here ===== */
 .sidebar li {
@@ -982,12 +970,6 @@ body.dark .switch::before {
     padding-right: 20%;
 }
 
-.sidebar.close~.home {
-    left: 78px;
-    height: 100vh;
-    width: calc(100% - 78px);
-}
-
 body.dark .home .text {
     color: var(--text-color);
 }
@@ -1092,19 +1074,11 @@ td {
     display: flex;
 }
 
-.home-wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100%;
-    gap: 50px;
-}
-
 .container-infor {
     padding: 30px 20px;
     border: 1px solid #000;
     min-width: 1200px;
+    background-color: #fff;
 }
 
 
@@ -1128,11 +1102,7 @@ td {
     color: white;
 }
 
-.container-input-search {
-    /* position: relative; */
-    /* margin-left: 16%; */
-    /* margin-top: 3%; */
-}
+
 
 .input-search {
     width: 400px;
@@ -1276,8 +1246,6 @@ td {
 
 
 
-
-
 /*************** Chi tiết lương ************/
 .text-title h1 {
     font-size: 22px;
@@ -1375,12 +1343,5 @@ td {
     margin-top: 1%;
 }
 
-.container-icon {}
 
 
-
-/*  */
-.list-dsl table {
-    width: 98%;
-    margin: 0 auto;
-}
