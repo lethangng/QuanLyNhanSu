@@ -19,12 +19,12 @@ class UserSeeder extends Seeder
             [
                 'email' => 'thang@gmail.com',
                 'password' => '$2a$12$b4vKJAnSVrz.ahpkHaQqOe8e.laE6zuJLe.OyilnYAufPvPKH9RbK',
-                'manv' => 1
+                'manv' => 1001
             ],
             [
                 'email' => 'thanh@gmail.com',
                 'password' => '$2a$12$b4vKJAnSVrz.ahpkHaQqOe8e.laE6zuJLe.OyilnYAufPvPKH9RbK',
-                'manv' => 5
+                'manv' => 1005
             ]
         ];
         DB::table('users')->insert($users);

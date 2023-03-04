@@ -17,17 +17,17 @@ class KhenThuongSeeder extends Seeder
     {
         $khenthuongs = [
             [
-                'manv' => 1,
+                'manv' => 1001,
                 'ngaykhenthuong' => '2023-02-16',
                 'lydo' => 'Suất sắc trong thi đua'
             ],
             [
-                'manv' => 2,
+                'manv' => 1002,
                 'ngaykhenthuong' => '2023-02-16',
                 'lydo' => 'Không vi phạm kỷ luật'
             ],
             [
-                'manv' => 3,
+                'manv' => 1003,
                 'ngaykhenthuong' => '2023-02-16',
                 'lydo' => 'Người tốt, việc tốt'
             ]

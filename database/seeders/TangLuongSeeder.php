@@ -17,27 +17,27 @@ class TangLuongSeeder extends Seeder
     {
         $tangluongs = [
             [
-                'manv' => 1,
+                'manv' => 1001,
                 'ngaytangluong' => '2023-02-16',
                 'lydo' => 'Tăng bậc lương do 3 năm tăng'
             ],
             [
-                'manv' => 2,
+                'manv' => 1002,
                 'ngaytangluong' => '2023-02-16',
                 'lydo' => 'Tăng bậc lương sớm hơn'
             ],
             [
-                'manv' => 3,
+                'manv' => 1003,
                 'ngaytangluong' => '2023-02-16',
                 'lydo' => 'Tăng bậc lương muộn do bị kỷ luật'
             ],
             [
-                'manv' => 4,
+                'manv' => 1004,
                 'ngaytangluong' => '2023-02-16',
                 'lydo' => 'Giảm hsl do bị kỷ luật'
             ],
             [
-                'manv' => 5,
+                'manv' => 1005,
                 'ngaytangluong' => '2023-02-16',
                 'lydo' => 'Giảm bậc lương do bị kỷ luật'
             ]

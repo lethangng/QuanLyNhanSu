@@ -17,12 +17,12 @@ class KyLuatSeeder extends Seeder
     {
         $kyluats = [
             [
-                'manv' => 1,
+                'manv' => 1001,
                 'ngaykyluat' => '2023-02-16',
                 'lydo' => 'Vi phạm điều lệ'
             ],
             [
-                'manv' => 2,
+                'manv' => 1002,
                 'ngaykyluat' => '2023-02-16',
                 'lydo' => 'Bỏ giờ'
             ]  

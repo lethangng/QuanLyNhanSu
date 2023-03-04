@@ -17,23 +17,23 @@ class HopDongSeeder extends Seeder
     {
         $hopdongs = [
             [
-                'manv' => 1,
+                'manv' => 1001,
                 'ngaybatdau' => '2023-02-16'
             ],
             [
-                'manv' => 2,
+                'manv' => 1002,
                 'ngaybatdau' => '2023-02-16'
             ],
             [
-                'manv' => 3,
+                'manv' => 1003,
                 'ngaybatdau' => '2023-02-16'
             ],
             [
-                'manv' => 4,
+                'manv' => 1004,
                 'ngaybatdau' => '2023-02-16'
             ],
             [
-                'manv' => 5,
+                'manv' => 1005,
                 'ngaybatdau' => '2023-02-16'
             ]
         ];
