@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use League\MimeTypeDetection\OverridingExtensionToMimeTypeMap;
 
 class NhanVien extends Model
 {
@@ -38,8 +37,13 @@ class NhanVien extends Model
     public function phongBan() {
         return $this->belongsTo(PhongBan::class, 'maphongban', 'id');
     }
-    public function thongTinCaNhan() {
-        // return DB::raw('SELECT * FROM nhanvien WHERE id = ' . Auth::user()->manv) . ' LIMIT 1';
-        return NhanVien::select(DB::raw('*'))->where('id', 1)->first();
+    public function thongTinCaNhan($id = null) {
+        if($id) {
+            return NhanVien::select(DB::raw('*'))->where('id', $id)->first();
+        } else {
+            // return DB::raw('SELECT * FROM nhanvien WHERE id = ' . Auth::user()->manv) . ' LIMIT 1';
+            // return NhanVien::select(DB::raw('*'))->where('id', Auth::user()->manv)->first();
+            return NhanVien::select(DB::raw('*'))->where('id', 1)->first();
+        }
     }
 }

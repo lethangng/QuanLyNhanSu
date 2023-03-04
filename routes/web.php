@@ -127,7 +127,7 @@ Route::middleware(['checkNVTC'])->group(function () {
 
 // Thong tin ca nhan(dung chung)
 Route::prefix('thongtincanhan')->group(function () {
-    Route::get('/', [NhanVienController::class, 'index']);
+    Route::get('/', [NhanVienController::class, 'index'])->name('canhan.index');
     Route::post('/', [NhanVienController::class, 'addPhoto'])->name('canhan.addPhoto');
     Route::post('update-password', [NhanVienController::class, 'updatePassword'])->name('canhan.updatePassword');
 });

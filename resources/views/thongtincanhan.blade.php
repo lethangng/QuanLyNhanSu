@@ -97,7 +97,7 @@
                                     readonly>
 
                                 <label class="label-4" for="">Khoa:</label>
-                                <input type="text" class="fname" value="{{ $canhan->khoa->tenkhoa }}">
+                                <input type="text" class="fname" value="{{ $canhan->khoa->tenkhoa ?? '' }}">
                             </div>
 
                             <div class="form-3">
@@ -146,11 +146,12 @@
                 </div>
             </div>
             {{-- Form cập nhập ảnh đại diện --}}
-            <form action="{{ route('canhan.addPhoto') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('canhan.addPhoto') }}" method="post" enctype="multipart/form-data"
+                id="addphoto">
                 @csrf
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
+                <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="exampleModal"
+                    tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -167,9 +168,8 @@
                                     <label for="" class="col">Hình đã chọn:</label>
                                     <p class="col">hình ảnh</p>
                                 </div> --}}
-                                <input id="photo" name="photo" type="file" accept="image/*"
-                                    onchange="upload()">
-                                <div id="passwordHelp" class="form-text text-danger d-none">Ảnh phải nhỏ hơn 1MB</div>
+                                <input id="photo" name="photo" type="file" accept="image/*">
+                                <div id="passwordHelp" class="form-text text-danger error-text photo_err"></div>
                             </div>
                             <div class="modal-footer">
                                 {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
@@ -179,55 +179,13 @@
                     </div>
                 </div>
             </form>
-            {{-- Xem lương --}}
-            {{-- <div class="modal-salary js-modal ">
-                <div class="modal-container-salary js-modal-container">
-                    <div class="modal-close js-modal-close">
-                        <i class="ti-close"></i>
-                    </div>
-
-                    <div class="header-text">
-                        @php
-                            $month = date('m', strtotime($canhan->luong->ThoiGian));
-                        @endphp
-                        <h2>Phiếu lương tháng {{ $month }}</h2>
-                    </div>
-                    <table>
-                        <tr>
-                            <th class="th1" colspan="2">Họ và tên: {{ $canhan->HoTen }}</th>
-                            <th class="th1">Mã NV: {{ $canhan->Macanhan }}</th>
-                        </tr>
-                        <tr>
-                            <th class="th1">Chức vụ: {{ $canhan->chucVu->TenChucVu }}</th>
-                            <th class="th1">Phòng ban: {{ $canhan->phongBan->TenPhongBan }}</th>
-                            <th class="th1">Lương cơ bản: {{ $canhan->chucVu->LuongCoBan }}</th>
-
-                        </tr>
-                        <tr>
-                            <th class="th1" colspan="2">Tổng tiền thưởng: {{ $canhan->luong->TongTienThuong }}
-                                VNĐ</th>
-                            <th class="th1">Tổng tiền phạt: {{ $canhan->luong->TongTienPhat }} VNĐ</th>
-                        </tr>
-                        <tr>
-                            <th class="th1" colspan="2">Tổng số ngày làm việc làm việc:
-                                {{ $canhan->luong->SoNgayLamViec }}</th>
-                            <th class="th1">Thành tiền: {{ $canhan->luong->TongTienLuong }} VNĐ</th>
-                        </tr>
-                        <tr>
-                            <th class="th1"colspan="3">Tổng số tiền nhân lương của tháng {{ $month }}
-                                là: {{ $canhan->luong->TongTienLuong }} VNĐ</th>
-                        </tr>
-                    </table>
-                </div>
-            </div> --}}
-
 
             {{-- Form đổi mật khẩu --}}
             <form action="{{ route('canhan.updatePassword') }}" method="post">
                 @csrf
                 <!-- Modal -->
                 <div class="modal fade" id="updatePassword" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
+                    aria-hidden="true" id="modal-addphoto">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -271,41 +229,110 @@
 
     {{-- Link bootstrap --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+        crossorigin="anonymous"></script>
     {{-- Link jquery --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
         integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
     <script>
-        const body = document.querySelector('body'),
-            sidebar = body.querySelector('nav'),
-            toggle = body.querySelector(".toggle"),
-            // modeSwitch = body.querySelector(".toggle-switch"),
-            modeText = body.querySelector(".mode-text");
+        // const body = document.querySelector('body'),
+        //     sidebar = body.querySelector('nav'),
+        //     toggle = body.querySelector(".toggle"),
+        //     // modeSwitch = body.querySelector(".toggle-switch"),
+        //     modeText = body.querySelector(".mode-text");
 
-        toggle.addEventListener("click", () => {
-            sidebar.classList.toggle("close");
-        })
+        // toggle.addEventListener("click", () => {
+        //     sidebar.classList.toggle("close");
+        // })
 
-        function upload() {
-            var fuData = document.getElementById('photo');
-            var update = document.getElementById('update');
-            var size = fuData.files[0].size;
-            console.log(size);
+        // function upload() {
+        //     var fuData = document.getElementById('photo');
+        //     var update = document.getElementById('update');
+        //     var size = fuData.files[0].size;
+        //     console.log(size);
 
-            if (size > 10 ** 6) {
-                console.log(size);
-                $('#passwordHelp').removeClass('d-none')
-                update.disabled = true;
-            } else {
-                $('#passwordHelp').addClass('d-none')
-                update.disabled = false;
-                return true
-            }
+        //     if (size > 10 ** 6) {
+        //         console.log(size);
+        //         $('#passwordHelp').removeClass('d-none')
+        //         update.disabled = true;
+        //     } else {
+        //         $('#passwordHelp').addClass('d-none')
+        //         update.disabled = false;
+        //         return true
+        //     }
+        // }
+    </script>
+    {{-- <script>
+        $("#addphoto").on('submit', function(e) {
+            e.preventDefault();
+            console.log($(this).serialize())
+            $.ajax({
+                url: $(this).attr('action'),
+                method: $(this).attr('method'),
+                data: $(this).serialize(),
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                        'content')
+                },
+                processData: false,
+                success: function(data) {
+                    // var jsonData = JSON.parse(data);
+                    var error = document.querySelectorAll(".error-text");
+                    error.innerHTML = "";
+                    if (data.error_check == true) {
+                        $('.photo_err').text(data.msg);
+                    } else {
+                        console.log(data.msg)
+                        formforgot.classList.remove("open");
+                        window.location.href = data.url;
+                    }
+                }
+            });
+        });
+    </script> --}}
+    <script type="text/javascript">
+        const formaddphoto = document.querySelector('.modal');
+
+        function printErrorMsg(msg, $err) {
+            $.each(msg, function(key, value) {
+                $('.' + key + $err).text(value);
+            });
         }
+        $(document).ready(function(e) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $('#addphoto').submit(function(e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    type: 'POST',
+                    url: $(this).attr('action'),
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: (data) => {
+                        // this.reset();
+                        var error = document.querySelectorAll(".error-text");
+                        error.innerHTML = "";
+                        if (data.check == true) {
+                            window.location = $(this).attr('action')
+                        } else {
+                            printErrorMsg(data.error, '_err')
+                            console.log(data);
+                        }
+                    }
+                });
+            });
+        });
     </script>
 
     {{-- xem lương --}}
-    <script>
+    {{-- <script>
         const buyBtns = document.querySelectorAll('.js-buy-ticket');
         const modal = document.querySelector('.js-modal');
         const modalContainer = document.querySelector('.js-modal-container')
@@ -330,7 +357,7 @@
         modalContainer.addEventListener('click', function(event) {
             event.stopPropagation()
         })
-    </script>
+    </script> --}}
 </body>
 
 </html>

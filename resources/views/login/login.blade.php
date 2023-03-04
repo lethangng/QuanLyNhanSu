@@ -35,13 +35,12 @@
                     <h2 class="text-center">Lấy lại mật khẩu</h2>
                     <p>Bạn cần nhập email để lấy lại mật khẩu</p>
                     <div class="panel-body">
-<<<<<<< HEAD
-                        <form id="register-form" role="form" autocomplete="off" class="form" method="POST"
-                            action="{{ route('fogotPassword') }}">
-=======
+
+                        {{-- <form id="register-form" role="form" autocomplete="off" class="form" method="POST"
+                            action="{{ route('fogotPassword') }}"> --}}
+
                         <form id="register-form" role="form" autocomplete="off" class="form"
                             method="POST" action="{{ route('fogotPassword') }}" autocomplete="off">
->>>>>>> 80ad50507b0e31ba45fe7079df1608747c6bbf20
                             @csrf
                             <div class="">
                                 <div class="input-email">

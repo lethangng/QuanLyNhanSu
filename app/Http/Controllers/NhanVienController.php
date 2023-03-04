@@ -7,51 +7,63 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
 use Illuminate\Http\Request;
-// use App\Http\Requests\PublicRequest;
+use App\Http\Requests\PublicRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class NhanVienController extends Controller
 {
     protected $nhanvien;
-    protected $canhan;
     public function __construct(){
         $this->nhanvien = new NhanVien;
-        $this->canhan = $this->nhanvien->thongTinCaNhan();
     }
     public function index() {
-        $title = 'Thông tin cá nhân';
-        // dd(Auth::user());
-        // $canhan = DB::raw('SELECT * FROM nhanvien WHERE id = ' . Auth::user()->manv . ' LIMIT 1');
-        // $canhan = DB::select('SELECT * FROM nhanvien WHERE id = ' . 1 . ' LIMIT 1')[0];
-        // dd($canhan);
-        $canhan = $this->canhan;
-        return view('thongtincanhan', compact('canhan', 'title'));
+        // if(Auth::user()->manv){
+            $title = 'Thông tin cá nhân';
+            $canhan = $this->nhanvien->thongTincanhan();
+            return view('thongtincanhan', compact('canhan', 'title'));
+        // } else {
+        //     return abort(404);
+        // }
     }
 
-    public function addPhoto(Request $request, $id) {
-        $canhan = $this->canhan;
-        // dd($request);
-        if($request->has('photo')) {
-            $file = $request->photo;
-            $ext = $request->photo->extension();
-            $file_name = time().'-'.$canhan->id.'.'.$ext;
-            $file->move(public_path('uploads'), $file_name);
-            NhanVien::where('id', $id)
-            ->update([
-                'anhdaidien' => $file_name
-            ]);
-            toastr()->success('Sửa ảnh đại diện thành công.', 'Sửa thành công');
-            return redirect()->route('canhan.index');
-        } else {
-            toastr()->success('Tải lên thất bại', 'Thất bại');
+    public function addPhoto(Request $request) {
+        $canhan = $this->nhanvien->thongTincanhan();
+        $messsages = array(
+            'required' => ':attribute bắt buộc phải nhập',
+            'mimes' => ':attribute phải là ảnh đuôi png, jpg hoặc jpeg',
+            'max' => ':attribute phải nhỏ hơn 1 MB',
+        );
+        $rules = array(
+            'photo' => 'required|image|mimes:png,jpg,jpeg|max:1024'
+        );
+        $attributes = [
+            'photo' => 'Ảnh'
+        ];
+        if($request->file('photo')) {
+            $validator = Validator::make($request->all(), $rules, $messsages, $attributes);
+            if ($validator->passes()) {
+                $file = $request->photo;
+                $ext = $request->photo->extension();
+                $file_name = time().'-'.$canhan->id.'.'.$ext;
+                // $file->move(public_path('uploads'), $file_name);
+                // NhanVien::where('id', $id)
+                // ->update([
+                //     'anhdaidien' => $file_name
+                // ]);
+                return response()->json(["check" => true]);
+            } else {
+                return response()->json(['error' => $validator->errors()]);
+            }
+
         }
     }
 
     public function updatePassword(Request $request) {
-        $caNhan = NhanVien::select(DB::raw('*'))->where('User_id', '=', Auth::user()->id)->first();
+        $canhan = $this->nhanvien->thongTincanhan();
         $matKhauCu = Auth::user()->password;
         if(Hash::check($request->MatKhauCu, $matKhauCu)) {
-            User::where('id', $caNhan->User_id)
+            User::where('id', $canhan->id)
             ->update([
                 'password' => Hash::make($request->MatKhauMoi)
             ]);
