@@ -212,11 +212,11 @@
                                 Cập nhập ảnh đại điện
                             </button>
                             {{-- <button class="see-salary js-buy-ticket">Xem bảng lương</button> --}}
-                            <button class="btn-changePassword">Đổi mật khẩu</button>
+                            {{-- <button class="btn-changePassword">Đổi mật khẩu</button> --}}
                             <!-- Button trigger modal -->
-                            {{-- <button class="change-password" data-bs-toggle="modal" data-bs-target="#updatePassword">
+                            <button class="change-password" data-bs-toggle="modal" data-bs-target="#updatePassword">
                                 Đổi mật khẩu
-                            </button> --}}
+                            </button>
                         </div>
                     </div>
                 </div>
