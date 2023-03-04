@@ -54,22 +54,25 @@ class NhanVienController extends Controller
                 return response()->json(["check" => true]);
             } else {
                 return response()->json(['error' => $validator->errors()]);
-            }
-
+            } 
         }
     }
 
     public function updatePassword(Request $request) {
         $canhan = $this->nhanvien->thongTincanhan();
-        $matKhauCu = Auth::user()->password;
-        if(Hash::check($request->MatKhauCu, $matKhauCu)) {
-            User::where('id', $canhan->id)
-            ->update([
-                'password' => Hash::make($request->MatKhauMoi)
-            ]);
+        // $matKhauCu = Auth::user()->password;
+        $matKhauCu = DB::raw('SELECT password ');
+        if(Hash::check($request->matkhaucu, $matKhauCu)) {
+            // User::where('id', $canhan->id)
+            // ->update([
+            //     'password' => Hash::make($request->matkhaumoi)
+            // ]);
+            return response()->json(["check" => true]);
+        } else {
+            return response()->json(['error' => 'Mật khẩu không chính xác']);
         }
-        toastr()->success('Sửa mật khẩu thành công.', 'Sửa thành công');
-        return redirect()->route('canhan.index');
+        // toastr()->success('Sửa mật khẩu thành công.', 'Sửa thành công');
+        // return redirect()->route('canhan.index');
     }
 
     public function upfile(Request $request) {
@@ -79,7 +82,7 @@ class NhanVienController extends Controller
             $file_name = time().''.'.'.$ext;
             $publicPath = public_path('uploads/files');
             $file->move($publicPath, $file_name);
-            toastr()->success('Tải lên thành công.', 'Thành công');
+            // toastr()->success('Tải lên thành công.', 'Thành công');
             return redirect()->route('canhan.index');
         } else {
             toastr()->success('Tải lên thất bại.', 'Thất bại');

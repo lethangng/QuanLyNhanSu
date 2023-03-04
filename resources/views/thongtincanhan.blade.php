@@ -79,8 +79,15 @@
                     <div class="container-content-1">
                         <div class="name_and_img">
                             <h3 class="text-content">{{ $canhan->tennv }}</h3>
+                            @php
+                                if ($canhan->anhdaidien) {
+                                    $url = asset('uploads/' . $canhan->anhdaidien);
+                                } else {
+                                    $url = asset('uploads/facebook.jpg');
+                                }
+                            @endphp
                             <div class="image">
-                                <img class="" src="{{ asset('uploads/' . $canhan->anhdaidien) }}" alt="">
+                                <img class="" src="{{ $url }}" alt="">
                             </div>
                         </div>
                         <div class="container-form-1">
@@ -138,7 +145,7 @@
                             {{-- <button class="see-salary js-buy-ticket">Xem bảng lương</button> --}}
                             {{-- <button class="btn-changePassword">Đổi mật khẩu</button> --}}
                             <!-- Button trigger modal -->
-                            <button class="change-password" data-bs-toggle="modal" data-bs-target="#updatePassword">
+                            <button class="change-password" data-bs-toggle="modal" data-bs-target="#modalPassword">
                                 Đổi mật khẩu
                             </button>
                         </div>
@@ -181,11 +188,11 @@
             </form>
 
             {{-- Form đổi mật khẩu --}}
-            <form action="{{ route('canhan.updatePassword') }}" method="post">
+            <form action="{{ route('canhan.updatePassword') }}" method="post" id="updatePassword">
                 @csrf
                 <!-- Modal -->
-                <div class="modal fade" id="updatePassword" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true" id="modal-addphoto">
+                <div class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+                    id="modalPassword">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -196,23 +203,24 @@
                             <div class="modal-body">
                                 <div class="mb-3">
                                     <label class="form-label">Mật khẩu cũ</label>
-                                    <input type="text"
-                                        class="form-control @error('MatKhauCu') border border-danger border-3 @enderror"
-                                        name="MatKhauCu" value="{{ old('MatKhauCu') }}"
+                                    <input type="password" class="form-control" name="matkhaucu"
                                         placeholder="Nhập mật khẩu cũ...">
-                                    @error('MatKhauCu')
-                                        <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
-                                    @enderror
+                                    <div id="passwordHelp" class="form-text text-danger error-text old_password">
+                                    </div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Mật khẩu mới</label>
-                                    <input type="text"
-                                        class="form-control @error('MatKhauMoi') border border-danger border-3 @enderror"
-                                        name="MatKhauMoi" value="{{ old('Mật khẩu mới') }}"
-                                        placeholder="Nhập mật khẩu cũ...">
-                                    @error('MatKhauMoi')
-                                        <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
-                                    @enderror
+                                    <input type="password" class="form-control" name="matkhaumoi"
+                                        placeholder="Nhập mật khẩu mới...">
+                                    <div id="passwordHelp" class="form-text text-danger error-text new_password">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Nhập lại mật khẩu mới</label>
+                                    <input type="password" class="form-control" name="nhaplai"
+                                        placeholder="Nhập lại mật khẩu mới...">
+                                    <div id="passwordHelp" class="form-text text-danger error-text">
+                                    </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -229,68 +237,21 @@
 
     {{-- Link bootstrap --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    {{-- Link jquery --}}
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
         crossorigin="anonymous"></script>
-    {{-- Link jquery --}}
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
-        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
     <script>
-        // const body = document.querySelector('body'),
-        //     sidebar = body.querySelector('nav'),
-        //     toggle = body.querySelector(".toggle"),
-        //     // modeSwitch = body.querySelector(".toggle-switch"),
-        //     modeText = body.querySelector(".mode-text");
+        const body = document.querySelector('body'),
+            sidebar = body.querySelector('nav'),
+            toggle = body.querySelector(".toggle"),
+            // modeSwitch = body.querySelector(".toggle-switch"),
+            modeText = body.querySelector(".mode-text");
 
-        // toggle.addEventListener("click", () => {
-        //     sidebar.classList.toggle("close");
-        // })
-
-        // function upload() {
-        //     var fuData = document.getElementById('photo');
-        //     var update = document.getElementById('update');
-        //     var size = fuData.files[0].size;
-        //     console.log(size);
-
-        //     if (size > 10 ** 6) {
-        //         console.log(size);
-        //         $('#passwordHelp').removeClass('d-none')
-        //         update.disabled = true;
-        //     } else {
-        //         $('#passwordHelp').addClass('d-none')
-        //         update.disabled = false;
-        //         return true
-        //     }
-        // }
+        toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        })
     </script>
-    {{-- <script>
-        $("#addphoto").on('submit', function(e) {
-            e.preventDefault();
-            console.log($(this).serialize())
-            $.ajax({
-                url: $(this).attr('action'),
-                method: $(this).attr('method'),
-                data: $(this).serialize(),
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
-                        'content')
-                },
-                processData: false,
-                success: function(data) {
-                    // var jsonData = JSON.parse(data);
-                    var error = document.querySelectorAll(".error-text");
-                    error.innerHTML = "";
-                    if (data.error_check == true) {
-                        $('.photo_err').text(data.msg);
-                    } else {
-                        console.log(data.msg)
-                        formforgot.classList.remove("open");
-                        window.location.href = data.url;
-                    }
-                }
-            });
-        });
-    </script> --}}
+    {{-- script modal form addphoto --}}
     <script type="text/javascript">
         const formaddphoto = document.querySelector('.modal');
 
@@ -323,6 +284,45 @@
                             window.location = $(this).attr('action')
                         } else {
                             printErrorMsg(data.error, '_err')
+                            console.log(data);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        function checkpassword(checkUser, msg) {
+            if (checkUser) {
+                $('.' + 'old_password' + '_err').text(msg);
+            } else {
+                $('.' + "new_password" + '_err').text(msg);
+            }
+        }
+        $(document).ready(function(e) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $('#updatepassword').submit(function(e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    type: 'POST',
+                    url: $(this).attr('action'),
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: (data) => {
+                        this.reset();
+                        var error = document.querySelectorAll(".error-text");
+                        error.innerHTML = "";
+                        if (data.check == true) {
+                            window.location = $(this).attr('action')
+                        } else {
+                            checkpassword(data.error, '_err')
                             console.log(data);
                         }
                     }

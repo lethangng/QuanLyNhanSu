@@ -122,7 +122,7 @@ Route::middleware(['checkNV'])->group(function () {
 
 // các mục nào viết về nhân viên tài chính thì cho route trong này
 Route::middleware(['checkNVTC'])->group(function () {
-
+    
 });
 
 // Thong tin ca nhan(dung chung)
@@ -132,7 +132,7 @@ Route::prefix('thongtincanhan')->group(function () {
     Route::post('update-password', [NhanVienController::class, 'updatePassword'])->name('canhan.updatePassword');
 });
 
-Route::post('upfile', [ThongTinCaNhanController::class, 'upfile'])->name('upfile');
+// Route::post('upfile', [ThongTinCaNhanController::class, 'upfile'])->name('upfile');
 //test qlns
 Route::get('/sm', [ThongTinCaNhanController::class, 'index2']);
 //Route::get('/sendtextfind',[ThongTinCaNhanController::class,'find2']);
