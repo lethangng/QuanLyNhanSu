@@ -395,66 +395,6 @@ td {
     min-width: 1200px;
 }
 
-/* .image2 {
-
-} */
-
-
-/* ********************* danh sach luong ************* */
-.dsl-main {
-    width: 100%;
-
-}
-
-.ctl-title,
-.dsl-title {
-    text-align: center;
-    padding: 8px 0;
-    background: linear-gradient(90deg, blue, white);
-}
-
-.ctl-title,
-.dsl-title h1 {
-    font-size: 32px;
-    font-weight: 400;
-    color: white;
-}
-
-
-
-/* .input-search{
-    width: 400px;
-    height: 40px;
-    border-radius: 20px;
-    padding: 6px 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-} */
-
-
-.btn-icon-search {
-    background-color: #8cc6c6;
-    padding: 4px 6px;
-    border-radius: 10px;
-    border: 1px solid #000;
-}
-
-.btn-icon-rotate {
-    background-color: #e07979;
-    padding: 4px 6px;
-    border-radius: 10px;
-    border: 1px solid #000;
-}
-
-/* .btn-icon-rotate:hover,
-.btn-icon-search:hover{
-    background-color: #ccc;
-    color: #fff;
-} */
-
-.table-dsl {
-    border: 1px solid #333;
-}
 
 .h1 {
     text-align: center;
@@ -462,10 +402,8 @@ td {
     padding: 8px 8px;
     font-weight: 400;
 }
-
-.h1 .i-edit,
-.h1 .i-save {
-    padding: 5px 8px;
+.h1 .i-edit{
+    padding: 5px 6px;
     background-color: #E3AC6C;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -476,187 +414,7 @@ td {
 
 }
 
-.h1 .i-edit i,
-.h1 .i-rotate i,
-.h1 .i-save i {
-    background-color: #fff;
-}
-
-.h1 .i-rotate {
-    padding: 5px 8px;
-    background-color: #4A6EEB;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    transition: .2s linear;
-}
-
-.i-rotate:hover,
-.i-edit:hover {
-    background-color: #ccc;
-}
-
-/* *********************danh sach luong nhan vien ************* */
-/* 
-.container-dsl {
-    position: relative;
-    top: 15px;
-    left: 2%;
-} */
-/* .date {
-    margin-left: 30px;
-} */
-
-.date label {
-    font-size: 18px;
-}
-
-.input-year,
-.input-month {
-    width: 88px;
-    padding: 1px 6px;
-}
-
-.h1 .i-save {
-    background-color: red;
-    color: #000;
-}
-.h1 .i-save i {
-    color: #000;
-}
-/* .i-save:hover{
-    background-color: #ccc;
-    color: #333;
-} */
-
-.btn-payroll {
-    position: absolute;
-    right: 24%;
-}
-
-.payroll {
-    width: 134px;
-    padding: 8px;
-    background-color: #EB6B6B;
-    color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
-.component-dsl {
-    padding: 30px 0 30px 30px;
-}
-
-.component-dsl form {
-    display: flex;
-    gap: 15px;
-}
-
-
-
-
-
-
-
-/*************** Chi tiết lương ************/
-.text-title h1 {
-    font-size: 22px;
-    text-align: center;
-    padding: 14px 0;
-    font-weight: 400;
-}
-
-.table-container {
-    border: 1px solid #333;
-    background-color: #fff;
-    width: 1052px;
-    height: 324px;
-    position: relative;
-    top: 25px;
-    left: 11%;
-}
-
-.ctl-table {
-    position: absolute;
-    top: 58px;
-}
-
-.btn-salary {
-    position: relative;
-    top: 80px;
-    left: 80%;
-}
-
-.salary {
-    padding: 8px 12px;
-    background-color: #3BC9C9;
-    color: #fff;
-    border: 1px solid #000;
-    border-radius: 5px;
-}
-
-.salary:hover {
-    background-color: rgb(199, 116, 116);
-    color: #333;
-}
-
-/************** Chấm công  **************/
-.chamcong-main {
-    width: 100%;
-}
-
-.cc-title {
-    text-align: center;
-    padding: 8px 0;
-    background: linear-gradient(90deg, blue, white);
-}
-
-.cc-title h1 {
-    font-size: 32px;
-    font-weight: 400;
-    color: white;
-    line-height: 35px;
-}
-
-.text-inf {
-    margin-top: 32px;
-    padding-top: 10px;
-    padding-left: 10px;
-    width: 296px;
-    height: 148px;
-    background-color: aqua;
-}
-
-.text-inf h4 {
-    font-size: 12px;
-    padding-bottom: 8px;
-    font-weight: 400;
-    line-height: 20px;
-}
-
-.container-inf {
-    margin-left: 30px;
-}
-
-.btn-cc {
-    margin-left: 47%;
-}
-
-.timekeeping {
-    padding: 8px 10px;
-    background-color: #3BC9C9;
-    border: none;
-    border-radius: 4px;
-    font-weight: 300;
-}
-
-.date-cc {
-    margin-left: 39%;
-    margin-top: 1%;
-}
-
+/******************************************************/
 
 
 /* Google Font Import - Poppins */
@@ -948,12 +706,7 @@ body.dark .switch::before {
 }
 
 .home {
-    /* position: absolute; */
-    /* top: 0; */
-    /* top: 0; */
-    /* left: 250px; */
     height: 100vh;
-    /* width: calc(100% - 250px); */
     background-color: var(--body-color);
     transition: var(--tran-05);
     width: 100% !important;
@@ -1083,253 +836,553 @@ td {
 }
 
 
-/* ********************* danh sach luong ************* */
+/* ********************* danh sach nhan vien ******************* */
 .dsnv-main {
     width: 100%;
 
 }
 
-.ctl-title,
+
 .dsnv-title {
     text-align: center;
     padding: 8px 0;
-    background: linear-gradient(90deg, blue, white);
+    background: #5582F8;
 }
 
-.ctl-title,
-.dsl-title h1 {
+
+.dsnv-title h1 {
     font-size: 32px;
     font-weight: 400;
     color: white;
+    
 }
 
+.btn-tnv
+{
+    padding-top: 22px;
+    padding-left: 129px;
+}
 
+.nv{
+    background-color: #239393;
+    width: 264px;
+    height: 80px;
+    font-size: 22px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+.nv:hover{
+    background-color: #85DEDE;
+}
 
-.input-search {
-    width: 400px;
+.text-filter{
+    padding-top: 31px;
+    padding-left: 129px;
+}
+
+.text-filter span{
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.form-filter {
+    font-size: 20px;
+    padding:0 20px;
+}
+
+.custom-select-input{
+    padding-top: 31px;
+    padding-left: 129px;
+}
+
+.select-name{
+    width: 300px;
     height: 40px;
-    border-radius: 20px;
-    padding: 6px 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-}
-
-.i-con {
-    /* position: relative; */
-    /* left: 635px; */
-    /* bottom: 38px; */
-    align-self: flex-end;
-}
-
-.btn-icon-search {
-    background-color: #8cc6c6;
-    padding: 4px 6px;
     border-radius: 10px;
-    border: 1px solid #000;
+    padding: 0 10px;
 }
 
-.btn-icon-rotate {
-    background-color: #e07979;
-    padding: 4px 6px;
+
+.input-search-name{
+    width: 400px;
+    height: 50px;
+    display: flex;
+    float: right;
+    border-radius: 50px;
+    padding-left: 12px;
+    margin-top: -6px;
+    margin-right: 8px;
+}
+.icon-search{
+    margin-top: -8px;
+    padding: 0 12px;
+    float: right;
+    
+}
+.icon-search img {
+    height: 52px;
+    width: 50px;
+    background-color: #8CC6C6;
+    padding: 0px;
     border-radius: 10px;
-    border: 1px solid #000;
+    border: 1px solid #333;
+}
+.icon-reset {
+    margin-top: -8px;
+    float:right;
+    padding-right: 46px;
 }
 
-.table-dsl {
+.icon-reset img{
+    width: 50px;
+    height: 52px;
+    background-color: #EE7048;
+    padding: 10px;
+    border-radius: 10px;
     border: 1px solid #333;
 }
 
-.h1 {
-    text-align: center;
-    font-size: 16px;
-    padding: 8px 8px;
-    font-weight: 400;
+.icon-search img:hover{
+    background-color: #D2F0F0;
 }
-.i-rotate:hover,
-.i-edit:hover {
-    background-color: #ccc;
+.icon-reset img:hover{
+    background-color: #EFC5B7;
 }
 
-/* *********************danh sach luong nhan vien ************* */
-
-.container-dsl {
-    margin-top: 60px;
+.list-dsnv{
+    padding-top: 31px;
+    padding-left: 112px;
+}
+.table-dsnv{
+    width: 98%;
+}
+.head-table{
+    padding: 10px;
 }
 
-/* .date{
-    position: relative;
-    top: 10px;
-    left: 215px;
-} */
-.date label {
-    font-size: 18px;
-}
-
-.input-year,
-.input-month {
-    width: 88px;
-    padding: 1px 6px;
-}
-
-.h1 .i-save {
-    background-color: red;
-    padding: 3px 4px;
+.h1 .i-rotate{
+    padding: 5px 6px;
+    background-color: #E53535;
     border: 1px solid #ccc;
-    color: #fff;
-}
-
-.i-save:hover {
-    background-color: #ccc;
-    color: #333;
-}
-
-.btn-payroll {
-    position: absolute;
-    right: 24%;
-}
-
-.payroll {
-    width: 134px;
-    padding: 8px;
-    background-color: #EB6B6B;
-    color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
-.component-dsl {
-    padding: 30px 0 30px 30px;
-}
-
-.component-dsl form {
-    display: flex;
-    gap: 15px;
-}
-
-.i-con button {
-    padding: 8px 15px;
-    display: flex;
+    border-radius: 5px;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
-    height: 46px;
-    transition: .3s linear;
+    transition: .2s linear;
 }
-
-.i-con button i {
-    font-size: 22px;
-    background: #fff;
-    transition: .3s linear;
+.h1 .i-save {
+    border: none;
 }
-
-.i-con button:hover i {
-    font-size: 23px;
-}
-
-.container-input-search input {
-    padding: 22px 32px;
-    border: 1px solid #000;
-    outline: none;
-    border-radius: 100px;
-}
-
-
-
-/*************** Chi tiết lương ************/
-.text-title h1 {
-    font-size: 22px;
-    text-align: center;
-    padding: 14px 0;
-    font-weight: 400;
-}
-
-.table-container {
-    border: 1px solid #333;
-    background-color: #fff;
-    width: 1052px;
-    height: 324px;
-    position: relative;
-    top: 25px;
-    left: 11%;
-}
-
-.ctl-table {
-    position: absolute;
-    top: 58px;
-}
-
-.btn-salary {
-    position: relative;
-    top: 80px;
-    left: 80%;
-}
-
-.salary {
-    padding: 8px 12px;
-    background-color: #3BC9C9;
-    color: #fff;
-    border: 1px solid #000;
+.h1 .i-save img{
+    width: 32px;
+    margin-top: -4px;
+    background-color: #27E050;
+    padding: 2px 2px;
+    border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-.salary:hover {
-    background-color: rgb(199, 116, 116);
-    color: #333;
+.i-rotate:hover{
+    background-color: #F6A3A3;
+}
+.i-save img:hover{
+    background-color: #ACDFAB;
+}
+.i-edit:hover{
+    background-color: #F4D6B2;
 }
 
-/************** Chấm công  **************/
-.chamcong-main {
+/* ********************* danh sach chức vụ ******************* */
+
+.dscv-main {
     width: 100%;
+
 }
 
-.cc-title {
+
+.dscv-title {
     text-align: center;
     padding: 8px 0;
-    background: linear-gradient(90deg, blue, white);
+    background: #5582F8;
 }
 
-.cc-title h1 {
+
+.dscv-title h1 {
     font-size: 32px;
     font-weight: 400;
     color: white;
-    line-height: 35px;
+    
 }
 
-.text-inf {
-    margin-top: 32px;
-    padding-top: 10px;
-    padding-left: 10px;
-    width: 296px;
-    height: 148px;
-    background-color: aqua;
+.btn-tcv
+{
+    padding-top: 22px;
+    padding-left: 129px;
 }
 
-.text-inf h4 {
-    font-size: 12px;
-    padding-bottom: 8px;
-    font-weight: 400;
-    line-height: 20px;
+.custom-input{
+    padding-top: 31px;
+    padding-left: 129px;
 }
 
-.container-inf {
-    margin-left: 30px;
+.input-search-name-1{
+    width: 400px;
+    height: 50px;
+    display: flex;
+    border-radius: 50px;
+    padding-left: 12px;
+    margin-top: -6px;
+    margin-right: 8px;
+}
+.icon-search-1{
+    margin-top: -8px;
+    padding: 0 12px;
+    float: right;
+    
+}
+.icon-search-1 img {
+    height: 52px;
+    width: 50px;
+    background-color: #8CC6C6;
+    padding: 0px;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+.icon-reset-1 {
+    margin-top: -8px;
+    padding-right: 785px;
+    float: right;
 }
 
-.btn-cc {
-    margin-left: 47%;
+.icon-reset-1 img{
+    width: 50px;
+    height: 52px;
+    background-color: #EE7048;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #333;
 }
 
-.timekeeping {
-    padding: 8px 10px;
-    background-color: #3BC9C9;
+.icon-search-1 img:hover{
+    background-color: #D2F0F0;
+}
+.icon-reset-1 img:hover{
+    background-color: #EFC5B7;
+}
+
+.list-dscv{
+    padding-top: 31px;
+    padding-left: 112px;
+}
+.table-dscv{
+    width: 98%;
+}
+
+.i-rotate{
+    padding: 5px 6px;
+    background-color: #E53535;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s linear;
+}
+.i-save {
     border: none;
-    border-radius: 4px;
-    font-weight: 300;
+}
+.i-save img{
+    width: 32px;
+    margin-top: -4px;
+    background-color: #27E050;
+    padding: 2px 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.date-cc {
-    margin-left: 39%;
-    margin-top: 1%;
+.i-rotate:hover{
+    background-color: #F6A3A3;
+}
+.i-save img:hover{
+    background-color: #ACDFAB;
+}
+.i-edit:hover{
+    background-color: #F4D6B2;
+}
+
+/* ********************* danh sach phong ban ******************* */
+
+.dspb-main {
+    width: 100%;
+
+}
+
+.dspb-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
 }
 
 
+.dspb-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+    
+}
 
+.btn-tpb
+{
+    padding-top: 22px;
+    padding-left: 129px;
+}
+
+.icon-search-1 img:hover{
+    background-color: #D2F0F0;
+}
+.icon-reset-1 img:hover{
+    background-color: #EFC5B7;
+}
+
+.list-dspb{
+    padding-top: 31px;
+    padding-left: 112px;
+}
+.table-dspb{
+    width: 98%;
+}
+
+.i-rotate{
+    padding: 5px 6px;
+    background-color: #E53535;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s linear;
+}
+.i-save {
+    border: none;
+}
+.i-save img{
+    width: 32px;
+    margin-top: -4px;
+    background-color: #27E050;
+    padding: 2px 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.i-rotate:hover{
+    background-color: #F6A3A3;
+}
+.i-save img:hover{
+    background-color: #ACDFAB;
+}
+.i-edit:hover{
+    background-color: #F4D6B2;
+}
+
+/* ********************* danh sach khen thuong ******************* */
+
+.dskt-main {
+    width: 100%;
+
+}
+
+.dskt-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+
+
+.dskt-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+    
+}
+
+.btn-tkt
+{
+    padding-top: 22px;
+    padding-left: 129px;
+}
+.date{
+    padding-top: 22px;
+    padding-left: 129px;
+}
+.date label{
+    padding-left: 14px;
+    font-size: 16px;
+}
+.date select{
+    padding-left: 8px;
+    width: 130px;
+}
+.icon-search-1 img:hover{
+    background-color: #D2F0F0;
+}
+.icon-reset-1 img:hover{
+    background-color: #EFC5B7;
+}
+
+.list-dskt{
+    padding-top: 31px;
+    padding-left: 112px;
+}
+.table-dskt{
+    width: 98%;
+}
+
+.i-rotate{
+    padding: 5px 6px;
+    background-color: #E53535;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s linear;
+}
+.i-save {
+    border: none;
+}
+.i-save img{
+    width: 32px;
+    margin-top: -4px;
+    background-color: #27E050;
+    padding: 2px 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.i-rotate:hover{
+    background-color: #F6A3A3;
+}
+.i-save img:hover{
+    background-color: #ACDFAB;
+}
+.i-edit:hover{
+    background-color: #F4D6B2;
+}
+
+
+/* ********************* danh sach ky luat ******************* */
+.dskl-main {
+    width: 100%;
+}
+
+.dskl-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+
+
+.dskl-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+    
+}
+
+.btn-tkl
+{
+    padding-top: 22px;
+    padding-left: 129px;
+}
+.date{
+    padding-top: 22px;
+    padding-left: 129px;
+}
+.date label{
+    padding-left: 14px;
+    font-size: 16px;
+}
+.date select{
+    padding-left: 8px;
+    width: 130px;
+}
+.icon-search-1 img:hover{
+    background-color: #D2F0F0;
+}
+.icon-reset-1 img:hover{
+    background-color: #EFC5B7;
+}
+
+.list-dskl{
+    padding-top: 31px;
+    padding-left: 112px;
+}
+.table-dskl{
+    width: 98%;
+}
+
+.i-rotate{
+    padding: 5px 6px;
+    background-color: #E53535;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s linear;
+}
+.i-save {
+    border: none;
+}
+.i-save img{
+    width: 32px;
+    margin-top: -4px;
+    background-color: #27E050;
+    padding: 2px 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.i-rotate:hover{
+    background-color: #F6A3A3;
+}
+.i-save img:hover{
+    background-color: #ACDFAB;
+}
+.i-edit:hover{
+    background-color: #F4D6B2;
+}
+
+/* ********************* danh sach tang luong ******************* */
+.dstl-main {
+    width: 100%;
+}
+
+.dstl-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+
+
+.dstl-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+    
+}
+
+.btn-ttl
+{
+    padding-top: 22px;
+    padding-left: 129px;
+}
+
+.list-dstl{
+    padding-top: 31px;
+    padding-left: 112px;
+}
+.table-dstl{
+    width: 98%;
+}

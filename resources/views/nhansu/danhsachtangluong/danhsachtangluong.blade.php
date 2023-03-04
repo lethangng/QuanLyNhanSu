@@ -13,7 +13,6 @@
 
     <!----======== CSS ======== -->
     {{-- <link rel="stylesheet" href="./css/style1.css"> --}}
-    <link rel="stylesheet" href="{{ asset('css/style3.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style2.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style1.css') }}">
 
@@ -138,56 +137,65 @@
             </div>
         </nav>
 
-        <div class="dsnv-main">
+        <div class="dstl-main">
             <div class="wrap">
-                <div class="dsnv-title">
-                    <h1>Danh sách nhân viên</h1>
+                <div class="dstl-title">
+                    <h1>Danh sách tăng lương</h1>
                 </div>
-                <div class="btn-tnv">
-                    <button class="nv">Thêm mới nhân viên</button>
+                <div class="btn-ttl">
+                    <button class="nv">Thêm mới tăng lương</button>
+                </div>
+                <div class="date">
+                    <label for="">
+                        Tháng
+                        <select name="" id="">
+                            <option value=""></option>
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="">3</option>
+                            <option value="">4</option>
+                            <option value="">5</option>
+                            <option value="">6</option>
+                            <option value="">7</option>
+                            <option value="">8</option>
+                            <option value="">9</option>
+                            <option value="">10</option>
+                            <option value="">11</option>
+                            <option value="">12</option>
+                        </select>
+                    </label>
+
+                    <label for="">
+                        Năm
+                        <select name="" id="">
+                            <option value=""></option>
+                            <option value="">Năm 2016</option>
+                            <option value="">Năm 2017</option>
+                            <option value="">Năm 2018</option>
+                            <option value="">Năm 2019</option>
+                        </select>
+                    </label>
                 </div>
 
-                <div class="text-filter">
-                    <span>Lọc theo:</span>
-                    <label class="form-filter" for="">
-                        <input class="" type="radio" name="" id=""> Phòng ban
-                    </label>
-                    <label class="form-filter" for="">
-                        <input class="" type="radio" name="" id=""> Chức vụ
-                    </label>
-                    <label class="form-filter" for="">
-                        <input class="" type="radio" name="" id=""> Khoa
-                    </label>
-                </div>
-
-                <div class="custom-select-input">
-                    <select class="select-name" name="" id="">
-                        <option value=""></option>
-                        <option value="">abc</option>
-                    </select>
-                    <span class="icon-reset">
+                <div class="custom-input">
+                    <span class="icon-reset-1">
                         <img src="{{ asset('icon/reset.png') }}" alt="">
                     </span>
-                    <span class="icon-search">
+                    <span class="icon-search-1">
                         <img src="{{ asset('icon/search.png') }}" alt="">
                     </span>
                    
-                    <input class="input-search-name" type="text" placeholder="Nhập tên nhân viên cần tìm">
+                    <input class="input-search-name-1" type="text" placeholder="Nhập mã nhân viên cần tìm">
                    
                 </div>
-                <div class="list-dsnv">
-                    <table class="table-dsnv table-bordered">
+                <div class="list-dstl">
+                    <table class="table-dstl table-bordered">
                         <thead>
                           <tr class = "bg-info">
                             <th class="head-table" scope="col">Mã nhân viên</th>
-                            <th class="head-table" scope="col">Họ tên</th>
-                            <th class="head-table" scope="col">Emai</th>
-                            <th class="head-table" scope="col">CMND</th>
-                            <th class="head-table" scope="col">Giới tính</th>
-                            <th class="head-table" scope="col">Chức vụ</th>
-                            <th class="head-table" scope="col">Tên phòng ban</th>
-                            <th class="head-table" scope="col">Khoa</th>
-                            <th class="head-table" scope="col">Trạng thái</th>
+                            <th class="head-table" scope="col">Tên nhân viên</th>
+                            <th class="head-table" scope="col">Ngày khen thưởng</th>
+                            <th class="head-table" scope="col">Lý do</th>
                             <th class="head-table" scope="col"></th>
                           </tr>
                         </thead>
@@ -195,13 +203,8 @@
                           <tr class="">
                             <th class="h1" scope="row">1</th>
                             <th class="h1" scope="row">Vũ Trí Thành</th>
-                            <th class="h1" scope="row">thanhvu@</th>
-                            <th class="h1" scope="row">23929923012</th>
-                            <th class="h1" scope="row">Nam</th>
-                            <th class="h1" scope="row">Giám đốc</th>
-                            <th class="h1" scope="row">Phòng nhân sự</th>
-                            <th class="h1" scope="row">Null</th>
-                            <th class="h1" scope="row">Đi làm</th>
+                            <th class="h1" scope="row">10/10/2020</th>
+                            <th class="h1" scope="row">Không có</th>
                             <th class="h1" scope="row">
                                 <button class="i-save">
                                     <img src="{{ asset('icon/save.png') }}" alt="">
@@ -212,7 +215,6 @@
                                 <button class="i-rotate">
                                     <i class='bx bx-trash'></i>
                                 </button>
-                                
                             </th>
                           </tr>
                         </tbody>
