@@ -28,9 +28,9 @@
         <nav class="sidebar close">
             <header>
                 <div class="image-text">
-                    {{-- <span class="image2">
+                    <span class="image-2">
                         <img src="{{ asset('css/Img/download.jpeg') }}" alt="">
-                    </span> --}}
+                    </span>
                     <div class="text logo-text">
                         <span class="name">Team 3</span>
                         <span class="profession">Web developer</span>
@@ -45,15 +45,82 @@
                     <ul class="menu-links">
                         <li class="nav-link">
                             <a href="#">
-                                <i class='bx bx-home-alt icon'></i>
-                                <span class="text nav-text">Chấm công</span>
+                                <span class="icon-home">
+                                    <img src="{{ asset('icon/nhanvien.png') }}" alt="">
+                                </span>
+                                <span class="text nav-text">Quản lý nhân viên</span>
                             </a>
                         </li>
 
                         <li class="nav-link">
                             <a href="{{ route('canhan.index') }}">
-                                <i class='bx bx-bar-chart-alt-2 icon'></i>
-                                <span class="text nav-text">Thông tin cái nhân</span>
+                                <span class="icon-home">
+                                    <img src="{{ asset('icon/chucvu.png') }}" alt="">
+                                </span>
+                                <span class="text nav-text">Quản lý chức vụ</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="{{ route('canhan.index') }}">
+                                <span class="icon-home">
+                                    <img src="{{ asset('icon/phongban.png') }}" alt="">
+                                </span>
+                                <span class="text nav-text">Quản lý phòng ban</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="{{ route('canhan.index') }}">
+                                <span class="icon-home">
+                                    <img src="{{ asset('icon/khoa.png') }}" alt="">
+                                </span>
+                                <span class="text nav-text">Quản lý khoa</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="{{ route('canhan.index') }}">
+                                <span class="icon-home">
+                                    <img src="{{ asset('icon/khenthuong.png') }}" alt="">
+                                </span>
+                                <span class="text nav-text">Quản lý khen thưởng</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="{{ route('canhan.index') }}">
+                                <span class="icon-home">
+                                    <img src="{{ asset('icon/kyluat.png') }}" alt="">
+                                </span>
+                                <span class="text nav-text">Quản lý kỷ luật</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="{{ route('canhan.index') }}">
+                                <span class="icon-home">
+                                    <img src="{{ asset('icon/luong.png') }}" alt="">
+                                </span>
+                                <span class="text nav-text">Quản lý tăng lương</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="{{ route('canhan.index') }}">
+                                <span class="icon-home">
+                                    <img src="{{ asset('icon/hopdong.png') }}" alt="">
+                                </span>
+                                <span class="text nav-text">Quản lý hợp đồng</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="{{ route('canhan.index') }}">
+                                <span class="icon-home">
+                                    <img src="{{ asset('icon/thongtincanhan.png') }}" alt="">
+                                </span>
+                                <span class="text nav-text">Quản lý thông tin cái nhân</span>
                             </a>
                         </li>
                     </ul>
@@ -62,7 +129,9 @@
                 <div class="bottom-content">
                     <li class="">
                         <a href="{{ route('login') }}">
-                            <i class='bx bx-log-out icon'></i>
+                            <span class="icon-home">
+                                <img src="{{ asset('icon/logout.png') }}" alt="">
+                            </span>
                             <span class="text nav-text">Logout</span>
                         </a>
                     </li>
@@ -236,15 +305,15 @@
         integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
     <script>
-        // const body = document.querySelector('body'),
-        //     sidebar = body.querySelector('nav'),
-        //     toggle = body.querySelector(".toggle"),
-        //     // modeSwitch = body.querySelector(".toggle-switch"),
-        //     modeText = body.querySelector(".mode-text");
+        const body = document.querySelector('body'),
+            sidebar = body.querySelector('nav'),
+            toggle = body.querySelector(".toggle"),
+            // modeSwitch = body.querySelector(".toggle-switch"),
+            modeText = body.querySelector(".mode-text");
 
-        // toggle.addEventListener("click", () => {
-        //     sidebar.classList.toggle("close");
-        // })
+        toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        })
 
         // function upload() {
         //     var fuData = document.getElementById('photo');
@@ -330,34 +399,6 @@
             });
         });
     </script>
-
-    {{-- xem lương --}}
-    {{-- <script>
-        const buyBtns = document.querySelectorAll('.js-buy-ticket');
-        const modal = document.querySelector('.js-modal');
-        const modalContainer = document.querySelector('.js-modal-container')
-        const modalClose = document.querySelector('.js-modal-close');
-
-        function showSalary() {
-            modal.classList.add('open')
-        }
-
-        function hideSalary() {
-            modal.classList.remove('open')
-        }
-
-        for (const buyBtn of buyBtns) {
-            buyBtn.addEventListener('click', showSalary)
-        }
-
-        modalClose.addEventListener('click', hideSalary)
-
-        modal.addEventListener('click', hideSalary)
-
-        modalContainer.addEventListener('click', function(event) {
-            event.stopPropagation()
-        })
-    </script> --}}
 </body>
 
 </html>
