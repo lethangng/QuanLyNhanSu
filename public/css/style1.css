@@ -888,7 +888,7 @@ body.dark .sidebar li a:hover .text {
     flex-direction: column;
     justify-content: space-between;
     overflow-y: scroll;
-    margin-top: -20px;
+   
 }
 
 .menu-bar::-webkit-scrollbar {
