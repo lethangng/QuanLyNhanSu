@@ -118,3 +118,10 @@ Route::get('/smkhoa', [KhoaController::class, 'index']);
 Route::view('/smkhoa2', 'nhansu.danhsachkhoa.quanlykhoa');
 Route::view('/sm2', 'nhansu.danhsachnhanvien.danhsachnhanvien');
 
+
+
+
+
+//ajax 
+Route::post('/ajax_tennv', [KhenThuongController::class, 'findNameNv']);
+
