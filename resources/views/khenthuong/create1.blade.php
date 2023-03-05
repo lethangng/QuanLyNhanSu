@@ -9,9 +9,6 @@
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Tên nhân viên</label>
             <input type="text" class="form-control" name="tennv" value="{{ old('tennv') }}">
-            @error('err_tennv')
-                <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
-            @enderror
             @error('tennv')
                 <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
             @enderror
@@ -46,6 +43,5 @@
         </div>
         @csrf
         <button type="submit" class="btn btn-warning text-light">Thêm</button>
-        <a href="{{ route('khenthuong.index') }}" type="button" class="btn btn-primary">Quay lại</a>
     </form>
 @endsection
