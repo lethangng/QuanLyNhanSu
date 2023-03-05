@@ -152,7 +152,6 @@ class KhenThuongController extends Controller
         return view('khenthuong.index', compact('khenthuongs', 'data'));
     }
 
-
     public function findNameNv(Request $request)
     {
         $user = NhanVien::where('id', $request->dataId)->first();

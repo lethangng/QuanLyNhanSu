@@ -98,6 +98,8 @@ Route::prefix('khenthuong')->group(function () {
     Route::delete('{id}/destroy', [KhenThuongController::class, 'destroy'])->whereNumber('id')->name('khenthuong.destroy');
     Route::post('search', [KhenThuongController::class, 'search'])->name('khenthuong.search');
 });
+//ajax 
+Route::post('/ajax_tennv', [KhenThuongController::class, 'findNameNv']);
 
 // Danh sach ky luat
 Route::prefix('kyluat')->group(function () {
@@ -123,6 +125,4 @@ Route::view('/sm2', 'nhansu.danhsachnhanvien.danhsachnhanvien');
 
 
 
-//ajax 
-Route::post('/ajax_tennv', [KhenThuongController::class, 'findNameNv']);
 
