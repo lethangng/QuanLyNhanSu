@@ -20,9 +20,14 @@
                             <label for="">Mã nhân viên</label>
                         </div>
                         <input class="ip-mnv" type="text" name="manv" id="ma_nhanvien"
+<<<<<<< HEAD
+                            placeholder="Nhập mã nhân viên..." >
+                        <div id="err_ajax" class="form-text text-danger text-danger_manv"></div>
+=======
                             placeholder="Nhập mã nhân viên...">
+>>>>>>> 2f70affcd58d2ddf13946616ca3b5fdc76c5a0c4
                         @error('manv')
-                            <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
+                            <div id="passwordHelp" class="form-text text-danger text-danger_manv">{{ $message }}</div>
                         @enderror
                         <div class="ngkt">
                             <label for="">Ngày khen thưởng:</label>
@@ -78,6 +83,28 @@
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
         crossorigin="anonymous"></script>
     <script>
+<<<<<<< HEAD
+    
+            var maNv = $("#ma_nhanvien").attr('src');
+            $("#ma_nhanvien").blur(function (e) { 
+                console.log( $("#ma_nhanvien").val())
+                $.ajax({
+                    url:'/ajax_tennv' ,
+                    method: "POST",
+                    data:{'dataId':  $("input[name='manv']").val()},
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                            'content')
+                    },
+                    success: function(data) {
+                        console.log(data.msg)
+                        if(data.check == true) 
+                            $('#err_ajax').text( data.msg)
+                        else
+                            $("#ten_nhanvien").val(data.msg)
+                    }
+                });
+=======
         var maNv = $("#ma_nhanvien").attr('src');
         $("#ma_nhanvien").blur(function(e) {
             console.log($("#ma_nhanvien").val())
@@ -94,6 +121,7 @@
                 success: function(data) {
                     $("#ten_nhanvien").val(data.msg)
                 }
+>>>>>>> 2f70affcd58d2ddf13946616ca3b5fdc76c5a0c4
             });
         });
         // $("#ma_nhanvien").bl(function() {
