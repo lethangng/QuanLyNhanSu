@@ -14,7 +14,6 @@ class KhenThuongController extends Controller
     public function __construct(){
         $this->khenthuong = new KhenThuong;
         $this->nhanvien = new NhanVien;
-        // $this->nhanvien = NhanVien::select(DB::raw('id, tennv'))->first();
     }
     /**
      * Display a listing of the resource.
@@ -24,9 +23,8 @@ class KhenThuongController extends Controller
     public function index()
     {
         $title = 'Danh sách khen thưởng';
-        $khenThuongs = KhenThuong::paginate(5);
-        // $caNhans = NhanVien::select(DB::raw('id, HoTen'))->get();
-        return view('nhansu.khenThuong_CaNhan.index', compact('khenThuongs', 'title')); 
+        $khenthuongs = KhenThuong::paginate(5);
+        return view('khenthuong.index', compact('khenthuongs', 'title')); 
     }
 
     /**

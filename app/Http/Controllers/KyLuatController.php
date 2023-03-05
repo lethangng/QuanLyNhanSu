@@ -3,20 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\KyLuat_ThongTinCaNhan;
 use App\Models\KyLuat;
-use App\Models\ThongTinCaNhan;
+use App\Models\NhanVien;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\KyLuat_CaNhanRequest;
+use App\Http\Requests\KyLuatRequest;
 // use Yoeunes\Toastr\Toastr;
-class KyLuat_CaNhanController extends Controller
+class KyLuatController extends Controller
 {
-    // protected $caNhans;
-    // protected $kyLuats;
-    // public function __construct() {
-    //     $this->caNhans = ThongTinCaNhan::select(DB::raw('id, HoTen'))->get();
-    //     $this->kyLuats = KyLuat::all();
-    // }
+    protected $kyluat;
+    protected $nhanvien;
+    public function __construct(){
+        $this->kyluat = new KyLuat;
+        $this->nhanvien = new NhanVien;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -24,10 +23,9 @@ class KyLuat_CaNhanController extends Controller
      */
     public function index()
     {
-        $title = 'Danh sách kỷ luật của nhân viên';
-        $kyLuat_CaNhans = KyLuat_ThongTinCaNhan::paginate(5);
-        $caNhans = ThongTinCaNhan::select(DB::raw('id, HoTen'))->get();
-        return view('nhansu.kyLuat_CaNhan.index', compact('kyLuat_CaNhans', 'title', 'caNhans')); 
+        $title = 'Danh sách kỷ luật';
+        $kyluats = KyLuat::paginate(5);
+        return view('kyluat.index', compact('kyluats', 'title')); 
     }
 
     /**
@@ -39,7 +37,6 @@ class KyLuat_CaNhanController extends Controller
     {
         $title = 'Thêm mới kỷ luật của nhân viên';
         $kyLuats = KyLuat::all();
-        $caNhans = ThongTinCaNhan::select(DB::raw('id, HoTen'))->get();
         return view('nhansu.kyLuat_CaNhan.create', compact('title', 'kyLuats', 'caNhans'));
     }
 
@@ -49,17 +46,15 @@ class KyLuat_CaNhanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(KyLuat_CaNhanRequest $request)
+    public function store(KyLuatRequest $request)
     {
-        KyLuat_ThongTinCaNhan::create([
+        KyLuat::create([
             'KyLuat_id' => $request->KyLuat_id,
             'ThongTinCaNhan_id' => $request->ThongTinCaNhan_id,
             'NgayKyLuat' => $request->NgayKyLuat,
             'ChiTietKyLuat' => $request->ChiTietKyLuat
         ]);
-
-        $hoTen = ThongTinCaNhan::select('HoTen')->where('id', '=', $request->ThongTinCaNhan_id)->first()->HoTen;
-        toastr()->success('Thêm kỷ luật cho nhân viên '. $hoTen .' thành công.', 'Thêm thành công');
+        toastr()->success('Thêm kỷ luật cho nhân viên '.' thành công.', 'Thêm thành công');
         return redirect()->route('kyluat_canhan.index');
     }
 
@@ -72,9 +67,8 @@ class KyLuat_CaNhanController extends Controller
     public function edit($id)
     {
         $title = 'Cập nhập kỷ luật của nhân viên';
-        $kyLuat_CaNhans = KyLuat_ThongTinCaNhan::find($id);
+        $kyLuat_CaNhans = KyLuat::find($id);
         $kyLuats = KyLuat::all();
-        $caNhans = ThongTinCaNhan::select(DB::raw('id, HoTen'))->get();
         // dd($KyLuat);
         return view('nhansu.kyLuat_CaNhan.edit', compact('kyLuat_CaNhans', 'title', 'kyLuats', 'caNhans'));
     }
@@ -86,19 +80,17 @@ class KyLuat_CaNhanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(KyLuat_CaNhanRequest $request, $id)
+    public function update(KyLuatRequest $request, $id)
     {
         // dd($request);
-        KyLuat_ThongTinCaNhan::where('id', $id)
+        KyLuat::where('id', $id)
         ->update([
             'KyLuat_id' => $request->KyLuat_id,
             'ThongTinCaNhan_id' => $request->ThongTinCaNhan_id,
             'NgayKyLuat' => $request->NgayKyLuat,
             'ChiTietKyLuat' => $request->ChiTietKyLuat
         ]);
-        $hoTen = ThongTinCaNhan::select('HoTen')->where('id', '=', $request->ThongTinCaNhan_id)->first()->HoTen;
-        // dd($hoTen);
-        toastr()->success('Sửa kỷ luật của nhân viên '. $hoTen .' thành công.', 'Sửa thành công');
+        toastr()->success('Sửa kỷ luật của nhân viên ' .' thành công.', 'Sửa thành công');
         return redirect()->route('kyluat_canhan.index');
     }
 
@@ -110,14 +102,13 @@ class KyLuat_CaNhanController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        KyLuat_ThongTinCaNhan::where('id', $id)->delete();
+        KyLuat::where('id', $id)->delete();
         toastr()->success('Xóa kỷ luật của nhân viên '. $request->HoTen . ' thành công.', 'Xóa thành công');
 
         return redirect()->route('kyluat_canhan.index');
     }
 
     public function search(Request $request) {
-        $caNhans = ThongTinCaNhan::select(DB::raw('id, HoTen'))->get();
         // dd($request);
         $data = [
             'Thang' => $request->Thang,
@@ -127,14 +118,14 @@ class KyLuat_CaNhanController extends Controller
         // dd($data['Thang']);
         // dd($data);
 
-        // Lấy ra các ThongTinCaNhan_id trong bảng kyLuat_thongtincanhan khi biết HoTen trong bảng thongtincanhan
-        $thongTinCaNhan_ids = KyLuat_ThongTinCaNhan::select('ThongTinCaNhan_id')
-        ->join('thongtincanhan', 'KyLuat_ThongTinCaNhan.ThongTinCaNhan_id', '=', 'thongtincanhan.id')
+        // Lấy ra các ThongTinCaNhan_id trong bảng KyLuat khi biết HoTen trong bảng thongtincanhan
+        $thongTinCaNhan_ids = KyLuat::select('ThongTinCaNhan_id')
+        ->join('thongtincanhan', 'KyLuat.ThongTinCaNhan_id', '=', 'thongtincanhan.id')
         ->where('thongtincanhan.HoTen', '=', $request->HoTen)->get();
         // dd($thongTinCaNhan_ids);
 
-        // Tìm ra trong bảng kyLuat_thongtincanhan có id nào gióng với id của thongtincanhan_id bên trên
-        $kyLuat_CaNhans = KyLuat_ThongTinCaNhan::select('*')
+        // Tìm ra trong bảng KyLuat có id nào gióng với id của thongtincanhan_id bên trên
+        $kyLuat_CaNhans = KyLuat::select('*')
         ->whereMonth('NgayKyLuat', $request->Thang)
         ->orwhereYear('NgayKyLuat', $request->Nam)
         ->orwhereIn('ThongTinCaNhan_id', $thongTinCaNhan_ids)->paginate(5);

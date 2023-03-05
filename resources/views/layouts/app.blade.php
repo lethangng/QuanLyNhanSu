@@ -19,9 +19,10 @@
 
     <!----===== Boxicons CSS ===== -->
 
-    
+    <title>@yield('title')</title>
 
 </head>
+
 <body>
     <div class="wrap-thongtincanhan">
         <nav class="sidebar close">
@@ -79,7 +80,7 @@
                         </li>
 
                         <li class="nav-link">
-                            <a href="{{ route('danhsachkhenthuong') }}">
+                            <a href="{{ route('khenthuong.index') }}">
                                 <span class="icon-home">
                                     <img src="{{ asset('icon/khenthuong.png') }}" alt="">
                                 </span>
@@ -88,7 +89,7 @@
                         </li>
 
                         <li class="nav-link">
-                            <a href="{{ route('danhsachkyluat') }}">
+                            <a href="{{ route('kyluat.index') }}">
                                 <span class="icon-home">
                                     <img src="{{ asset('icon/kyluat.png') }}" alt="">
                                 </span>
@@ -141,17 +142,16 @@
         /div>
 
         <script>
-              const body = document.querySelector('body'),
+            const body = document.querySelector('body'),
                 sidebar = body.querySelector('nav'),
                 toggle = body.querySelector(".toggle"),
                 // modeSwitch = body.querySelector(".toggle-switch"),
                 modeText = body.querySelector(".mode-text");
-    
+
             toggle.addEventListener("click", () => {
                 sidebar.classList.toggle("close");
             })
         </script>
-    </body>
-    
-    </html>
-    
+</body>
+
+</html>

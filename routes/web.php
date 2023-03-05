@@ -6,7 +6,7 @@ use App\Http\Controllers\KhenThuongController;
 use App\Http\Controllers\KyLuatController;
 use App\Http\Controllers\NhanVienController;
 use App\Http\Controllers\KhoaController;
-
+use App\Http\Controllers\ThongTinController;
 use Illuminate\Routing\Router;
 
 /*
@@ -29,12 +29,12 @@ Route::get('/danhsachchucvu', function () {
 Route::get('/quanlykhoa', function () {
     return view('nhansu.danhsachkhoa.quanlykhoa');
 })->name('danhsachkhoa');
-Route::get('/danhsachkhenthuong', function () {
-    return view('nhansu.danhsachkhenthuong.danhsachkhenthuong');
-})->name('danhsachkhenthuong');
-Route::get('/danhsachkyluat', function () {
-    return view('nhansu.danhsachkyluat.danhsachkyluat');
-})->name('danhsachkyluat');
+// Route::get('/danhsachkhenthuong', function () {
+//     return view('nhansu.danhsachkhenthuong.danhsachkhenthuong');
+// })->name('danhsachkhenthuong');
+// Route::get('/danhsachkyluat', function () {
+//     return view('nhansu.danhsachkyluat.danhsachkyluat');
+// })->name('danhsachkyluat');
 Route::get('/danhsachphongban', function () {
     return view('nhansu.danhsachphongban.danhsachphongban');
 })->name('danhsachphongban');
@@ -49,8 +49,6 @@ Route::get('/themmoinhanvien', function () {
 
 Route::get('/', [loginController::class, "home"])->name('login');
 Route::post('/', [loginController::class, "submitLogin"])->name('submitLogin');
-
-
 
 Route::post('/fogotPassword', [loginController::class, "fogotPassword"])->name('fogotPassword');
 
@@ -71,22 +69,16 @@ Route::middleware(['checkNVNS'])->group(function () {
 
 // các mục nào viết về nhân viên thì cho route trong này
 Route::middleware(['checkNV'])->group(function () {
-    // Thong tin ca nhan
-    Route::prefix('nhanvien/thongtincanhan')->group(function () {
-        Route::get('/', [ThongTinCaNhanController::class, 'index'])->name('canhan.index');
-    });
+
 });
 
-// các mục nào viết về nhân viên tài chính thì cho route trong này
-Route::middleware(['checkNVTC'])->group(function () {
-    
-});
 
 // Thong tin ca nhan(dung chung)
 Route::prefix('thongtincanhan')->group(function () {
-    Route::get('/', [NhanVienController::class, 'index'])->name('canhan.index');
-    Route::post('/', [NhanVienController::class, 'addPhoto'])->name('canhan.addPhoto');
-    Route::post('update-password', [NhanVienController::class, 'updatePassword'])->name('canhan.updatePassword');
+    // Route::get('{id}', [ThongTinController::class, 'index'])->defaults('id', '')->name('canhan.index');
+    Route::get('/', [ThongTinController::class, 'index'])->name('canhan.index');
+    Route::post('/', [ThongTinController::class, 'addPhoto'])->name('canhan.addPhoto');
+    Route::post('update-password', [ThongTinController::class, 'updatePassword'])->name('canhan.updatePassword');
 });
 
 // Danh sach khen thuong 
@@ -110,8 +102,6 @@ Route::prefix('kyluat')->group(function () {
     Route::delete('{id}/destroy', [KyLuatController::class, 'destroy'])->whereNumber('id')->name('kyluat.destroy');
     Route::post('search', [KyLuatController::class, 'search'])->name('kyluat.search');
 });
-
-
 
 
 // Route::post('upfile', [ThongTinCaNhanController::class, 'upfile'])->name('upfile');
