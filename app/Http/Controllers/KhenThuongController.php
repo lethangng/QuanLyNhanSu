@@ -152,8 +152,8 @@ class KhenThuongController extends Controller
 
     public function findNameNv(Request $request)
     {
-        $user = NhanVien::where('id', $request->dataId)->first();
-        // return response()->json(['msg' => $user->tennv]);
-        return response()->json(['msg' => $user->tennv]);
+        if ($user = NhanVien::where('id', $request->dataId)->first())
+            return response()->json(['check' => false, 'msg' => $user->tennv]);
+        return response()->json(['check' => true, 'msg' => 'Mã nhân viên không tồn tại']);
     }
 }

@@ -22,8 +22,9 @@
                         </div>
                         <input class="ip-mnv" type="text" name="manv" id="ma_nhanvien"
                             placeholder="Nhập mã nhân viên..." >
+                        <div id="err_ajax" class="form-text text-danger text-danger_manv"></div>
                         @error('manv')
-                            <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
+                            <div id="passwordHelp" class="form-text text-danger text-danger_manv">{{ $message }}</div>
                         @enderror
                         <div class="ngkt">
                             <label for="">Ngày khen thưởng:</label>
@@ -92,7 +93,11 @@
                             'content')
                     },
                     success: function(data) {
-                        $("#ten_nhanvien").val(data.msg)
+                        console.log(data.msg)
+                        if(data.check == true) 
+                            $('#err_ajax').text( data.msg)
+                        else
+                            $("#ten_nhanvien").val(data.msg)
                     }
                 });
             });
