@@ -29,7 +29,7 @@ class KhenThuongRequest extends FormRequest
             'tennv' => 'required',
             'ngaykhenthuong' => 'required|date',
             'lydo' => 'required',
-            'file' => 'required|mimes:png,jpg,jpeg,doc,docx,pdf|max:10024',
+            // 'file' => 'required|mimes:png,jpg,jpeg,doc,docx,pdf|max:10024',
         ];
     }
     public function messages()
@@ -38,7 +38,7 @@ class KhenThuongRequest extends FormRequest
             'required' => ':attribute bắt buộc phải nhập',
             'date' => ':attribute phải là định dạng ngày tháng',
             'exists' => ':attribute không tồn tại.',
-            'file.max' => ':attribute phải nhỏ hơn 10 MB'
+            // 'file.max' => ':attribute phải nhỏ hơn 10 MB'
         ];
     }
     public function attributes()
