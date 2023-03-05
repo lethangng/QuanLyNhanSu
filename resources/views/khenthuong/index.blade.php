@@ -93,9 +93,14 @@
                                     <button class="i-edit">
                                         <i class='bx bx-edit'></i>
                                     </button>
-                                    <button class="i-rotate">
-                                        <i class='bx bx-trash'></i>
-                                    </button>
+                                    <form action="{{ route('khenthuong.destroy', ['id' => $khenthuong->id]) }}"
+                                        method="post">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button class="i-rotate" type="submit">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </form>
                                 </th>
                             </tr>
                         @endforeach

@@ -25,7 +25,7 @@ class KhenThuongController extends Controller
     {
         if(Auth::user()) {
             $title = 'Danh sách khen thưởng';
-            $khenthuongs = KhenThuong::paginate(5);
+            $khenthuongs = KhenThuong::paginate(3);
             return view('khenthuong.index', compact('khenthuongs', 'title')); 
         } else {
             return redirect()->route('login');
@@ -68,6 +68,7 @@ class KhenThuongController extends Controller
                 'lydo' => $request->lydo,
                 'chitietkhenthuong' => $file_name
             ]);
+            toastr()->success('Thêm thành công.', 'Thành công');
             return redirect()->route('khenthuong.index');
         } else {
             return redirect()->route('khenthuong.index');
