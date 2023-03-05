@@ -29,8 +29,8 @@ Route::get('/danhsachnhanvien', function () {
 Route::get('/danhsachchucvu', function () {
     return view('nhansu.danhsachchucvu.danhsachchucvu');
 })->name('danhsachchucvu');
-Route::get('/quanlykhoa', function () {
-    return view('nhansu.danhsachkhoa.quanlykhoa');
+Route::get('/danhsachkhoa', function () {
+    return view('nhansu.danhsachkhoa.danhsachkhoa');
 })->name('danhsachkhoa');
 
 Route::get('/danhsachphongban', function () {
@@ -44,6 +44,10 @@ Route::get('/danhsachtangluong', function () {
 Route::get('/themmoinhanvien', function () {
     return view('nhansu.danhsachnhanvien.themmoinhanvien');
 })->name('themmoinhanvien');
+
+Route::get('/danhsachhopdong', function () {
+    return view('nhansu.danhsachhopdong.danhsachhopdong');
+})->name('danhsachhopdong');
 
 Route::get('/', [loginController::class, "home"])->name('login');
 Route::post('/', [loginController::class, "submitLogin"])->name('submitLogin');
@@ -67,18 +71,7 @@ Route::middleware(['checkNVNS'])->group(function () {
 
 // các mục nào viết về nhân viên thì cho route trong này
 Route::middleware(['checkNV'])->group(function () {
-<<<<<<< HEAD
-    // Thong tin ca nhan
-    Route::prefix('nhanvien/thongtincanhan')->group(function () {
-        Route::get('/', [ThongTinCaNhanController::class, 'index'])->name('canhan.index');
-    });
-});
 
-// các mục nào viết về nhân viên tài chính thì cho route trong này
-Route::middleware(['checkNVTC'])->group(function () {
-=======
-
->>>>>>> aff57809f7f06c8935bc02f11880bb7100268992
 });
 
 
@@ -119,5 +112,5 @@ Route::get('/sm', [NhanvienController::class, 'index2']);
 //Route::get('/sendtextfind',[ThongTinCaNhanController::class,'find2']);
 Route::get('/smkhoa', [KhoaController::class, 'index']);
 Route::view('/smkhoa2', 'nhansu.danhsachkhoa.quanlykhoa');
-Route::view('/themkhoa', 'nhansu.danhsachkhoa.themkhoa');
 Route::view('/sm2', 'nhansu.danhsachnhanvien.danhsachnhanvien');
+
