@@ -18,13 +18,13 @@ class NhanVienController extends Controller
         $this->nhanvien = new NhanVien;
     }
     public function index() {
-        // if(Auth::user()->manv){
+        if(Auth::user()){
             $title = 'Thông tin cá nhân';
             $canhan = $this->nhanvien->info();
             return view('thongtincanhan', compact('canhan', 'title'));
-        // } else {
-        //     return abort(404);
-        // }
+        } else {
+            return abort(404);
+        }
     }
 
     public function addPhoto(Request $request) {
@@ -46,11 +46,11 @@ class NhanVienController extends Controller
                 $file = $request->photo;
                 $ext = $request->photo->extension();
                 $file_name = time().'-'.$canhan->id.'.'.$ext;
-                // $file->move(public_path('uploads'), $file_name);
-                // NhanVien::where('id', $id)
-                // ->update([
-                //     'anhdaidien' => $file_name
-                // ]);
+                $file->move(public_path('uploads/images'), $file_name);
+                NhanVien::where('id', Auth::user()->manv)
+                ->update([
+                    'anhdaidien' => $file_name
+                ]);
                 return response()->json(["check" => true]);
             } else {
                 return response()->json(['error' => $validator->errors()]);
@@ -59,16 +59,16 @@ class NhanVienController extends Controller
     }
 
     public function updatePassword(Request $request) {
-        $canhan = $this->nhanvien->info();
-        // $matKhauCu = Auth::user()->password;
-        $matKhauCu = User::select('password')->where('id', 1)->get();
-        // dd($matKhauCu);
+        $matKhauCu = Auth::user()->password;
         if(Hash::check($request->matkhaucu, $matKhauCu)) {
-            // User::where('id', $canhan->id)
-            // ->update([
-            //     'password' => Hash::make($request->matkhaumoi)
-            // ]);
-            return response()->json(["check" => true]);
+            if($request->matkhaumoi == $request->nhaplai) {
+                User::where('id', Auth::user()->id)
+                ->update([
+                    'password' => Hash::make($request->matkhaumoi)
+                ]);
+                return response()->json(["check" => true]);
+            }
+            return response()->json(['error' => '']);
         } else {
             return response()->json(['error' => 'Mật khẩu không chính xác']);
         }

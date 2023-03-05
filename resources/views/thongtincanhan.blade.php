@@ -150,7 +150,7 @@
                             <h3 class="text-content">{{ $canhan->tennv }}</h3>
                             @php
                                 if ($canhan->anhdaidien) {
-                                    $url = asset('uploads/' . $canhan->anhdaidien);
+                                    $url = asset('uploads/images/' . $canhan->anhdaidien);
                                 } else {
                                     $url = asset('uploads/facebook.jpg');
                                 }
@@ -294,8 +294,8 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Nhập lại mật khẩu mới</label>
-                                    <input type="password" class="form-control" name="nhaplai"
-                                        placeholder="Nhập lại mật khẩu mới..." id="re-new-password">
+                                    <input type="password" class="form-control"
+                                        placeholder="Nhập lại mật khẩu mới..." id="re-new-password" name="nhaplai">
                                     <div id="passwordHelp" class="form-text text-danger error-text re-new-password">
                                     </div>
                                 </div>
@@ -396,13 +396,19 @@
             });
             $('#update-password').submit(function(e) {
                 e.preventDefault();
+                const new_password = $('#new-password');
+                // console.log(new_password)
+                const re_new_password = $("#re-new-password");
+                if (re_new_password.val() !== new_password.val()) {
+                    $('.re-new-password').text("Mật khẩu nhập lại không chính xác.")
+                }
                 var formData = new FormData(this);
                 $.ajax({
                     type: 'POST',
                     url: $(this).attr('action'),
-                    method: $(this).attr('method'),
                     data: formData,
                     cache: false,
+                    method: 'POST',
                     contentType: false,
                     processData: false,
                     success: (data) => {
@@ -410,16 +416,11 @@
                         var error = document.querySelectorAll(".error-text");
                         error.innerHTML = "";
                         if (data.check == true) {
-                            window.location = $(this).attr('action')
+                            // window.location = {{ route('canhan.index') }}
+                            console.log(data)
                         } else {
                             $(".old-password").text(data.error);
                             console.log(data);
-                            const new_password = $('#new-password');
-                            // console.log(new_password)
-                            const re_new_password = $("#re-new-password");
-                            if (re_new_password.val() !== new_password.val()) {
-                                $('.re-new-password').text("Mật khẩu nhập lại không chính xác.")
-                            }
                         }
                     }
                 });
