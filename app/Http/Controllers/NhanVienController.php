@@ -20,4 +20,10 @@ class NhanVienController extends Controller
         $chucVu= DB::select('SELECT id,tenchucvu from chucvu');
         return view('nhansu.danhsachnhanvien.danhsachnhanvien', ['caNhan' => $caNhan,'phongBan' => $phongBan,'khoa' => $khoa,'chucVu' => $chucVu]);
     }
+    public function create(){
+        $phongBan=DB::select('SELECT id,tenphongban from phongBan');
+        $khoa= DB::select('SELECT id,tenkhoa from khoa');
+        $chucVu= DB::select('SELECT id,tenchucvu from chucvu');
+        return view('nhansu.danhsachnhanvien.themmoinhanvien',['phongBan' => $phongBan,'khoa' => $khoa,'chucVu' => $chucVu]);
+    }
 }
