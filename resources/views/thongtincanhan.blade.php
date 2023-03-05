@@ -188,7 +188,6 @@
                     <button class="confirm"> Xác nhận</button>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -300,4 +299,5 @@
             });
         });
     </script>
+    
 @endsection

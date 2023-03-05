@@ -12,13 +12,13 @@
         </div>
     </div>
 </div>
-        <div class="dscv-main">
+        <div class="dsk-main">
             <div class="wrap">
-                <div class="dscv-title">
-                    <h1>Danh sách chức vụ</h1>
+                <div class="dsk-title">
+                    <h1>Danh sách khoa</h1>
                 </div>
-                <div class="btn-tcv">
-                    <button class="nv">Thêm mới chức vụ</button>
+                <div class="btn-tmk">
+                    <button class="nv">Thêm mới khoa</button>
                 </div>
 
 
@@ -33,22 +33,22 @@
                     </div>
                     
                    
-                    <input class="input-search-name-1" type="text" placeholder="Nhập tên nhân viên cần tìm">
+                    <input class="input-search-name-1" type="text" placeholder="Nhập tên khoa">
                    
                 </div>
-                <div class="list-dscv">
-                    <table class="table-dscv table-bordered">
+                <div class="list-dsk">
+                    <table class="table-dsk table-bordered">
                         <thead>
                           <tr class = "bg-info">
-                            <th class="head-table" scope="col">Mã chức vụ</th>
-                            <th class="head-table" scope="col">Tên chứ vụ</th>
+                            <th class="head-table" scope="col">Mã khoa</th>
+                            <th class="head-table" scope="col">Tên khoa</th>
                             <th class="head-table" scope="col"></th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr class="">
                             <th class="h1" scope="row">1</th>
-                            <th class="h1" scope="row">Giám đốc</th>
+                            <th class="h1" scope="row">CNTT</th>
                             <th class="h1" scope="row">
                                 <button class="i-edit">
                                     <i class='bx bx-edit'></i>
@@ -56,20 +56,6 @@
                                 <button class="i-rotate">
                                     <i class='bx bx-trash js-buy-ticket'></i>
                                 </button>
-                                
-                            </th>
-                          </tr>
-                          <tr class="">
-                            <th class="h1" scope="row">2</th>
-                            <th class="h1" scope="row">Phó giám đốc</th>
-                            <th class="h1" scope="row">
-                                <button class="i-edit">
-                                    <i class='bx bx-edit'></i>
-                                </button>
-                                <button class="i-rotate">
-                                    <i class='bx bx-trash js-buy-ticket'></i>
-                                </button>
-                                
                             </th>
                           </tr>
                         </tbody>

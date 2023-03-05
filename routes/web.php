@@ -19,15 +19,18 @@ use Illuminate\Routing\Router;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/danhsachnhanvien', [NhanVienController::class, 'index2'])->name('danhsachnhanvien');
 
+/*
 Route::get('/danhsachnhanvien', function () {
     return view('nhansu.danhsachnhanvien.danhsachnhanvien');
 })->name('danhsachnhanvien');
+*/
 Route::get('/danhsachchucvu', function () {
     return view('nhansu.danhsachchucvu.danhsachchucvu');
 })->name('danhsachchucvu');
-Route::get('/quanlykhoa', function () {
-    return view('nhansu.danhsachkhoa.quanlykhoa');
+Route::get('/danhsachkhoa', function () {
+    return view('nhansu.danhsachkhoa.danhsachkhoa');
 })->name('danhsachkhoa');
 
 Route::get('/danhsachphongban', function () {
@@ -41,6 +44,10 @@ Route::get('/danhsachtangluong', function () {
 Route::get('/themmoinhanvien', function () {
     return view('nhansu.danhsachnhanvien.themmoinhanvien');
 })->name('themmoinhanvien');
+
+Route::get('/danhsachhopdong', function () {
+    return view('nhansu.danhsachhopdong.danhsachhopdong');
+})->name('danhsachhopdong');
 
 Route::get('/', [loginController::class, "home"])->name('login');
 Route::post('/', [loginController::class, "submitLogin"])->name('submitLogin');
@@ -76,7 +83,7 @@ Route::prefix('thongtincanhan')->group(function () {
     Route::post('update-password', [ThongTinController::class, 'updatePassword'])->name('canhan.updatePassword');
 });
 
-// Danh sach khen thuong 
+// Danh sach khen thuong
 Route::prefix('khenthuong')->group(function () {
     Route::get('/', [KhenThuongController::class, 'index'])->name('khenthuong.index');
     Route::get('create', [KhenThuongController::class, 'create'])->name('khenthuong.create');
@@ -87,7 +94,7 @@ Route::prefix('khenthuong')->group(function () {
     Route::post('search', [KhenThuongController::class, 'search'])->name('khenthuong.search');
 });
 
-// Danh sach ky luat 
+// Danh sach ky luat
 Route::prefix('kyluat')->group(function () {
     Route::get('/', [KyLuatController::class, 'index'])->name('kyluat.index');
     Route::get('create', [KyLuatController::class, 'create'])->name('kyluat.create');
@@ -101,7 +108,7 @@ Route::prefix('kyluat')->group(function () {
 
 // Route::post('upfile', [ThongTinCaNhanController::class, 'upfile'])->name('upfile');
 //test qlns
-Route::get('/sm', [ThongTinCaNhanController::class, 'index2']);
+Route::get('/sm', [NhanvienController::class, 'index2']);
 //Route::get('/sendtextfind',[ThongTinCaNhanController::class,'find2']);
 Route::get('/smkhoa', [KhoaController::class, 'index']);
 Route::view('/smkhoa2', 'nhansu.danhsachkhoa.quanlykhoa');

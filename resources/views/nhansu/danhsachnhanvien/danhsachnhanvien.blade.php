@@ -69,19 +69,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="">
-                            <th class="h1" scope="row">1</th>
-                            <th class="h1" scope="row">Vũ Trí Thành</th>
-                            <th class="h1" scope="row">thanhvu@</th>
-                            <th class="h1" scope="row">23929923012</th>
-                            <th class="h1" scope="row">Nam</th>
-                            <th class="h1" scope="row">Giám đốc</th>
-                            <th class="h1" scope="row">Phòng nhân sự</th>
-                            <th class="h1" scope="row">Null</th>
-                            <th class="h1" scope="row">Đi làm</th>
+                    @isset($caNhan)
+                    @foreach ($caNhan as $item)
+                    <tr class="">
+                            <th class="h1" scope="row">{{ $item->id }}</th>
+                            <th class="h1" scope="row">{{ $item->tennv }}</th>
+                            <th class="h1" scope="row">{{ $item->email }}</th>
+                            <th class="h1" scope="row">{{ $item->cccd }}</th>
+                            <th class="h1" scope="row">{{ $item->gioitinh }}</th>
+                            <th class="h1" scope="row">{{ $item->machucvu }}</th>
+                            <th class="h1" scope="row">{{ $item->maphongban }}</th>
+                            <th class="h1" scope="row">{{ $item->makhoa }}</th>
+                            <th class="h1" scope="row">{{ $item->trangthai }}</th>
                             <th class="h1" scope="row">
                                 <button class="i-save">
-                                    <a href="{{ route('canhan.index', ['id' => $nhanvien->id]) }}">
+                                    <a href="">
                                         <img src="{{ asset('icon/save.png') }}" alt="">
                                     </a>
                                 </button>
@@ -94,6 +96,14 @@
 
                             </th>
                         </tr>
+              @endforeach
+                    @endisset
+
+                    @empty($caNhan)
+                        <h1>Sai router ,truy vấn hoặc không có data</h1>
+                    @endempty
+
+
                     </tbody>
                 </table>
             </div>

@@ -54,7 +54,7 @@ class NhanVienController extends Controller
                 return response()->json(["check" => true]);
             } else {
                 return response()->json(['error' => $validator->errors()]);
-            } 
+            }
         }
     }
 
@@ -86,5 +86,10 @@ class NhanVienController extends Controller
         } else {
             toastr()->success('Tải lên thất bại.', 'Thất bại');
         }
+    }
+    public function index2()
+    {
+        $caNhan = DB::select('SELECT nhanvien.id,tennv,email,cccd,gioitinh,machucvu,maphongban,makhoa,trangthai from nhanvien');
+        return view('nhansu.danhsachnhanvien.danhsachnhanvien', ['caNhan' => $caNhan]);
     }
 }
