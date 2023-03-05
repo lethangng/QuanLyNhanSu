@@ -77,8 +77,50 @@
                             <th class="h1" scope="row">{{ $item->email }}</th>
                             <th class="h1" scope="row">{{ $item->cccd }}</th>
                             <th class="h1" scope="row">{{ $item->gioitinh }}</th>
-                            <th class="h1" scope="row">{{ $item->machucvu }}</th>
-                            <th class="h1" scope="row">{{ $item->maphongban }}</th>
+                            @php
+                            $d1=0;
+                            $d2=0;
+                            $d3=0;
+                            @endphp
+                            @foreach ($chucVu as $item2)
+                                @if($item->machucvu==$item2->id)
+                                    <th class="h1" scope="row">{{ $item2->tenchucvu }}</th>
+                                    @php
+                                    $d1=1
+                                    @endphp
+                                    @break
+                                @endif
+                            @endforeach
+                            @if($d1==0)
+                            <th class="h1" scope="row">Trống</th>
+                            @endif
+
+
+                            @foreach ($phongBan as $item2)
+                                @if($item->maphongban==$item2->id)
+                                    <th class="h1" scope="row">{{ $item2->tenphongban }}</th>
+                                    @php
+                                    $d2=1
+                                    @endphp
+                                    @break
+                                @endif
+                            @endforeach
+                            @if($d2==0)
+                            <th class="h1" scope="row">Trống</th>
+                            @endif
+
+                            @foreach ($khoa as $item2)
+                                @if($item->makhoa==$item2->id)
+                                    <th class="h1" scope="row">{{ $item2->tenkhoa }}</th>
+                                    @php
+                                    $d3=1
+                                    @endphp
+                                    @break
+                                @endif
+                            @endforeach
+                            @if($d3==0)
+                            <th class="h1" scope="row">Trống</th>
+                            @endif
                             <th class="h1" scope="row">{{ $item->makhoa }}</th>
                             <th class="h1" scope="row">{{ $item->trangthai }}</th>
                             <th class="h1" scope="row">

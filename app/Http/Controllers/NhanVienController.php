@@ -89,7 +89,10 @@ class NhanVienController extends Controller
     }
     public function index2()
     {
-        $caNhan = DB::select('SELECT nhanvien.id,tennv,email,cccd,gioitinh,machucvu,maphongban,makhoa,trangthai from nhanvien');
-        return view('nhansu.danhsachnhanvien.danhsachnhanvien', ['caNhan' => $caNhan]);
+        $caNhan = DB::select('SELECT id,tennv,email,cccd,gioitinh,machucvu,maphongban,makhoa,trangthai from nhanvien');
+        $phongBan= DB::select('SELECT id,tenphongban from phongban');
+        $khoa= DB::select('SELECT id,tenkhoa from khoa');
+        $chucVu= DB::select('SELECT id,tenchucvu from chucvu');
+        return view('nhansu.danhsachnhanvien.danhsachnhanvien', ['caNhan' => $caNhan,'phongBan' => $phongBan,'khoa' => $khoa,'chucVu' => $chucVu]);
     }
 }
