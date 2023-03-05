@@ -66,10 +66,10 @@
                         </div>
                         <div class="form-6">
                             <label class="label-11" for="">Bậc lương:</label>
-                            <input type="text" class="fname" value="{{ $canhan->bacluong }}">
+                            <input type="text" class="fname" value="{{ $canhan->bacluong ?? '' }}">
 
                             <label class="label-12" for="">HSL:</label>
-                            <input type="text" class="fname" value="{{ $canhan->hsl }}">
+                            <input type="text" class="fname" value="{{ $canhan->hsl ?? '' }}">
                         </div>
 
                     </div>
@@ -170,7 +170,6 @@
     </div>
 
     {{-- Form cập nhật thành công --}}
-
     <div class="modal js-modal ">
         <div class="modal-container js-modal-container">
             <div class="modal-close js-modal-close">
@@ -198,7 +197,29 @@
     {{-- Link jquery --}}
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
         crossorigin="anonymous"></script>
+    <script>
+        const buyBtns = document.querySelectorAll('.js-buy-ticket');
+        const modal = document.querySelector('.js-modal');
+        const modalContainer = document.querySelector('.js-modal-container')
+        const modalClose = document.querySelector('.js-modal-close');
 
+        function showBuyTickets() {
+            modal.classList.add('open')
+        }
+
+        function hideBuyTickets() {
+            modal.classList.remove('open')
+        }
+        for (const buyBtn of buyBtns) {
+            buyBtn.addEventListener('click', showBuyTickets)
+        }
+        modalClose.addEventListener('click', hideBuyTickets)
+        modal.addEventListener('click', hideBuyTickets)
+
+        modalContainer.addEventListener('click', function(event) {
+            event.stopPropagation()
+        })
+    </script>
     {{-- script modal form addphoto --}}
     <script type="text/javascript">
         const formaddphoto = document.querySelector('.modal');
@@ -229,7 +250,7 @@
                         var error = document.querySelectorAll(".error-text");
                         error.innerHTML = "";
                         if (data.check == true) {
-                            window.location = $(this).attr('action')
+                            // window.location = $(this).attr('action')
                         } else {
                             printErrorMsg(data.error, '_err')
                             console.log(data);

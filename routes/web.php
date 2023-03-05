@@ -29,12 +29,7 @@ Route::get('/danhsachchucvu', function () {
 Route::get('/quanlykhoa', function () {
     return view('nhansu.danhsachkhoa.quanlykhoa');
 })->name('danhsachkhoa');
-// Route::get('/danhsachkhenthuong', function () {
-//     return view('nhansu.danhsachkhenthuong.danhsachkhenthuong');
-// })->name('danhsachkhenthuong');
-// Route::get('/danhsachkyluat', function () {
-//     return view('nhansu.danhsachkyluat.danhsachkyluat');
-// })->name('danhsachkyluat');
+
 Route::get('/danhsachphongban', function () {
     return view('nhansu.danhsachphongban.danhsachphongban');
 })->name('danhsachphongban');
