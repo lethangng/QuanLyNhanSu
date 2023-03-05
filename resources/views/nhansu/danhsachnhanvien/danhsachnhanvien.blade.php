@@ -1,157 +1,69 @@
-<!DOCTYPE html>
-<!-- Coding by CodingLab | www.codinglabweb.com -->
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('fonts/themify-icons/themify-icons.css') }}">
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-
-    <!----======== CSS ======== -->
-    {{-- <link rel="stylesheet" href="./css/style1.css"> --}}
-    <link rel="stylesheet" href="{{ asset('css/style3.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style2.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style1.css') }}">
-
-    <!----===== Boxicons CSS ===== -->
-
-    
-
-</head>
-<body>
-    <div class="wrap-thongtincanhan">
-        <nav class="sidebar close">
-            <header>
-                <div class="image-text">
-                    <span class="image-2">
-                        <img src="{{ asset('css/Img/download.jpeg') }}" alt="">
-                    </span>
-                    <div class="text logo-text">
-                        <span class="name">Team 3</span>
-                        <span class="profession">Web developer</span>
-                    </div>
-                </div>
-
-                <i class='bx bx-chevron-right toggle'></i>
-            </header>
-
-            <div class="menu-bar">
-                <div class="menu">
-                    <ul class="menu-links">
-                        <li class="nav-link">
-                            <a href="#">
-                                <span class="icon-home">
-                                    <img src="{{ asset('icon/nhanvien.png') }}" alt="">
-                                </span>
-                                <span class="text nav-text">Quản lý nhân viên</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-link">
-                            <a href="{{ route('canhan.index') }}">
-                                <span class="icon-home">
-                                    <img src="{{ asset('icon/chucvu.png') }}" alt="">
-                                </span>
-                                <span class="text nav-text">Quản lý chức vụ</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-link">
-                            <a href="{{ route('canhan.index') }}">
-                                <span class="icon-home">
-                                    <img src="{{ asset('icon/phongban.png') }}" alt="">
-                                </span>
-                                <span class="text nav-text">Quản lý phòng ban</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-link">
-                            <a href="{{ route('canhan.index') }}">
-                                <span class="icon-home">
-                                    <img src="{{ asset('icon/khoa.png') }}" alt="">
-                                </span>
-                                <span class="text nav-text">Quản lý khoa</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-link">
-                            <a href="{{ route('canhan.index') }}">
-                                <span class="icon-home">
-                                    <img src="{{ asset('icon/khenthuong.png') }}" alt="">
-                                </span>
-                                <span class="text nav-text">Quản lý khen thưởng</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-link">
-                            <a href="{{ route('canhan.index') }}">
-                                <span class="icon-home">
-                                    <img src="{{ asset('icon/kyluat.png') }}" alt="">
-                                </span>
-                                <span class="text nav-text">Quản lý kỷ luật</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-link">
-                            <a href="{{ route('canhan.index') }}">
-                                <span class="icon-home">
-                                    <img src="{{ asset('icon/luong.png') }}" alt="">
-                                </span>
-                                <span class="text nav-text">Quản lý tăng lương</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-link">
-                            <a href="{{ route('canhan.index') }}">
-                                <span class="icon-home">
-                                    <img src="{{ asset('icon/hopdong.png') }}" alt="">
-                                </span>
-                                <span class="text nav-text">Quản lý hợp đồng</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-link">
-                            <a href="{{ route('canhan.index') }}">
-                                <span class="icon-home">
-                                    <img src="{{ asset('icon/thongtincanhan.png') }}" alt="">
-                                </span>
-                                <span class="text nav-text">Quản lý thông tin cái nhân</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bottom-content">
-                    <li class="">
-                        <a href="{{ route('login') }}">
-                            <span class="icon-home">
-                                <img src="{{ asset('icon/logout.png') }}" alt="">
-                            </span>
-                            <span class="text nav-text">Logout</span>
-                        </a>
-                    </li>
-                </div>
-            </div>
-        </nav>
-
+@extends('layouts.app')
+@section('content')
+<div class="modal js-modal ">
+    <div class="modal-container js-modal-container">
+        <div class="modal-close js-modal-close">
+            <i class="ti-close"></i>
+        </div>
+        <div class="Update-successful">
+            <p style="line-height:12;">Bạn có chắc chắn muốn xóa không</p>
+            <button class="btn btn-primary" style="width:50%;height:20%;position:absolute;bottom: 0;left:0;">xác nhận</button>
+            <button class="btn btn-danger" style="width:50%;height:20%;position:absolute;bottom: 0;right:0;">Hủy</button>
+        </div>
+    </div>
+</div>
         <div class="dsnv-main">
             <div class="wrap">
                 <div class="dsnv-title">
                     <h1>Danh sách nhân viên</h1>
                 </div>
-                
-                {{-- <div class="list-dsl">
-                    <table class="table-dsl table-bordered">
+                <form action="{{ route('themmoinhanvien') }}">
+                    <div class="btn-tnv">
+                        <button class="nv">Thêm mới nhân viên</button>
+                    </div>
+                </form>
+
+                <div class="text-filter">
+                    <span>Lọc theo:</span>
+                    <label class="form-filter" for="">
+                        <input class="" type="radio" name="" id=""> Phòng ban
+                    </label>
+                    <label class="form-filter" for="">
+                        <input class="" type="radio" name="" id=""> Chức vụ
+                    </label>
+                    <label class="form-filter" for="">
+                        <input class="" type="radio" name="" id=""> Khoa
+                    </label>
+                </div>
+
+                <div class="custom-select-input">
+                    <select class="select-name" name="" id="">
+                        <option value=""></option>
+                        <option value="">abc</option>
+                    </select>
+                    <span class="icon-reset">
+                        <img src="{{ asset('icon/reset.png') }}" alt="">
+                    </span>
+                    <span class="icon-search">
+                        <img src="{{ asset('icon/search.png') }}" alt="">
+                    </span>
+                   
+                    <input class="input-search-name" type="text" placeholder="Nhập tên nhân viên cần tìm">
+                   
+                </div>
+                <div class="list-dsnv">
+                    <table class="table-dsnv table-bordered">
                         <thead>
                           <tr class = "bg-info">
                             <th class="head-table" scope="col">Mã nhân viên</th>
                             <th class="head-table" scope="col">Họ tên</th>
-                            <th class="head-table" scope="col">HSL</th>
-                            <th class="head-table" scope="col">Lương cơ bản</th>
+                            <th class="head-table" scope="col">Emai</th>
+                            <th class="head-table" scope="col">CMND</th>
+                            <th class="head-table" scope="col">Giới tính</th>
+                            <th class="head-table" scope="col">Chức vụ</th>
+                            <th class="head-table" scope="col">Tên phòng ban</th>
+                            <th class="head-table" scope="col">Khoa</th>
+                            <th class="head-table" scope="col">Trạng thái</th>
                             <th class="head-table" scope="col"></th>
                           </tr>
                         </thead>
@@ -159,62 +71,29 @@
                           <tr class="">
                             <th class="h1" scope="row">1</th>
                             <th class="h1" scope="row">Vũ Trí Thành</th>
-                            <th class="h1" scope="row">4.2</th>
-                            <th class="h1" scope="row">1000000</th>
+                            <th class="h1" scope="row">thanhvu@</th>
+                            <th class="h1" scope="row">23929923012</th>
+                            <th class="h1" scope="row">Nam</th>
+                            <th class="h1" scope="row">Giám đốc</th>
+                            <th class="h1" scope="row">Phòng nhân sự</th>
+                            <th class="h1" scope="row">Null</th>
+                            <th class="h1" scope="row">Đi làm</th>
                             <th class="h1" scope="row">
+                                <button class="i-save">
+                                    <img src="{{ asset('icon/save.png') }}" alt="">
+                                </button>
                                 <button class="i-edit">
                                     <i class='bx bx-edit'></i>
                                 </button>
                                 <button class="i-rotate">
-                                    <i class='bx bx-trash'></i>
+                                    <i class='bx bx-trash js-buy-ticket'></i>
                                 </button>
-                            </th>
-                          </tr>
-                          <tr>
-                            <th class="h1" scope="row">2</th>
-                            <th class="h1" scope="row">Nguyễn Văn A</th>
-                            <th class="h1" scope="row">4.2</th>
-                            <th class="h1" scope="row">1000000</th>
-                            <th class="h1" scope="row">
-                                <button class="i-edit">
-                                    <i class='bx bx-edit'></i>
-                                </button>
-                                <button class="i-rotate">
-                                    <i class='bx bx-trash'></i>
-                                </button>
-                            </th>
-                          </tr>
-                          <tr>
-                            <th class="h1" scope="row">2</th>
-                            <th class="h1" scope="row">Nguyễn Văn b</th>
-                            <th class="h1" scope="row">1.2</th>
-                            <th class="h1" scope="row">1021100</th>
-                            <th class="h1" scope="row">
-                                <button class="i-edit">
-                                    <i class='bx bx-edit'></i>
-                                </button>
-                                <button class="i-rotate">
-                                    <i class='bx bx-trash'></i>
-                                </button>
-                            </th>
-                          </tr>
-                          <tr>
-                            <th class="h1" scope="row">2</th>
-                            <th class="h1" scope="row">Nguyễn Văn C</th>
-                            <th class="h1" scope="row">3.3</th>
-                            <th class="h1" scope="row">1120000</th>
-                            <th class="h1" scope="row">
-                                <button class="i-edit">
-                                    <i class='bx bx-edit'></i>
-                                </button>
-                                <button class="i-rotate">
-                                    <i class='bx bx-trash'></i>
-                                </button>
+                                
                             </th>
                           </tr>
                         </tbody>
                       </table>
-                </div> --}}
+                </div>
             </div>
         </div>
     </div>
@@ -230,6 +109,33 @@
             sidebar.classList.toggle("close");
         })
     </script>
+    <script>
+        const buyBtns = document.querySelectorAll('.js-buy-ticket');
+        const modal = document.querySelector('.js-modal');
+        const modalContainer = document.querySelector('.js-modal-container')
+        const modalClose = document.querySelector('.js-modal-close');
+    
+        function showBuyTickets(){
+            modal.classList.add('open')
+        }
+    
+        function hideBuyTickets(){
+            modal.classList.remove('open')
+        }
+    
+        for (const buyBtn of buyBtns){
+            buyBtn.addEventListener('click', showBuyTickets)
+        }
+    
+        modalClose.addEventListener('click', hideBuyTickets)
+    
+        modal.addEventListener('click', hideBuyTickets)
+        
+        modalContainer.addEventListener('click', function(event)
+        {
+            event.stopPropagation()
+        })
+    </script>
 </body>
-
 </html>
+@endsection

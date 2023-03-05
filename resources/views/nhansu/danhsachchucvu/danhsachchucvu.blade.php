@@ -1,123 +1,105 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/style8.css">
-    <link rel="stylesheet" href="./css/style9.css">
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-</head>
-<body>
-     <nav class="sidebar close">
-        <header>
-            <div class="image-text">
-                <span class="image">
-                    <img src="./css/Img/download.jpeg" alt="">
-                </span>
-
-                <div class="text logo-text">
-                    <span class="name">Team 3</span>
-                    <span class="profession">Web developer</span>
-                </div>
-            </div>
-
-            <i class='bx bx-chevron-right toggle'></i>
-        </header>
-
-        <div class="menu-bar">
-            <div class="menu">
-                <ul class="menu-links">
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-home-alt icon' ></i>
-                            <span class="text nav-text">Quản lý tài khoản</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
-                            <span class="text nav-text">Thông tin cái nhân</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="bottom-content">
-                <li class="">
-                    <a href="#">
-                        <i class='bx bx-log-out icon' ></i>
-                        <span class="text nav-text">Logout</span>
-                    </a>
-                </li>
-            </div>
+@extends('layouts.app')
+@section('content')
+<div class="modal js-modal ">
+    <div class="modal-container js-modal-container">
+        <div class="modal-close js-modal-close">
+            <i class="ti-close"></i>
         </div>
-
-    </nav>
-    <section class="home">
-        <div class="text"></div>
-<div class="container">
-        <div class="header">
-            <h1>Danh sách chức vụ</h1>
-        </div>
-
-        <div class="container-btn">
-            <button class="btn-add">Thêm mới chức vụ</button>
-        </div>
-
-        
-
-        <div class="input-search">
-            <input type="text" name="" id="inp-search">
-            <button class="btn-search" ><i class='bx bx-search icon'></i></button>
-        </div>
-
-        <div class="container-table">
-            <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th class="head-table" scope="col">Mã chức vụ</th>
-                    <th class="head-table" scope="col">Tên chức vụ</th>
-                    <th class="head-table" scope="col">Lương cơ bản</th>
-                    <th class="head-table" scope="col"></th>
-
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th class="number-table" scope="row">1</th>
-                    <td>chủ tịch</td>
-                    <td>5000$</td>
-                    <td>
-                        <button class="icon-edit">
-                            <i class='bx bx-edit'></i>
-                        </button>
-                        <button class="icon-edit">
-                           <i class='bx bx-trash'></i>
-                        </button>
-
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+        <div class="Update-successful">
+            <p style="line-height:12;">Bạn có chắc chắn muốn xóa không</p>
+            <button class="btn btn-primary" style="width:50%;height:20%;position:absolute;bottom: 0;left:0;">xác nhận</button>
+            <button class="btn btn-danger" style="width:50%;height:20%;position:absolute;bottom: 0;right:0;">Hủy</button>
         </div>
     </div>
-    </section>
+</div>
+        <div class="dscv-main">
+            <div class="wrap">
+                <div class="dscv-title">
+                    <h1>Danh sách chức vụ</h1>
+                </div>
+                <div class="btn-tcv">
+                    <button class="nv">Thêm mới chức vụ</button>
+                </div>
+
+
+                <div class="custom-input">
+                    <span class="icon-reset-1">
+                        <img src="{{ asset('icon/reset.png') }}" alt="">
+                    </span>
+                    <span class="icon-search-1">
+                        <img src="{{ asset('icon/search.png') }}" alt="">
+                    </span>
+                   
+                    <input class="input-search-name-1" type="text" placeholder="Nhập tên nhân viên cần tìm">
+                   
+                </div>
+                <div class="list-dscv">
+                    <table class="table-dscv table-bordered">
+                        <thead>
+                          <tr class = "bg-info">
+                            <th class="head-table" scope="col">Mã chức vụ</th>
+                            <th class="head-table" scope="col">Tên chứ vụ</th>
+                            <th class="head-table" scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="">
+                            <th class="h1" scope="row">1</th>
+                            <th class="h1" scope="row">Giám đốc</th>
+                            <th class="h1" scope="row">
+                                <button class="i-edit">
+                                    <i class='bx bx-edit'></i>
+                                </button>
+                                <button class="i-rotate">
+                                    <i class='bx bx-trash js-buy-ticket'></i>
+                                </button>
+                                
+                            </th>
+                          </tr>
+                          <tr class="">
+                            <th class="h1" scope="row">2</th>
+                            <th class="h1" scope="row">Phó giám đốc</th>
+                            <th class="h1" scope="row">
+                                <button class="i-edit">
+                                    <i class='bx bx-edit'></i>
+                                </button>
+                                <button class="i-rotate">
+                                    <i class='bx bx-trash js-buy-ticket'></i>
+                                </button>
+                                
+                            </th>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
-        const body = document.querySelector('body'),
-        sidebar = body.querySelector('nav'),
-        toggle = body.querySelector(".toggle"),
-        // modeSwitch = body.querySelector(".toggle-switch"),
-        modeText = body.querySelector(".mode-text");
-
-toggle.addEventListener("click" , () =>{
-    sidebar.classList.toggle("close");
-})
-
-    </script>
+        const buyBtns = document.querySelectorAll('.js-buy-ticket');
+        const modal = document.querySelector('.js-modal');
+        const modalContainer = document.querySelector('.js-modal-container')
+        const modalClose = document.querySelector('.js-modal-close');
     
-</body>
-</html>
+        function showBuyTickets(){
+            modal.classList.add('open')
+        }
+    
+        function hideBuyTickets(){
+            modal.classList.remove('open')
+        }
+    
+        for (const buyBtn of buyBtns){
+            buyBtn.addEventListener('click', showBuyTickets)
+        }
+    
+        modalClose.addEventListener('click', hideBuyTickets)
+    
+        modal.addEventListener('click', hideBuyTickets)
+        
+        modalContainer.addEventListener('click', function(event)
+        {
+            event.stopPropagation()
+        })
+    </script>
+@endsection
