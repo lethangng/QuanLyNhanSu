@@ -139,7 +139,6 @@
             </div>
         </nav>
         @yield('content')
-        /div>
 
         <script>
             const body = document.querySelector('body'),

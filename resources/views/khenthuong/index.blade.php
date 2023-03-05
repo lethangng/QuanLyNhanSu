@@ -9,7 +9,9 @@
                 <h1>Danh sách khen thưởng</h1>
             </div>
             <div class="btn-tkt">
-                <button class="nv">Thêm mới khen thưởng</button>
+                <button class="nv">
+                    <a href="{{ route('khenthuong.create') }}">Thêm mới khen thưởng</a>
+                </button>
             </div>
             <div class="date">
                 <label for="">

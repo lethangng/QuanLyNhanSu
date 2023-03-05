@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\NhanVien;
 use Illuminate\Foundation\Http\FormRequest;
 
 class KhenThuongRequest extends FormRequest
@@ -25,26 +26,39 @@ class KhenThuongRequest extends FormRequest
     {
         return [
             'manv' => 'required|exists:nhanvien,id',
-            'tennv' => 'required|exists:nhanvien,tennv',
-            'NgayKhenThuong' => 'required|date'
+            'tennv' => 'required',
+            'ngaykhenthuong' => 'required|date',
+            'lydo' => 'required',
+            'file' => 'required|mimes:png,jpg,jpeg,doc,docx,pdf|max:10024',
         ];
     }
-
     public function messages()
     {
         return [
             'required' => ':attribute bắt buộc phải nhập',
             'date' => ':attribute phải là định dạng ngày tháng',
-            'exists' => ':attribute không tồn tại.'
+            'exists' => ':attribute không tồn tại.',
+            'file.max' => ':attribute phải nhỏ hơn 10 MB'
         ];
     }
-
     public function attributes()
     {
         return [
             'manv' => 'Mã nhân viên',
-            'tenv' => 'Tên nhân viên',
-            'NgayKhenThuong' => 'Ngày khen thưởng'
+            'tennv' => 'Tên nhân viên',
+            'ngaykhenthuong' => 'Ngày khen thưởng',
+            'lydo' => 'Lý do',
+            'file' => 'File'
         ];
+    }
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            $tennv = NhanVien::select('tennv')->where('id', $this->manv)->first();
+            // dd($this->tennv);
+            if($this->tennv != $tennv) {
+                $validator->errors()->add('err_tennv', 'Tên nhân viên nhập vào không khớp với mã nhân viên.');
+            }
+        });
     }
 }
