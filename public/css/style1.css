@@ -1,20 +1,20 @@
 /* Google Font Import - Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 :root {
     /* ===== Colors ===== */
-    --body-color: #E4E9F7;
-    --sidebar-color: #FFF;
-    --primary-color: #695CFE;
-    --primary-color-light: #F6F5FF;
-    --toggle-color: #DDD;
+    --body-color: #e4e9f7;
+    --sidebar-color: #fff;
+    --primary-color: #695cfe;
+    --primary-color-light: #f6f5ff;
+    --toggle-color: #ddd;
     --text-color: #707070;
 
     /* ====== Transition ====== */
@@ -46,7 +46,6 @@ body.dark {
 }
 
 /* ===== Sidebar ===== */
-
 
 .sidebar.close {
     width: 88px;
@@ -181,8 +180,6 @@ body.dark .sidebar header .toggle {
     transition: var(--tran-05);
 }
 
-
-
 .sidebar li a:hover {
     background-color: var(--primary-color);
 }
@@ -196,8 +193,6 @@ body.dark .sidebar li a:hover .icon,
 body.dark .sidebar li a:hover .text {
     color: var(--text-color);
 }
-
-
 
 .menu-bar::-webkit-scrollbar {
     display: none;
@@ -232,7 +227,7 @@ body.dark .sidebar li a:hover .text {
 }
 
 .switch::before {
-    content: '';
+    content: "";
     position: absolute;
     height: 15px;
     width: 15px;
@@ -271,7 +266,7 @@ body.dark .switch::before {
     padding-right: 20%;
 }
 
-.sidebar.close~.home {
+.sidebar.close ~ .home {
     left: 78px;
     width: calc(100% - 78px);
 }
@@ -281,15 +276,24 @@ body.dark .home .text {
 }
 
 .header {
-    background-color: #070362;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #5582f8;
+    width: 100%;
+    height: 118px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 77px;
+    color: #fff;
 }
 
 .user {
     text-align: right;
     font-size: 16px;
 }
-
-
 
 .title-header {
     background: linear-gradient(90deg, blue, white);
@@ -399,11 +403,9 @@ td {
 
 } */
 
-
 /* ********************* danh sach luong ************* */
 .dsl-main {
     width: 100%;
-
 }
 
 .ctl-title,
@@ -420,8 +422,6 @@ td {
     color: white;
 }
 
-
-
 /* .input-search{
     width: 400px;
     height: 40px;
@@ -430,7 +430,6 @@ td {
     font-size: 14px;
     border: 1px solid #ccc;
 } */
-
 
 .btn-icon-search {
     background-color: #8cc6c6;
@@ -466,14 +465,13 @@ td {
 .h1 .i-edit,
 .h1 .i-save {
     padding: 5px 8px;
-    background-color: #E3AC6C;
+    background-color: #e3ac6c;
     border: 1px solid #ccc;
     border-radius: 5px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    transition: .2s linear;
-
+    transition: 0.2s linear;
 }
 
 .h1 .i-edit i,
@@ -484,13 +482,13 @@ td {
 
 .h1 .i-rotate {
     padding: 5px 8px;
-    background-color: #4A6EEB;
+    background-color: #4a6eeb;
     border: 1px solid #ccc;
     border-radius: 5px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    transition: .2s linear;
+    transition: 0.2s linear;
 }
 
 .i-rotate:hover,
@@ -539,7 +537,7 @@ td {
 .payroll {
     width: 134px;
     padding: 8px;
-    background-color: #EB6B6B;
+    background-color: #eb6b6b;
     color: #fff;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -553,12 +551,6 @@ td {
     display: flex;
     gap: 15px;
 }
-
-
-
-
-
-
 
 /*************** Chi tiết lương ************/
 .text-title h1 {
@@ -591,7 +583,7 @@ td {
 
 .salary {
     padding: 8px 12px;
-    background-color: #3BC9C9;
+    background-color: #3bc9c9;
     color: #fff;
     border: 1px solid #000;
     border-radius: 5px;
@@ -646,7 +638,7 @@ td {
 
 .timekeeping {
     padding: 8px 10px;
-    background-color: #3BC9C9;
+    background-color: #3bc9c9;
     border: none;
     border-radius: 4px;
     font-weight: 300;
@@ -657,25 +649,23 @@ td {
     margin-top: 1%;
 }
 
-
-
 /* Google Font Import - Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 :root {
     /* ===== Colors ===== */
-    --body-color: #E4E9F7;
-    --sidebar-color: #FFF;
-    --primary-color: #695CFE;
-    --primary-color-light: #F6F5FF;
-    --toggle-color: #DDD;
+    --body-color: #e4e9f7;
+    --sidebar-color: #fff;
+    --primary-color: #695cfe;
+    --primary-color-light: #f6f5ff;
+    --toggle-color: #ddd;
     --text-color: #707070;
 
     /* ====== Transition ====== */
@@ -718,7 +708,6 @@ body.dark {
     transition: var(--tran-05);
     z-index: 100;
 }
-
 
 /* ===== Reusable code - Here ===== */
 .sidebar li {
@@ -783,7 +772,7 @@ header .image-text .name {
     font-size: 18px;
     font-weight: 600;
 }
-.logo-tlu img{
+.logo-tlu img {
     width: 73px;
     height: 59px;
 }
@@ -865,7 +854,6 @@ body.dark .sidebar header .toggle {
     text-decoration: none;
     transition: var(--tran-03);
     padding: 10px 0;
-
 }
 
 .sidebar li a:hover {
@@ -888,7 +876,6 @@ body.dark .sidebar li a:hover .text {
     flex-direction: column;
     justify-content: space-between;
     overflow-y: scroll;
-   
 }
 
 .menu-bar::-webkit-scrollbar {
@@ -924,7 +911,7 @@ body.dark .sidebar li a:hover .text {
 }
 
 .switch::before {
-    content: '';
+    content: "";
     position: absolute;
     height: 15px;
     width: 15px;
@@ -940,8 +927,7 @@ body.dark .switch::before {
     left: 20px;
 }
 
-.sidebar .icon-home img
-{
+.sidebar .icon-home img {
     width: 51px;
     height: 45px;
     margin-left: 4px;
@@ -973,17 +959,15 @@ body.dark .switch::before {
 body.dark .home .text {
     color: var(--text-color);
 }
-
+/* 
 .header {
-    background-color: #070362;
-}
+    background-color: #5582f8;
+} */
 
 .user {
     text-align: right;
     font-size: 16px;
 }
-
-
 
 .title-header {
     background: linear-gradient(90deg, blue, white);
@@ -1082,11 +1066,9 @@ td {
     margin-left: 64px;
 }
 
-
 /* ********************* danh sach luong ************* */
 .dsnv-main {
     width: 100%;
-
 }
 
 .ctl-title,
@@ -1102,8 +1084,6 @@ td {
     font-weight: 400;
     color: white;
 }
-
-
 
 .input-search {
     width: 400px;
@@ -1191,7 +1171,7 @@ td {
 .payroll {
     width: 134px;
     padding: 8px;
-    background-color: #EB6B6B;
+    background-color: #eb6b6b;
     color: #fff;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -1212,13 +1192,13 @@ td {
     justify-content: center;
     align-items: center;
     height: 46px;
-    transition: .3s linear;
+    transition: 0.3s linear;
 }
 
 .i-con button i {
     font-size: 22px;
     background: #fff;
-    transition: .3s linear;
+    transition: 0.3s linear;
 }
 
 .i-con button:hover i {
@@ -1231,8 +1211,6 @@ td {
     outline: none;
     border-radius: 100px;
 }
-
-
 
 /*************** Chi tiết lương ************/
 .text-title h1 {
@@ -1265,7 +1243,7 @@ td {
 
 .salary {
     padding: 8px 12px;
-    background-color: #3BC9C9;
+    background-color: #3bc9c9;
     color: #fff;
     border: 1px solid #000;
     border-radius: 5px;
@@ -1320,7 +1298,7 @@ td {
 
 .timekeeping {
     padding: 8px 10px;
-    background-color: #3BC9C9;
+    background-color: #3bc9c9;
     border: none;
     border-radius: 4px;
     font-weight: 300;
@@ -1330,6 +1308,3 @@ td {
     margin-left: 39%;
     margin-top: 1%;
 }
-
-
-

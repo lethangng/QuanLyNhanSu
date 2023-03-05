@@ -122,7 +122,6 @@ Route::middleware(['checkNV'])->group(function () {
 
 // các mục nào viết về nhân viên tài chính thì cho route trong này
 Route::middleware(['checkNVTC'])->group(function () {
-
 });
 
 // Thong tin ca nhan(dung chung)
@@ -138,5 +137,5 @@ Route::get('/sm', [ThongTinCaNhanController::class, 'index2']);
 //Route::get('/sendtextfind',[ThongTinCaNhanController::class,'find2']);
 Route::get('/smkhoa', [KhoaController::class, 'index']);
 Route::view('/smkhoa2', 'nhansu.danhsachkhoa.quanlykhoa');
+Route::view('/themkhoa', 'nhansu.danhsachkhoa.themkhoa');
 Route::view('/sm2', 'nhansu.danhsachnhanvien.danhsachnhanvien');
-
