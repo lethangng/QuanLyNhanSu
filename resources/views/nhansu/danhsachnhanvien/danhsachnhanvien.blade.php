@@ -81,13 +81,13 @@
                             <th class="h1" scope="row">Đi làm</th>
                             <th class="h1" scope="row">
                                 <button class="i-save">
-                                    <a href="{{ route('canhan.index', ['id' => $nhanvien->id]) }}">
+                                    <a href="">
                                         <img src="{{ asset('icon/save.png') }}" alt="">
                                     </a>
                                 </button>
                                 <button class="i-edit">
                                     <i class='bx bx-edit'></i>
-                                </button>
+                                </button>z
                                 <button class="i-rotate">
                                     <i class='bx bx-trash js-buy-ticket'></i>
                                 </button>

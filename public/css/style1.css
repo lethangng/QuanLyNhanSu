@@ -839,24 +839,17 @@ td {
 /* ********************* danh sach nhan vien ******************* */
 .dsnv-main {
     width: 100%;
-
 }
-
-
 .dsnv-title {
     text-align: center;
     padding: 8px 0;
     background: #5582F8;
 }
-
-
 .dsnv-title h1 {
     font-size: 32px;
     font-weight: 400;
     color: white;
-    
 }
-
 .btn-tnv
 {
     padding-top: 22px;

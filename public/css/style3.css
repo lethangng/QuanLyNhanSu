@@ -18,4 +18,8 @@
     color: white;
     
 }
-
+.right-inf,
+.left-inf {
+    padding-left: 64px;
+    padding-top: 20px;
+}
