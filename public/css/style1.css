@@ -997,10 +997,7 @@ td {
 
 .dscv-main {
     width: 100%;
-
 }
-
-
 .dscv-title {
     text-align: center;
     padding: 8px 0;
@@ -1035,10 +1032,15 @@ td {
     margin-top: -6px;
     margin-right: 8px;
 }
-.icon-search-1{
+.container-search-reset {
+    position: absolute;
+    left: 550px;
     margin-top: -8px;
+}
+.icon-search-1{
+    /* margin-top: -8px;
     padding: 0 12px;
-    float: right;
+    float: right; */
     
 }
 .icon-search-1 img {
@@ -1050,9 +1052,9 @@ td {
     border: 1px solid #333;
 }
 .icon-reset-1 {
-    margin-top: -8px;
+    /* margin-top: -8px;
     padding-right: 776px;
-    float: right;
+    float: right; */
 }
 
 .icon-reset-1 img{
@@ -1224,9 +1226,9 @@ td {
     width: 130px;
 }
 .icon-search-1{
-    margin-top: -8px;
+    /* margin-top: -8px;
     padding: 0 12px;
-    float: right;
+    float: right; */
     
 }
 .icon-search-1 img {
@@ -1238,9 +1240,9 @@ td {
     border: 1px solid #333;
 }
 .icon-reset-1 {
-    margin-top: -8px;
+    /* margin-top: -8px;
     padding-right: 776px;
-    float: right;
+    float: right; */
 }
 
 .icon-reset-1 img{
