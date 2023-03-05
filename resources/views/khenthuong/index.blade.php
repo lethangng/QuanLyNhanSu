@@ -8,9 +8,11 @@
             <div class="dskt-title">
                 <h1>Danh sách khen thưởng</h1>
             </div>
-            <div class="btn-tkt">
-                <button class="nv">Thêm mới khen thưởng</button>
-            </div>
+            <form action="{{ route('themmoikhenthuong') }}">
+                <div class="btn-tkt">
+                    <button class="nv">Thêm mới khen thưởng</button>
+                </div>
+            </form>
             <div class="date">
                 <label for="">
                     Tháng
