@@ -64,9 +64,9 @@ Route::middleware(['checkHT'])->group(function () {
 
 // các mục nào viết về Nhân viên nhân sự thì cho route trong này
 Route::middleware(['checkNVNS'])->group(function () {
-    Route::get('/login/user', function () {
-        return view('welcome')->name('login.user');
-    });
+    // Route::get('/login/user', function () {
+    //     return view('welcome')->name('login.user');
+    // });
 });
 
 // các mục nào viết về nhân viên thì cho route trong này
