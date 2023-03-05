@@ -27,7 +27,7 @@ class ThongTinController extends Controller
             }
             return view('thongtincanhan', compact('canhan', 'title'));
         } else {
-            return abort(404);
+            return redirect()->route('login');
         }
     }
 

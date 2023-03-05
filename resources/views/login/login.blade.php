@@ -39,7 +39,7 @@
                         {{-- <form id="register-form" role="form" autocomplete="off" class="form" method="POST"
                             action="{{ route('fogotPassword') }}"> --}}
 
-                        <form id="register-form" role="form" autocomplete="off" class="form"
+                        <form id="register-form" role="form"  class="form"
                             method="POST" action="{{ route('fogotPassword') }}" autocomplete="off">
                             @csrf
                             <div class="">
@@ -117,6 +117,9 @@
         crossorigin="anonymous"></script>
 
     <script>
+        const formforgot = document.querySelector('.form-forgot-js');
+        const panelbody = document.querySelector('.forgotpw-js');
+        const textforgot = document.querySelector('.textjs');
         $("#loginForm").on('submit', function(e) {
             console.log(1)
             e.preventDefault();
@@ -166,7 +169,7 @@
                         $('.email_err_forgot_pass').text(data.msg);
                     } else if (data.error_check == false) {
                         console.log(data.msg)
-                        formforgot.classList.remove("open");
+                        formforgot.classList.remove("opend");
                         // window.location.href = data.url;
                     } else {
                         printErrorMsg(data.error, '_err_forgot_pass');
@@ -188,9 +191,7 @@
                 $('.' + key + $err).text(value);
             });
         }
-        const formforgot = document.querySelector('.form-forgot-js');
-        const panelbody = document.querySelector('.forgotpw-js');
-        const textforgot = document.querySelector('.textjs');
+        
         formforgot.addEventListener("click", () => {
             formforgot.classList.remove("open");
         })

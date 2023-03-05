@@ -23,3 +23,169 @@
     padding-left: 64px;
     padding-top: 20px;
 }
+
+
+/* ******************************* Thêm mới khen thưởng **************************** */
+
+.tnv, .mnv, .ngkt, .ld, .ctkt{
+    font-size: 26px;
+    font-weight: 600;
+    padding-top: 14px;
+}
+
+.ip-tnv, .ip-mnv, .ip-ngkt, .ip-ld{
+    width: 400px;
+    height: 40px;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid #333;
+}
+.ip-ngkt{
+    opacity: 0.8;
+}
+.ip-ctkt {
+    width: 400px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #333;
+    color: transparent
+  }
+.ip-ctkt::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+.ip-ctkt::before {
+    content: 'Chọn tệp';
+    color: rgba(0, 0, 0, 0.45);
+    display: inline-block;
+    background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 1px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+    margin-left: 14px;
+    margin-top: 8px;
+    position: absolute;
+  }
+  .ip-ctkt:hover::before {
+    border-color: black;
+  }
+  .ip-ctktt:active {
+    outline: 0;
+  }
+  .ip-ctkt:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+  }
+
+.btn-xacnhan{
+    padding-top: 90px;
+    padding-right: 40px;
+    float: right;
+}
+.text-xacnhan{
+    padding: 10px 22px;
+    background-color:#428BCA;
+    border-radius: 10px;
+    border: none;
+}
+
+.text-xacnhan:hover{
+    background-color: #A5CDEF;
+}
+
+/* ***************** */
+modal{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    display: none;
+}
+.modal.open{
+    display: flex;
+}
+.modal-container{
+    background-color: #fff;
+    height: 254px;
+    width: 517px;
+    border-radius: 10px;
+    max-width: calc(100% - 32px);
+    min-height: 200px;
+    position: relative;
+    animation: modalFadeIn ease 0.5s;
+}
+.modal-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #333;
+    padding: 12px;
+    cursor: pointer;
+}
+.modal-close:hover{
+    color: #000;
+    opacity: 1;
+    background-color: #ccc;
+}
+
+.Update-successful {
+    text-align: center;
+}
+.icon-successfull img{
+    padding: 16px;
+    width: 73px;
+    height: 73px;
+   
+}
+
+.text-dmk span{
+    margin-top: 2px;
+    font-family: 'Inter';
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 40px;
+}
+.footer-Update-successful{
+    /* background-color: #83B8EA;
+    height: 82px;
+    border-radius: 0 0px 10px 10px; */
+    margin-top: 24px;
+}
+.confirm{
+    font-size: 32px;
+    width: 517px;
+    height: 100px;
+    padding: 10px 12px;
+    margin-top: 17px;
+    background-color: #83B8EA;
+    border: none;
+    opacity: 1;
+    transition: 0.3s;
+    border-radius: 0 0px 10px 10px; 
+}
+
+.confirm:hover {opacity: 0.6}
+
+@keyframes modalFadeIn {
+    from{
+        opacity: 0;
+        transform: translateY(-140px);
+
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

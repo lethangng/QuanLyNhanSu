@@ -7,6 +7,7 @@ use App\Models\KhenThuong;
 use App\Models\NhanVien;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\KhenThuongRequest;
+use Illuminate\Support\Facades\Auth;
 class KhenThuongController extends Controller
 {
     protected $khenthuong;
@@ -22,9 +23,13 @@ class KhenThuongController extends Controller
      */
     public function index()
     {
-        $title = 'Danh sách khen thưởng';
-        $khenthuongs = KhenThuong::paginate(5);
-        return view('khenthuong.index', compact('khenthuongs', 'title')); 
+        if(Auth::user()) {
+            $title = 'Danh sách khen thưởng';
+            $khenthuongs = KhenThuong::paginate(5);
+            return view('khenthuong.index', compact('khenthuongs', 'title')); 
+        } else {
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -35,14 +40,11 @@ class KhenThuongController extends Controller
     public function create()
     {
         $title = 'Thêm mới khen thưởng';
-        $nhanvien = $this->nhanvien->info(1001);
-        $manv = $nhanvien->id;
-        if($nhanvien->tennv === 'Lê Ngọc Thắng') {
-            dd(true);
-        };
-        // $khenThuongs = KhenThuong::all();
-        // $caNhans = NhanVien::select(DB::raw('id, HoTen'))->get();
-        // return view('nhansu.khenThuong_CaNhan.create', compact('title'));
+        if(Auth::user()) {
+            return view('khenthuong.create', compact('title'));
+        } else {
+            redirect()->route('login');
+        }
     }
 
     /**
@@ -53,29 +55,24 @@ class KhenThuongController extends Controller
      */
     public function store(KhenThuongRequest $request)
     {
-        $nhanvien = $this->nhanvien->info($request->manv);
-        if($nhanvien->tennv === $request->tennv) {
-            if($request->file('upfile')) {
-                $file = $request->file('upfile');
-                $ext = $request->file('upfile')->extension();
-                $file_name = time().'-'.$request->manv.'.'.$ext;
-                $publicPath = public_path('uploads/files');
-                $file->move($publicPath, $file_name);
-                KhenThuong::create([
-                    'manv' => $request->manv,
-                    'ngaykhenthuong' => $request->NgayKhenThuong,
-                    'lydo' => $request->Lydo,
-                    'chitietkhenthuong' => $file_name
-                ]);
-                return redirect()->route('canhan.index');
-            }
+        // dd($request);
+        if($request->file('upfile')) {
+            $file = $request->file('upfile');
+            $ext = $request->file('upfile')->extension();
+            $file_name = time().'-'.$request->manv.'.'.$ext;
+            $publicPath = public_path('uploads/files');
+            $file->move($publicPath, $file_name);
+            KhenThuong::create([
+                'manv' => $request->manv,
+                'ngaykhenthuong' => $request->ngaykhenthuong,
+                'lydo' => $request->lydo,
+                'chitietkhenthuong' => $file_name
+            ]);
+            return redirect()->route('khenthuong.index');
         } else {
-            return redirect()->back()->withErrors('Tên nhân viên và tên nhân viên nhập vào không khớp.');
-        };
+            return redirect()->route('khenthuong.index');
+        }
 
-        // $hoTen = NhanVien::select('HoTen')->where('id', '=', $request->NhanVien_id)->first()->HoTen;
-        // toastr()->success('Thêm khen thưởng cho nhân viên '. $hoTen .' thành công.', 'Thêm thành công');
-        // return redirect()->route('khenthuong_canhan.index');
     }
 
     /**
@@ -87,11 +84,12 @@ class KhenThuongController extends Controller
     public function edit($id)
     {
         $title = 'Cập nhập khen thưởng';
-        $khenThuong_CaNhans = KhenThuong::find($id);
-        $khenThuongs = KhenThuong::all();
-        $caNhans = NhanVien::select(DB::raw('id, HoTen'))->get();
-        // dd($khenthuong);
-        // return view('nhansu.khenThuong_CaNhan.edit', compact('khenThuong_CaNhans', 'title', 'khenThuongs', 'caNhans'));
+        if(Auth::user()) {
+            $khenthuong = KhenThuong::find($id);
+            return view('nhansu.khenThuong_CaNhan.edit', compact('khenthuong', 'title'));
+        } else {
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -103,18 +101,23 @@ class KhenThuongController extends Controller
      */
     public function update(KhenThuongRequest $request, $id)
     {
-        // dd($request);
-        KhenThuong::where('id', $id)
-        ->update([
-            'KhenThuong_id' => $request->KhenThuong_id,
-            'NhanVien_id' => $request->NhanVien_id,
-            'NgayKhenThuong' => $request->NgayKhenThuong,
-            'ChiTietKhenThuong' => $request->ChiTietKhenThuong
-        ]);
-        $hoTen = NhanVien::select('HoTen')->where('id', '=', $request->NhanVien_id)->first()->HoTen;
-        // dd($hoTen);
-        toastr()->success('Sửa khen thưởng '. $hoTen .' thành công.', 'Sửa thành công');
-        return redirect()->route('khenthuong_canhan.index');
+        if($request->file('upfile')) {
+            $file = $request->file('upfile');
+            $ext = $request->file('upfile')->extension();
+            $file_name = time().'-'.$request->manv.'.'.$ext;
+            $publicPath = public_path('uploads/files');
+            $file->move($publicPath, $file_name);
+            KhenThuong::where('id', $id)
+            ->update([
+                'manv' => $request->manv,
+                'ngaykhenthuong' => $request->ngaykhenthuong,
+                'lydo' => $request->lydo,
+                'chitietkhenthuong' => $file_name
+            ]);
+            return redirect()->route('khenthuong.index');
+        } else {
+            return redirect()->route('khenthuong.index');
+        }
     }
 
     /**
@@ -123,37 +126,24 @@ class KhenThuongController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
         KhenThuong::where('id', $id)->delete();
-        toastr()->success('Xóa khen thưởng '. $request->HoTen . ' thành công.', 'Xóa thành công');
-
-        return redirect()->route('khenthuong_canhan.index');
+        return redirect()->route('khenthuong.index');
     }
 
     public function search(Request $request) {
-        $caNhans = NhanVien::select(DB::raw('id, HoTen'))->get();
-        // dd($request);
         $data = [
-            'Thang' => $request->Thang,
-            'Nam' => $request->Nam,
-            'HoTen' => $request->HoTen
+            'thang' => $request->thang,
+            'nam' => $request->nam,
+            'manv' => $request->manv
         ];
-        // dd($data['Thang']);
         // dd($data);
-
-        // Lấy ra các NhanVien_id trong bảng khenthuong khi biết HoTen trong bảng NhanVien
-        $NhanVien_ids = KhenThuong::select('NhanVien_id')
-        ->join('NhanVien', 'KhenThuong.NhanVien_id', '=', 'NhanVien.id')
-        ->where('NhanVien.HoTen', '=', $request->HoTen)->get();
-        // dd($NhanVien_ids);
-
-        // Tìm ra trong bảng khenthuong có id nào gióng với id của NhanVien_id bên trên
-        $khenThuong_CaNhans = KhenThuong::select('*')
-        ->whereMonth('NgayKhenThuong', $request->Thang)
-        ->orwhereYear('NgayKhenThuong', $request->Nam)
-        ->orwhereIn('NhanVien_id', $NhanVien_ids)->paginate(5);
-        // dd($khenThuong_CaNhans);
-        return view('nhansu.khenThuong_CaNhan.index', compact('khenThuong_CaNhans', 'data', 'caNhans'));
+        // Tìm ra trong bảng khenthuong có id nào gióng với id của manv bên trên
+        $khenthuongs = KhenThuong::select('*')
+        ->whereMonth('ngaykhenthuong', $request->thang)
+        ->orwhereYear('ngaykhenthuong', $request->nam)
+        ->orwhere('manv', $request->manv)->paginate(5);
+        return view('khenthuong.index', compact('khenthuongs', 'data'));
     }
 }

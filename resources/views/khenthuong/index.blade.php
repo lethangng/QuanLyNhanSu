@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    {{ $title }}
+    {{ $title ?? 'Danh sách khen thưởng' }}
 @endsection
 @section('content')
     <div class="dskt-main">
@@ -9,45 +9,58 @@
                 <h1>Danh sách khen thưởng</h1>
             </div>
             <div class="btn-tkt">
-                <button class="nv">Thêm mới khen thưởng</button>
+                <a href="{{ route('khenthuong.create') }}">
+                    <button class="nv">
+                        Thêm mới khen thưởng
+                    </button>
+                </a>
             </div>
-            <div class="date">
-                <label for="">
-                    Tháng
-                    <select name="thang" id="">
-                        <option value="">MM</option>
-                        @for ($i = 1; $i < 13; $i++)
-                            <option value="{{ $i }}">{{ $i }}</option>
-                        @endfor
-                    </select>
-                </label>
-                @php
-                    use Carbon\Carbon;
-                    $year = Carbon::now()->year;
-                @endphp
-                <label for="">
-                    Năm
-                    <select name="nam" id="">
-                        <option value="">YYYY</option>
-                        @for ($i = 2000; $i <= $year; $i++)
-                            <option value="{{ $i }}">{{ $i }}</option>
-                        @endfor
-                    </select>
-                </label>
-            </div>
-
-            <div class="custom-input">
-                <div class="container-search-reset">
-                    <span class="icon-search-1">
-                        <img src="{{ asset('icon/search.png') }}" alt="">
-                    </span>
-                    <span class="icon-reset-1">
-                        <img src="{{ asset('icon/reset.png') }}" alt="">
-                    </span>
+            <form action="{{ route('khenthuong.search') }}" method="post">
+                @csrf
+                <div class="date">
+                    <label for="">
+                        Tháng
+                        <select name="thang">
+                            <option value="">MM</option>
+                            @for ($i = 1; $i < 13; $i++)
+                                <option @isset($data) @selected( $i == (int)$data['thang'])  @endisset
+                                    value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
+                    </label>
+                    @php
+                        use Carbon\Carbon;
+                        $year = Carbon::now()->year;
+                    @endphp
+                    <label for="">
+                        Năm
+                        <select name="nam" id="">
+                            <option value="">YYYY</option>
+                            @for ($i = 2000; $i <= $year; $i++)
+                                <option @isset($data) @selected( $i == (int)$data['nam'])  @endisset
+                                    value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
+                    </label>
                 </div>
-                <input class="input-search-name-1" type="text" placeholder="Nhập mã nhân viên cần tìm" name="manv">
 
-            </div>
+                <div class="custom-input">
+                    <div class="container-search-reset">
+                        <button class="icon-search-1" type="submit">
+                            <img src="{{ asset('icon/search.png') }}" alt="">
+                        </button>
+                        <a href="{{ route('khenthuong.index') }}">
+                            <span class="icon-reset-1">
+                                <img src="{{ asset('icon/reset.png') }}" alt="">
+                            </span>
+                        </a>
+                    </div>
+                    <input class="input-search-name-1" type="text" placeholder="Nhập mã nhân viên cần tìm" name="manv"
+                        @isset($data) value="{{ $data['manv'] }}"  @endisset>
+                </div>
+            </form>
+
+
             <div class="list-dskt">
                 <table class="table-dskt table-bordered">
                     <thead>
@@ -72,10 +85,11 @@
                                 </th>
                                 <th class="h1" scope="row">{{ $khenthuong->lydo }}</th>
                                 <th class="h1" scope="row">
-                                    <button class="i-save">
-                                        <img src="{{ asset('icon/save.png') }}" alt="">
-                                        {{-- <a href=""></a> --}}
-                                    </button>
+                                    <a href="{{}}">
+                                        <button class="i-save">
+                                            <img src="{{ asset('icon/save.png') }}" alt="">
+                                        </button>
+                                    </a>
                                     <button class="i-edit">
                                         <i class='bx bx-edit'></i>
                                     </button>
@@ -89,6 +103,8 @@
                 </table>
             </div>
         </div>
-    </div>
+        <nav aria-label="Page navigation example" class="ml-5">
+            {{ $khenthuongs->links('pagination::bootstrap-4') }}
+        </nav>
     </div>
 @endsection
