@@ -19,11 +19,14 @@ class checkGV
     public function handle(Request $request, Closure $next)
     {
 
-        Auth::user()->findRoleId(Auth::user()->id);
-        if (Auth::check() && Auth::user()->roleId == 2) {
-            return $next($request);
-        } else {
-            return back();
+        if (Auth::check()) {
+            Auth::user()->findRoleId(Auth::user()->id);
+            if (Auth::user()->roleId == 2) {
+                return $next($request);
+            } else {
+                return back();
+            }
         }
+        return abort(404);
     }
 }

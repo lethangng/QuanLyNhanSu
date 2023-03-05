@@ -40,6 +40,7 @@ class NhanVien extends Model
     {
         return $this->belongsTo(PhongBan::class, 'maphongban', 'id');
     }
+<<<<<<< HEAD
     public function thongTinCaNhan($id = null)
     {
         if ($id) {
@@ -51,3 +52,18 @@ class NhanVien extends Model
         }
     }
 }
+=======
+    public function info($id = null) {
+        if($id) {
+            return NhanVien::select(DB::raw('*'))->where('id', $id)->first();
+        } else {
+            // return DB::raw('SELECT * FROM nhanvien WHERE id = ' . Auth::user()->manv) . ' LIMIT 1';
+            return NhanVien::select(DB::raw('*'))->where('id', Auth::user()->manv)->first();
+            // return NhanVien::select(DB::raw('*'))->where('id', 1001)->first();
+        }
+    }
+    public function findId($id) {
+        return NhanVien::select(DB::raw('tennv'))->where('id', $id)->first();
+    }
+}
+>>>>>>> aff57809f7f06c8935bc02f11880bb7100268992

@@ -11,16 +11,20 @@ use App\Http\Requests\PublicRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class NhanVienController extends Controller
+class ThongTinController extends Controller
 {
     protected $nhanvien;
     public function __construct(){
         $this->nhanvien = new NhanVien;
     }
-    public function index() {
+    public function index($id = null) {
+        $title = 'Thông tin cá nhân';
         if(Auth::user()){
-            $title = 'Thông tin cá nhân';
-            $canhan = $this->nhanvien->info();
+            if($id) {
+                $canhan = $this->nhanvien->info($id);
+            } else {
+                $canhan = $this->nhanvien->info(Auth::user()->manv);
+            }
             return view('thongtincanhan', compact('canhan', 'title'));
         } else {
             return abort(404);
@@ -54,7 +58,7 @@ class NhanVienController extends Controller
                 return response()->json(["check" => true]);
             } else {
                 return response()->json(['error' => $validator->errors()]);
-            }
+            } 
         }
     }
 
@@ -86,10 +90,5 @@ class NhanVienController extends Controller
         } else {
             toastr()->success('Tải lên thất bại.', 'Thất bại');
         }
-    }
-    public function index2()
-    {
-        $caNhan = DB::select('SELECT nhanvien.id,tennv,email,cccd,gioitinh,machucvu,maphongban,makhoa,trangthai from nhanvien');
-        return view('nhansu.danhsachnhanvien.danhsachnhanvien', ['caNhan' => $caNhan]);
     }
 }

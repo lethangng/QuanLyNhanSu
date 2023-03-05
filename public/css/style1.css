@@ -399,6 +399,7 @@ td {
     min-width: 1200px;
 }
 
+<<<<<<< HEAD
 /* .image2 {
 
 } */
@@ -454,6 +455,8 @@ td {
 .table-dsl {
     border: 1px solid #333;
 }
+=======
+>>>>>>> aff57809f7f06c8935bc02f11880bb7100268992
 
 .h1 {
     text-align: center;
@@ -461,11 +464,17 @@ td {
     padding: 8px 8px;
     font-weight: 400;
 }
+<<<<<<< HEAD
 
 .h1 .i-edit,
 .h1 .i-save {
     padding: 5px 8px;
     background-color: #e3ac6c;
+=======
+.h1 .i-edit{
+    padding: 5px 6px;
+    background-color: #E3AC6C;
+>>>>>>> aff57809f7f06c8935bc02f11880bb7100268992
     border: 1px solid #ccc;
     border-radius: 5px;
     display: inline-flex;
@@ -474,6 +483,7 @@ td {
     transition: 0.2s linear;
 }
 
+<<<<<<< HEAD
 .h1 .i-edit i,
 .h1 .i-rotate i,
 .h1 .i-save i {
@@ -648,6 +658,10 @@ td {
     margin-left: 39%;
     margin-top: 1%;
 }
+=======
+/******************************************************/
+
+>>>>>>> aff57809f7f06c8935bc02f11880bb7100268992
 
 /* Google Font Import - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
@@ -934,12 +948,7 @@ body.dark .switch::before {
 }
 
 .home {
-    /* position: absolute; */
-    /* top: 0; */
-    /* top: 0; */
-    /* left: 250px; */
     height: 100vh;
-    /* width: calc(100% - 250px); */
     background-color: var(--body-color);
     transition: var(--tran-05);
     width: 100% !important;
@@ -1066,25 +1075,32 @@ td {
     margin-left: 64px;
 }
 
+<<<<<<< HEAD
 /* ********************* danh sach luong ************* */
+=======
+
+/* ********************* danh sach nhan vien ******************* */
+>>>>>>> aff57809f7f06c8935bc02f11880bb7100268992
 .dsnv-main {
     width: 100%;
 }
-
-.ctl-title,
 .dsnv-title {
     text-align: center;
     padding: 8px 0;
-    background: linear-gradient(90deg, blue, white);
+    background: #5582F8;
 }
-
-.ctl-title,
-.dsl-title h1 {
+.dsnv-title h1 {
     font-size: 32px;
     font-weight: 400;
     color: white;
 }
+.btn-tnv
+{
+    padding-top: 22px;
+    padding-left: 129px;
+}
 
+<<<<<<< HEAD
 .input-search {
     width: 400px;
     height: 40px;
@@ -1092,82 +1108,203 @@ td {
     padding: 6px 10px;
     font-size: 14px;
     border: 1px solid #ccc;
+=======
+.nv{
+    background-color: #239393;
+    width: 264px;
+    height: 80px;
+    font-size: 22px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+.nv:hover{
+    background-color: #85DEDE;
 }
 
-.i-con {
-    /* position: relative; */
-    /* left: 635px; */
-    /* bottom: 38px; */
-    align-self: flex-end;
+.text-filter{
+    padding-top: 31px;
+    padding-left: 129px;
 }
 
-.btn-icon-search {
-    background-color: #8cc6c6;
-    padding: 4px 6px;
+.text-filter span{
+    font-weight: 400;
+    font-size: 30px;
+>>>>>>> aff57809f7f06c8935bc02f11880bb7100268992
+}
+
+.form-filter {
+    font-size: 20px;
+    padding:0 20px;
+}
+
+.custom-select-input{
+    padding-top: 31px;
+    padding-left: 129px;
+}
+
+.select-name{
+    width: 300px;
+    height: 40px;
     border-radius: 10px;
-    border: 1px solid #000;
+    padding: 0 10px;
 }
 
-.btn-icon-rotate {
-    background-color: #e07979;
-    padding: 4px 6px;
+
+.input-search-name{
+    width: 400px;
+    height: 50px;
+    display: flex;
+    float: right;
+    border-radius: 50px;
+    padding-left: 12px;
+    margin-top: -6px;
+    margin-right: 8px;
+}
+.icon-search{
+    margin-top: -8px;
+    padding: 0 12px;
+    float: right;
+    
+}
+.icon-search img {
+    height: 52px;
+    width: 50px;
+    background-color: #8CC6C6;
+    padding: 0px;
     border-radius: 10px;
-    border: 1px solid #000;
+    border: 1px solid #333;
+}
+.icon-reset {
+    margin-top: -8px;
+    float:right;
+    padding-right: 46px;
 }
 
-.table-dsl {
+.icon-reset img{
+    width: 50px;
+    height: 52px;
+    background-color: #EE7048;
+    padding: 10px;
+    border-radius: 10px;
     border: 1px solid #333;
 }
 
-.h1 {
-    text-align: center;
-    font-size: 16px;
-    padding: 8px 8px;
-    font-weight: 400;
+.icon-search img:hover{
+    background-color: #D2F0F0;
 }
-.i-rotate:hover,
-.i-edit:hover {
-    background-color: #ccc;
+.icon-reset img:hover{
+    background-color: #EFC5B7;
 }
 
-/* *********************danh sach luong nhan vien ************* */
-
-.container-dsl {
-    margin-top: 60px;
+.list-dsnv{
+    padding-top: 31px;
+    padding-left: 112px;
+}
+.table-dsnv{
+    width: 98%;
+}
+.head-table{
+    padding: 10px;
 }
 
-/* .date{
-    position: relative;
-    top: 10px;
-    left: 215px;
-} */
-.date label {
-    font-size: 18px;
-}
-
-.input-year,
-.input-month {
-    width: 88px;
-    padding: 1px 6px;
-}
-
-.h1 .i-save {
-    background-color: red;
-    padding: 3px 4px;
+.h1 .i-rotate{
+    padding: 5px 6px;
+    background-color: #E53535;
     border: 1px solid #ccc;
-    color: #fff;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s linear;
+}
+.h1 .i-save {
+    border: none;
+}
+.h1 .i-save img{
+    width: 32px;
+    margin-top: -4px;
+    background-color: #27E050;
+    padding: 2px 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.i-save:hover {
-    background-color: #ccc;
-    color: #333;
+.i-rotate:hover{
+    background-color: #F6A3A3;
+}
+.i-save img:hover{
+    background-color: #ACDFAB;
+}
+.i-edit:hover{
+    background-color: #F4D6B2;
 }
 
-.btn-payroll {
+/* ********************* danh sach chức vụ ******************* */
+
+.dscv-main {
+    width: 100%;
+}
+.dscv-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+
+
+.dscv-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+    
+}
+
+.btn-tcv
+{
+    padding-top: 22px;
+    padding-left: 129px;
+}
+
+.custom-input{
+    padding-top: 31px;
+    padding-left: 129px;
+}
+
+.input-search-name-1{
+    width: 400px;
+    height: 50px;
+    display: flex;
+    border-radius: 50px;
+    padding-left: 12px;
+    margin-top: -6px;
+    margin-right: 8px;
+}
+.container-search-reset {
     position: absolute;
-    right: 24%;
+    left: 550px;
+    margin-top: -8px;
+}
+.icon-search-1{
+    /* margin-top: -8px;
+    padding: 0 12px;
+    float: right; */
+    
+}
+.icon-search-1 img {
+    height: 52px;
+    width: 50px;
+    background-color: #8CC6C6;
+    padding: 0px;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+.icon-reset-1 {
+    /* margin-top: -8px;
+    padding-right: 776px;
+    float: right; */
 }
 
+<<<<<<< HEAD
 .payroll {
     width: 134px;
     padding: 8px;
@@ -1175,22 +1312,41 @@ td {
     color: #fff;
     border: 1px solid #ccc;
     border-radius: 6px;
+=======
+.icon-reset-1 img{
+    width: 50px;
+    height: 52px;
+    background-color: #EE7048;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #333;
+>>>>>>> aff57809f7f06c8935bc02f11880bb7100268992
 }
 
-.component-dsl {
-    padding: 30px 0 30px 30px;
+.icon-search-1 img:hover{
+    background-color: #D2F0F0;
+}
+.icon-reset-1 img:hover{
+    background-color: #EFC5B7;
 }
 
-.component-dsl form {
-    display: flex;
-    gap: 15px;
+.list-dscv{
+    padding-top: 31px;
+    padding-left: 112px;
+}
+.table-dscv{
+    width: 98%;
 }
 
-.i-con button {
-    padding: 8px 15px;
-    display: flex;
+.i-rotate{
+    padding: 5px 6px;
+    background-color: #E53535;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
+<<<<<<< HEAD
     height: 46px;
     transition: 0.3s linear;
 }
@@ -1199,112 +1355,369 @@ td {
     font-size: 22px;
     background: #fff;
     transition: 0.3s linear;
+=======
+    transition: .2s linear;
+}
+.i-save {
+    border: none;
+}
+.i-save img{
+    width: 32px;
+    margin-top: -4px;
+    background-color: #27E050;
+    padding: 2px 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.i-con button:hover i {
-    font-size: 23px;
+.i-rotate:hover{
+    background-color: #F6A3A3;
+>>>>>>> aff57809f7f06c8935bc02f11880bb7100268992
+}
+.i-save img:hover{
+    background-color: #ACDFAB;
+}
+.i-edit:hover{
+    background-color: #F4D6B2;
 }
 
-.container-input-search input {
-    padding: 22px 32px;
-    border: 1px solid #000;
-    outline: none;
-    border-radius: 100px;
+/* ********************* danh sach phong ban ******************* */
+
+.dspb-main {
+    width: 100%;
+
 }
 
+.dspb-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+
+<<<<<<< HEAD
 /*************** Chi tiết lương ************/
 .text-title h1 {
     font-size: 22px;
-    text-align: center;
-    padding: 14px 0;
+=======
+
+.dspb-title h1 {
+    font-size: 32px;
     font-weight: 400;
+    color: white;
+    
 }
 
-.table-container {
+.btn-tpb
+{
+    padding-top: 22px;
+    padding-left: 129px;
+}
+
+.icon-search-1 img:hover{
+    background-color: #D2F0F0;
+}
+.icon-reset-1 img:hover{
+    background-color: #EFC5B7;
+}
+
+.list-dspb{
+    padding-top: 31px;
+    padding-left: 112px;
+}
+.table-dspb{
+    width: 98%;
+}
+
+.i-rotate{
+    padding: 5px 6px;
+    background-color: #E53535;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s linear;
+}
+.i-save {
+    border: none;
+}
+.i-save img{
+    width: 32px;
+    margin-top: -4px;
+    background-color: #27E050;
+    padding: 2px 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.i-rotate:hover{
+    background-color: #F6A3A3;
+}
+.i-save img:hover{
+    background-color: #ACDFAB;
+}
+.i-edit:hover{
+    background-color: #F4D6B2;
+}
+
+/* ********************* danh sach khen thuong ******************* */
+
+.dskt-main {
+    width: 100%;
+
+}
+
+.dskt-title {
+>>>>>>> aff57809f7f06c8935bc02f11880bb7100268992
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+
+
+.dskt-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+    
+}
+
+.btn-tkt
+{
+    padding-top: 22px;
+    padding-left: 129px;
+}
+.date{
+    padding-top: 22px;
+    padding-left: 129px;
+}
+.date label{
+    padding-left: 14px;
+    font-size: 16px;
+}
+.date select{
+    padding-left: 8px;
+    width: 130px;
+}
+.icon-search-1{
+    /* margin-top: -8px;
+    padding: 0 12px;
+    float: right; */
+    
+}
+.icon-search-1 img {
+    height: 52px;
+    width: 50px;
+    background-color: #8CC6C6;
+    padding: 0px;
+    border-radius: 10px;
     border: 1px solid #333;
-    background-color: #fff;
-    width: 1052px;
-    height: 324px;
-    position: relative;
-    top: 25px;
-    left: 11%;
+}
+.icon-reset-1 {
+    /* margin-top: -8px;
+    padding-right: 776px;
+    float: right; */
 }
 
-.ctl-table {
-    position: absolute;
-    top: 58px;
+.icon-reset-1 img{
+    width: 50px;
+    height: 52px;
+    background-color: #EE7048;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+.icon-search-1 img:hover{
+    background-color: #D2F0F0;
+}
+.icon-reset-1 img:hover{
+    background-color: #EFC5B7;
 }
 
-.btn-salary {
-    position: relative;
-    top: 80px;
-    left: 80%;
+.list-dskt{
+    padding-top: 31px;
+    padding-left: 112px;
+}
+.table-dskt{
+    width: 98%;
 }
 
+<<<<<<< HEAD
 .salary {
     padding: 8px 12px;
     background-color: #3bc9c9;
     color: #fff;
     border: 1px solid #000;
+=======
+.i-rotate{
+    padding: 5px 6px;
+    background-color: #E53535;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s linear;
+}
+.i-save {
+    border: none;
+}
+.i-save img{
+    width: 32px;
+    margin-top: -4px;
+    background-color: #27E050;
+    padding: 2px 2px;
+    border: 1px solid #ccc;
+>>>>>>> aff57809f7f06c8935bc02f11880bb7100268992
     border-radius: 5px;
 }
 
-.salary:hover {
-    background-color: rgb(199, 116, 116);
-    color: #333;
+.i-rotate:hover{
+    background-color: #F6A3A3;
+}
+.i-save img:hover{
+    background-color: #ACDFAB;
+}
+.i-edit:hover{
+    background-color: #F4D6B2;
 }
 
-/************** Chấm công  **************/
-.chamcong-main {
+
+/* ********************* danh sach ky luat ******************* */
+.dskl-main {
     width: 100%;
 }
 
-.cc-title {
+.dskl-title {
     text-align: center;
     padding: 8px 0;
-    background: linear-gradient(90deg, blue, white);
+    background: #5582F8;
 }
 
-.cc-title h1 {
+
+.dskl-title h1 {
     font-size: 32px;
     font-weight: 400;
     color: white;
-    line-height: 35px;
+    
 }
 
-.text-inf {
-    margin-top: 32px;
-    padding-top: 10px;
-    padding-left: 10px;
-    width: 296px;
-    height: 148px;
-    background-color: aqua;
+.btn-tkl
+{
+    padding-top: 22px;
+    padding-left: 129px;
+}
+.date{
+    padding-top: 22px;
+    padding-left: 129px;
+}
+.date label{
+    padding-left: 14px;
+    font-size: 16px;
+}
+.date select{
+    padding-left: 8px;
+    width: 130px;
 }
 
-.text-inf h4 {
-    font-size: 12px;
-    padding-bottom: 8px;
-    font-weight: 400;
-    line-height: 20px;
+.icon-reset-2 {
+    margin-top: -8px;
+    padding-right: 780px;
+    float: right;
+}
+.icon-reset-2 img{
+    width: 50px;
+    height: 52px;
+    background-color: #EE7048;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+.icon-search-1 img:hover{
+    background-color: #D2F0F0;
+}
+.icon-reset-1 img:hover{
+    background-color: #EFC5B7;
 }
 
-.container-inf {
-    margin-left: 30px;
+.list-dskl{
+    padding-top: 31px;
+    padding-left: 112px;
+}
+.table-dskl{
+    width: 98%;
 }
 
-.btn-cc {
-    margin-left: 47%;
-}
-
+<<<<<<< HEAD
 .timekeeping {
     padding: 8px 10px;
     background-color: #3bc9c9;
+=======
+.i-rotate{
+    padding: 5px 6px;
+    background-color: #E53535;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s linear;
+}
+.i-save {
+>>>>>>> aff57809f7f06c8935bc02f11880bb7100268992
     border: none;
-    border-radius: 4px;
-    font-weight: 300;
+}
+.i-save img{
+    width: 32px;
+    margin-top: -4px;
+    background-color: #27E050;
+    padding: 2px 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.date-cc {
-    margin-left: 39%;
-    margin-top: 1%;
+.i-rotate:hover{
+    background-color: #F6A3A3;
 }
+.i-save img:hover{
+    background-color: #ACDFAB;
+}
+.i-edit:hover{
+    background-color: #F4D6B2;
+}
+
+/* ********************* danh sach tang luong ******************* */
+.dstl-main {
+    width: 100%;
+}
+
+.dstl-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+<<<<<<< HEAD
+=======
+
+
+.dstl-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+    
+}
+
+.btn-ttl
+{
+    padding-top: 22px;
+    padding-left: 129px;
+}
+
+.list-dstl{
+    padding-top: 31px;
+    padding-left: 112px;
+}
+.table-dstl{
+    width: 98%;
+}
+>>>>>>> aff57809f7f06c8935bc02f11880bb7100268992

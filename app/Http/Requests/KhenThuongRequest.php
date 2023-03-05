@@ -24,8 +24,8 @@ class KhenThuongRequest extends FormRequest
     public function rules()
     {
         return [
-            'KhenThuong_id' => 'required|exists:khenthuong,id',
-            'ThongTinCaNhan_id' => 'required|exists:thongtincanhan,id',
+            'manv' => 'required|exists:nhanvien,id',
+            'tennv' => 'required|exists:nhanvien,tennv',
             'NgayKhenThuong' => 'required|date'
         ];
     }
@@ -34,15 +34,16 @@ class KhenThuongRequest extends FormRequest
     {
         return [
             'required' => ':attribute bắt buộc phải nhập',
-            'date' => ':attribute phải là định dạng ngày tháng'
+            'date' => ':attribute phải là định dạng ngày tháng',
+            'exists' => ':attribute không tồn tại.'
         ];
     }
 
     public function attributes()
     {
         return [
-            'KhenThuong_id' => 'Tên khen thưởng',
-            'ThongTinCaNhan_id' => 'Tên nhân viên',
+            'manv' => 'Mã nhân viên',
+            'tenv' => 'Tên nhân viên',
             'NgayKhenThuong' => 'Ngày khen thưởng'
         ];
     }

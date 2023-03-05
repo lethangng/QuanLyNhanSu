@@ -118,6 +118,7 @@
 
     <script>
         $("#loginForm").on('submit', function(e) {
+            console.log(1)
             e.preventDefault();
             $.ajax({
                 url: $(this).attr('action'),
