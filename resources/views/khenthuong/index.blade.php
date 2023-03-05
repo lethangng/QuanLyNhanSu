@@ -8,45 +8,12 @@
             <div class="dskt-title">
                 <h1>Danh sách khen thưởng</h1>
             </div>
-<<<<<<< HEAD
             <div class="btn-tkt">
                 <a href="{{ route('khenthuong.create') }}">
                     <button class="nv">
                         Thêm mới khen thưởng
                     </button>
                 </a>
-=======
-            <form action="{{ route('themmoikhenthuong') }}">
-                <div class="btn-tkt">
-                    <button class="nv">Thêm mới khen thưởng</button>
-                </div>
-            </form>
-            <div class="date">
-                <label for="">
-                    Tháng
-                    <select name="thang" id="">
-                        <option value="">MM</option>
-                        @for ($i = 1; $i < 13; $i++)
-                            <option value="{{ $i }}">{{ $i }}</option>
-                        @endfor
-                    </select>
-                </label>
-                @php
-                    use Carbon\Carbon;
-                    $year = Carbon::now()->year;
-                @endphp
-                <label for="">
-                    Năm
-                    <select name="nam" id="">
-                        <option value="">YYYY</option>
-                        @for ($i = 2000; $i <= $year; $i++)
-                            <option value="{{ $i }}">{{ $i }}</option>
-                        @endfor
-                    </select>
-                </label>
-            </div>
->>>>>>> 444951d2f56a3cc52e7360f02dc3c258534504a5
-
             </div>
             <form action="{{ route('khenthuong.search') }}" method="post">
                 @csrf
@@ -118,9 +85,11 @@
                                 </th>
                                 <th class="h1" scope="row">{{ $khenthuong->lydo }}</th>
                                 <th class="h1" scope="row">
-                                    <button class="i-save">
-                                        <img src="{{ asset('icon/save.png') }}" alt="">
-                                    </button>
+                                    <a href="{{}}">
+                                        <button class="i-save">
+                                            <img src="{{ asset('icon/save.png') }}" alt="">
+                                        </button>
+                                    </a>
                                     <button class="i-edit">
                                         <i class='bx bx-edit'></i>
                                     </button>

@@ -3,49 +3,99 @@
     {{ $title }}
 @endsection
 @section('content')
-    <h1>{{ $title }}</h1>
-    <hr>
-    <form action="" method="post" class="mb-3" enctype="multipart/form-data" id="add-khenthuong">
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Tên nhân viên</label>
-            <input type="text" class="form-control" name="tennv" value="{{ old('tennv') }}">
-            @error('err_tennv')
-                <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
-            @enderror
-            @error('tennv')
-                <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
-            @enderror
+    <div class="tmnv-main">
+        <div class="wrap">
+            <div class="tmnv-title">
+                <h1>Thêm mới khen thưởng</h1>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <form action="" method="post" enctype="multipart/form-data" class="col-sm left-inf">
+                        @csrf
+                        <div class="tnv">
+                            <label for="">Tên nhân viên:</label>
+                        </div>
+                        <input class="ip-tnv" type="text" name="tennv" id="">
+                        <div class="mnv">
+                            <label for="">Mã nhân viên</label>
+                        </div>
+                        <input class="ip-mnv" type="text" name="manv" id=""
+                            placeholder="Nhập mã nhân viên..." value="{{ old('manv') }}">
+                        @error('manv')
+                            <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
+                        @enderror
+                        <div class="ngkt">
+                            <label for="">Ngày khen thưởng:</label>
+                        </div>
+                        <input class="ip-ngkt" type="date" name="ngaykhenthuong" id=""
+                            value="{{ old('ngaykhenthuong') }}">
+                        @error('ngaykhenthuong')
+                            <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
+                        @enderror
+                        <div class="ld">
+                            <label for="">Lý do:</label>
+                        </div>
+                        <input class="ip-ld" type="text" name="lydo" id="" placeholder="Nhập lý do...">
+                        @error('lydo')
+                            <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
+                        @enderror
+                        <div class="ctkt">
+                            <label for="">Chi tiết khen thưởng:</label>
+                        </div>
+                        <input type="file" name="upfile" accept=".doc,.docx,.pdf,image/*" class="ip-ctkt">
+                        @error('file')
+                            <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
+                        @enderror
+                        <div class="btn-xacnhan">
+                            <button class="text-xacnhan js-buy-ticket" type="submit">Xác nhận</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Mã nhân viên</label>
-            <input type="text" class="form-control" name="manv" value="{{ old('manv') }}">
-            @error('manv')
-                <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
-            @enderror
+    </div>
+    {{-- <div class="modal js-modal ">
+        <div class="modal-container js-modal-container">
+            <div class="modal-close js-modal-close">
+                <i class="ti-close"></i>
+            </div>
+
+            <div class="Update-successful">
+                <span class="icon-successfull">
+                    <img src="{{ asset('css/Img/image 36.png') }}" alt="">
+                </span>
+                <div class="text-dmk">
+                    <span>Thêm thành công</span>
+                </div>
+                <form action="{{ route('khenthuong.index') }}">
+                    <div class="footer-Update-successful">
+                        <button class="confirm"> Xác nhận</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="mb-3">
-            <label class="form-label">Ngày khen thưởng</label>
-            <input type="date" class="form-control" name="ngaykhenthuong" value="{{ old('ngaykhenthuong') }}">
-            @error('ngaykhenthuong')
-                <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
-            @enderror
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Lý do</label>
-            <input type="text" class="form-control" name="lydo" value="{{ old('lydo') }}">
-            @error('lydo')
-                <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
-            @enderror
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Chi tiết khen thưởng</label>
-            <input type="file" name="upfile" accept=".doc,.docx,.pdf,image/*" class="col-12 form-control">
-            @error('file')
-                <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
-            @enderror
-        </div>
-        @csrf
-        <button type="submit" class="btn btn-warning text-light">Thêm</button>
-        <a href="{{ route('khenthuong.index') }}" type="button" class="btn btn-primary">Quay lại</a>
-    </form>
+    </div> --}}
+    <script>
+        const buyBtns = document.querySelectorAll('.js-buy-ticket');
+        const modal = document.querySelector('.js-modal');
+        const modalContainer = document.querySelector('.js-modal-container')
+        const modalClose = document.querySelector('.js-modal-close');
+
+        function showBuyTickets() {
+            modal.classList.add('open')
+        }
+
+        function hideBuyTickets() {
+            modal.classList.remove('open')
+        }
+        for (const buyBtn of buyBtns) {
+            buyBtn.addEventListener('click', showBuyTickets)
+        }
+        modalClose.addEventListener('click', hideBuyTickets)
+        modal.addEventListener('click', hideBuyTickets)
+
+        modalContainer.addEventListener('click', function(event) {
+            event.stopPropagation()
+        })
+    </script>
 @endsection

@@ -51,14 +51,14 @@ class KhenThuongRequest extends FormRequest
             'file' => 'File'
         ];
     }
-    public function withValidator($validator)
-    {
-        $validator->after(function ($validator) {
-            $tennv = NhanVien::select('tennv')->where('id', $this->manv)->first();
-            // dd($this->tennv);
-            if($this->tennv != $tennv) {
-                $validator->errors()->add('err_tennv', 'Tên nhân viên nhập vào không khớp với mã nhân viên.');
-            }
-        });
-    }
+    // public function withValidator($validator)
+    // {
+    //     $validator->after(function ($validator) {
+    //         $tennv = NhanVien::select('tennv')->where('id', $this->manv)->first();
+    //         // dd($this->tennv);
+    //         if($this->tennv != $tennv) {
+    //             $validator->errors()->add('tennv', 'Tên nhân viên nhập vào không khớp với mã nhân viên.');
+    //         }
+    //     });
+    // }
 }

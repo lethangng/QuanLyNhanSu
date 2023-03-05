@@ -25,7 +25,7 @@ class KhenThuongController extends Controller
     {
         if(Auth::user()) {
             $title = 'Danh sách khen thưởng';
-            $khenthuongs = KhenThuong::paginate(2);
+            $khenthuongs = KhenThuong::paginate(5);
             return view('khenthuong.index', compact('khenthuongs', 'title')); 
         } else {
             return redirect()->route('login');
@@ -55,6 +55,7 @@ class KhenThuongController extends Controller
      */
     public function store(KhenThuongRequest $request)
     {
+        // dd($request);
         if($request->file('upfile')) {
             $file = $request->file('upfile');
             $ext = $request->file('upfile')->extension();
