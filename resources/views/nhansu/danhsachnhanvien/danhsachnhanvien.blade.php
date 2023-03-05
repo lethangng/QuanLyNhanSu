@@ -118,10 +118,10 @@
                                     @break
                                 @endif
                             @endforeach
+
                             @if($d3==0)
                             <th class="h1" scope="row">Trống</th>
                             @endif
-                            <th class="h1" scope="row">{{ $item->makhoa }}</th>
                             <th class="h1" scope="row">{{ $item->trangthai }}</th>
                             <th class="h1" scope="row">
                                 <button class="i-save">
