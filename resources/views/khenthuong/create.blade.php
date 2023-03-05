@@ -15,12 +15,12 @@
                         <div class="tnv">
                             <label for="">Tên nhân viên:</label>
                         </div>
-                        <input class="ip-tnv" type="text" name="tennv" id="">
+                        <input class="ip-tnv" type="text" name="tennv" id="ten_nhanvien" readonly>
                         <div class="mnv">
                             <label for="">Mã nhân viên</label>
                         </div>
-                        <input class="ip-mnv" type="text" name="manv" id=""
-                            placeholder="Nhập mã nhân viên..." value="{{ old('manv') }}">
+                        <input class="ip-mnv" type="text" name="manv" id="ma_nhanvien"
+                            placeholder="Nhập mã nhân viên...">
                         @error('manv')
                             <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
                         @enderror
@@ -75,7 +75,44 @@
             </div>
         </div>
     </div> --}}
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+        crossorigin="anonymous"></script>
     <script>
+        var maNv = $("#ma_nhanvien").attr('src');
+        $("#ma_nhanvien").blur(function(e) {
+            console.log($("#ma_nhanvien").val())
+            $.ajax({
+                url: '/ajax_tennv',
+                method: "POST",
+                data: {
+                    'dataId': $("input[name='manv']").val()
+                },
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                        'content')
+                },
+                success: function(data) {
+                    $("#ten_nhanvien").val(data.msg)
+                }
+            });
+        });
+        // $("#ma_nhanvien").bl(function() {
+        //     console.log(1)
+        //     console.log($("#ma_nhanvien").val())
+        //     $.ajax({
+        //         url:'/ajax_tennv' ,
+        //         method: "POST",
+        //         data:{'data': $(this).val()},
+        //         headers: {
+        //             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+        //                 'content')
+        //         },
+        //         processData: false,
+        //         success: function(data) {
+        //             console.log(data.msg)
+        //         }
+        //     });
+        // });
         const buyBtns = document.querySelectorAll('.js-buy-ticket');
         const modal = document.querySelector('.js-modal');
         const modalContainer = document.querySelector('.js-modal-container')

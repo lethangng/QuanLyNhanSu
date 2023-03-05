@@ -8,11 +8,13 @@ use App\Models\NhanVien;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\KhenThuongRequest;
 use Illuminate\Support\Facades\Auth;
+
 class KhenThuongController extends Controller
 {
     protected $khenthuong;
     protected $nhanvien;
-    public function __construct(){
+    public function __construct()
+    {
         $this->khenthuong = new KhenThuong;
         $this->nhanvien = new NhanVien;
     }
@@ -23,9 +25,10 @@ class KhenThuongController extends Controller
      */
     public function index()
     {
-        if(Auth::user()) {
+        if (Auth::user()) {
             $title = 'Danh sách khen thưởng';
             $khenthuongs = KhenThuong::paginate(3);
+            // dd($khenthuongs);
             return view('khenthuong.index', compact('khenthuongs', 'title')); 
         } else {
             return redirect()->route('login');
@@ -40,7 +43,7 @@ class KhenThuongController extends Controller
     public function create()
     {
         $title = 'Thêm mới khen thưởng';
-        if(Auth::user()) {
+        if (Auth::user()) {
             return view('khenthuong.create', compact('title'));
         } else {
             redirect()->route('login');
@@ -56,10 +59,10 @@ class KhenThuongController extends Controller
     public function store(KhenThuongRequest $request)
     {
         // dd($request);
-        if($request->file('upfile')) {
+        if ($request->file('upfile')) {
             $file = $request->file('upfile');
             $ext = $request->file('upfile')->extension();
-            $file_name = time().'-'.$request->manv.'.'.$ext;
+            $file_name = time() . '-' . $request->manv . '.' . $ext;
             $publicPath = public_path('uploads/files');
             $file->move($publicPath, $file_name);
             KhenThuong::create([
@@ -73,7 +76,6 @@ class KhenThuongController extends Controller
         } else {
             return redirect()->route('khenthuong.index');
         }
-
     }
 
     /**
@@ -85,7 +87,7 @@ class KhenThuongController extends Controller
     public function edit($id)
     {
         $title = 'Cập nhập khen thưởng';
-        if(Auth::user()) {
+        if (Auth::user()) {
             $khenthuong = KhenThuong::find($id);
             return view('nhansu.khenThuong_CaNhan.edit', compact('khenthuong', 'title'));
         } else {
@@ -102,19 +104,19 @@ class KhenThuongController extends Controller
      */
     public function update(KhenThuongRequest $request, $id)
     {
-        if($request->file('upfile')) {
+        if ($request->file('upfile')) {
             $file = $request->file('upfile');
             $ext = $request->file('upfile')->extension();
-            $file_name = time().'-'.$request->manv.'.'.$ext;
+            $file_name = time() . '-' . $request->manv . '.' . $ext;
             $publicPath = public_path('uploads/files');
             $file->move($publicPath, $file_name);
             KhenThuong::where('id', $id)
-            ->update([
-                'manv' => $request->manv,
-                'ngaykhenthuong' => $request->ngaykhenthuong,
-                'lydo' => $request->lydo,
-                'chitietkhenthuong' => $file_name
-            ]);
+                ->update([
+                    'manv' => $request->manv,
+                    'ngaykhenthuong' => $request->ngaykhenthuong,
+                    'lydo' => $request->lydo,
+                    'chitietkhenthuong' => $file_name
+                ]);
             return redirect()->route('khenthuong.index');
         } else {
             return redirect()->route('khenthuong.index');
@@ -130,10 +132,12 @@ class KhenThuongController extends Controller
     public function destroy($id)
     {
         KhenThuong::where('id', $id)->delete();
+        toastr()->success('Xóa thành công.', 'Thành công');
         return redirect()->route('khenthuong.index');
     }
 
-    public function search(Request $request) {
+    public function search(Request $request)
+    {
         $data = [
             'thang' => $request->thang,
             'nam' => $request->nam,
@@ -142,9 +146,17 @@ class KhenThuongController extends Controller
         // dd($data);
         // Tìm ra trong bảng khenthuong có id nào gióng với id của manv bên trên
         $khenthuongs = KhenThuong::select('*')
-        ->whereMonth('ngaykhenthuong', $request->thang)
-        ->orwhereYear('ngaykhenthuong', $request->nam)
-        ->orwhere('manv', $request->manv)->paginate(5);
+            ->whereMonth('ngaykhenthuong', $request->thang)
+            ->orwhereYear('ngaykhenthuong', $request->nam)
+            ->orwhere('manv', $request->manv)->paginate(5);
         return view('khenthuong.index', compact('khenthuongs', 'data'));
+    }
+
+
+    public function findNameNv(Request $request)
+    {
+        $user = NhanVien::where('id', $request->dataId)->first();
+        // return response()->json(['msg' => $user->tennv]);
+        return response()->json(['msg' => $user->tennv]);
     }
 }
