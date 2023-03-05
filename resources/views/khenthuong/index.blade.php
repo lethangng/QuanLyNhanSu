@@ -85,7 +85,7 @@
                                 </th>
                                 <th class="h1" scope="row">{{ $khenthuong->lydo }}</th>
                                 <th class="h1" scope="row">
-                                    <a href="">
+                                    <a href="{{ asset('uploads/files/' . $khenthuong->chitietkhenthuong) }}">
                                         <button class="i-save">
                                             <img src="{{ asset('icon/save.png') }}" alt="">
                                         </button>
