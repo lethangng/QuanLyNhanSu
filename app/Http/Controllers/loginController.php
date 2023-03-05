@@ -75,21 +75,27 @@ class loginController extends Controller
         $validator = Validator::make($request->all(), $rules, $messsages);
         if ($validator->passes()) {
             if ($user =  User::where('email', $request->email)->first()) {
-                $user->updateToken(Str::random(10));
+                $strPass = Str::random(10);
+                $user->updatePass($strPass);
+                // dd(
+                //     $user
+                // );
                 FacadesMail::send(
                     'emails.login',
                     [
                         'user' => $user,
-                        'url' => $request->url(),
+                        'pass' => $strPass
                     ],
                     function ($email) use ($user) {
                         $email->subject("thông báo");
                         $email->to($user->email);
                     }
                 );
-                return response()->json(['error_check' => false, 'msg' => $user->password]);
+
+
+                return route('login');
             }
-            return response()->json(['error_check' => true, 'checkUser' => false, 'msg' => "Email không chính xác"]);
+            return response()->json(['error_check' => true, 'msg' => "Email không chính xác"]);
         } else {
             return response()->json(['error' => $validator->errors()]);
         }

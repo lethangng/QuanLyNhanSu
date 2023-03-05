@@ -39,8 +39,10 @@ return [
             'host' => 'smtp.gmail.com',
             'port' => 587,
             'encryption' => 'tls',
-            'username' => 'hoanvip1372002@gmail.com',
-            'password' => 'cqxhbcxflzedvkxu',
+            'username' => 'viethoan137@gmail.com',
+            'password' => 'rmoxtxkqdzajziqr',
+            // 'username' => 'hoanvip1372002@gmail.com',
+            // 'password' => 'cqxhbcxflzedvkxu',
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
         ],
@@ -92,8 +94,8 @@ return [
     */
 
     'from' => [
-        'address' => 'hoanvip1372002@gmail.com',
-        'name' => 'Admin',
+        'address' => 'viethoan137@gmail.com',
+        'name' => 'Quan Ly',
     ],
 
     /*
