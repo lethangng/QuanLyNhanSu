@@ -27,8 +27,9 @@ class KhenThuongController extends Controller
     {
         if (Auth::user()) {
             $title = 'Danh sách khen thưởng';
-            $khenthuongs = KhenThuong::paginate(5);
-            return view('khenthuong.index', compact('khenthuongs', 'title'));
+            $khenthuongs = KhenThuong::paginate(3);
+            // dd($khenthuongs);
+            return view('khenthuong.index', compact('khenthuongs', 'title')); 
         } else {
             return redirect()->route('login');
         }
@@ -70,6 +71,7 @@ class KhenThuongController extends Controller
                 'lydo' => $request->lydo,
                 'chitietkhenthuong' => $file_name
             ]);
+            toastr()->success('Thêm thành công.', 'Thành công');
             return redirect()->route('khenthuong.index');
         } else {
             return redirect()->route('khenthuong.index');
@@ -130,6 +132,7 @@ class KhenThuongController extends Controller
     public function destroy($id)
     {
         KhenThuong::where('id', $id)->delete();
+        toastr()->success('Xóa thành công.', 'Thành công');
         return redirect()->route('khenthuong.index');
     }
 

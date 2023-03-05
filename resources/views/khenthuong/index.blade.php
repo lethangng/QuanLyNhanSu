@@ -85,11 +85,7 @@
                                 </th>
                                 <th class="h1" scope="row">{{ $khenthuong->lydo }}</th>
                                 <th class="h1" scope="row">
-<<<<<<< HEAD
-                                    <a href="#">
-=======
                                     <a href="{{ asset('uploads/files/' . $khenthuong->chitietkhenthuong) }}">
->>>>>>> 350a232047e52ee4d1628477dfc4036c493cdefa
                                         <button class="i-save">
                                             <img src="{{ asset('icon/save.png') }}" alt="">
                                         </button>
@@ -97,9 +93,14 @@
                                     <button class="i-edit">
                                         <i class='bx bx-edit'></i>
                                     </button>
-                                    <button class="i-rotate">
-                                        <i class='bx bx-trash'></i>
-                                    </button>
+                                    <form action="{{ route('khenthuong.destroy', ['id' => $khenthuong->id]) }}"
+                                        method="post">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button class="i-rotate" type="submit">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </form>
                                 </th>
                             </tr>
                         @endforeach
