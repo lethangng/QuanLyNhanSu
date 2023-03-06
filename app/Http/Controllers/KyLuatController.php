@@ -7,6 +7,7 @@ use App\Models\KyLuat;
 use App\Models\NhanVien;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\KyLuatRequest;
+use Illuminate\Support\Facades\Auth;
 // use Yoeunes\Toastr\Toastr;
 class KyLuatController extends Controller
 {
@@ -23,9 +24,14 @@ class KyLuatController extends Controller
      */
     public function index()
     {
-        $title = 'Danh sách kỷ luật';
-        $kyluats = KyLuat::paginate(5);
-        return view('kyluat.index', compact('kyluats', 'title')); 
+        if (Auth::user()) {
+            $title = 'Danh sách khen thưởng';
+            $kyluats = KyLuat::paginate(5);
+            // dd($khenthuongs);
+            return view('kyluat.index', compact('kyluats', 'title')); 
+        } else {
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -35,9 +41,12 @@ class KyLuatController extends Controller
      */
     public function create()
     {
-        $title = 'Thêm mới kỷ luật của nhân viên';
-        $kyLuats = KyLuat::all();
-        return view('nhansu.kyLuat_CaNhan.create', compact('title', 'kyLuats', 'caNhans'));
+        $title = 'Thêm mới kỷ luật';
+        if (Auth::user()) {
+            return view('kyluat.create', compact('title'));
+        } else {
+            redirect()->route('login');
+        }
     }
 
     /**
@@ -48,14 +57,23 @@ class KyLuatController extends Controller
      */
     public function store(KyLuatRequest $request)
     {
-        KyLuat::create([
-            'KyLuat_id' => $request->KyLuat_id,
-            'ThongTinCaNhan_id' => $request->ThongTinCaNhan_id,
-            'NgayKyLuat' => $request->NgayKyLuat,
-            'ChiTietKyLuat' => $request->ChiTietKyLuat
-        ]);
-        toastr()->success('Thêm kỷ luật cho nhân viên '.' thành công.', 'Thêm thành công');
-        return redirect()->route('kyluat_canhan.index');
+        if ($request->file('upfile')) {
+            $file = $request->file('upfile');
+            $ext = $request->file('upfile')->extension();
+            $file_name = time() . '-' . $request->manv . '.' . $ext;
+            $publicPath = public_path('uploads/files');
+            $file->move($publicPath, $file_name);
+            KyLuat::create([
+                'manv' => $request->manv,
+                'ngaykyluat' => $request->ngaykyluat,
+                'lydo' => $request->lydo,
+                'chitietkyluat' => $file_name
+            ]);
+            // toastr()->success('Thêm thành công.', 'Thành công');
+            return redirect()->route('kyluat.index');
+        } else {
+            return redirect()->route('kyluat.index');
+        }
     }
 
     /**
@@ -66,11 +84,13 @@ class KyLuatController extends Controller
      */
     public function edit($id)
     {
-        $title = 'Cập nhập kỷ luật của nhân viên';
-        $kyLuat_CaNhans = KyLuat::find($id);
-        $kyLuats = KyLuat::all();
-        // dd($KyLuat);
-        return view('nhansu.kyLuat_CaNhan.edit', compact('kyLuat_CaNhans', 'title', 'kyLuats', 'caNhans'));
+        $title = 'Cập nhập kỷ luật';
+        if (Auth::user()) {
+            $kyluat = KyLuat::find($id);
+            return view('kyluat.edit', compact('kyluat', 'title'));
+        } else {
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -82,16 +102,28 @@ class KyLuatController extends Controller
      */
     public function update(KyLuatRequest $request, $id)
     {
-        // dd($request);
-        KyLuat::where('id', $id)
-        ->update([
-            'KyLuat_id' => $request->KyLuat_id,
-            'ThongTinCaNhan_id' => $request->ThongTinCaNhan_id,
-            'NgayKyLuat' => $request->NgayKyLuat,
-            'ChiTietKyLuat' => $request->ChiTietKyLuat
-        ]);
-        toastr()->success('Sửa kỷ luật của nhân viên ' .' thành công.', 'Sửa thành công');
-        return redirect()->route('kyluat_canhan.index');
+        if ($request->file('upfile')) {
+            $file = $request->file('upfile');
+            $ext = $request->file('upfile')->extension();
+            $file_name = time() . '-' . $request->manv . '.' . $ext;
+            $publicPath = public_path('uploads/files');
+            $file->move($publicPath, $file_name);
+
+            $oldFile = KyLuat::select('chitietkyluat')->where('id', $id)->get()[0]->chitietkyluat;
+            // dd($oldFile);
+            KyLuat::where('id', $id)
+                ->update([
+                    'manv' => $request->manv,
+                    'ngaykyluat' => $request->ngaykyluat,
+                    'lydo' => $request->lydo,
+                    'chitietkyluat' => $file_name
+                ]);
+            // Xoa file cu
+            unlink(public_path('uploads/files/'.$oldFile));
+            return redirect()->route('kyluat.index');
+        } else {
+            return redirect()->route('kyluat.index');
+        }
     }
 
     /**
@@ -103,33 +135,42 @@ class KyLuatController extends Controller
     public function destroy(Request $request, $id)
     {
         KyLuat::where('id', $id)->delete();
-        toastr()->success('Xóa kỷ luật của nhân viên '. $request->HoTen . ' thành công.', 'Xóa thành công');
-
-        return redirect()->route('kyluat_canhan.index');
+        toastr()->success('Xóa thành công.', 'Thành công');
+        return redirect()->route('kyluat.index');
     }
 
     public function search(Request $request) {
-        // dd($request);
         $data = [
-            'Thang' => $request->Thang,
-            'Nam' => $request->Nam,
-            'HoTen' => $request->HoTen
+            'thang' => $request->thang,
+            'nam' => $request->nam,
+            'manv' => $request->manv
         ];
-        // dd($data['Thang']);
-        // dd($data);
-
-        // Lấy ra các ThongTinCaNhan_id trong bảng KyLuat khi biết HoTen trong bảng thongtincanhan
-        $thongTinCaNhan_ids = KyLuat::select('ThongTinCaNhan_id')
-        ->join('thongtincanhan', 'KyLuat.ThongTinCaNhan_id', '=', 'thongtincanhan.id')
-        ->where('thongtincanhan.HoTen', '=', $request->HoTen)->get();
-        // dd($thongTinCaNhan_ids);
-
-        // Tìm ra trong bảng KyLuat có id nào gióng với id của thongtincanhan_id bên trên
-        $kyLuat_CaNhans = KyLuat::select('*')
-        ->whereMonth('NgayKyLuat', $request->Thang)
-        ->orwhereYear('NgayKyLuat', $request->Nam)
-        ->orwhereIn('ThongTinCaNhan_id', $thongTinCaNhan_ids)->paginate(5);
-        // dd($kyLuat_CaNhans);
-        return view('nhansu.kyLuat_CaNhan.index', compact('kyLuat_CaNhans', 'data', 'caNhans'));
+        if($data['thang'] && $data['nam'] && $data['manv']) {
+            $kyluats = KyLuat::select('*')
+                ->whereMonth('ngaykyluat', $request->thang)
+                ->whereYear('ngaykyluat', $request->nam)
+                ->where('manv', $request->manv)->paginate(5);
+        } else if($data['thang']) {
+            $kyluats = KyLuat::select('*')
+                ->whereMonth('ngaykyluat', $request->thang)->paginate(5);
+        } else if($data['nam']) {
+            $kyluats = KyLuat::select('*')
+            ->whereYear('ngaykyluat', $request->nam)->paginate(5);
+        } else if($data['nam'] && $data['thang']) {
+            $kyluats = KyLuat::select('*')
+            ->whereMonth('ngaykyluat', $request->thang)
+            ->whereYear('ngaykyluat', $request->nam)->paginate(5);
+        } else if($data['nam'] && $data['manv']) {
+            $kyluats = KyLuat::select('*')
+            ->where('manv', $request->manv)
+            ->whereYear('ngaykyluat', $request->nam)->paginate(5);
+        } else if($data['thang'] && $data['manv']) {
+            $kyluats = KyLuat::select('*')
+            ->where('manv', $request->manv)
+            ->whereYear('ngaykyluat', $request->nam)->paginate(5);
+        } else {
+            return redirect()->route('kyluat.index');
+        }
+        return view('kyluat.index', compact('kyluats', 'data'));
     }
 }

@@ -24,9 +24,10 @@ class KyLuatRequest extends FormRequest
     public function rules()
     {
         return [
-            'KyLuat_id' => 'required|exists:khenthuong,id',
-            'ThongTinCaNhan_id' => 'required|exists:thongtincanhan,id',
-            'NgayKyLuat' => 'required|date'
+            'manv' => 'required|exists:nhanvien,id',
+            'ngaykyluat' => 'required|date',
+            'lydo' => 'required',
+            'upfile' => 'required|mimes:png,jpg,jpeg,doc,docx,pdf|max:10024',
         ];
     }
 
@@ -34,16 +35,19 @@ class KyLuatRequest extends FormRequest
     {
         return [
             'required' => ':attribute bắt buộc phải nhập',
-            'date' => ':attribute phải là định dạng ngày tháng'
+            'date' => ':attribute phải là định dạng ngày tháng',
+            'exists' => ':attribute không tồn tại.',
+            'upfile.max' => ':attribute phải nhỏ hơn 10 MB'
         ];
     }
 
     public function attributes()
     {
         return [
-            'KyLuat_id' => 'Tên kỷ luật',
-            'ThongTinCaNhan_id' => 'Tên nhân viên',
-            'NgayKyLuat' => 'Ngày kỷ luật'
+            'manv' => 'Mã nhân viên',
+            'ngaykyluat' => 'Ngày kỷ luật',
+            'lydo' => 'Lý do',
+            'upfile' => 'File'
         ];
     }
 }

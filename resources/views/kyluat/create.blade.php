@@ -6,7 +6,7 @@
     <div class="tmnv-main">
         <div class="wrap">
             <div class="tmnv-title">
-                <h1>Thêm mới khen thưởng</h1>
+                <h1>Thêm mới kỷ luật</h1>
             </div>
             <div class="container">
                 <div class="row">
@@ -23,12 +23,15 @@
                         <input class="ip-mnv" type="text" name="manv" id="ma_nhanvien"
                             placeholder="Nhập mã nhân viên..." pattern="[0-9]+" value="{{ old('manv') }}">
                         <div id="err_ajax" class="form-text text-danger text-danger_manv"></div>
+                        @error('manv')
+                            <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
+                        @enderror
                         <div class="ngkt">
-                            <label for="">Ngày khen thưởng:</label>
+                            <label for="">Ngày kỷ luật:</label>
                         </div>
-                        <input class="ip-ngkt" type="date" name="ngaykhenthuong" id=""
-                            value="{{ old('ngaykhenthuong') }}">
-                        @error('ngaykhenthuong')
+                        <input class="ip-ngkt" type="date" name="ngaykyluat" id=""
+                            value="{{ old('ngaykyluat') }}">
+                        @error('ngaykyluat')
                             <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
                         @enderror
                         <div class="ld">
@@ -40,7 +43,7 @@
                             <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
                         @enderror
                         <div class="ctkt">
-                            <label for="">Chi tiết khen thưởng:</label>
+                            <label for="">Chi tiết kỷ luật:</label>
                         </div>
                         <input type="file" name="upfile" accept=".doc,.docx,.pdf,image/*" class="form-control"
                             style="width: 400px; border: 1px solid #333;">

@@ -6,28 +6,29 @@
     <div class="tmnv-main">
         <div class="wrap">
             <div class="tmnv-title">
-                <h1>Thêm mới khen thưởng</h1>
+                <h1>Cập nhập khen thưởng</h1>
             </div>
             <div class="container">
                 <div class="row">
                     <form action="" method="post" enctype="multipart/form-data" class="col-sm left-inf">
+                        @method('PUT')
                         @csrf
                         <div class="tnv">
                             <label for="">Tên nhân viên:</label>
                         </div>
                         <input class="ip-tnv" type="text" name="tennv" id="ten_nhanvien" readonly
-                            value="{{ old('tennv') }}">
+                            value="{{ $khenthuong->nhanvien->tennv }}">
                         <div class="mnv">
                             <label for="">Mã nhân viên</label>
                         </div>
                         <input class="ip-mnv" type="text" name="manv" id="ma_nhanvien"
-                            placeholder="Nhập mã nhân viên..." pattern="[0-9]+" value="{{ old('manv') }}">
+                            placeholder="Nhập mã nhân viên..." pattern="[0-9]+" value="{{ $khenthuong->manv }}">
                         <div id="err_ajax" class="form-text text-danger text-danger_manv"></div>
                         <div class="ngkt">
                             <label for="">Ngày khen thưởng:</label>
                         </div>
                         <input class="ip-ngkt" type="date" name="ngaykhenthuong" id=""
-                            value="{{ old('ngaykhenthuong') }}">
+                            value="{{ $khenthuong->ngaykhenthuong }}">
                         @error('ngaykhenthuong')
                             <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
                         @enderror
@@ -35,7 +36,7 @@
                             <label for="">Lý do:</label>
                         </div>
                         <input class="ip-ld" type="text" name="lydo" id="" placeholder="Nhập lý do..."
-                            value="{{ old('lydo') }}">
+                            value="{{ $khenthuong->lydo }}">
                         @error('lydo')
                             <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
                         @enderror
@@ -43,7 +44,7 @@
                             <label for="">Chi tiết khen thưởng:</label>
                         </div>
                         <input type="file" name="upfile" accept=".doc,.docx,.pdf,image/*" class="form-control"
-                            style="width: 400px; border: 1px solid #333;">
+                            style="width: 400px; border: 1px solid #333;" required>
                         @error('upfile')
                             <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
                         @enderror

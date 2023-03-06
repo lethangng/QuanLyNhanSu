@@ -46,7 +46,7 @@
 
                 <div class="custom-input">
                     <div class="container-search-reset">
-                        <button class="icon-search-1" type="submit">
+                        <button class="icon-search-1" type="submit" style="border: none">
                             <img src="{{ asset('icon/search.png') }}" alt="">
                         </button>
                         <a href="{{ route('khenthuong.index') }}">
@@ -85,14 +85,18 @@
                                 </th>
                                 <th class="h1" scope="row">{{ $khenthuong->lydo }}</th>
                                 <th class="h1" scope="row">
-                                    <a href="{{ asset('uploads/files/' . $khenthuong->chitietkhenthuong) }}">
+                                    <a href="{{ asset('uploads/files/' . $khenthuong->chitietkhenthuong) }}"
+                                        style="text-decoration: none;">
                                         <button class="i-save">
                                             <img src="{{ asset('icon/save.png') }}" alt="">
                                         </button>
                                     </a>
-                                    <button class="i-edit">
-                                        <i class='bx bx-edit'></i>
-                                    </button>
+                                    <a href="{{ route('khenthuong.edit', ['id' => $khenthuong->id]) }}"
+                                        style="text-decoration: none;">
+                                        <button class="i-edit">
+                                            <i class='bx bx-edit'></i>
+                                        </button>
+                                    </a>
                                     <form action="{{ route('khenthuong.destroy', ['id' => $khenthuong->id]) }}"
                                         method="post">
                                         @method('DELETE')
@@ -109,7 +113,7 @@
             </div>
         </div>
         <nav aria-label="Page navigation example" class="ml-5">
-            {{ $khenthuongs->links('pagination::bootstrap-4') }}
+            {{ $khenthuongs->links('pagination::bootstrap-5') }}
         </nav>
     </div>
 @endsection
