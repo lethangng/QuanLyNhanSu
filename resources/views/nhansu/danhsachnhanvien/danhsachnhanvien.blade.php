@@ -130,7 +130,9 @@
                                 </a>
                             </button>
                             <button class="i-edit">
-                                <i class='bx bx-edit'></i>
+                                <a href="{{ route('suanhanvien')}}">
+                                    <i class='bx bx-edit'></i>
+                                </a>
                             </button>
                             <button class="i-rotate">
                                 <i class='bx bx-trash js-buy-ticket'></i>

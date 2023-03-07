@@ -46,6 +46,10 @@ Route::get('/themmoinhanvien', function () {
 })->name('themmoinhanvien');
 */
 Route::get('/themmoinhanvien', [NhanVienController::class, 'create'])->name('themmoinhanvien');
+Route::get('/suanhanvien', function () {
+    return view('.nhansu.danhsachnhanvien.suanhanvien');
+})->name('suanhanvien');
+
 Route::get('/danhsachhopdong', function () {
     return view('hopdong.danhsachhopdong');
 })->name('danhsachhopdong');

@@ -411,7 +411,9 @@ td {
     justify-content: center;
     align-items: center;
     transition: .2s linear;
-
+}
+.i-edit a{
+    color: #333;
 }
 
 /******************************************************/
