@@ -1220,12 +1220,12 @@ td {
     padding-left: 8px;
     width: 130px;
 }
-.icon-search-1{
-    /* margin-top: -8px;
+/* .icon-search-1{
+    margin-top: -8px;
     padding: 0 12px;
-    float: right; */
+    float: right;
     
-}
+} */
 .icon-search-1 img {
     height: 52px;
     width: 50px;
@@ -1234,11 +1234,11 @@ td {
     border-radius: 10px;
     border: 1px solid #333;
 }
-.icon-reset-1 {
-    /* margin-top: -8px;
+/* .icon-reset-1 {
+    margin-top: -8px;
     padding-right: 776px;
-    float: right; */
-}
+    float: right;
+} */
 
 .icon-reset-1 img{
     width: 50px;
@@ -1294,8 +1294,82 @@ td {
 .i-edit:hover{
     background-color: #F4D6B2;
 }
+/* ******* Modal xóa danh sach khen thuong ****** */
+.modal-kt{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    display: none;
+}
+.modal-kt.open{
+    display: flex;
+}
+.modal-container-kt{
+    background-color: #fff;
+    height: 254px;
+    width: 517px;
+    border-radius: 10px;
+    max-width: calc(100% - 32px);
+    min-height: 200px;
+    position: relative;
+    animation: modalFadeIn ease 0.5s;
+}
+
+.modal-text-kt h2{
+    font-size: 24px;
+    font-weight: 400;
+    padding-top: 72px;
+    text-align: center;
+}
+
+.modal-buttons{
+    display: flex;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+.cancel-btn,
+.confirm-btn{
+    font-size: 30px;
+    color: #fff;
+    width: 50%;
+    height: 100px;
+}
+.confirm-btn{
+    background-color: #83B8EA;
+    border: none;
+    border-radius: 0px 0px 0px 10px;
+}
+.cancel-btn{
+    background-color: #F06868;
+    border: none;
+    border-radius: 0px 0px 10px 0px;
+}
+.confirm-btn:hover{
+    background-color: #BACAD9;
+}
+.cancel-btn:hover{
+    background-color: #DBABAB;
+}
 
 
+@keyframes modalFadeIn {
+    from{
+        opacity: 0;
+        transform: translateY(-140px);
+
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 /* ********************* danh sach ky luat ******************* */
 .dskl-main {
     width: 100%;
@@ -1393,6 +1467,17 @@ td {
     background-color: #F4D6B2;
 }
 
+.container-footer-kt{
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+
+.footer-kt{
+    display: flex;
+    justify-content: center;
+}
 /* ********************* danh sach tang luong ******************* */
 .dstl-main {
     width: 100%;

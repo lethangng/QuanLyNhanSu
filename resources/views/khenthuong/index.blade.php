@@ -101,7 +101,7 @@
                                         method="post">
                                         @method('DELETE')
                                         @csrf
-                                        <button class="i-rotate" type="submit">
+                                        <button class="i-rotate js-buy-ticket" type="submit">
                                             <i class='bx bx-trash'></i>
                                         </button>
                                     </a>
@@ -112,8 +112,53 @@
                 </table>
             </div>
         </div>
-        <nav aria-label="Page navigation example" class="ml-5">
-            {{ $khenthuongs->links('pagination::bootstrap-4') }}
-        </nav>
+        <div class="container-footer-kt">
+            <nav aria-label="Page navigation example" class="ml-5 footer-kt">
+                {{ $khenthuongs->links('pagination::bootstrap-4') }}
+            </nav>
+        </div>
+
+        <div class="modal-kt js-modal ">
+            <div class="modal-container-kt js-modal-container">
+                <div class="modal-close js-modal-close">
+                    <i class="ti-close"></i>
+                </div>
+    
+                <div class="modal-text-kt">
+                    <h2>Bạn có chắc chắn muốn xóa không?</h2>
+                    <div class="modal-buttons">
+                        <button class="confirm-btn">Xác nhận</button>
+                        <button class="cancel-btn">Hủy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const buyBtns = document.querySelectorAll('.js-buy-ticket');
+            const modal = document.querySelector('.js-modal');
+            const modalContainer = document.querySelector('.js-modal-container')
+            const modalClose = document.querySelector('.js-modal-close');
+    
+            function showBuyTickets(){
+                modal.classList.add('open')
+            }
+    
+            function hideBuyTickets(){
+                modal.classList.remove('open')
+            }
+    
+            for (const buyBtn of buyBtns){
+                buyBtn.addEventListener('click', showBuyTickets)
+            }
+    
+            modalClose.addEventListener('click', hideBuyTickets)
+    
+            modal.addEventListener('click', hideBuyTickets)
+            
+            modalContainer.addEventListener('click', function(event)
+            {
+                event.stopPropagation()
+            })
+        </script>
     </div>
 @endsection

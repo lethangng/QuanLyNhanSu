@@ -27,7 +27,7 @@ class KhenThuongController extends Controller
     {
         if (Auth::user()) {
             $title = 'Danh sách khen thưởng';
-            $khenthuongs = KhenThuong::paginate(5);
+            $khenthuongs = KhenThuong::paginate(2);
             // dd($khenthuongs);
             return view('khenthuong.index', compact('khenthuongs', 'title')); 
         } else {

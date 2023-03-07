@@ -22,7 +22,6 @@
     <title>@yield('title')</title>
 
 </head>
-
 <body>
     <div class="wrap">
         <nav class="sidebar close">
@@ -151,6 +150,7 @@
                 sidebar.classList.toggle("close");
             })
         </script>
+    </div>
 </body>
 
 </html>

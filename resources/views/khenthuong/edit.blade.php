@@ -6,7 +6,7 @@
     <div class="tmnv-main">
         <div class="wrap">
             <div class="tmnv-title">
-                <h1>Cập nhập khen thưởng</h1>
+                <h1>Sửa khen thưởng</h1>
             </div>
             <div class="container">
                 <div class="row">
@@ -48,8 +48,8 @@
                         @error('upfile')
                             <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
                         @enderror
-                        <div class="btn-xacnhan">
-                            <button class="text-xacnhan js-buy-ticket" type="submit">Xác nhận</button>
+                        <div class="btn-xacnhan-tmkt">
+                            <button class="text-xacnhan-tmkt js-buy-ticket" type="submit">Xác nhận</button>
                         </div>
                     </form>
                 </div>
