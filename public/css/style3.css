@@ -104,24 +104,24 @@
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
   }
 
-.btn-xacnhan{
+.btn-xacnhan-tmkt{
     padding-top: 90px;
     padding-right: 40px;
     float: right;
 }
-.text-xacnhan{
+
+.text-xacnhan-tmkt{
     padding: 10px 22px;
     background-color:#428BCA;
     border-radius: 10px;
     border: none;
 }
 
-.text-xacnhan:hover{
+.text-xacnhan-tmkt:hover{
     background-color: #A5CDEF;
 }
 
-/* ***************** */
-/* .modal{
+.modal-tmkt{
     position: fixed;
     top: 0;
     right: 0;
@@ -133,67 +133,34 @@
     display: flex;
     display: none;
 }
-.modal.open{
+.modal-tmkt.open{
     display: flex;
 }
-.modal-container{
+.modal-container-tmkt{
     background-color: #fff;
-    height: 254px;
-    width: 517px;
+    height: 245px;
+    width: 478px;
     border-radius: 10px;
     max-width: calc(100% - 32px);
     min-height: 200px;
     position: relative;
     animation: modalFadeIn ease 0.5s;
 }
-.modal-close{
-    position: absolute;
-    top: 0;
-    right: 0;
-    color: #333;
-    padding: 12px;
-    cursor: pointer;
-}
-.modal-close:hover{
-    color: #000;
-    opacity: 1;
-    background-color: #ccc;
-}
 
-.Update-successful {
+.Update-successful-tmkt {
+    padding-top: 50px;
     text-align: center;
 }
-.icon-successfull img{
+.icon-successfull-tmkt img{
     padding: 16px;
     width: 73px;
     height: 73px;
-   
 }
 
-.text-dmk span{
-    margin-top: 2px;
-    font-family: 'Inter';
-    font-size: 40px;
+.text-tmkt{
+    font-size: 30px;
     font-weight: 400;
-    line-height: 40px;
 }
-.footer-Update-successful{
-    margin-top: 24px;
-}
-.confirm{
-    font-size: 32px;
-    width: 517px;
-    height: 100px;
-    padding: 10px 12px;
-    margin-top: 17px;
-    background-color: #83B8EA;
-    border: none;
-    opacity: 1;
-    transition: 0.3s;
-    border-radius: 0 0px 10px 10px; 
-}
-
-.confirm:hover {opacity: 0.6}
 
 @keyframes modalFadeIn {
     from{
@@ -205,8 +172,7 @@
         opacity: 1;
         transform: translateY(0);
     }
-} */
-
+}
 /* ******* Thêm mới chức vụ ******** */
 
 .tmcv-main {
@@ -240,7 +206,7 @@
     border: 1px solid #333;
 }
 .btn-tmcv{
-     padding-left: 64px;
+    padding-left: 64px;
     padding-top: 20px;
 }
 .text-xacnhan-tmcv{

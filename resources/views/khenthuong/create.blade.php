@@ -47,35 +47,55 @@
                         @error('upfile')
                             <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
                         @enderror
-                        <div class="btn-xacnhan">
-                            <button class="text-xacnhan js-buy-ticket" type="submit">Xác nhận</button>
+                        <div class="btn-xacnhan-tmkt">
+                            <button class="text-xacnhan-tmkt js-buy-ticket">Xác nhận</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    {{-- <div class="modal js-modal ">
-        <div class="modal-container js-modal-container"> --}}
-    {{-- <div class="modal-close js-modal-close">
-                <i class="ti-close"></i>
-            </div> --}}
 
-    {{-- <div class="Update-successful">
-                <span class="icon-successfull">
-                    <img src="{{ asset('css/Img/image 36.png') }}" alt="">
-                </span>
-                <div class="text-dmk">
-                    <span>Thêm thành công</span>
-                </div>
-                <form action="{{ route('khenthuong.index') }}">
-                    <div class="footer-Update-successful">
-                        <button class="confirm"> Xác nhận</button>
-                    </div>
-                </form>
+    <div class="modal-tmkt js-modal ">
+        <div class="modal-container-tmkt js-modal-container">
+            <div class="modal-close js-modal-close">
+                <i class="ti-close"></i>
+            </div>
+
+            <div class="Update-successful-tmkt">
+                
             </div>
         </div>
-    </div> --}}
+    </div>
+
+    <script>
+        const buyBtns = document.querySelectorAll('.js-buy-ticket');
+        const modal = document.querySelector('.js-modal');
+        const modalContainer = document.querySelector('.js-modal-container')
+        const modalClose = document.querySelector('.js-modal-close');
+
+        function showBuyTickets(){
+            modal.classList.add('open')
+        }
+
+        function hideBuyTickets(){
+            modal.classList.remove('open')
+        }
+
+        for (const buyBtn of buyBtns){
+            buyBtn.addEventListener('click', showBuyTickets)
+        }
+
+        modalClose.addEventListener('click', hideBuyTickets)
+
+        modal.addEventListener('click', hideBuyTickets)
+        
+        modalContainer.addEventListener('click', function(event)
+        {
+            event.stopPropagation()
+        })
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
         crossorigin="anonymous"></script>
     <script>
@@ -104,26 +124,26 @@
             })
         });
 
-        // const buyBtns = document.querySelectorAll('.js-buy-ticket');
-        // const modal = document.querySelector('.js-modal');
-        // const modalContainer = document.querySelector('.js-modal-container')
-        // const modalClose = document.querySelector('.js-modal-close');
+        const buyBtns = document.querySelectorAll('.js-buy-ticket');
+        const modal = document.querySelector('.js-modal');
+        const modalContainer = document.querySelector('.js-modal-container')
+        const modalClose = document.querySelector('.js-modal-close');
 
-        // function showBuyTickets() {
-        //     modal.classList.add('open')
-        // }
+        function showBuyTickets() {
+            modal.classList.add('open')
+        }
 
-        // function hideBuyTickets() {
-        //     modal.classList.remove('open')
-        // }
-        // for (const buyBtn of buyBtns) {
-        //     buyBtn.addEventListener('click', showBuyTickets)
-        // }
-        // modalClose.addEventListener('click', hideBuyTickets)
-        // modal.addEventListener('click', hideBuyTickets)
+        function hideBuyTickets() {
+            modal.classList.remove('open')
+        }
+        for (const buyBtn of buyBtns) {
+            buyBtn.addEventListener('click', showBuyTickets)
+        }
+        modalClose.addEventListener('click', hideBuyTickets)
+        modal.addEventListener('click', hideBuyTickets)
 
-        // modalContainer.addEventListener('click', function(event) {
-        //     event.stopPropagation()
-        // })
+        modalContainer.addEventListener('click', function(event) {
+            event.stopPropagation()
+        })
     </script>
 @endsection
