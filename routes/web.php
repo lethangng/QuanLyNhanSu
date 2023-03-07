@@ -54,6 +54,8 @@ Route::get('/themmoinhanvien', function () {
 })->name('themmoinhanvien');
 */
 Route::get('/themmoinhanvien', [NhanVienController::class, 'create'])->name('themmoinhanvien');
+Route::post('/themnhanvien', [NhanVienController::class, 'store'])->name('themnhanvien');
+
 Route::get('/suanhanvien', function () {
     return view('.nhansu.danhsachnhanvien.suanhanvien');
 })->name('suanhanvien');
@@ -110,7 +112,7 @@ Route::prefix('khenthuong')->group(function () {
     Route::delete('{id}/destroy', [KhenThuongController::class, 'destroy'])->whereNumber('id')->name('khenthuong.destroy');
     Route::post('search', [KhenThuongController::class, 'search'])->name('khenthuong.search');
 });
-//ajax 
+//ajax
 Route::post('/ajax_tennv', [KhenThuongController::class, 'findNameNv']);
 
 // Danh sach ky luat
