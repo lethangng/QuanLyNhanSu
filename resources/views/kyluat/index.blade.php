@@ -97,13 +97,13 @@
                                             <i class='bx bx-edit'></i>
                                         </button>
                                     </a>
-                                    <form action="{{ route('kyluat.destroy', ['id' => $kyluat->id]) }}" method="post">
+                                    <a action="{{ route('kyluat.destroy', ['id' => $kyluat->id]) }}" method="post">
                                         @method('DELETE')
                                         @csrf
                                         <button class="i-rotate" type="submit">
                                             <i class='bx bx-trash'></i>
                                         </button>
-                                    </form>
+                                    </a>
                                 </th>
                             </tr>
                         @endforeach

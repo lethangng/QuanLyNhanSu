@@ -97,14 +97,14 @@
                                             <i class='bx bx-edit'></i>
                                         </button>
                                     </a>
-                                    <form action="{{ route('khenthuong.destroy', ['id' => $khenthuong->id]) }}"
+                                    <a action="{{ route('khenthuong.destroy', ['id' => $khenthuong->id]) }}"
                                         method="post">
                                         @method('DELETE')
                                         @csrf
                                         <button class="i-rotate" type="submit">
                                             <i class='bx bx-trash'></i>
                                         </button>
-                                    </form>
+                                    </a>
                                 </th>
                             </tr>
                         @endforeach

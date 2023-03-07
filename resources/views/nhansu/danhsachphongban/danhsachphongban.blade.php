@@ -12,11 +12,11 @@
 
                 <div class="custom-input">
                     <div class="container-search-reset">
-                        <span class="icon-reset-1">
-                            <img src="{{ asset('icon/reset.png') }}" alt="">
-                        </span>
                         <span class="icon-search-1">
                             <img src="{{ asset('icon/search.png') }}" alt="">
+                        </span>
+                        <span class="icon-reset-1">
+                            <img src="{{ asset('icon/reset.png') }}" alt="">
                         </span>
                     </div>
                     <input class="input-search-name-1" type="text" placeholder="Nhập tên nhân viên cần tìm">

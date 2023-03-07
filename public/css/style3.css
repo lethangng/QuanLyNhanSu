@@ -1,29 +1,49 @@
 /* ********************* Thêm nhân viên mới ******************* */
 .tmnv-main {
     width: 100%;
-
 }
-
-
 .tmnv-title {
     text-align: center;
     padding: 8px 0;
     background: #5582F8;
 }
-
-
 .tmnv-title h1 {
     font-size: 32px;
     font-weight: 400;
     color: white;
-    
 }
 .right-inf,
 .left-inf {
     padding-left: 64px;
     padding-top: 20px;
 }
+.label-name{
+    font-size: 26px;
+    font-weight: 600;
+    padding-top: 14px;
+}
+.inp-tmnv{
+    width: 400px;
+    height: 40px;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid #333;
+}
+.btn-tmnv{
+    float: right;
+}
+.text-xacnhan-tmnv{
+    padding: 10px 22px;
+    background-color:#61E8E0;
+    border-radius: 10px;
+    border: none;
+}
 
+.text-xacnhan-tmnv:hover{
+    background-color: #CFEFED
+    ;
+}
 
 /* ******************************* Thêm mới khen thưởng **************************** */
 
@@ -101,7 +121,7 @@
 }
 
 /* ***************** */
-modal{
+/* .modal{
     position: fixed;
     top: 0;
     right: 0;
@@ -158,9 +178,6 @@ modal{
     line-height: 40px;
 }
 .footer-Update-successful{
-    /* background-color: #83B8EA;
-    height: 82px;
-    border-radius: 0 0px 10px 10px; */
     margin-top: 24px;
 }
 .confirm{
@@ -188,4 +205,4 @@ modal{
         opacity: 1;
         transform: translateY(0);
     }
-}
+} */
