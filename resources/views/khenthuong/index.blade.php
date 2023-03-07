@@ -113,7 +113,7 @@
             </div>
         </div>
         <nav aria-label="Page navigation example" class="ml-5">
-            {{ $khenthuongs->links('pagination::bootstrap-5') }}
+            {{ $khenthuongs->links('pagination::bootstrap-4') }}
         </nav>
     </div>
 @endsection

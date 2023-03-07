@@ -104,7 +104,7 @@ Route::prefix('thongtincanhan')->group(function () {
 Route::prefix('khenthuong')->group(function () {
     Route::get('/', [KhenThuongController::class, 'index'])->name('khenthuong.index');
     Route::get('create', [KhenThuongController::class, 'create'])->name('khenthuong.create');
-    Route::post('create', [KhenThuongController::class, 'store']);
+    Route::post('create', [KhenThuongController::class, 'store'])->name('khenthuong.store');
     Route::get('{id}/edit', [KhenThuongController::class, 'edit'])->whereNumber('id')->name('khenthuong.edit');
     Route::put('{id}/edit', [KhenThuongController::class, 'update'])->whereNumber('id')->name('khenthuong.update');
     Route::delete('{id}/destroy', [KhenThuongController::class, 'destroy'])->whereNumber('id')->name('khenthuong.destroy');

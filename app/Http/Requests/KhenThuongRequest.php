@@ -4,6 +4,9 @@ namespace App\Http\Requests;
 
 use App\Models\NhanVien;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\ValidationException;
 
 class KhenThuongRequest extends FormRequest
 {
@@ -59,4 +62,14 @@ class KhenThuongRequest extends FormRequest
     //         }
     //     });
     // }
+
+    protected function failedValidation(Validator $validator) {
+        if ($this->ajax()){
+            throw new HttpResponseException(response()->json(['error' => $validator->errors()]));
+        } else{
+            throw (new ValidationException($validator))
+                            ->errorBag($this->errorBag)
+                            ->redirectTo($this->getRedirectUrl());
+        }
+    }
 }

@@ -10,43 +10,35 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <form action="" method="post" enctype="multipart/form-data" class="col-sm left-inf">
+                    <form action="{{ route('khenthuong.store') }}" method="post" enctype="multipart/form-data"
+                        class="col-sm left-inf" id="add-khenthuong">
                         @csrf
                         <div class="tnv">
                             <label for="">Tên nhân viên:</label>
                         </div>
-                        <input class="ip-tnv" type="text" name="tennv" id="ten_nhanvien" readonly
-                            value="{{ old('tennv') }}">
+                        <input class="ip-tnv" type="text" name="tennv" id="ten_nhanvien" readonly>
                         <div class="mnv">
                             <label for="">Mã nhân viên</label>
                         </div>
                         <input class="ip-mnv" type="text" name="manv" id="ma_nhanvien"
                             placeholder="Nhập mã nhân viên..." pattern="[0-9]+" value="{{ old('manv') }}">
-                        <div id="err_ajax" class="form-text text-danger text-danger_manv"></div>
+                        <div id="err_ajax" class="form-text text-danger text-danger_manv manv-err"></div>
                         <div class="ngkt">
                             <label for="">Ngày khen thưởng:</label>
                         </div>
-                        <input class="ip-ngkt" type="date" name="ngaykhenthuong" id=""
-                            value="{{ old('ngaykhenthuong') }}">
-                        @error('ngaykhenthuong')
-                            <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
-                        @enderror
+                        <input class="ip-ngkt" type="date" name="ngaykhenthuong" id="">
+                        <div id="passwordHelp" class="form-text text-danger ngaykhenthuong-err"></div>
                         <div class="ld">
                             <label for="">Lý do:</label>
                         </div>
-                        <input class="ip-ld" type="text" name="lydo" id="" placeholder="Nhập lý do..."
-                            value="{{ old('lydo') }}">
-                        @error('lydo')
-                            <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
-                        @enderror
+                        <input class="ip-ld" type="text" name="lydo" id="" placeholder="Nhập lý do...">
+                        <div id="passwordHelp" class="form-text text-danger lydo-err"></div>
                         <div class="ctkt">
                             <label for="">Chi tiết khen thưởng:</label>
                         </div>
                         <input type="file" name="upfile" accept=".doc,.docx,.pdf,image/*" class="form-control"
                             style="width: 400px; border: 1px solid #333;">
-                        @error('upfile')
-                            <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
-                        @enderror
+                        <div id="passwordHelp" class="form-text text-danger upfile-err"></div>
                         <div class="btn-xacnhan-tmkt">
                             <button class="text-xacnhan-tmkt js-buy-ticket">Xác nhận</button>
                         </div>
@@ -56,7 +48,7 @@
         </div>
     </div>
 
-    <div class="modal-tmkt js-modal ">
+    <div class="modal-tmkt js-modal">
         <div class="modal-container-tmkt js-modal-container">
             <div class="modal-close js-modal-close">
                 <i class="ti-close"></i>
@@ -79,24 +71,24 @@
         const modalContainer = document.querySelector('.js-modal-container')
         const modalClose = document.querySelector('.js-modal-close');
 
-        function showBuyTickets(){
+        function showBuyTickets() {
             modal.classList.add('open')
         }
 
-        function hideBuyTickets(){
+        function hideBuyTickets() {
             modal.classList.remove('open')
+            window.location = '{{ route('khenthuong.index') }}'
         }
 
-        for (const buyBtn of buyBtns){
-            buyBtn.addEventListener('click', showBuyTickets)
-        }
+        // for (const buyBtn of buyBtns) {
+        //     buyBtn.addEventListener('click', showBuyTickets)
+        // }
 
         modalClose.addEventListener('click', hideBuyTickets)
 
         modal.addEventListener('click', hideBuyTickets)
-        
-        modalContainer.addEventListener('click', function(event)
-        {
+
+        modalContainer.addEventListener('click', function(event) {
             event.stopPropagation()
         })
     </script>
@@ -104,7 +96,6 @@
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
         crossorigin="anonymous"></script>
     <script>
-        // var maNv = $("#ma_nhanvien").attr('src');
         $("#ma_nhanvien").blur(function(e) {
             console.log($("#ma_nhanvien").val())
             $.ajax({
@@ -127,6 +118,44 @@
                         $("#ten_nhanvien").val(data.msg)
                 }
             })
+        });
+    </script>
+    <script type="text/javascript">
+        function showErr(msg, $err) {
+            $.each(msg, function(key, value) {
+                $('.' + key + $err).text(value);
+            });
+        }
+        $(document).ready(function(e) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $('#add-khenthuong').submit(function(e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    type: 'POST',
+                    url: $(this).attr('action'),
+                    data: formData,
+                    cache: false,
+                    method: 'POST',
+                    contentType: false,
+                    processData: false,
+                    success: (data) => {
+                        var error = document.querySelectorAll(".error-text");
+                        error.innerHTML = "";
+                        if (data.check == true) {
+                            console.log(data)
+                            modal.classList.add('open')
+                        } else {
+                            console.log(data.error);
+                            showErr(data.error, '-err')
+                        }
+                    }
+                });
+            });
         });
     </script>
 @endsection
