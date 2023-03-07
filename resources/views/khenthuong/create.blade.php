@@ -63,7 +63,12 @@
             </div>
 
             <div class="Update-successful-tmkt">
-                
+                <span class="icon-successfull-tmcv">
+                    <img src="{{ asset('css/Img/image 36.png') }}" alt="">
+                </span>
+                <div class="text-tmcv">
+                    <span>Thêm thành công</span>
+                </div>
             </div>
         </div>
     </div>
@@ -123,27 +128,5 @@
                 }
             })
         });
-
-        const buyBtns = document.querySelectorAll('.js-buy-ticket');
-        const modal = document.querySelector('.js-modal');
-        const modalContainer = document.querySelector('.js-modal-container')
-        const modalClose = document.querySelector('.js-modal-close');
-
-        function showBuyTickets() {
-            modal.classList.add('open')
-        }
-
-        function hideBuyTickets() {
-            modal.classList.remove('open')
-        }
-        for (const buyBtn of buyBtns) {
-            buyBtn.addEventListener('click', showBuyTickets)
-        }
-        modalClose.addEventListener('click', hideBuyTickets)
-        modal.addEventListener('click', hideBuyTickets)
-
-        modalContainer.addEventListener('click', function(event) {
-            event.stopPropagation()
-        })
     </script>
 @endsection
