@@ -206,3 +206,104 @@
         transform: translateY(0);
     }
 } */
+
+/* ******* Thêm mới chức vụ ******** */
+
+.tmcv-main {
+    width: 100%;
+}
+.tmcv-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+.tmcv-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+}
+.left-inf {
+    padding-left: 64px;
+    padding-top: 20px;
+}
+.label-name{
+    font-size: 26px;
+    font-weight: 600;
+    padding-top: 14px;
+}
+.inp-tmcv{
+    width: 450px;
+    height: 40px;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid #333;
+}
+.btn-tmcv{
+     padding-left: 64px;
+    padding-top: 20px;
+}
+.text-xacnhan-tmcv{
+    padding: 10px 22px;
+    background-color:#428BCA;
+    border-radius: 10px;
+    border: none;
+}
+
+.text-xacnhan-tmcv:hover{
+    background-color: #A5CDEF;
+}
+
+.modal-tmcv{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    display: none;
+}
+.modal-tmcv.open{
+    display: flex;
+}
+.modal-container-tmcv{
+    background-color: #fff;
+    height: 245px;
+    width: 478px;
+    border-radius: 10px;
+    max-width: calc(100% - 32px);
+    min-height: 200px;
+    position: relative;
+    animation: modalFadeIn ease 0.5s;
+}
+
+.Update-successful-tmcv {
+    padding-top: 50px;
+    text-align: center;
+}
+.icon-successfull-tmcv img{
+    padding: 16px;
+    width: 73px;
+    height: 73px;
+}
+
+.text-tmcv{
+    font-size: 30px;
+    font-weight: 400;
+}
+
+
+@keyframes modalFadeIn {
+    from{
+        opacity: 0;
+        transform: translateY(-140px);
+
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

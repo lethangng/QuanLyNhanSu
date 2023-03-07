@@ -17,24 +17,21 @@
                 <div class="dscv-title">
                     <h1>Danh sách chức vụ</h1>
                 </div>
-                <div class="btn-tcv">
-                    <button class="nv">Thêm mới chức vụ</button>
-                </div>
-
-
+                <form action="{{ route('themmoichucvu') }}">
+                    <div class="btn-tcv">
+                        <button class="nv">Thêm mới chức vụ</button>
+                    </div>
+                </form>
                 <div class="custom-input">
                     <div class="container-search-reset">
-                        <span class="icon-reset-1">
-                            <img src="{{ asset('icon/reset.png') }}" alt="">
-                        </span>
                         <span class="icon-search-1">
                             <img src="{{ asset('icon/search.png') }}" alt="">
                         </span>
+                        <span class="icon-reset-1">
+                            <img src="{{ asset('icon/reset.png') }}" alt="">
+                        </span>
                     </div>
-                    
-                   
                     <input class="input-search-name-1" type="text" placeholder="Nhập tên nhân viên cần tìm">
-                   
                 </div>
                 <div class="list-dscv">
                     <table class="table-dscv table-bordered">
@@ -51,7 +48,9 @@
                             <th class="h1" scope="row">Giám đốc</th>
                             <th class="h1" scope="row">
                                 <button class="i-edit">
-                                    <i class='bx bx-edit'></i>
+                                    <a href="{{ route('suachucvu')}}">
+                                        <i class='bx bx-edit'></i>
+                                    </a>
                                 </button>
                                 <button class="i-rotate">
                                     <i class='bx bx-trash js-buy-ticket'></i>
@@ -64,7 +63,9 @@
                             <th class="h1" scope="row">Phó giám đốc</th>
                             <th class="h1" scope="row">
                                 <button class="i-edit">
-                                    <i class='bx bx-edit'></i>
+                                    <a href="{{ route('suachucvu')}}">
+                                        <i class='bx bx-edit'></i>
+                                    </a>
                                 </button>
                                 <button class="i-rotate">
                                     <i class='bx bx-trash js-buy-ticket'></i>

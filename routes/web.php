@@ -29,6 +29,7 @@ Route::get('/danhsachnhanvien', function () {
 Route::get('/danhsachchucvu', function () {
     return view('nhansu.danhsachchucvu.danhsachchucvu');
 })->name('danhsachchucvu');
+
 Route::get('/danhsachkhoa', function () {
     return view('nhansu.danhsachkhoa.danhsachkhoa');
 })->name('danhsachkhoa');
@@ -36,6 +37,13 @@ Route::get('/danhsachkhoa', function () {
 Route::get('/danhsachphongban', function () {
     return view('nhansu.danhsachphongban.danhsachphongban');
 })->name('danhsachphongban');
+
+Route::get('/themmoichucvu', function () {
+    return view('nhansu.danhsachchucvu.themmoichucvu');
+})->name('themmoichucvu');
+Route::get('/suachucvu', function () {
+    return view('nhansu.danhsachchucvu.suachucvu');
+})->name('suachucvu');
 
 Route::get('/index', function () {
     return view('tangluong.index');
