@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <div class="wrap-thongtincanhan">
+    <div class="wrap">
         <nav class="sidebar close">
             <header>
                 <div class="image-text">

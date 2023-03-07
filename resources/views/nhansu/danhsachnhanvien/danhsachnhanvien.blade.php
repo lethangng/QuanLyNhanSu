@@ -26,14 +26,17 @@
 
             <div class="text-filter">
                 <span>Lọc theo:</span>
-                <label class="form-filter" for="">
-                    <input class="" type="radio" name="" id=""> Phòng ban
+                <label class="form-filter">
+                    <input type="radio" checked="checked" name="radio"> Phòng ban
+                    <span class="checkmark"></span>
                 </label>
-                <label class="form-filter" for="">
-                    <input class="" type="radio" name="" id=""> Chức vụ
+                <label class="form-filter">
+                    <input type="radio" checked="checked" name="radio"> Chức vụ
+                    <span class="checkmark"></span>
                 </label>
-                <label class="form-filter" for="">
-                    <input class="" type="radio" name="" id=""> Khoa
+                <label class="form-filter">
+                    <input type="radio" checked="checked" name="radio"> Khoa
+                    <span class="checkmark"></span>
                 </label>
             </div>
 
