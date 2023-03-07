@@ -83,8 +83,8 @@ Route::middleware(['checkNV'])->group(function () {
 // Thong tin ca nhan(dung chung)
 Route::prefix('thongtincanhan')->group(function () {
     // Route::get('{id}', [ThongTinController::class, 'index'])->defaults('id', '')->name('canhan.index');
-    Route::get('/', [ThongTinController::class, 'index'])->name('canhan.index');
-    Route::post('/', [ThongTinController::class, 'addPhoto'])->name('canhan.addPhoto');
+    Route::get('{id}', [ThongTinController::class, 'index'])->whereNumber('id')->name('canhan.index');
+    Route::post('{id}/add-photo', [ThongTinController::class, 'addPhoto'])->whereNumber('id')->name('canhan.addPhoto');
     Route::post('update-password', [ThongTinController::class, 'updatePassword'])->name('canhan.updatePassword');
 });
 

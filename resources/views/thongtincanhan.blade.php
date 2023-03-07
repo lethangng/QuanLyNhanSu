@@ -29,47 +29,48 @@
                             <input type="text" class="fname" value="{{ $canhan->id }}"readonly>
 
                             <label class="label-2 " for="">Chức vụ:</label>
-                            <input type="text" class="fname" value="{{ $canhan->chucVu->tenchucvu }}" readonly>
+                            <input type="text" class="fname" value="{{ $canhan->chucVu->tenchucvu ?? '' }}" readonly>
                         </div>
                         <div class="form-2">
                             <label class="label-3" for="">Phòng ban:</label>
-                            <input type="text" class="fname" value="{{ $canhan->phongBan->tenphongban }}" readonly>
+                            <input type="text" class="fname" value="{{ $canhan->phongBan->tenphongban ?? '' }}"
+                                readonly>
 
                             <label class="label-4" for="">Khoa:</label>
-                            <input type="text" class="fname" value="{{ $canhan->khoa->tenkhoa ?? '' }}">
+                            <input type="text" class="fname" value="{{ $canhan->khoa->tenkhoa ?? '' }}" readonly>
                         </div>
 
                         <div class="form-3">
                             <label class="label-5" for="">CCCD:</label>
-                            <input type="text" class="fname" value="{{ $canhan->cccd }}">
+                            <input type="text" class="fname" value="{{ $canhan->cccd }}" readonly>
 
                             <label class="label-6" for="">Ngày sinh:</label>
                             @php
                                 $ngaysinh = date('d-m-Y', strtotime($canhan->ngaysinh));
                             @endphp
-                            <input type="text" class="fname" value="{{ $ngaysinh }}">
+                            <input type="text" class="fname" value="{{ $ngaysinh }}" readonly>
                         </div>
 
                         <div class="form-4">
                             <label class="label-7" for="">Giới tính:</label>
-                            <input type="text" class="fname" value="{{ $canhan->gioitinh }}">
+                            <input type="text" class="fname" value="{{ $canhan->gioitinh }}" readonly>
 
                             <label class="label-8" for="">Địa chỉ:</label>
-                            <input type="text" class="fname" value="{{ $canhan->diachi }}">
+                            <input type="text" class="fname" value="{{ $canhan->diachi }}" readonly>
                         </div>
                         <div class="form-5">
                             <label class="label-9" for="">Quê quán:</label>
-                            <input type="text" class="fname" value="{{ $canhan->quequan }}">
+                            <input type="text" class="fname" value="{{ $canhan->quequan }}" readonly>
 
                             <label class="label-10" for="">SĐT:</label>
-                            <input type="text" class="fname" value="{{ $canhan->sdt }}">
+                            <input type="text" class="fname" value="{{ $canhan->sdt }}" readonly>
                         </div>
                         <div class="form-6">
                             <label class="label-11" for="">Bậc lương:</label>
-                            <input type="text" class="fname" value="{{ $canhan->bacluong ?? '' }}">
+                            <input type="text" class="fname" value="{{ $canhan->bacluong ?? '' }}" readonly>
 
                             <label class="label-12" for="">HSL:</label>
-                            <input type="text" class="fname" value="{{ $canhan->hsl ?? '' }}">
+                            <input type="text" class="fname" value="{{ $canhan->hsl ?? '' }}" readonly>
                         </div>
 
                     </div>
@@ -90,7 +91,8 @@
             </div>
         </div>
         {{-- Form cập nhập ảnh đại diện --}}
-        <form action="{{ route('canhan.addPhoto') }}" method="post" enctype="multipart/form-data" id="addphoto">
+        <form action="{{ route('canhan.addPhoto', ['id' => $id]) }}" method="post" enctype="multipart/form-data"
+            id="addphoto">
             @csrf
             <!-- Modal -->
             <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="exampleModal" tabindex="-1"
@@ -103,7 +105,7 @@
                                 aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            {{-- <input class="btn-update" id="file" name="filePhoto" type="file"
+                            {{-- <input class="btn-update" ijs-modald="file" name="filePhoto" type="file"
                                     accept="image/*" style="display: none">
                                 <label for="file" class="btn btn-primary text-wrap" style="height: 100px">Chọn ảnh để
                                     tải lên</label> --}}
@@ -201,6 +203,8 @@
         const modal = document.querySelector('.js-modal');
         const modalContainer = document.querySelector('.js-modal-container')
         const modalClose = document.querySelector('.js-modal-close');
+        const confirm = document.querySelector('.confirm');
+        const modal_photo = document.querySelector('#exampleModal');
 
         function showBuyTickets() {
             modal.classList.add('open')
@@ -208,18 +212,21 @@
 
         function hideBuyTickets() {
             modal.classList.remove('open')
+            window.location = '{{ route('canhan.index', ['id' => $id]) }}'
         }
-        for (const buyBtn of buyBtns) {
-            buyBtn.addEventListener('click', showBuyTickets)
-        }
+        // for (const buyBtn of buyBtns) {
+        //     buyBtn.addEventListener('click', showBuyTickets)
+        // }
         modalClose.addEventListener('click', hideBuyTickets)
         modal.addEventListener('click', hideBuyTickets)
+        confirm.addEventListener('click', hideBuyTickets);
 
-        modalContainer.addEventListener('click', function(event) {
-            event.stopPropagation()
-        })
+        // modalContainer.addEventListener('click', function(event) {
+        //     event.stopPropagation()
+        // })
     </script>
-    {{-- script modal form addphoto --}}
+
+    {{-- Xu ly doi anh dai dien --}}
     <script type="text/javascript">
         const formaddphoto = document.querySelector('.modal');
 
@@ -249,7 +256,8 @@
                         var error = document.querySelectorAll(".error-text");
                         error.innerHTML = "";
                         if (data.check == true) {
-                            // window.location = $(this).attr('action')
+                            console.log(modal);
+                            modal.classList.add('open')
                         } else {
                             printErrorMsg(data.error, '_err')
                             console.log(data);
@@ -259,6 +267,8 @@
             });
         });
     </script>
+
+    {{-- Xu ly doi mat khau --}}
     <script type="text/javascript">
         $(document).ready(function(e) {
             $.ajaxSetup({
@@ -288,8 +298,8 @@
                         var error = document.querySelectorAll(".error-text");
                         error.innerHTML = "";
                         if (data.check == true) {
-                            // window.location = {{ route('canhan.index') }}
                             console.log(data)
+                            modal.classList.add('open')
                         } else {
                             $(".old-password").text(data.error);
                             console.log(data);
@@ -299,5 +309,4 @@
             });
         });
     </script>
-    
 @endsection

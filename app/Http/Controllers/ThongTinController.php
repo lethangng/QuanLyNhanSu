@@ -25,14 +25,14 @@ class ThongTinController extends Controller
             } else {
                 $canhan = $this->nhanvien->info(Auth::user()->manv);
             }
-            return view('thongtincanhan', compact('canhan', 'title'));
+            return view('thongtincanhan', compact('canhan', 'title', 'id'));
         } else {
             return redirect()->route('login');
         }
     }
 
-    public function addPhoto(Request $request) {
-        $canhan = $this->nhanvien->info();
+    public function addPhoto(Request $request, $id) {
+        $canhan = $this->nhanvien->info($id);
         $messsages = array(
             'required' => ':attribute bắt buộc phải nhập',
             'mimes' => ':attribute phải là ảnh đuôi png, jpg hoặc jpeg',
@@ -51,10 +51,13 @@ class ThongTinController extends Controller
                 $ext = $request->photo->extension();
                 $file_name = time().'-'.$canhan->id.'.'.$ext;
                 $file->move(public_path('uploads/images'), $file_name);
-                NhanVien::where('id', Auth::user()->manv)
+
+                $oldFile = NhanVien::select('anhdaidien')->where('id', $id)->get()[0]->anhdaidien;
+                NhanVien::where('id', $id)
                 ->update([
                     'anhdaidien' => $file_name
                 ]);
+                unlink(public_path('uploads/images/'.$oldFile));
                 return response()->json(["check" => true]);
             } else {
                 return response()->json(['error' => $validator->errors()]);
@@ -86,7 +89,7 @@ class ThongTinController extends Controller
             $publicPath = public_path('uploads/files');
             $file->move($publicPath, $file_name);
             // toastr()->success('Tải lên thành công.', 'Thành công');
-            return redirect()->route('canhan.index');
+            return redirect()->route('canhan.index', ['id' => Auth::user()->manv]);
         } else {
             toastr()->success('Tải lên thất bại.', 'Thất bại');
         }

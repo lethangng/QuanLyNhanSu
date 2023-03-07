@@ -57,15 +57,15 @@ class User extends Authenticatable
     public function controller($roleId)
     {
         if ($roleId == 1) {
-            return response()->json(['error_check' => false, 'url' => "http://127.0.0.1:8000/thongtincanhan"]);
+            return response()->json(['error_check' => false, 'url' => route('canhan.index', ['id' => Auth::user()->manv])]);
         } else if ($roleId == 2) {
-            return response()->json(['error_check' => false, 'url' => "http://127.0.0.1:8000/thongtincanhan"]);
+            return response()->json(['error_check' => false, 'url' => route('canhan.index', ['id' => Auth::user()->manv])]);
         } else if ($roleId == 3) {
-            return response()->json(['error_check' => false, 'url' => "http://127.0.0.1:8000/thongtincanhan"]);
+            return response()->json(['error_check' => false, 'url' => route('canhan.index', ['id' => Auth::user()->manv])]);
         } else if ($roleId == 4) {
-            return response()->json(['error_check' => false, 'url' => "http://127.0.0.1:8000/thongtincanhan"]);
+            return response()->json(['error_check' => false, 'url' => route('canhan.index', ['id' => Auth::user()->manv])]);
         } else if ($roleId == 5) {
-            return response()->json(['error_check' => false, 'url' => "http://127.0.0.1:8000/thongtincanhan"]);
+            return response()->json(['error_check' => false, 'url' => route('canhan.index', ['id' => Auth::user()->manv])]);
         } else {
             return response()->json(['error_check' => false, 'url' => ""]);
         }

@@ -69,128 +69,128 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @isset($caNhan)
-                    @foreach ($caNhan as $item)
-                    <tr class="">
-                            <th class="h1" scope="row">{{ $item->id }}</th>
-                            <th class="h1" scope="row">{{ $item->tennv }}</th>
-                            <th class="h1" scope="row">{{ $item->email }}</th>
-                            <th class="h1" scope="row">{{ $item->cccd }}</th>
-                            <th class="h1" scope="row">{{ $item->gioitinh }}</th>
-                            @php
-                            $d1=0;
-                            $d2=0;
-                            $d3=0;
-                            @endphp
-                            @foreach ($chucVu as $item2)
-                                @if($item->machucvu==$item2->id)
-                                    <th class="h1" scope="row">{{ $item2->tenchucvu }}</th>
+                        @isset($caNhan)
+                            @foreach ($caNhan as $item)
+                                <tr class="">
+                                    <th class="h1" scope="row">{{ $item->id }}</th>
+                                    <th class="h1" scope="row">{{ $item->tennv }}</th>
+                                    <th class="h1" scope="row">{{ $item->email }}</th>
+                                    <th class="h1" scope="row">{{ $item->cccd }}</th>
+                                    <th class="h1" scope="row">{{ $item->gioitinh }}</th>
                                     @php
-                                    $d1=1
+                                        $d1 = 0;
+                                        $d2 = 0;
+                                        $d3 = 0;
                                     @endphp
+                                    @foreach ($chucVu as $item2)
+                                        @if ($item->machucvu == $item2->id)
+                                            <th class="h1" scope="row">{{ $item2->tenchucvu }}</th>
+                                            @php
+                                                $d1 = 1;
+                                            @endphp
+                                        @break
+                                    @endif
+                                @endforeach
+                                @if ($d1 == 0)
+                                    <th class="h1" scope="row">Trống</th>
+                                @endif
+
+
+                                @foreach ($phongBan as $item2)
+                                    @if ($item->maphongban == $item2->id)
+                                        <th class="h1" scope="row">{{ $item2->tenphongban }}</th>
+                                        @php
+                                            $d2 = 1;
+                                        @endphp
                                     @break
                                 @endif
                             @endforeach
-                            @if($d1==0)
-                            <th class="h1" scope="row">Trống</th>
-                            @endif
-
-
-                            @foreach ($phongBan as $item2)
-                                @if($item->maphongban==$item2->id)
-                                    <th class="h1" scope="row">{{ $item2->tenphongban }}</th>
-                                    @php
-                                    $d2=1
-                                    @endphp
-                                    @break
-                                @endif
-                            @endforeach
-                            @if($d2==0)
-                            <th class="h1" scope="row">Trống</th>
+                            @if ($d2 == 0)
+                                <th class="h1" scope="row">Trống</th>
                             @endif
 
                             @foreach ($khoa as $item2)
-                                @if($item->makhoa==$item2->id)
+                                @if ($item->makhoa == $item2->id)
                                     <th class="h1" scope="row">{{ $item2->tenkhoa }}</th>
                                     @php
-                                    $d3=1
+                                        $d3 = 1;
                                     @endphp
-                                    @break
-                                @endif
-                            @endforeach
-
-                            @if($d3==0)
-                            <th class="h1" scope="row">Trống</th>
+                                @break
                             @endif
-                            <th class="h1" scope="row">{{ $item->trangthai }}</th>
-                            <th class="h1" scope="row">
-                                <button class="i-save">
-                                    <a href="">
-                                        <img src="{{ asset('icon/save.png') }}" alt="">
-                                    </a>
-                                </button>
-                                <button class="i-edit">
-                                    <i class='bx bx-edit'></i>
-                                </button>
-                                <button class="i-rotate">
-                                    <i class='bx bx-trash js-buy-ticket'></i>
-                                </button>
+                        @endforeach
 
-                            </th>
-                        </tr>
-              @endforeach
-                    @endisset
+                        @if ($d3 == 0)
+                            <th class="h1" scope="row">Trống</th>
+                        @endif
+                        <th class="h1" scope="row">{{ $item->trangthai }}</th>
+                        <th class="h1" scope="row">
+                            <button class="i-save">
+                                <a href="{{ route('canhan.index', ['id' => $item->id]) }}">
+                                    <img src="{{ asset('icon/save.png') }}" alt="">
+                                </a>
+                            </button>
+                            <button class="i-edit">
+                                <i class='bx bx-edit'></i>
+                            </button>
+                            <button class="i-rotate">
+                                <i class='bx bx-trash js-buy-ticket'></i>
+                            </button>
 
-                    @empty($caNhan)
-                        <h1>Sai router ,truy vấn hoặc không có data</h1>
-                    @endempty
+                        </th>
+                    </tr>
+                @endforeach
+            @endisset
+
+            @empty($caNhan)
+                <h1>Sai router ,truy vấn hoặc không có data</h1>
+            @endempty
 
 
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    </div>
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+</div>
 
-    <script>
-        const body = document.querySelector('body'),
-            sidebar = body.querySelector('nav'),
-            toggle = body.querySelector(".toggle"),
-            // modeSwitch = body.querySelector(".toggle-switch"),
-            modeText = body.querySelector(".mode-text");
+<script>
+    const body = document.querySelector('body'),
+        sidebar = body.querySelector('nav'),
+        toggle = body.querySelector(".toggle"),
+        // modeSwitch = body.querySelector(".toggle-switch"),
+        modeText = body.querySelector(".mode-text");
 
-        toggle.addEventListener("click", () => {
-            sidebar.classList.toggle("close");
-        })
-    </script>
-    <script>
-        const buyBtns = document.querySelectorAll('.js-buy-ticket');
-        const modal = document.querySelector('.js-modal');
-        const modalContainer = document.querySelector('.js-modal-container')
-        const modalClose = document.querySelector('.js-modal-close');
+    toggle.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
+    })
+</script>
+<script>
+    const buyBtns = document.querySelectorAll('.js-buy-ticket');
+    const modal = document.querySelector('.js-modal');
+    const modalContainer = document.querySelector('.js-modal-container')
+    const modalClose = document.querySelector('.js-modal-close');
 
-        function showBuyTickets() {
-            modal.classList.add('open')
-        }
+    function showBuyTickets() {
+        modal.classList.add('open')
+    }
 
-        function hideBuyTickets() {
-            modal.classList.remove('open')
-        }
+    function hideBuyTickets() {
+        modal.classList.remove('open')
+    }
 
-        for (const buyBtn of buyBtns) {
-            buyBtn.addEventListener('click', showBuyTickets)
-        }
+    for (const buyBtn of buyBtns) {
+        buyBtn.addEventListener('click', showBuyTickets)
+    }
 
-        modalClose.addEventListener('click', hideBuyTickets)
+    modalClose.addEventListener('click', hideBuyTickets)
 
-        modal.addEventListener('click', hideBuyTickets)
+    modal.addEventListener('click', hideBuyTickets)
 
-        modalContainer.addEventListener('click', function(event) {
-            event.stopPropagation()
-        })
-    </script>
-    </body>
+    modalContainer.addEventListener('click', function(event) {
+        event.stopPropagation()
+    })
+</script>
+</body>
 
-    </html>
+</html>
 @endsection

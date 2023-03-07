@@ -116,7 +116,7 @@
                         </li>
 
                         <li class="nav-link">
-                            <a href="{{ route('canhan.index') }}">
+                            <a href="{{ route('canhan.index', ['id' => Auth::user()->manv]) }}">
                                 <span class="icon-home">
                                     <img src="{{ asset('icon/thongtincanhan.png') }}" alt="">
                                 </span>
