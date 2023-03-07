@@ -19,7 +19,11 @@
                         <div class="label-name">
                             <label for="">Giới tính:</label>
                         </div>
-                        <input class="inp-tmnv" type="text" name="" id="">
+                        <select class="inp-tmnv" name="" id="">
+                            <option value=""></option>
+                            <option value="">Nam</option>
+                            <option value="">Nữ</option>
+                        </select>
                         <div class="label-name">
                             <label for="">CMND:</label>
                         </div>
@@ -49,15 +53,27 @@
                     <div class="label-name">
                         <label for="">Phòng ban:</label>
                     </div>
-                    <input class="inp-tmnv" type="text" name="" id="">
+                    <select class="inp-tmnv" name="" id="">
+                        <option value=""></option>
+                        <option value="">Phòng đào tạo</option>
+                        <option value="">Phòng tài chính - kế toán</option>
+                    </select>
                     <div class="label-name">
                         <label for="">Chức vụ:</label>
                     </div>
-                    <input class="inp-tmnv" type="text" name="" id="">
+                    <select class="inp-tmnv" name="" id="">
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
                     <div class="label-name">
                         <label for="">Khoa:</label>
                     </div>
-                    <input class="inp-tmnv" type="text" name="" id="">
+                    <select class="inp-tmnv" name="" id="">
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
                     <div class="label-name">
                         <label for="">Trạng thái:</label>
                     </div>
