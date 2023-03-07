@@ -37,8 +37,8 @@ Route::get('/danhsachphongban', function () {
     return view('nhansu.danhsachphongban.danhsachphongban');
 })->name('danhsachphongban');
 
-Route::get('/danhsachtangluong', function () {
-    return view('nhansu.danhsachtangluong.danhsachtangluong');
+Route::get('/index', function () {
+    return view('tangluong.index');
 })->name('danhsachtangluong');
 /*
 Route::get('/themmoinhanvien', function () {
@@ -47,7 +47,7 @@ Route::get('/themmoinhanvien', function () {
 */
 Route::get('/themmoinhanvien', [NhanVienController::class, 'create'])->name('themmoinhanvien');
 Route::get('/danhsachhopdong', function () {
-    return view('nhansu.danhsachhopdong.danhsachhopdong');
+    return view('hopdong.danhsachhopdong');
 })->name('danhsachhopdong');
 
 Route::get('/themmoikhenthuong', function () {
