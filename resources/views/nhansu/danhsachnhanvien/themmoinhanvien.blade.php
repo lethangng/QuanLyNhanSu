@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm left-inf">
-                <form action="{{url('themmoinhanvien')}}" method="POST">
+                <form action="{{url('themnhanvien')}}" method="POST">
                 @csrf
                         <div class="label-name">
                             <label for="">Họ tên:</label>
