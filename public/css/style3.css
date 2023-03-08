@@ -18,7 +18,7 @@
     padding-top: 20px;
 }
 .label-name{
-    font-size: 26px;
+    font-size: 18px;
     font-weight: 600;
     padding-top: 14px;
 }
@@ -191,11 +191,6 @@
 .left-inf {
     padding-left: 64px;
     padding-top: 20px;
-}
-.label-name{
-    font-size: 26px;
-    font-weight: 600;
-    padding-top: 14px;
 }
 .inp-tmcv{
     width: 450px;

@@ -145,12 +145,6 @@
                     </tr>
                 @endforeach
             @endisset
-
-            @empty($caNhan)
-                <h1>Sai router ,truy vấn hoặc không có data</h1>
-            @endempty
-
-
         </tbody>
     </table>
 </div>
