@@ -24,7 +24,7 @@ class NhanVienController extends Controller
         $phongBan=DB::select('SELECT id,tenphongban from phongBan');
         $khoa= DB::select('SELECT id,tenkhoa from khoa');
         $chucVu= DB::select('SELECT id,tenchucvu from chucvu');
-        return view('nhansu.danhsachnhanvien.danhsachnhanvien',['phongBan' => $phongBan,'khoa' => $khoa,'chucVu' => $chucVu]);
+        return view('nhansu.danhsachnhanvien.themmoinhanvien',['phongBan' => $phongBan,'khoa' => $khoa,'chucVu' => $chucVu]);
     }
     public function store(Request $request)
     {
@@ -44,6 +44,6 @@ class NhanVienController extends Controller
         $nhanVien->trangthai=$request->trangthai;
         $nhanVien->bacluong=$request->bacluong;
         $nhanVien->save();
-        return view('nhansu.danhsachnhanvien.danhsachnhanvien');
+        return redirect()->route('danhsachnhanvien');
     }
 }

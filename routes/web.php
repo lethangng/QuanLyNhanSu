@@ -49,12 +49,9 @@ Route::get('/index', function () {
     return view('tangluong.index');
 })->name('danhsachtangluong');
 
-Route::get('/themmoinhanvien', function () {
-    return view('nhansu.danhsachnhanvien.themmoinhanvien');
-})->name('themmoinhanvien');
 
-// Route::get('/themmoinhanvien', [NhanVienController::class, 'create'])->name('themmoinhanvien');
-// Route::post('/themmoinhanvien', [NhanVienController::class, 'store'])->name('themmoinhanvien');
+Route::get('/themmoinhanvien', [NhanVienController::class, 'create'])->name('themmoinhanvien');
+Route::post('/themnhanvien', [NhanVienController::class, 'store'])->name('themnhanvien');
 
 Route::get('/suanhanvien', function () {
     return view('.nhansu.danhsachnhanvien.suanhanvien');

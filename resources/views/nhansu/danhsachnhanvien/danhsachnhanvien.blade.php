@@ -18,7 +18,7 @@
             <div class="dsnv-title">
                 <h1>Danh sách nhân viên</h1>
             </div>
-            <form action="{{ route('themmoinhanvien') }}">
+            <form action="{{ url('themmoinhanvien') }}">
                 <div class="btn-tnv">
                     <button class="nv">Thêm mới nhân viên</button>
                 </div>
