@@ -14,7 +14,7 @@ class NhanVienController extends Controller
 {
     public function index2()
     {
-        $caNhan = DB::select('SELECT id,tennv,email,cccd,gioitinh,machucvu,maphongban,makhoa,trangthai from nhanvien');
+        $caNhan = nhanVien::paginate(5);
         $phongBan= DB::select('SELECT id,tenphongban from phongban');
         $khoa= DB::select('SELECT id,tenkhoa from khoa');
         $chucVu= DB::select('SELECT id,tenchucvu from chucvu');
