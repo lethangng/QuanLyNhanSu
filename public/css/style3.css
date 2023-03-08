@@ -121,58 +121,6 @@
     background-color: #A5CDEF;
 }
 
-.modal-tmkt{
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    display: none;
-}
-.modal-tmkt.open{
-    display: flex;
-}
-.modal-container-tmkt{
-    background-color: #fff;
-    height: 245px;
-    width: 478px;
-    border-radius: 10px;
-    max-width: calc(100% - 32px);
-    min-height: 200px;
-    position: relative;
-    animation: modalFadeIn ease 0.5s;
-}
-
-.Update-successful-tmkt {
-    padding-top: 50px;
-    text-align: center;
-}
-.icon-successfull-tmkt img{
-    padding: 16px;
-    width: 73px;
-    height: 73px;
-}
-
-.text-tmkt{
-    font-size: 30px;
-    font-weight: 400;
-}
-
-@keyframes modalFadeIn {
-    from{
-        opacity: 0;
-        transform: translateY(-140px);
-
-    }
-    to{
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 /* ******* Thêm mới chức vụ ******** */
 
 .tmcv-main {
@@ -241,14 +189,24 @@
     position: relative;
     animation: modalFadeIn ease 0.5s;
 }
-
+.modal-text-delete{
+    text-align: center;
+}
 .modal-text-delete h2{
     font-size: 24px;
     font-weight: 400;
-    padding-top: 72px;
+    padding-top: 65px;
+}
+.modal-text-delete-2 h2{
+    font-size: 24px;
+    font-weight: 400;
+    padding-top: 30px;
     text-align: center;
 }
-
+.icon-successfull-delete-2 img{
+    padding-left: 214px;
+    padding-top: 40px;
+}
 .modal-buttons{
     display: flex;
     width: 100%;
