@@ -215,7 +215,8 @@
     background-color: #A5CDEF;
 }
 
-.modal-tmcv{
+/* ******* Modal xóa  ****** */
+.modal-delete{
     position: fixed;
     top: 0;
     right: 0;
@@ -227,13 +228,13 @@
     display: flex;
     display: none;
 }
-.modal-tmcv.open{
+.modal-delete.open{
     display: flex;
 }
-.modal-container-tmcv{
+.modal-container-delete{
     background-color: #fff;
-    height: 245px;
-    width: 478px;
+    height: 254px;
+    width: 517px;
     border-radius: 10px;
     max-width: calc(100% - 32px);
     min-height: 200px;
@@ -241,19 +242,41 @@
     animation: modalFadeIn ease 0.5s;
 }
 
-.Update-successful-tmcv {
-    padding-top: 50px;
+.modal-text-delete h2{
+    font-size: 24px;
+    font-weight: 400;
+    padding-top: 72px;
     text-align: center;
 }
-.icon-successfull-tmcv img{
-    padding: 16px;
-    width: 73px;
-    height: 73px;
-}
 
-.text-tmcv{
+.modal-buttons{
+    display: flex;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+.cancel-btn,
+.confirm-btn{
     font-size: 30px;
-    font-weight: 400;
+    color: #fff;
+    width: 50%;
+    height: 100px;
+}
+.confirm-btn{
+    background-color: #83B8EA;
+    border: none;
+    border-radius: 0px 0px 0px 10px;
+}
+.cancel-btn{
+    background-color: #F06868;
+    border: none;
+    border-radius: 0px 0px 10px 0px;
+}
+.confirm-btn:hover{
+    background-color: #BACAD9;
+}
+.cancel-btn:hover{
+    background-color: #DBABAB;
 }
 
 

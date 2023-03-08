@@ -1,17 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<div class="modal js-modal ">
-    <div class="modal-container js-modal-container">
-        <div class="modal-close js-modal-close">
-            <i class="ti-close"></i>
-        </div>
-        <div class="Update-successful">
-            <p style="line-height:12;">Bạn có chắc chắn muốn xóa không</p>
-            <button class="btn btn-primary" style="width:50%;height:20%;position:absolute;bottom: 0;left:0;">xác nhận</button>
-            <button class="btn btn-danger" style="width:50%;height:20%;position:absolute;bottom: 0;right:0;">Hủy</button>
-        </div>
-    </div>
-</div>
         <div class="dscv-main">
             <div class="wrap">
                 <div class="dscv-title">
@@ -52,8 +40,8 @@
                                         <i class='bx bx-edit'></i>
                                     </a>
                                 </button>
-                                <button class="i-rotate">
-                                    <i class='bx bx-trash js-buy-ticket'></i>
+                                <button class="i-rotate js-buy-ticket">
+                                    <i class='bx bx-trash'></i>
                                 </button>
                                 
                             </th>
@@ -74,6 +62,21 @@
                           </tr>
                         </tbody>
                       </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-delete js-modal ">
+        <div class="modal-container-delete js-modal-container">
+            <div class="modal-close js-modal-close">
+                <i class="ti-close"></i>
+            </div>
+    
+            <div class="modal-text-delete">
+                <h2>Bạn có chắc chắn muốn xóa không?</h2>
+                <div class="modal-buttons">
+                    <button class="confirm-btn">Xác nhận</button>
+                    <button class="cancel-btn">Hủy</button>
                 </div>
             </div>
         </div>

@@ -118,13 +118,13 @@
             </nav>
         </div>
 
-        <div class="modal-kt js-modal ">
-            <div class="modal-container-kt js-modal-container">
+        <div class="modal-delete js-modal ">
+            <div class="modal-container-delete js-modal-container">
                 <div class="modal-close js-modal-close">
                     <i class="ti-close"></i>
                 </div>
-    
-                <div class="modal-text-kt">
+        
+                <div class="modal-text-delete">
                     <h2>Bạn có chắc chắn muốn xóa không?</h2>
                     <div class="modal-buttons">
                         <button class="confirm-btn">Xác nhận</button>

@@ -1,20 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    <div class="modal-kt js-modal ">
-        <div class="modal-container-kt js-modal-container">
-            <div class="modal-close js-modal-close">
-                <i class="ti-close"></i>
-            </div>
-
-            <div class="modal-text-kt">
-                <h2>Bạn có chắc chắn muốn xóa không?</h2>
-                <div class="modal-buttons">
-                    <button class="confirm-btn">Xác nhận</button>
-                    <button class="cancel-btn">Hủy</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="dsnv-main">
         <div class="wrap">
             <div class="dsnv-title">
@@ -139,8 +124,8 @@
                                                 <i class='bx bx-edit'></i>
                                             </a>
                                         </button>
-                                        <button class="i-rotate">
-                                            <i class='bx bx-trash js-buy-ticket'></i>
+                                        <button class="i-rotate js-buy-ticket" type="submit">
+                                            <i class='bx bx-trash'></i>
                                         </button>
 
                                     </th>
@@ -150,6 +135,21 @@
                     </tbody>
                 </table>
             </div>
+    </div>
+    <div class="modal-delete js-modal ">
+        <div class="modal-container-delete js-modal-container">
+            <div class="modal-close js-modal-close">
+                <i class="ti-close"></i>
+            </div>
+    
+            <div class="modal-text-delete">
+                <h2>Bạn có chắc chắn muốn xóa không?</h2>
+                <div class="modal-buttons">
+                    <button class="confirm-btn">Xác nhận</button>
+                    <button class="cancel-btn">Hủy</button>
+                </div>
+            </div>
+        </div>
     </div>
 <script>
     const buyBtns = document.querySelectorAll('.js-buy-ticket');
