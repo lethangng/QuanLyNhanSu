@@ -53,6 +53,8 @@ Route::get('/index', function () {
 Route::get('/themmoinhanvien', [NhanVienController::class, 'create'])->name('themmoinhanvien');
 Route::post('/themnhanvien', [NhanVienController::class, 'store'])->name('themnhanvien');
 
+Route::post('/xoanhanvien',[NhanVienController::class, 'destroy'])->name('xoanhanvien');
+
 Route::get('/suanhanvien', function () {
     return view('.nhansu.danhsachnhanvien.suanhanvien');
 })->name('suanhanvien');

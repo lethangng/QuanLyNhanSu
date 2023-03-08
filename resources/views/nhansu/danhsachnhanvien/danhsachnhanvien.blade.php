@@ -124,7 +124,7 @@
                                                 <i class='bx bx-edit'></i>
                                             </a>
                                         </button>
-                                        <button class="i-rotate js-buy-ticket" type="submit">
+                                        <button class="i-rotate js-buy-ticket" type="button" value="{{$item->id}}" id="nut">
                                             <i class='bx bx-trash'></i>
                                         </button>
 
@@ -132,6 +132,9 @@
                                 </tr>
                             @endforeach
                         @endisset
+                        @empty($caNhan)
+                        <h1>Sai router ,truy vấn hoặc không có data</h1>
+                    @endempty
                     </tbody>
                 </table>
             </div>
@@ -144,10 +147,14 @@
 
             <div class="modal-text-delete">
                 <h2>Bạn có chắc chắn muốn xóa không?</h2>
+                <form action="{{ url('xoanhanvien')}}" method="POST" >
+                @csrf
                 <div class="modal-buttons">
-                    <button class="confirm-btn">Xác nhận</button>
+                    <input type="text" id="nut2" name="idxoa" hidden>
+                    <button class="confirm-btn" type="submit" >Xác nhận</button>
                     <button class="cancel-btn">Hủy</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>
@@ -163,7 +170,8 @@
     const modalClose = document.querySelector('.js-modal-close');
 
     function showBuyTickets() {
-        modal.classList.add('open')
+        document.getElementById("nut2").value=document.getElementById("nut").value;
+        modal.classList.add('open');
     }
 
     function hideBuyTickets() {
