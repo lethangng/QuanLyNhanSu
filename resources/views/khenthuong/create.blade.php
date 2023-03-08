@@ -10,8 +10,8 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <form action="{{ route('khenthuong.store') }}" method="post" enctype="multipart/form-data"
-                        class="col-sm left-inf" id="add-khenthuong">
+                    <form action="" method="post" enctype="multipart/form-data" class="col-sm left-inf"
+                        id="add-khenthuong">
                         @csrf
                         <div class="tnv">
                             <label for="">Tên nhân viên:</label>
@@ -53,7 +53,6 @@
             <div class="modal-close js-modal-close">
                 <i class="ti-close"></i>
             </div>
-
             <div class="Update-successful-tmkt">
                 <span class="icon-successfull-tmcv">
                     <img src="{{ asset('css/Img/image 36.png') }}" alt="">
@@ -95,6 +94,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
         crossorigin="anonymous"></script>
+
     <script>
         $("#ma_nhanvien").blur(function(e) {
             console.log($("#ma_nhanvien").val())
@@ -120,6 +120,7 @@
             })
         });
     </script>
+
     <script type="text/javascript">
         function showErr(msg, $err) {
             $.each(msg, function(key, value) {
@@ -137,7 +138,7 @@
                 var formData = new FormData(this);
                 $.ajax({
                     type: 'POST',
-                    url: $(this).attr('action'),
+                    url: location.href,
                     data: formData,
                     cache: false,
                     method: 'POST',

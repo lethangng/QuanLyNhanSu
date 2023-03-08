@@ -10,7 +10,7 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <form action="" method="post" enctype="multipart/form-data" class="col-sm left-inf">
+                    <form action="kyluat.store" method="post" enctype="multipart/form-data" class="col-sm left-inf">
                         @method('PUT')
                         @csrf
                         <div class="tnv">

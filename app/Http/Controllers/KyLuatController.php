@@ -25,7 +25,7 @@ class KyLuatController extends Controller
     public function index()
     {
         if (Auth::user()) {
-            $title = 'Danh sách khen thưởng';
+            $title = 'Danh sách kỷ luật';
             $kyluats = KyLuat::paginate(5);
             // dd($khenthuongs);
             return view('kyluat.index', compact('kyluats', 'title')); 
@@ -69,8 +69,7 @@ class KyLuatController extends Controller
                 'lydo' => $request->lydo,
                 'chitietkyluat' => $file_name
             ]);
-            // toastr()->success('Thêm thành công.', 'Thành công');
-            return redirect()->route('kyluat.index');
+            return response()->json(["check" => true]);
         } else {
             return redirect()->route('kyluat.index');
         }
@@ -135,7 +134,7 @@ class KyLuatController extends Controller
     public function destroy(Request $request, $id)
     {
         KyLuat::where('id', $id)->delete();
-        toastr()->success('Xóa thành công.', 'Thành công');
+        // toastr()->success('Xóa thành công.', 'Thành công');
         return redirect()->route('kyluat.index');
     }
 

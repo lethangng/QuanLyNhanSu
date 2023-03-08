@@ -64,15 +64,14 @@ class KhenThuongController extends Controller
             $ext = $request->file('upfile')->extension();
             $file_name = time() . '-' . $request->manv . '.' . $ext;
             $publicPath = public_path('uploads/files');
-            // $file->move($publicPath, $file_name);
-            // KhenThuong::create([
-            //     'manv' => $request->manv,
-            //     'ngaykhenthuong' => $request->ngaykhenthuong,
-            //     'lydo' => $request->lydo,
-            //     'chitietkhenthuong' => $file_name
-            // ]);
+            $file->move($publicPath, $file_name);
+            KhenThuong::create([
+                'manv' => $request->manv,
+                'ngaykhenthuong' => $request->ngaykhenthuong,
+                'lydo' => $request->lydo,
+                'chitietkhenthuong' => $file_name
+            ]);
             return response()->json(["check" => true]);
-            // return redirect()->route('khenthuong.index');
         } else {
             return redirect()->route('khenthuong.index');
         }
@@ -113,16 +112,15 @@ class KhenThuongController extends Controller
 
             $oldFile = KhenThuong::select('chitietkhenthuong')->where('id', $id)->get()[0]->chitietkhenthuong;
             // dd($oldFile);
-            // KhenThuong::where('id', $id)
-            //     ->update([
-            //         'manv' => $request->manv,
-            //         'ngaykhenthuong' => $request->ngaykhenthuong,
-            //         'lydo' => $request->lydo,
-            //         'chitietkhenthuong' => $file_name
-            //     ]);
+            KhenThuong::where('id', $id)
+                ->update([
+                    'manv' => $request->manv,
+                    'ngaykhenthuong' => $request->ngaykhenthuong,
+                    'lydo' => $request->lydo,
+                    'chitietkhenthuong' => $file_name
+                ]);
             // Xoa file cu
-            // unlink(public_path('uploads/files/'.$oldFile));
-            // return redirect()->route('khenthuong.index');
+            unlink(public_path('uploads/files/'.$oldFile));
             return response()->json(["check" => true]);
         } else {
             return redirect()->route('khenthuong.index');
@@ -138,7 +136,6 @@ class KhenThuongController extends Controller
     public function destroy($id)
     {
         KhenThuong::where('id', $id)->delete();
-        toastr()->success('Xóa thành công.', 'Thành công');
         return redirect()->route('khenthuong.index');
     }
 
