@@ -1,21 +1,21 @@
 @extends('layouts.app')
 @section('content')
-<div class="tmcv-main">
+<div class="tmpb-main">
     <div class="wrap">
-        <div class="tmcv-title">
-            <h1>Thêm mới chức vụ</h1>
+        <div class="tmpb-title">
+            <h1>Thêm mới phòng ban</h1>
         </div>
         <div class="container">
             <div class="row">
                 <div class="col-sm left-inf">
                         <div class="label-name">
-                            <label for="">Mã chức vụ:</label>
+                            <label for="">Mã phòng ban:</label>
                         </div>
-                        <input class="inp-tmcv" type="text" name="" id="" placeholder="Nhập mã chức vụ">
+                        <input class="inp-tmcv" type="text" name="" id="" placeholder="Nhập mã phòng ban">
                         <div class="label-name">
-                            <label for="">Tên chức vụ:</label>
+                            <label for="">Tên phòng ban:</label>
                         </div>
-                        <input class="inp-tmcv" type="text" name="" id="" placeholder="Nhập tên chức vụ">
+                        <input class="inp-tmcv" type="text" name="" id="" placeholder="Nhập tên phòng ban">
                 </div>
 
                 <div class="btn-tmcv">

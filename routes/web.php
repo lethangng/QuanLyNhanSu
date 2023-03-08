@@ -67,6 +67,11 @@ Route::get('/themmoikhenthuong', function () {
     return view('khenthuong.themmoikhenthuong');
 })->name('themmoikhenthuong');
 
+Route::get('/themmoiphongban', function () {
+    return view('nhansu.danhsachphongban.themmoiphongban');
+})->name('themmoiphongban');
+
+
 Route::get('/', [loginController::class, "home"])->name('login');
 Route::post('/', [loginController::class, "submitLogin"])->name('submitLogin');
 

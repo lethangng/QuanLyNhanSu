@@ -27,19 +27,17 @@
     </div>
 </div>
 {{-- modal them chuc vu moi --}}
-    <div class="modal-tmcv js-modal ">
-        <div class="modal-container-tmcv js-modal-container">
+    <div class="modal-delete js-modal ">
+        <div class="modal-container-delete js-modal-container">
             <div class="modal-close js-modal-close">
                 <i class="ti-close"></i>
             </div>
 
-            <div class="Update-successful-tmcv">
-                <span class="icon-successfull-tmcv">
+            <div class="modal-text-delete-2">
+                <span class="icon-successfull-delete-2">
                     <img src="{{ asset('css/Img/image 36.png') }}" alt="">
                 </span>
-                <div class="text-tmcv">
-                    <span>Sửa thành công</span>
-                </div>
+                <h2>Sửa thành công</h2>
             </div>
         </div>
     </div>
