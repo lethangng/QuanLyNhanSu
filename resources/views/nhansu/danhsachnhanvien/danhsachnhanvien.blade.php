@@ -1,15 +1,17 @@
 @extends('layouts.app')
 @section('content')
-    <div class="modal js-modal ">
-        <div class="modal-container js-modal-container">
+    <div class="modal-kt js-modal ">
+        <div class="modal-container-kt js-modal-container">
             <div class="modal-close js-modal-close">
                 <i class="ti-close"></i>
             </div>
-            <div class="Update-successful">
-                <p style="line-height:12;">Bạn có chắc chắn muốn xóa không</p>
-                <button class="btn btn-primary" style="width:50%;height:20%;position:absolute;bottom: 0;left:0;">xác
-                    nhận</button>
-                <button class="btn btn-danger" style="width:50%;height:20%;position:absolute;bottom: 0;right:0;">Hủy</button>
+
+            <div class="modal-text-kt">
+                <h2>Bạn có chắc chắn muốn xóa không?</h2>
+                <div class="modal-buttons">
+                    <button class="confirm-btn">Xác nhận</button>
+                    <button class="cancel-btn">Hủy</button>
+                </div>
             </div>
         </div>
     </div>
@@ -92,77 +94,63 @@
                                                 $d1 = 1;
                                             @endphp
                                         @break
+                                        @endif
+                                    @endforeach
+                                    @if ($d1 == 0)
+                                        <th class="h1" scope="row">Trống</th>
                                     @endif
-                                @endforeach
-                                @if ($d1 == 0)
-                                    <th class="h1" scope="row">Trống</th>
-                                @endif
 
 
-                                @foreach ($phongBan as $item2)
-                                    @if ($item->maphongban == $item2->id)
-                                        <th class="h1" scope="row">{{ $item2->tenphongban }}</th>
+                                    @foreach ($phongBan as $item2)
+                                        @if ($item->maphongban == $item2->id)
+                                            <th class="h1" scope="row">{{ $item2->tenphongban }}</th>
+                                            @php
+                                                $d2 = 1;
+                                            @endphp
+                                        @break
+                                    @endif
+                                    @endforeach
+                                        @if ($d2 == 0)
+                                            <th class="h1" scope="row">Trống</th>
+                                    @endif
+
+                                    @foreach ($khoa as $item2)
+                                    @if ($item->makhoa == $item2->id)
+                                        <th class="h1" scope="row">{{ $item2->tenkhoa }}</th>
                                         @php
-                                            $d2 = 1;
+                                            $d3 = 1;
                                         @endphp
                                     @break
-                                @endif
+                                    @endif
+                                    @endforeach
+
+                                    @if ($d3 == 0)
+                                        <th class="h1" scope="row">Trống</th>
+                                    @endif
+                                    <th class="h1" scope="row">{{ $item->trangthai }}</th>
+                                    <th class="h1" scope="row">
+                                        <button class="i-save">
+                                            <a href="{{ route('canhan.index', ['id' => $item->id]) }}">
+                                                <img src="{{ asset('icon/save.png') }}" alt="">
+                                            </a>
+                                        </button>
+                                        <button class="i-edit-nv">
+                                            <a href="{{ route('suanhanvien')}}">
+                                                <i class='bx bx-edit'></i>
+                                            </a>
+                                        </button>
+                                        <button class="i-rotate">
+                                            <i class='bx bx-trash js-buy-ticket'></i>
+                                        </button>
+
+                                    </th>
+                                </tr>
                             @endforeach
-                            @if ($d2 == 0)
-                                <th class="h1" scope="row">Trống</th>
-                            @endif
-
-                            @foreach ($khoa as $item2)
-                                @if ($item->makhoa == $item2->id)
-                                    <th class="h1" scope="row">{{ $item2->tenkhoa }}</th>
-                                    @php
-                                        $d3 = 1;
-                                    @endphp
-                                @break
-                            @endif
-                        @endforeach
-
-                        @if ($d3 == 0)
-                            <th class="h1" scope="row">Trống</th>
-                        @endif
-                        <th class="h1" scope="row">{{ $item->trangthai }}</th>
-                        <th class="h1" scope="row">
-                            <button class="i-save">
-                                <a href="{{ route('canhan.index', ['id' => $item->id]) }}">
-                                    <img src="{{ asset('icon/save.png') }}" alt="">
-                                </a>
-                            </button>
-                            <button class="i-edit">
-                                <a href="{{ route('suanhanvien')}}">
-                                    <i class='bx bx-edit'></i>
-                                </a>
-                            </button>
-                            <button class="i-rotate">
-                                <i class='bx bx-trash js-buy-ticket'></i>
-                            </button>
-
-                        </th>
-                    </tr>
-                @endforeach
-            @endisset
-        </tbody>
-    </table>
-</div>
-</div>
-</div>
-</div>
-
-<script>
-    const body = document.querySelector('body'),
-        sidebar = body.querySelector('nav'),
-        toggle = body.querySelector(".toggle"),
-        // modeSwitch = body.querySelector(".toggle-switch"),
-        modeText = body.querySelector(".mode-text");
-
-    toggle.addEventListener("click", () => {
-        sidebar.classList.toggle("close");
-    })
-</script>
+                        @endisset
+                    </tbody>
+                </table>
+            </div>
+    </div>
 <script>
     const buyBtns = document.querySelectorAll('.js-buy-ticket');
     const modal = document.querySelector('.js-modal');
