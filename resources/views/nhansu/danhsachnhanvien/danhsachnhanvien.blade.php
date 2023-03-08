@@ -141,7 +141,7 @@
             <div class="modal-close js-modal-close">
                 <i class="ti-close"></i>
             </div>
-    
+
             <div class="modal-text-delete">
                 <h2>Bạn có chắc chắn muốn xóa không?</h2>
                 <div class="modal-buttons">
@@ -151,6 +151,11 @@
             </div>
         </div>
     </div>
+    <div class="container-footer-kt">
+            <nav aria-label="Page navigation example" class="ml-5 footer-kt">
+                {{ $caNhan->links('pagination::bootstrap-4') }}
+            </nav>
+        </div>
 <script>
     const buyBtns = document.querySelectorAll('.js-buy-ticket');
     const modal = document.querySelector('.js-modal');
