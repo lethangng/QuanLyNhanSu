@@ -7,7 +7,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-sm left-inf">
+                <div class="col-sm left-inf-tmnv">
                     <form action="{{ url('capnhatnhanvien/id='.$caNhan->id) }}" method="POST">
                     @csrf
 
@@ -48,7 +48,7 @@
                         </div>
                         <input class="inp-tmnv" type="text" name="hsl" id="" value="{{ $caNhan->hsl }}">
                 </div>
-                <div class="col-sm right-inf">
+                <div class="col-sm right-inf-tmnv">
                     <div class="label-name">
                         <label for="">Quê quán:</label>
                     </div>
