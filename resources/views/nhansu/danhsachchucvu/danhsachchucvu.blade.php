@@ -35,11 +35,11 @@
                             <th class="h1" scope="row">1</th>
                             <th class="h1" scope="row">Giám đốc</th>
                             <th class="h1" scope="row">
-                                <button class="i-edit-cv">
-                                    <a href="{{ route('suachucvu')}}">
+                                <a href="{{ route('suachucvu')}}">
+                                    <button class="i-edit">
                                         <i class='bx bx-edit'></i>
-                                    </a>
-                                </button>
+                                    </button>
+                                </a>
                                 <button class="i-rotate js-buy-ticket">
                                     <i class='bx bx-trash'></i>
                                 </button>
@@ -50,11 +50,11 @@
                             <th class="h1" scope="row">2</th>
                             <th class="h1" scope="row">Phó giám đốc</th>
                             <th class="h1" scope="row">
-                                <button class="i-edit-cv">
-                                    <a href="{{ route('suachucvu')}}">
+                                <a href="{{ route('suachucvu')}}">
+                                    <button class="i-edit">
                                         <i class='bx bx-edit'></i>
-                                    </a>
-                                </button>
+                                    </button>
+                                </a>
                                 <button class="i-rotate">
                                     <i class='bx bx-trash js-buy-ticket'></i>
                                 </button>
