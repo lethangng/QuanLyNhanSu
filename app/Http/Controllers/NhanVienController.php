@@ -52,4 +52,32 @@ class NhanVienController extends Controller
         $nhanVien->delete();
         return redirect('danhsachnhanvien');
     }
+    public function edit($id)
+    {
+        $caNhan=NhanVien::find($id);
+        $phongBan= DB::select('SELECT id,tenphongban from phongban');
+        $khoa= DB::select('SELECT id,tenkhoa from khoa');
+        $chucVu= DB::select('SELECT id,tenchucvu from chucvu');
+        return view('nhansu.danhsachnhanvien.suanhanvien', ['caNhan' => $caNhan,'phongBan' => $phongBan,'khoa' => $khoa,'chucVu' => $chucVu]);
+    }
+    public function update(Request $request,$id)
+    {
+        $nhanVien = NhanVien::find($id);
+        $nhanVien->tennv=$request->hoten;
+        $nhanVien->ngaysinh=$request->ngaysinh;
+        $nhanVien->gioitinh=$request->gioitinh;
+        $nhanVien->cccd=$request->cccd;
+        $nhanVien->diachi=$request->diachi;
+        $nhanVien->email=$request->email;
+        $nhanVien->hsl=$request->hsl;
+        $nhanVien->quequan=$request->quequan;
+        $nhanVien->sdt=$request->sodienthoai;
+        $nhanVien->maphongban=$request->phongban;
+        $nhanVien->machucvu=$request->chucvu;
+        $nhanVien->makhoa=$request->khoa;
+        $nhanVien->trangthai=$request->trangthai;
+        $nhanVien->bacluong=$request->bacluong;
+        $nhanVien->update();
+        return redirect('danhsachnhanvien');
+    }
 }

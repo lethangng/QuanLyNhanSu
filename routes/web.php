@@ -54,10 +54,13 @@ Route::get('/themmoinhanvien', [NhanVienController::class, 'create'])->name('the
 Route::post('/themnhanvien', [NhanVienController::class, 'store'])->name('themnhanvien');
 
 Route::post('/xoanhanvien',[NhanVienController::class, 'destroy'])->name('xoanhanvien');
-
+/*
 Route::get('/suanhanvien', function () {
     return view('.nhansu.danhsachnhanvien.suanhanvien');
 })->name('suanhanvien');
+*/
+Route::get('suanhanvien/id={id}', [NhanVienController::class, 'edit'])->name('suanhanvien');
+Route::post('capnhatnhanvien/id={id}', [NhanVienController::class, 'update'])->name('capnhatnhanvien');
 
 Route::get('/danhsachhopdong', function () {
     return view('hopdong.danhsachhopdong');

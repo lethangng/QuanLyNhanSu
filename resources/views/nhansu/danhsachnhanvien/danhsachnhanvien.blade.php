@@ -120,7 +120,7 @@
                                             </a>
                                         </button>
                                         <button class="i-edit-nv">
-                                            <a href="{{ route('suanhanvien')}}">
+                                            <a href="{{ url('suanhanvien/id='.$item->id) }}">
                                                 <i class='bx bx-edit'></i>
                                             </a>
                                         </button>
