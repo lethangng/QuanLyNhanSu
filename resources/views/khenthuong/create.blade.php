@@ -40,27 +40,24 @@
                             style="width: 400px; border: 1px solid #333;">
                         <div id="passwordHelp" class="form-text text-danger upfile-err"></div>
                         <div class="btn-xacnhan-tmkt">
-                            <button class="text-xacnhan-tmkt js-buy-ticket">Xác nhận</button>
+                            <button class="text-xacnhan js-buy-ticket">Xác nhận</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="modal-tmkt js-modal">
-        <div class="modal-container-tmkt js-modal-container">
+    {{-- Thêm thành công --}}
+    <div class="modal-delete js-modal ">
+        <div class="modal-container-delete js-modal-container">
             <div class="modal-close js-modal-close">
                 <i class="ti-close"></i>
             </div>
-
-            <div class="Update-successful-tmkt">
-                <span class="icon-successfull-tmcv">
+            <div class="modal-text-delete-2">
+                <span class="icon-successfull-delete-2">
                     <img src="{{ asset('css/Img/image 36.png') }}" alt="">
                 </span>
-                <div class="text-tmcv">
-                    <span>Thêm thành công</span>
-                </div>
+                <h2>Thêm thành công</h2>
             </div>
         </div>
     </div>

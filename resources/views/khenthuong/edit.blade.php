@@ -49,34 +49,28 @@
                             <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
                         @enderror
                         <div class="btn-xacnhan-tmkt">
-                            <button class="text-xacnhan-tmkt js-buy-ticket" type="submit">Xác nhận</button>
+                            <button class="text-xacnhan js-buy-ticket" type="submit">Xác nhận</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    {{-- <div class="modal js-modal ">
-        <div class="modal-container js-modal-container"> --}}
-    {{-- <div class="modal-close js-modal-close">
+    {{-- modal sửa thành công --}}
+    <div class="modal-delete js-modal ">
+        <div class="modal-container-delete js-modal-container">
+            <div class="modal-close js-modal-close">
                 <i class="ti-close"></i>
-            </div> --}}
-
-    {{-- <div class="Update-successful">
-                <span class="icon-successfull">
+            </div>
+            <div class="modal-text-delete-2">
+                <span class="icon-successfull-delete-2">
                     <img src="{{ asset('css/Img/image 36.png') }}" alt="">
                 </span>
-                <div class="text-dmk">
-                    <span>Thêm thành công</span>
-                </div>
-                <form action="{{ route('khenthuong.index') }}">
-                    <div class="footer-Update-successful">
-                        <button class="confirm"> Xác nhận</button>
-                    </div>
-                </form>
+                <h2>Sửa thành công</h2>
             </div>
         </div>
-    </div> --}}
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
         crossorigin="anonymous"></script>
     <script>

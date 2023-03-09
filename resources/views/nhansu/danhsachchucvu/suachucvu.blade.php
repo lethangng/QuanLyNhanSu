@@ -8,11 +8,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm left-inf">
-                        <div class="label-name">
+                        <div class="label-name-scv">
                             <label for="">Mã chức vụ:</label>
                         </div>
                         <input class="inp-tmcv" type="text" name="" id="" placeholder="Nhập mã chức vụ">
-                        <div class="label-name">
+                        <div class="label-name-scv">
                             <label for="">Tên chức vụ:</label>
                         </div>
                         <input class="inp-tmcv" type="text" name="" id="" placeholder="Nhập tên chức vụ">
