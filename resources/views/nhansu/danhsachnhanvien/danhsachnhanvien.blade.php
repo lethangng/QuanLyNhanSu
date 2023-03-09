@@ -119,11 +119,11 @@
                                                 <img src="{{ asset('icon/save.png') }}" alt="">
                                             </a>
                                         </button>
-                                        <button class="i-edit-nv">
-                                            <a href="{{ url('suanhanvien/id='.$item->id) }}">
+                                        <a href="{{ url('suanhanvien/id='.$item->id) }}">
+                                            <button class="i-edit">
                                                 <i class='bx bx-edit'></i>
-                                            </a>
-                                        </button>
+                                            </button>
+                                        </a>
                                         <button class="i-rotate js-buy-ticket" type="button" value="{{$item->id}}" id="nut">
                                             <i class='bx bx-trash'></i>
                                         </button>
