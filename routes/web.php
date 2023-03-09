@@ -6,6 +6,7 @@ use App\Http\Controllers\KhenThuongController;
 use App\Http\Controllers\KyLuatController;
 use App\Http\Controllers\NhanVienController;
 use App\Http\Controllers\KhoaController;
+use App\Http\Controllers\TangLuongController;
 use App\Http\Controllers\ThongTinController;
 use Illuminate\Routing\Router;
 
@@ -29,10 +30,12 @@ Route::get('/danhsachnhanvien', function () {
 Route::get('/danhsachchucvu', function () {
     return view('nhansu.danhsachchucvu.danhsachchucvu');
 })->name('danhsachchucvu');
-
+/*
 Route::get('/danhsachkhoa', function () {
     return view('nhansu.danhsachkhoa.danhsachkhoa');
 })->name('danhsachkhoa');
+*/
+Route::get('/danhsachkhoa', [KhoaController::class, 'index'])->name('danhsachkhoa');
 
 Route::get('/danhsachphongban', function () {
     return view('nhansu.danhsachphongban.danhsachphongban');
@@ -48,17 +51,19 @@ Route::get('/suachucvu', function () {
 Route::get('/index', function () {
     return view('tangluong.index');
 })->name('danhsachtangluong');
-/*
-Route::get('/themmoinhanvien', function () {
-    return view('nhansu.danhsachnhanvien.themmoinhanvien');
-})->name('themmoinhanvien');
-*/
+
+
 Route::get('/themmoinhanvien', [NhanVienController::class, 'create'])->name('themmoinhanvien');
 Route::post('/themnhanvien', [NhanVienController::class, 'store'])->name('themnhanvien');
 
+Route::post('/xoanhanvien',[NhanVienController::class, 'destroy'])->name('xoanhanvien');
+/*
 Route::get('/suanhanvien', function () {
     return view('.nhansu.danhsachnhanvien.suanhanvien');
 })->name('suanhanvien');
+*/
+Route::get('suanhanvien/id={id}', [NhanVienController::class, 'edit'])->name('suanhanvien');
+Route::post('capnhatnhanvien/id={id}', [NhanVienController::class, 'update'])->name('capnhatnhanvien');
 
 Route::get('/danhsachhopdong', function () {
     return view('hopdong.danhsachhopdong');
@@ -67,6 +72,14 @@ Route::get('/danhsachhopdong', function () {
 Route::get('/themmoikhenthuong', function () {
     return view('khenthuong.themmoikhenthuong');
 })->name('themmoikhenthuong');
+
+Route::get('/themmoiphongban', function () {
+    return view('nhansu.danhsachphongban.themmoiphongban');
+})->name('themmoiphongban');
+
+Route::get('/suaphongban', function () {
+    return view('nhansu.danhsachphongban.suaphongban');
+})->name('suaphongban');
 
 Route::get('/', [loginController::class, "home"])->name('login');
 Route::post('/', [loginController::class, "submitLogin"])->name('submitLogin');
@@ -123,6 +136,17 @@ Route::prefix('kyluat')->group(function () {
     Route::put('{id}/edit', [KyLuatController::class, 'update'])->whereNumber('id')->name('kyluat.update');
     Route::delete('{id}/destroy', [KyLuatController::class, 'destroy'])->whereNumber('id')->name('kyluat.destroy');
     Route::post('search', [KyLuatController::class, 'search'])->name('kyluat.search');
+});
+
+// Danh sach tăng lương
+Route::prefix('tangluong')->group(function () {
+    Route::get('/', [TangLuongController::class, 'index'])->name('tangluong.index');
+    Route::get('create', [TangLuongController::class, 'create'])->name('tangluong.create');
+    Route::post('create', [TangLuongController::class, 'store'])->name('tangluong.store');
+    Route::get('{id}/edit', [TangLuongController::class, 'edit'])->whereNumber('id')->name('tangluong.edit');
+    Route::put('{id}/edit', [TangLuongController::class, 'update'])->whereNumber('id')->name('tangluong.update');
+    Route::delete('{id}/destroy', [TangLuongController::class, 'destroy'])->whereNumber('id')->name('tangluong.destroy');
+    Route::post('search', [TangLuongController::class, 'search'])->name('tangluong.search');
 });
 // Route::post('upfile', [ThongTinCaNhanController::class, 'upfile'])->name('upfile');
 

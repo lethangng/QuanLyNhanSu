@@ -27,7 +27,7 @@ class NhanVienSeeder extends Seeder
                 'maphongban' => 2,
                 'machucvu' => 3,
                 'makhoa' => null,
-                'trangthai' => 'Đang hoạt động',
+                'matrangthai' => 1,
                 'hsl' => 3.4,
                 'bacluong' => null,
                 'email' => 'thang@gmail.com'
@@ -43,7 +43,7 @@ class NhanVienSeeder extends Seeder
                 'maphongban' => null,
                 'machucvu' => 5,
                 'makhoa' => 1,
-                'trangthai' => 'Nghỉ làm',
+                'matrangthai' => 2,
                 'hsl' => 3.2,
                 'bacluong' => 4,
                 'email' => 'huy@gmail.com'
@@ -59,7 +59,7 @@ class NhanVienSeeder extends Seeder
                 'maphongban' => null,
                 'machucvu' => 1,
                 'makhoa' => 1,
-                'trangthai' => 'Đang hoạt động',
+                'matrangthai' => 3,
                 'hsl' => null,
                 'bacluong' => 6,
                 'email' => 'thuan@gmail.com'
@@ -75,7 +75,7 @@ class NhanVienSeeder extends Seeder
                 'maphongban' => null,
                 'machucvu' => 1,
                 'makhoa' => 3,
-                'trangthai' => 'Đi công tác',
+                'matrangthai' => 4,
                 'hsl' => null,
                 'bacluong' => 4,
                 'email' => 'hoang@gmail.com'
@@ -91,7 +91,7 @@ class NhanVienSeeder extends Seeder
                 'maphongban' => 2,
                 'machucvu' => 6,
                 'makhoa' => null,
-                'trangthai' => 'Đang hoạt động',
+                'matrangthai' => 5,
                 'hsl' => 3.0,
                 'bacluong' => null,
                 'email' => 'thanh@gmail.com'

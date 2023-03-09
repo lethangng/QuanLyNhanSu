@@ -55,7 +55,6 @@
                         <label for="">Phòng ban:</label>
                     </div>
                     @empty($phongBan)
-                    <h1>Sai router ,truy vấn hoặc không có data</h1>
                     @endempty
                     <select class="inp-tmnv" name="phongban" id="">
                         @isset($phongBan)
@@ -68,7 +67,6 @@
                         <label for="">Chức vụ:</label>
                     </div>
                     @empty($chucVu)
-                    <h1>Sai router ,truy vấn hoặc không có data</h1>
                     @endempty
                     <select class="inp-tmnv" name="chucvu" id="">
                         @isset($chucVu)
@@ -81,7 +79,6 @@
                         <label for="">Khoa:</label>
                     </div>
                     @empty($khoa)
-                    <h1>Sai router ,truy vấn hoặc không có data</h1>
                     @endempty
                     <select class="inp-tmnv" name="khoa" id="">
                         @isset($khoa)
@@ -101,7 +98,6 @@
                 </div>
             </div>
             <div class="btn-tmnv">
-
                 <button class="text-xacnhan-tmnv">Xác nhận</button>
             </form>
 

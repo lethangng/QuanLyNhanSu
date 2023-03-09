@@ -22,6 +22,7 @@
     <title>@yield('title')</title>
 
 </head>
+
 <body>
     <div class="wrap">
         <nav class="sidebar close">
@@ -97,7 +98,7 @@
                         </li>
 
                         <li class="nav-link">
-                            <a href="{{ route('danhsachtangluong') }}">
+                            <a href="{{ route('tangluong.index') }}">
                                 <span class="icon-home">
                                     <img src="{{ asset('icon/luong.png') }}" alt="">
                                 </span>
@@ -113,7 +114,30 @@
                                 <span class="text nav-text">Quản lý hợp đồng</span>
                             </a>
                         </li>
-
+                        <li class="nav-link">
+                            <a href="#">
+                                <span class="icon-home">
+                                    <img src="{{ asset('icon/icontrangthai.png') }}" alt="">
+                                </span>
+                                <span class="text nav-text">Quản lý trạng thái</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">
+                                <span class="icon-home">
+                                    <img src="{{ asset('icon/iconthongke.png') }}" alt="">
+                                </span>
+                                <span class="text nav-text">Quản lý báo cáo</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">
+                                <span class="icon-home">
+                                    <img src="{{ asset('icon/iconqltk.png') }}" alt="">
+                                </span>
+                                <span class="text nav-text">Quản lý tài khoản</span>
+                            </a>
+                        </li>
                         <li class="nav-link">
                             <a href="{{ route('canhan.index', ['id' => Auth::user()->manv]) }}">
                                 <span class="icon-home">
@@ -122,18 +146,17 @@
                                 <span class="text nav-text">Quản lý thông tin cái nhân</span>
                             </a>
                         </li>
+                        <div class="bottom-content">
+                            <li class="">
+                                <a href="{{ route('login') }}">
+                                    <span class="icon-home">
+                                        <img src="{{ asset('icon/logout.png') }}" alt="">
+                                    </span>
+                                    <span class="text nav-text">Logout</span>
+                                </a>
+                            </li>
+                        </div>
                     </ul>
-                </div>
-
-                <div class="bottom-content">
-                    <li class="">
-                        <a href="{{ route('login') }}">
-                            <span class="icon-home">
-                                <img src="{{ asset('icon/logout.png') }}" alt="">
-                            </span>
-                            <span class="text nav-text">Logout</span>
-                        </a>
-                    </li>
                 </div>
             </div>
         </nav>

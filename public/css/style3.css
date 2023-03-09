@@ -18,7 +18,7 @@
     padding-top: 20px;
 }
 .label-name{
-    font-size: 26px;
+    font-size: 18px;
     font-weight: 600;
     padding-top: 14px;
 }
@@ -45,7 +45,7 @@
     ;
 }
 
-/* ******************************* Thêm mới khen thưởng **************************** */
+/* ********************* Thêm mới khen thưởng ******************* */
 
 .tnv, .mnv, .ngkt, .ld, .ctkt{
     font-size: 26px;
@@ -110,70 +110,18 @@
     float: right;
 }
 
-.text-xacnhan-tmkt{
+.text-xacnhan{
     padding: 10px 22px;
     background-color:#428BCA;
     border-radius: 10px;
     border: none;
 }
 
-.text-xacnhan-tmkt:hover{
+.text-xacnhan:hover{
     background-color: #A5CDEF;
 }
 
-.modal-tmkt{
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    display: none;
-}
-.modal-tmkt.open{
-    display: flex;
-}
-.modal-container-tmkt{
-    background-color: #fff;
-    height: 245px;
-    width: 478px;
-    border-radius: 10px;
-    max-width: calc(100% - 32px);
-    min-height: 200px;
-    position: relative;
-    animation: modalFadeIn ease 0.5s;
-}
-
-.Update-successful-tmkt {
-    padding-top: 50px;
-    text-align: center;
-}
-.icon-successfull-tmkt img{
-    padding: 16px;
-    width: 73px;
-    height: 73px;
-}
-
-.text-tmkt{
-    font-size: 30px;
-    font-weight: 400;
-}
-
-@keyframes modalFadeIn {
-    from{
-        opacity: 0;
-        transform: translateY(-140px);
-
-    }
-    to{
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-/* ******* Thêm mới chức vụ ******** */
+/* ********************* Thêm mới chức vụ ******************* */
 
 .tmcv-main {
     width: 100%;
@@ -192,11 +140,6 @@
     padding-left: 64px;
     padding-top: 20px;
 }
-.label-name{
-    font-size: 26px;
-    font-weight: 600;
-    padding-top: 14px;
-}
 .inp-tmcv{
     width: 450px;
     height: 40px;
@@ -206,21 +149,79 @@
     border: 1px solid #333;
 }
 .btn-tmcv{
-    padding-left: 64px;
-    padding-top: 20px;
+    position: fixed;
+    bottom: 10%;
+    left: 85%;
 }
-.text-xacnhan-tmcv{
+.text-xacnhan{
     padding: 10px 22px;
     background-color:#428BCA;
     border-radius: 10px;
     border: none;
 }
 
-.text-xacnhan-tmcv:hover{
+.text-xacnhan:hover{
     background-color: #A5CDEF;
 }
-
-.modal-tmcv{
+/* ********************* Sửa chức vụ ******************* */
+.scv-main {
+    width: 100%;
+}
+.scv-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+.scv-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+}
+.btn-scv{
+    position: fixed;
+    bottom: 10%;
+    left: 85%;
+}
+/* ********************* Thêm mới phòng ban ******************* */
+.tmpb-main {
+    width: 100%;
+}
+.tmpb-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+.tmpb-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+}
+.btn-tmpb{
+    position: fixed;
+    bottom: 10%;
+    left: 85%;
+}
+/* ********************* Sua phòng ban ******************* */
+.spb-main {
+    width: 100%;
+}
+.spb-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+.spb-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+}
+.btn-spb{
+   position: fixed;
+   bottom: 10%;
+   left: 85%;
+}
+/* ******* Modal xóa  ****** */
+.modal-delete{
     position: fixed;
     top: 0;
     right: 0;
@@ -232,33 +233,65 @@
     display: flex;
     display: none;
 }
-.modal-tmcv.open{
+.modal-delete.open{
     display: flex;
 }
-.modal-container-tmcv{
+.modal-container-delete{
     background-color: #fff;
-    height: 245px;
-    width: 478px;
+    height: 254px;
+    width: 517px;
     border-radius: 10px;
     max-width: calc(100% - 32px);
     min-height: 200px;
     position: relative;
     animation: modalFadeIn ease 0.5s;
 }
-
-.Update-successful-tmcv {
-    padding-top: 50px;
+.modal-text-delete{
     text-align: center;
 }
-.icon-successfull-tmcv img{
-    padding: 16px;
-    width: 73px;
-    height: 73px;
+.modal-text-delete h2{
+    font-size: 24px;
+    font-weight: 400;
+    padding-top: 65px;
 }
-
-.text-tmcv{
+.modal-text-delete-2 h2{
     font-size: 30px;
     font-weight: 400;
+    padding-top: 30px;
+    text-align: center;
+}
+.icon-successfull-delete-2 img{
+    padding-left: 214px;
+    padding-top: 40px;
+}
+.modal-buttons{
+    display: flex;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+.cancel-btn,
+.confirm-btn{
+    font-size: 30px;
+    color: #fff;
+    width: 50%;
+    height: 100px;
+}
+.confirm-btn{
+    background-color: #83B8EA;
+    border: none;
+    border-radius: 0px 0px 0px 10px;
+}
+.cancel-btn{
+    background-color: #F06868;
+    border: none;
+    border-radius: 0px 0px 10px 0px;
+}
+.confirm-btn:hover{
+    background-color: #BACAD9;
+}
+.cancel-btn:hover{
+    background-color: #DBABAB;
 }
 
 

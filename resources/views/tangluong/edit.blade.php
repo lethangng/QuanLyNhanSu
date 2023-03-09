@@ -6,39 +6,39 @@
     <div class="tmnv-main">
         <div class="wrap">
             <div class="tmnv-title">
-                <h1>Cập nhập kỷ luật</h1>
+                <h1>Cập nhập tăng lương</h1>
             </div>
             <div class="container">
                 <div class="row">
-                    <form action="{{ route('kyluat.update', ['id' => $kyluat->id]) }}" method="post"
-                        enctype="multipart/form-data" class="col-sm left-inf" id="update-kyluat">
+                    <form action="{{ route('tangluong.update', ['id' => $tangluong->id]) }}" method="post"
+                        enctype="multipart/form-data" class="col-sm left-inf" id="update-tangluong">
                         @method('PUT')
                         @csrf
                         <div class="tnv">
                             <label for="">Tên nhân viên:</label>
                         </div>
                         <input class="ip-tnv" type="text" name="tennv" id="ten_nhanvien" readonly
-                            value="{{ $kyluat->nhanvien->tennv }}">
+                            value="{{ $tangluong->nhanvien->tennv }}">
                         <div class="mnv">
                             <label for="">Mã nhân viên</label>
                         </div>
                         <input class="ip-mnv" type="text" name="manv" id="ma_nhanvien"
-                            placeholder="Nhập mã nhân viên..." pattern="[0-9]+" value="{{ $kyluat->manv }}">
+                            placeholder="Nhập mã nhân viên..." pattern="[0-9]+" value="{{ $tangluong->manv }}">
                         <div id="err_ajax" class="form-text text-danger text-danger_manv"></div>
                         <div class="ngkt">
-                            <label for="">Ngày kỷ luật:</label>
+                            <label for="">Ngày tăng lương:</label>
                         </div>
-                        <input class="ip-ngkt" type="date" name="ngaykyluat" id=""
-                            value="{{ $kyluat->ngaykyluat }}">
-                        <div id="passwordHelp" class="form-text text-danger ngaykyluat-err"></div>
+                        <input class="ip-ngkt" type="date" name="ngaytangluong" id=""
+                            value="{{ $tangluong->ngaytangluong }}">
+                        <div id="passwordHelp" class="form-text text-danger ngaytangluong-err"></div>
                         <div class="ld">
                             <label for="">Lý do:</label>
                         </div>
                         <input class="ip-ld" type="text" name="lydo" id="" placeholder="Nhập lý do..."
-                            value="{{ $kyluat->lydo }}">
+                            value="{{ $tangluong->lydo }}">
                         <div id="passwordHelp" class="form-text text-danger lydo-err"></div>
                         <div class="ctkt">
-                            <label for="">Chi tiết kỷ luật:</label>
+                            <label for="">Chi tiết tăng lương:</label>
                         </div>
                         <input type="file" name="upfile" accept=".doc,.docx,.pdf,image/*" class="form-control"
                             style="width: 400px; border: 1px solid #333;">
@@ -80,7 +80,7 @@
 
         function hideBuyTickets() {
             modal.classList.remove('open')
-            window.location = '{{ route('kyluat.index') }}'
+            window.location = '{{ route('tangluong.index') }}'
         }
 
         // for (const buyBtn of buyBtns) {
@@ -132,7 +132,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            $('#update-kyluat').submit(function(e) {
+            $('#update-tangluong').submit(function(e) {
                 e.preventDefault();
                 var formData = new FormData(this);
                 $.ajax({

@@ -10,6 +10,6 @@ class KhoaController extends Controller
 {
     public function index(){
         $khoa=Khoa::all();
-        return view('nhansu.danhsachkhoa.quanlykhoa',['khoa'=>$khoa]);
+        return view('nhansu.danhsachkhoa.danhsachkhoa',['khoa'=>$khoa]);
     }
 }

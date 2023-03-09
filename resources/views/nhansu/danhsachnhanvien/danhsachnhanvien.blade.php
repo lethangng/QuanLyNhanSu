@@ -1,24 +1,11 @@
 @extends('layouts.app')
 @section('content')
-    <div class="modal js-modal ">
-        <div class="modal-container js-modal-container">
-            <div class="modal-close js-modal-close">
-                <i class="ti-close"></i>
-            </div>
-            <div class="Update-successful">
-                <p style="line-height:12;">Bạn có chắc chắn muốn xóa không</p>
-                <button class="btn btn-primary" style="width:50%;height:20%;position:absolute;bottom: 0;left:0;">xác
-                    nhận</button>
-                <button class="btn btn-danger" style="width:50%;height:20%;position:absolute;bottom: 0;right:0;">Hủy</button>
-            </div>
-        </div>
-    </div>
     <div class="dsnv-main">
         <div class="wrap">
             <div class="dsnv-title">
                 <h1>Danh sách nhân viên</h1>
             </div>
-            <form action="{{ route('themmoinhanvien') }}">
+            <form action="{{ url('themmoinhanvien') }}">
                 <div class="btn-tnv">
                     <button class="nv">Thêm mới nhân viên</button>
                 </div>
@@ -92,83 +79,90 @@
                                                 $d1 = 1;
                                             @endphp
                                         @break
+                                        @endif
+                                    @endforeach
+                                    @if ($d1 == 0)
+                                        <th class="h1" scope="row">Trống</th>
                                     @endif
-                                @endforeach
-                                @if ($d1 == 0)
-                                    <th class="h1" scope="row">Trống</th>
-                                @endif
 
 
-                                @foreach ($phongBan as $item2)
-                                    @if ($item->maphongban == $item2->id)
-                                        <th class="h1" scope="row">{{ $item2->tenphongban }}</th>
+                                    @foreach ($phongBan as $item2)
+                                        @if ($item->maphongban == $item2->id)
+                                            <th class="h1" scope="row">{{ $item2->tenphongban }}</th>
+                                            @php
+                                                $d2 = 1;
+                                            @endphp
+                                        @break
+                                    @endif
+                                    @endforeach
+                                        @if ($d2 == 0)
+                                            <th class="h1" scope="row">Trống</th>
+                                    @endif
+
+                                    @foreach ($khoa as $item2)
+                                    @if ($item->makhoa == $item2->id)
+                                        <th class="h1" scope="row">{{ $item2->tenkhoa }}</th>
                                         @php
-                                            $d2 = 1;
+                                            $d3 = 1;
                                         @endphp
                                     @break
-                                @endif
+                                    @endif
+                                    @endforeach
+
+                                    @if ($d3 == 0)
+                                        <th class="h1" scope="row">Trống</th>
+                                    @endif
+                                    <th class="h1" scope="row">{{ $item->trangthai }}</th>
+                                    <th class="h1" scope="row">
+                                        <button class="i-save">
+                                            <a href="{{ route('canhan.index', ['id' => $item->id]) }}">
+                                                <img src="{{ asset('icon/save.png') }}" alt="">
+                                            </a>
+                                        </button>
+                                        <a href="{{ url('suanhanvien/id='.$item->id) }}">
+                                            <button class="i-edit">
+                                                <i class='bx bx-edit'></i>
+                                            </button>
+                                        </a>
+                                        <button class="i-rotate js-buy-ticket" type="button" value="{{$item->id}}" id="nut">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+
+                                    </th>
+                                </tr>
                             @endforeach
-                            @if ($d2 == 0)
-                                <th class="h1" scope="row">Trống</th>
-                            @endif
+                        @endisset
+                        @empty($caNhan)
+                        <h1>Sai router ,truy vấn hoặc không có data</h1>
+                    @endempty
+                    </tbody>
+                </table>
+            </div>
+    </div>
+    <div class="modal-delete js-modal ">
+        <div class="modal-container-delete js-modal-container">
+            <div class="modal-close js-modal-close">
+                <i class="ti-close"></i>
+            </div>
 
-                            @foreach ($khoa as $item2)
-                                @if ($item->makhoa == $item2->id)
-                                    <th class="h1" scope="row">{{ $item2->tenkhoa }}</th>
-                                    @php
-                                        $d3 = 1;
-                                    @endphp
-                                @break
-                            @endif
-                        @endforeach
-
-                        @if ($d3 == 0)
-                            <th class="h1" scope="row">Trống</th>
-                        @endif
-                        <th class="h1" scope="row">{{ $item->trangthai }}</th>
-                        <th class="h1" scope="row">
-                            <button class="i-save">
-                                <a href="{{ route('canhan.index', ['id' => $item->id]) }}">
-                                    <img src="{{ asset('icon/save.png') }}" alt="">
-                                </a>
-                            </button>
-                            <button class="i-edit">
-                                <a href="{{ route('suanhanvien')}}">
-                                    <i class='bx bx-edit'></i>
-                                </a>
-                            </button>
-                            <button class="i-rotate">
-                                <i class='bx bx-trash js-buy-ticket'></i>
-                            </button>
-
-                        </th>
-                    </tr>
-                @endforeach
-            @endisset
-
-            @empty($caNhan)
-                <h1>Sai router ,truy vấn hoặc không có data</h1>
-            @endempty
-
-
-        </tbody>
-    </table>
-</div>
-</div>
-</div>
-</div>
-
-<script>
-    const body = document.querySelector('body'),
-        sidebar = body.querySelector('nav'),
-        toggle = body.querySelector(".toggle"),
-        // modeSwitch = body.querySelector(".toggle-switch"),
-        modeText = body.querySelector(".mode-text");
-
-    toggle.addEventListener("click", () => {
-        sidebar.classList.toggle("close");
-    })
-</script>
+            <div class="modal-text-delete">
+                <h2>Bạn có chắc chắn muốn xóa không?</h2>
+                <form action="{{ url('xoanhanvien')}}" method="POST" >
+                @csrf
+                <div class="modal-buttons">
+                    <input type="text" id="nut2" name="idxoa" hidden>
+                    <button class="confirm-btn" type="submit" >Xác nhận</button>
+                    <button class="cancel-btn">Hủy</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container-footer-kt">
+            <nav aria-label="Page navigation example" class="ml-5 footer-kt">
+                {{ $caNhan->links('pagination::bootstrap-4') }}
+            </nav>
+        </div>
 <script>
     const buyBtns = document.querySelectorAll('.js-buy-ticket');
     const modal = document.querySelector('.js-modal');
@@ -176,7 +170,8 @@
     const modalClose = document.querySelector('.js-modal-close');
 
     function showBuyTickets() {
-        modal.classList.add('open')
+        document.getElementById("nut2").value=document.getElementById("nut").value;
+        modal.classList.add('open');
     }
 
     function hideBuyTickets() {

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<div class="tmcv-main">
+<div class="scv-main">
     <div class="wrap">
-        <div class="tmcv-title">
+        <div class="scv-title">
             <h1>Sửa chức vụ</h1>
         </div>
         <div class="container">
@@ -18,8 +18,8 @@
                         <input class="inp-tmcv" type="text" name="" id="" placeholder="Nhập tên chức vụ">
                 </div>
 
-                <div class="btn-tmcv">
-                    <button class="text-xacnhan-tmcv js-buy-ticket">Xác nhận</button>
+                <div class="btn-scv">
+                    <button class="text-xacnhan js-buy-ticket">Xác nhận</button>
                 </div>
             </div>
             
@@ -27,19 +27,17 @@
     </div>
 </div>
 {{-- modal them chuc vu moi --}}
-    <div class="modal-tmcv js-modal ">
-        <div class="modal-container-tmcv js-modal-container">
+    <div class="modal-delete js-modal ">
+        <div class="modal-container-delete js-modal-container">
             <div class="modal-close js-modal-close">
                 <i class="ti-close"></i>
             </div>
 
-            <div class="Update-successful-tmcv">
-                <span class="icon-successfull-tmcv">
+            <div class="modal-text-delete-2">
+                <span class="icon-successfull-delete-2">
                     <img src="{{ asset('css/Img/image 36.png') }}" alt="">
                 </span>
-                <div class="text-tmcv">
-                    <span>Sửa thành công</span>
-                </div>
+                <h2>Sửa thành công</h2>
             </div>
         </div>
     </div>

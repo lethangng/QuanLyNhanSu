@@ -47,7 +47,6 @@ body.dark {
 
 /* ===== Sidebar ===== */
 
-
 .sidebar.close {
     width: 88px;
 }
@@ -61,6 +60,7 @@ body.dark {
     margin-top: 10px;
     flex-direction: column;
 }
+
 
 .sub-nav-link {
     /* align-self: flex-end; */
@@ -94,7 +94,7 @@ body.dark {
     font-weight: 500;
     white-space: nowrap;
     opacity: 1;
-    margin-left: 4px;
+    margin-left: 14px;
 }
 
 .sidebar.close .text {
@@ -372,10 +372,6 @@ td {
     text-align: center;
 }
 
-.menu-links {
-    padding: 0 !important;
-}
-
 .wrap-thongtincanhan {
     display: flex;
 }
@@ -385,7 +381,6 @@ td {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* height: 100%; */
     gap: 50px;
 }
 
@@ -398,9 +393,12 @@ td {
 
 .h1 {
     text-align: center;
-    font-size: 14px;
+    font-size: 13px;
     padding: 8px 8px;
     font-weight: 400;
+}
+.h1 a{
+    text-decoration: none;
 }
 .h1 .i-edit{
     padding: 5px 6px;
@@ -419,80 +417,14 @@ td {
 /******************************************************/
 
 
-/* Google Font Import - Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-:root {
-    /* ===== Colors ===== */
-    --body-color: #E4E9F7;
-    --sidebar-color: #FFF;
-    --primary-color: #695CFE;
-    --primary-color-light: #F6F5FF;
-    --toggle-color: #DDD;
-    --text-color: #707070;
-
-    /* ====== Transition ====== */
-    --tran-03: all 0.2s ease;
-    --tran-03: all 0.3s ease;
-    --tran-04: all 0.3s ease;
-    --tran-05: all 0.3s ease;
-}
-
-body {
-    min-height: 100vh;
-    background-color: var(--body-color);
-    transition: var(--tran-05);
-    overflow-x: hidden;
-}
-
-::selection {
-    background-color: var(--primary-color);
-    color: #fff;
-}
-
-body.dark {
-    --body-color: #18191a;
-    --sidebar-color: #242526;
-    --primary-color: #3a3b3c;
-    --primary-color-light: #3a3b3c;
-    --toggle-color: #fff;
-    --text-color: #ccc;
-}
-
-/* ===== Sidebar ===== */
 .sidebar {
     position: absolute;
-    /* top: 0;
-    left: 0; */
     height: 100vh;
     width: auto;
     padding: 10px 14px;
     background: var(--sidebar-color);
     transition: var(--tran-05);
     z-index: 100;
-}
-
-
-/* ===== Reusable code - Here ===== */
-.sidebar li {
-    min-height: 50px;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    margin-top: 4px;
-    flex-direction: column;
-}
-
-.sub-nav-link {
-    /* align-self: flex-end; */
-    margin-left: 56px;
 }
 
 .sidebar header .image-2,
@@ -517,10 +449,6 @@ body.dark {
     transition: var(--tran-03);
 }
 
-.sidebar.close .text {
-    opacity: 0;
-}
-
 /* =========================== */
 
 .sidebar header {
@@ -538,7 +466,7 @@ body.dark {
     flex-direction: column;
 }
 
-header .image-text .name {
+.image-text .name {
     margin-top: 2px;
     font-size: 18px;
     font-weight: 600;
@@ -547,7 +475,7 @@ header .image-text .name {
     width: 73px;
     height: 59px;
 }
-header .image-text .profession {
+.image-text .profession {
     font-size: 16px;
     margin-top: -2px;
     display: block;
@@ -590,9 +518,9 @@ body.dark .sidebar header .toggle {
     transform: translateY(-50%) rotate(0deg);
 }
 
-.sidebar .menu {
+/* .sidebar .menu {
     margin-top: 22px;
-}
+} */
 
 .sidebar li.search-box {
     border-radius: 6px;
@@ -702,9 +630,9 @@ body.dark .switch::before {
 
 .sidebar .icon-home img
 {
-    width: 51px;
-    height: 45px;
-    margin-left: 4px;
+    width: 35px;
+    height: 35px;
+    margin-left: 12px;
 }
 
 .home {
@@ -750,18 +678,6 @@ body.dark .home .text {
 
 .content {
     padding: 12px;
-}
-
-.button {
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 14px 10px;
-    cursor: pointer;
 }
 
 .button1 {
@@ -822,7 +738,7 @@ td {
 }
 
 .menu-links {
-    padding: 0 !important;
+    padding: 0 ;
 }
 
 .wrap-thongtincanhan {
@@ -955,7 +871,16 @@ td {
 .head-table{
     padding: 10px;
 }
-
+.h1 .i-edit {
+    padding: 5px 6px;
+    background-color: #E3AC6C;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s linear;
+}
 .h1 .i-rotate{
     padding: 5px 6px;
     background-color: #E53535;
@@ -970,7 +895,7 @@ td {
     border: none;
 }
 .h1 .i-save img{
-    width: 32px;
+    width: 29px;
     margin-top: -4px;
     background-color: #27E050;
     padding: 2px 2px;
@@ -1032,12 +957,6 @@ td {
     left: 550px;
     margin-top: -8px;
 }
-.icon-search-1{
-    /* margin-top: -8px;
-    padding: 0 12px;
-    float: right; */
-    
-}
 .icon-search-1 img {
     height: 52px;
     width: 50px;
@@ -1045,11 +964,7 @@ td {
     padding: 0px;
     border-radius: 10px;
     border: 1px solid #333;
-}
-.icon-reset-1 {
-    /* margin-top: -8px;
-    padding-right: 776px;
-    float: right; */
+    
 }
 
 .icon-reset-1 img{
@@ -1234,11 +1149,6 @@ td {
     border-radius: 10px;
     border: 1px solid #333;
 }
-/* .icon-reset-1 {
-    margin-top: -8px;
-    padding-right: 776px;
-    float: right;
-} */
 
 .icon-reset-1 img{
     width: 50px;
@@ -1294,82 +1204,7 @@ td {
 .i-edit:hover{
     background-color: #F4D6B2;
 }
-/* ******* Modal xóa danh sach khen thuong ****** */
-.modal-kt{
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    display: none;
-}
-.modal-kt.open{
-    display: flex;
-}
-.modal-container-kt{
-    background-color: #fff;
-    height: 254px;
-    width: 517px;
-    border-radius: 10px;
-    max-width: calc(100% - 32px);
-    min-height: 200px;
-    position: relative;
-    animation: modalFadeIn ease 0.5s;
-}
 
-.modal-text-kt h2{
-    font-size: 24px;
-    font-weight: 400;
-    padding-top: 72px;
-    text-align: center;
-}
-
-.modal-buttons{
-    display: flex;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-}
-.cancel-btn,
-.confirm-btn{
-    font-size: 30px;
-    color: #fff;
-    width: 50%;
-    height: 100px;
-}
-.confirm-btn{
-    background-color: #83B8EA;
-    border: none;
-    border-radius: 0px 0px 0px 10px;
-}
-.cancel-btn{
-    background-color: #F06868;
-    border: none;
-    border-radius: 0px 0px 10px 0px;
-}
-.confirm-btn:hover{
-    background-color: #BACAD9;
-}
-.cancel-btn:hover{
-    background-color: #DBABAB;
-}
-
-
-@keyframes modalFadeIn {
-    from{
-        opacity: 0;
-        transform: translateY(-140px);
-
-    }
-    to{
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 /* ********************* danh sach ky luat ******************* */
 .dskl-main {
     width: 100%;
