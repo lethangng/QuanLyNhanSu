@@ -96,7 +96,9 @@
                     <div class="label-name">
                         <label for="">Trạng thái:</label>
                     </div>
-                    <input class="inp-tmnv" type="text" name="trangthai" id="" value="{{ $caNhan->trangthai }}">
+                    <select class="inp-tmnv" name="trangthai" id="">
+                    
+                    </select>
                     <div class="label-name">
                         <label for="">Bậc lương:</label>
                     </div>

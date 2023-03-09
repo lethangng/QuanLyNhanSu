@@ -18,7 +18,8 @@ class NhanVienController extends Controller
         $phongBan= DB::select('SELECT id,tenphongban from phongban');
         $khoa= DB::select('SELECT id,tenkhoa from khoa');
         $chucVu= DB::select('SELECT id,tenchucvu from chucvu');
-        return view('nhansu.danhsachnhanvien.danhsachnhanvien', ['caNhan' => $caNhan,'phongBan' => $phongBan,'khoa' => $khoa,'chucVu' => $chucVu]);
+        $trangThai= DB::select('SELECT id,tentrangthai from trangthai');
+        return view('nhansu.danhsachnhanvien.danhsachnhanvien', ['caNhan' => $caNhan,'trangThai' => $trangThai,'phongBan' => $phongBan,'khoa' => $khoa,'chucVu' => $chucVu]);
     }
     public function create(){
         $phongBan=DB::select('SELECT id,tenphongban from phongBan');
@@ -41,7 +42,7 @@ class NhanVienController extends Controller
         $nhanVien->maphongban=$request->phongban;
         $nhanVien->machucvu=$request->chucvu;
         $nhanVien->makhoa=$request->khoa;
-        $nhanVien->trangthai=$request->trangthai;
+        $nhanVien->matrangthai=$request->trangthai;
         $nhanVien->bacluong=$request->bacluong;
         $nhanVien->save();
         return redirect()->route('danhsachnhanvien');
