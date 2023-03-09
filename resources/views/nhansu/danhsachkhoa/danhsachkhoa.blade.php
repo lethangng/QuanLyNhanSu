@@ -5,10 +5,11 @@
                 <div class="dsk-title">
                     <h1>Danh sách khoa</h1>
                 </div>
-                <div class="btn-tmk">
-                    <button class="nv">Thêm mới khoa</button>
-                </div>
-
+                <form action="{{ Route('themmoikhoa') }}">
+                    <div class="btn-tmk">
+                        <button class="nv">Thêm mới khoa</button>
+                    </div>
+                </form>
 
                 <div class="custom-input">
                     <div class="container-search-reset">
@@ -39,9 +40,11 @@
                                 <th class="h1" scope="row">{{ $item->id }}</th>
                                     <th class="h1" scope="row">{{ $item->tenkhoa }}</th>
                                     <th class="h1" scope="row">
-                                        <button class="i-edit">
-                                            <i class='bx bx-edit'></i>
-                                        </button>
+                                        <a href="{{ route('suakhoa') }}">
+                                            <button class="i-edit">
+                                                <i class='bx bx-edit'></i>
+                                            </button>
+                                        </a>
                                         <button class="i-rotate js-buy-ticket">
                                             <i class='bx bx-trash'></i>
                                         </button>

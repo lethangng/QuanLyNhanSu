@@ -37,6 +37,14 @@ Route::get('/danhsachkhoa', function () {
 */
 Route::get('/danhsachkhoa', [KhoaController::class, 'index'])->name('danhsachkhoa');
 
+Route::get('/themmoikkhoa', function () {
+    return view('nhansu.danhsachkhoa.themmoikhoa');
+})->name('themmoikhoa');
+
+Route::get('/suakhoa', function () {
+    return view('nhansu.danhsachkhoa.suakhoa');
+})->name('suakhoa');
+
 Route::get('/danhsachphongban', function () {
     return view('nhansu.danhsachphongban.danhsachphongban');
 })->name('danhsachphongban');
@@ -44,6 +52,7 @@ Route::get('/danhsachphongban', function () {
 Route::get('/themmoichucvu', function () {
     return view('nhansu.danhsachchucvu.themmoichucvu');
 })->name('themmoichucvu');
+
 Route::get('/suachucvu', function () {
     return view('nhansu.danhsachchucvu.suachucvu');
 })->name('suachucvu');

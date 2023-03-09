@@ -8,11 +8,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm left-inf">
-                        <div class="label-name">
+                        <div class="label-name-spb">
                             <label for="">Mã phòng ban:</label>
                         </div>
                         <input class="inp-tmcv" type="text" name="" id="" placeholder="Nhập mã phòng ban">
-                        <div class="label-name">
+                        <div class="label-name-spb">
                             <label for="">Tên phòng ban:</label>
                         </div>
                         <input class="inp-tmcv" type="text" name="" id="" placeholder="Nhập tên phòng ban">

@@ -12,8 +12,8 @@
     font-weight: 400;
     color: white;
 }
-.right-inf,
-.left-inf {
+.right-inf-tmnv,
+.left-inf-tmnv {
     padding-left: 64px;
     padding-top: 20px;
 }
@@ -93,21 +93,21 @@
     margin-left: 14px;
     margin-top: 8px;
     position: absolute;
-  }
-  .ip-ctkt:hover::before {
+}
+.ip-ctkt:hover::before {
     border-color: black;
-  }
-  .ip-ctktt:active {
+}
+.ip-ctktt:active {
     outline: 0;
-  }
-  .ip-ctkt:active::before {
+}
+.ip-ctkt:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
-  }
+}
 
 .btn-xacnhan-tmkt{
-    padding-top: 90px;
-    padding-right: 40px;
-    float: right;
+    position: fixed;
+    bottom: 10%;
+    left: 85%;
 }
 
 .text-xacnhan{
@@ -137,8 +137,13 @@
     color: white;
 }
 .left-inf {
-    padding-left: 64px;
+    padding-left: 16px;
     padding-top: 20px;
+}
+.label-name-tmcv{
+    font-size: 26px;
+    font-weight: 500;
+    padding-top: 14px;
 }
 .inp-tmcv{
     width: 450px;
@@ -177,6 +182,11 @@
     font-weight: 400;
     color: white;
 }
+.label-name-scv{
+    font-size: 26px;
+    font-weight: 500;
+    padding-top: 14px;
+}
 .btn-scv{
     position: fixed;
     bottom: 10%;
@@ -195,6 +205,11 @@
     font-size: 32px;
     font-weight: 400;
     color: white;
+}
+.label-name-tmpb{
+    font-size: 26px;
+    font-weight: 500;
+    padding-top: 14px;
 }
 .btn-tmpb{
     position: fixed;
@@ -219,6 +234,61 @@
    position: fixed;
    bottom: 10%;
    left: 85%;
+}
+.label-name-spb{
+    font-size: 26px;
+    font-weight: 500;
+    padding-top: 14px;
+}
+
+
+/* ********************* Thêm mới khoa ******************* */
+.tmk-main {
+    width: 100%;
+}
+.tmk-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+.tmk-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+}
+.label-name-tmk{
+    font-size: 26px;
+    font-weight: 500;
+    padding-top: 14px;
+}
+.btn-tmk-2{
+    position: fixed;
+    bottom: 10%;
+    left: 85%;
+}
+/* ********************* Thêm mới khoa ******************* */
+.sk-main {
+    width: 100%;
+}
+.sk-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+.sk-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+}
+.label-name-sk{
+    font-size: 26px;
+    font-weight: 500;
+    padding-top: 14px;
+}
+.btn-sk{
+    position: fixed;
+    bottom: 10%;
+    left: 85%;
 }
 /* ******* Modal xóa  ****** */
 .modal-delete{
