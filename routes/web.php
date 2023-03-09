@@ -29,10 +29,12 @@ Route::get('/danhsachnhanvien', function () {
 Route::get('/danhsachchucvu', function () {
     return view('nhansu.danhsachchucvu.danhsachchucvu');
 })->name('danhsachchucvu');
-
+/*
 Route::get('/danhsachkhoa', function () {
     return view('nhansu.danhsachkhoa.danhsachkhoa');
 })->name('danhsachkhoa');
+*/
+Route::get('/danhsachkhoa', [KhoaController::class, 'index'])->name('danhsachkhoa');
 
 Route::get('/danhsachphongban', function () {
     return view('nhansu.danhsachphongban.danhsachphongban');
