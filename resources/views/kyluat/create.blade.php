@@ -38,8 +38,8 @@
                         <input type="file" name="upfile" accept=".doc,.docx,.pdf,image/*" class="form-control"
                             style="width: 400px; border: 1px solid #333;">
                         <div id="passwordHelp" class="form-text text-danger upfile-err"></div>
-                        <div class="btn-xacnhan">
-                            <button class="text-xacnhan js-buy-ticket" type="submit">Xác nhận</button>
+                        <div class="btn-xacnhan-tmkt">
+                            <button class="text-xacnhan-tmkt js-buy-ticket" type="submit">Xác nhận</button>
                         </div>
                     </form>
                 </div>
@@ -74,7 +74,7 @@
 
         function hideBuyTickets() {
             modal.classList.remove('open')
-            window.location = '{{ route('khenthuong.index') }}'
+            window.location = '{{ route('kyluat.index') }}'
         }
 
         // for (const buyBtn of buyBtns) {

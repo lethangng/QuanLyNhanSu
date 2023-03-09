@@ -54,6 +54,8 @@ Route::get('/themmoinhanvien', function () {
 })->name('themmoinhanvien');
 */
 Route::get('/themmoinhanvien', [NhanVienController::class, 'create'])->name('themmoinhanvien');
+Route::post('/themnhanvien', [NhanVienController::class, 'store'])->name('themnhanvien');
+
 Route::get('/suanhanvien', function () {
     return view('.nhansu.danhsachnhanvien.suanhanvien');
 })->name('suanhanvien');
@@ -94,7 +96,6 @@ Route::middleware(['checkNV'])->group(function () {
 
 // Thong tin ca nhan(dung chung)
 Route::prefix('thongtincanhan')->group(function () {
-    // Route::get('{id}', [ThongTinController::class, 'index'])->defaults('id', '')->name('canhan.index');
     Route::get('{id}', [ThongTinController::class, 'index'])->whereNumber('id')->name('canhan.index');
     Route::post('{id}/add-photo', [ThongTinController::class, 'addPhoto'])->whereNumber('id')->name('canhan.addPhoto');
     Route::post('update-password', [ThongTinController::class, 'updatePassword'])->name('canhan.updatePassword');
@@ -110,7 +111,6 @@ Route::prefix('khenthuong')->group(function () {
     Route::delete('{id}/destroy', [KhenThuongController::class, 'destroy'])->whereNumber('id')->name('khenthuong.destroy');
     Route::post('search', [KhenThuongController::class, 'search'])->name('khenthuong.search');
 });
-
 //ajax 
 Route::post('/ajax_tennv', [KhenThuongController::class, 'findNameNv']);
 
@@ -124,9 +124,9 @@ Route::prefix('kyluat')->group(function () {
     Route::delete('{id}/destroy', [KyLuatController::class, 'destroy'])->whereNumber('id')->name('kyluat.destroy');
     Route::post('search', [KyLuatController::class, 'search'])->name('kyluat.search');
 });
-
-
 // Route::post('upfile', [ThongTinCaNhanController::class, 'upfile'])->name('upfile');
+
+
 //test qlns
 Route::get('/sm', [NhanvienController::class, 'index2']);
 //Route::get('/sendtextfind',[ThongTinCaNhanController::class,'find2']);

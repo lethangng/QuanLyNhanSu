@@ -39,8 +39,8 @@
                         {{-- <form id="register-form" role="form" autocomplete="off" class="form" method="POST"
                             action="{{ route('fogotPassword') }}"> --}}
 
-                        <form id="register-form" role="form"  class="form"
-                            method="POST" action="{{ route('fogotPassword') }}" autocomplete="off">
+                        <form id="register-form" role="form" class="form" method="POST"
+                            action="{{ route('fogotPassword') }}" autocomplete="off">
                             @csrf
                             <div class="">
                                 <div class="input-email">
@@ -80,7 +80,7 @@
                     </div>
                     <div class=" col-12 col-sm-12 col-md-6 ">
                         <div class="login">
-                            <h2>Login</h2>
+                            <h2>Đăng nhập</h2>
                             <div class="form-login">
                                 <form action="{{ route('submitLogin') }}" method="POST" class="form-login"
                                     id='loginForm'>
@@ -88,7 +88,7 @@
                                     <div class="form-group">
                                         <i class="far fa-user"></i>
                                         <input type="text" name='email' id='email' class="form-input"
-                                            placeholder="Email ID">
+                                            placeholder="Email">
                                         {{-- <i class="ik ik-user"></i> --}}
                                         <small class="text-danger error-text email_err"></small>
                                     </div>
@@ -105,7 +105,7 @@
                                 </form>
                             </div>
                             <div class="forget-pass ">
-                                <a href="javascript:;" class="text-forgot textjs">Forgot Username/ Password?</a>
+                                <a href="javascript:;" class="text-forgot textjs">Quên mật khẩu?</a>
                             </div>
                         </div>
                     </div>
@@ -191,7 +191,7 @@
                 $('.' + key + $err).text(value);
             });
         }
-        
+
         formforgot.addEventListener("click", () => {
             formforgot.classList.remove("open");
         })

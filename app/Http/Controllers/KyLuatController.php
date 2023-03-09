@@ -27,7 +27,6 @@ class KyLuatController extends Controller
         if (Auth::user()) {
             $title = 'Danh sách kỷ luật';
             $kyluats = KyLuat::paginate(5);
-            // dd($khenthuongs);
             return view('kyluat.index', compact('kyluats', 'title')); 
         } else {
             return redirect()->route('login');
@@ -119,7 +118,7 @@ class KyLuatController extends Controller
                 ]);
             // Xoa file cu
             unlink(public_path('uploads/files/'.$oldFile));
-            return redirect()->route('kyluat.index');
+            return response()->json(["check" => true]);
         } else {
             return redirect()->route('kyluat.index');
         }
@@ -134,7 +133,6 @@ class KyLuatController extends Controller
     public function destroy(Request $request, $id)
     {
         KyLuat::where('id', $id)->delete();
-        // toastr()->success('Xóa thành công.', 'Thành công');
         return redirect()->route('kyluat.index');
     }
 
@@ -149,24 +147,27 @@ class KyLuatController extends Controller
                 ->whereMonth('ngaykyluat', $request->thang)
                 ->whereYear('ngaykyluat', $request->nam)
                 ->where('manv', $request->manv)->paginate(5);
+        } else if($data['thang'] && $data['manv']) {
+            $kyluats = KyLuat::select('*')
+            ->whereMonth('ngaykyluat', $request->thang)
+            ->where('manv', $request->manv)->paginate(5);
+        } else if($data['nam'] && $data['manv']) {
+            $kyluats = KyLuat::select('*')
+            ->whereYear('ngaykyluat', $request->nam)
+            ->where('manv', $request->manv)->paginate(5);
+        } else if($data['nam'] && $data['thang']) {
+            $kyluats = KyLuat::select('*')
+            ->whereMonth('ngaykyluat', $request->thang)
+            ->whereYear('ngaykyluat', $request->nam)->paginate(5);
         } else if($data['thang']) {
             $kyluats = KyLuat::select('*')
                 ->whereMonth('ngaykyluat', $request->thang)->paginate(5);
         } else if($data['nam']) {
             $kyluats = KyLuat::select('*')
             ->whereYear('ngaykyluat', $request->nam)->paginate(5);
-        } else if($data['nam'] && $data['thang']) {
+        } else if($data['manv']) {
             $kyluats = KyLuat::select('*')
-            ->whereMonth('ngaykyluat', $request->thang)
-            ->whereYear('ngaykyluat', $request->nam)->paginate(5);
-        } else if($data['nam'] && $data['manv']) {
-            $kyluats = KyLuat::select('*')
-            ->where('manv', $request->manv)
-            ->whereYear('ngaykyluat', $request->nam)->paginate(5);
-        } else if($data['thang'] && $data['manv']) {
-            $kyluats = KyLuat::select('*')
-            ->where('manv', $request->manv)
-            ->whereYear('ngaykyluat', $request->nam)->paginate(5);
+            ->where('manv', $request->manv)->paginate(5);
         } else {
             return redirect()->route('kyluat.index');
         }

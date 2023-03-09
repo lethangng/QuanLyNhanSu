@@ -147,28 +147,38 @@ class KhenThuongController extends Controller
             'manv' => $request->manv
         ];
         if($data['thang'] && $data['nam'] && $data['manv']) {
+            // dd($data);
             $khenthuongs = KhenThuong::select('*')
                 ->whereMonth('ngaykhenthuong', $request->thang)
                 ->whereYear('ngaykhenthuong', $request->nam)
                 ->where('manv', $request->manv)->paginate(5);
-        } else if($data['thang']) {
+        } else if($data['thang'] && $data['manv']) {
+            // dd($data);
             $khenthuongs = KhenThuong::select('*')
-                ->whereMonth('ngaykhenthuong', $request->thang)->paginate(5);
-        } else if($data['nam']) {
+            ->whereMonth('ngaykhenthuong', $request->thang)
+            ->where('manv', $request->manv)->paginate(5);
+        } else if($data['nam'] && $data['manv']) {
+            // dd($data);
             $khenthuongs = KhenThuong::select('*')
-            ->whereYear('ngaykhenthuong', $request->nam)->paginate(5);
+            ->whereYear('ngaykhenthuong', $request->nam)
+            ->where('manv', $request->manv)->paginate(5);
         } else if($data['nam'] && $data['thang']) {
+            // dd($data);
             $khenthuongs = KhenThuong::select('*')
             ->whereMonth('ngaykhenthuong', $request->thang)
             ->whereYear('ngaykhenthuong', $request->nam)->paginate(5);
-        } else if($data['nam'] && $data['manv']) {
+        } else if($data['thang']) {
+            // dd($data);
             $khenthuongs = KhenThuong::select('*')
-            ->where('manv', $request->manv)
-            ->whereYear('ngaykhenthuong', $request->nam)->paginate(5);
-        } else if($data['thang'] && $data['manv']) {
+                ->whereMonth('ngaykhenthuong', $request->thang)->paginate(5);
+        } else if($data['nam']) {
+            // dd($data);
             $khenthuongs = KhenThuong::select('*')
-            ->where('manv', $request->manv)
             ->whereYear('ngaykhenthuong', $request->nam)->paginate(5);
+        } else if($data['manv']) {
+            // dd($data);
+            $khenthuongs = KhenThuong::select('*')
+            ->where('manv', $request->manv)->paginate(5);
         } else {
             return redirect()->route('khenthuong.index');
         }
