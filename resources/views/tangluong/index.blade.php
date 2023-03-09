@@ -1,131 +1,163 @@
 @extends('layouts.app')
+@section('title')
+    {{ $title ?? 'Danh sách tăng lương' }}
+@endsection
 @section('content')
-    <div class="dstl-main">
+    <div class="dskt-main">
         <div class="wrap">
-            <div class="dstl-title">
+            <div class="dskt-title">
                 <h1>Danh sách tăng lương</h1>
             </div>
-            <div class="btn-ttl">
-                <button class="nv">Thêm mới tăng lương</button>
+            <div class="btn-tkt">
+                <a href="{{ route('tangluong.create') }}">
+                    <button class="nv">
+                        Thêm mới tăng lương
+                    </button>
+                </a>
             </div>
-            <div class="date">
-                <label for="">
-                    Tháng
-                    <select name="" id="">
-                        <option value=""></option>
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4</option>
-                        <option value="">5</option>
-                        <option value="">6</option>
-                        <option value="">7</option>
-                        <option value="">8</option>
-                        <option value="">9</option>
-                        <option value="">10</option>
-                        <option value="">11</option>
-                        <option value="">12</option>
-                    </select>
-                </label>
-
-                <label for="">
-                    Năm
-                    <select name="" id="">
-                        <option value=""></option>
-                        <option value="">Năm 2016</option>
-                        <option value="">Năm 2017</option>
-                        <option value="">Năm 2018</option>
-                        <option value="">Năm 2019</option>
-                    </select>
-                </label>
-            </div>
-
-            <div class="custom-input">
-                <div class="container-search-reset">
-                    <span class="icon-search-1">
-                        <img src="{{ asset('icon/search.png') }}" alt="">
-                    </span>
-                    <span class="icon-reset-1">
-                        <img src="{{ asset('icon/reset.png') }}" alt="">
-                    </span>
+            <form action="{{ route('tangluong.search') }}" method="post">
+                @csrf
+                <div class="date">
+                    <label for="">
+                        Tháng
+                        <select name="thang">
+                            <option value="">MM</option>
+                            @for ($i = 1; $i < 13; $i++)
+                                <option @isset($data) @selected( $i == (int)$data['thang'])  @endisset
+                                    value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
+                    </label>
+                    @php
+                        use Carbon\Carbon;
+                        $year = Carbon::now()->year;
+                    @endphp
+                    <label for="">
+                        Năm
+                        <select name="nam" id="">
+                            <option value="">YYYY</option>
+                            @for ($i = 2000; $i <= $year; $i++)
+                                <option @isset($data) @selected( $i == (int)$data['nam'])  @endisset
+                                    value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
+                    </label>
                 </div>
-                <input class="input-search-name-1" type="text" placeholder="Nhập mã nhân viên cần tìm">
 
-            </div>
-            <div class="list-dstl">
-                <table class="table-dstl table-bordered">
+                <div class="custom-input">
+                    <div class="container-search-reset">
+                        <button class="icon-search-1" type="submit" style="border: none">
+                            <img src="{{ asset('icon/search.png') }}" alt="">
+                        </button>
+                        <a href="{{ route('tangluong.index') }}">
+                            <span class="icon-reset-1">
+                                <img src="{{ asset('icon/reset.png') }}" alt="">
+                            </span>
+                        </a>
+                    </div>
+                    <input class="input-search-name-1" type="text" placeholder="Nhập mã nhân viên cần tìm" name="manv"
+                        @isset($data) value="{{ $data['manv'] }}"  @endisset>
+                </div>
+            </form>
+
+
+            <div class="list-dskt">
+                <table class="table-dskt table-bordered">
                     <thead>
                         <tr class="bg-info">
+                            <th class="head-table" scope="col">Mã tăng lương</th>
                             <th class="head-table" scope="col">Mã nhân viên</th>
                             <th class="head-table" scope="col">Tên nhân viên</th>
-                            <th class="head-table" scope="col">Ngày khen thưởng</th>
+                            <th class="head-table" scope="col">Ngày tăng lương</th>
                             <th class="head-table" scope="col">Lý do</th>
                             <th class="head-table" scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="">
-                            <th class="h1" scope="row">1</th>
-                            <th class="h1" scope="row">Vũ Trí Thành</th>
-                            <th class="h1" scope="row">10/10/2020</th>
-                            <th class="h1" scope="row">Không có</th>
-                            <th class="h1" scope="row">
-                                <button class="i-save">
-                                    <img src="{{ asset('icon/save.png') }}" alt="">
-                                </button>
-                                <button class="i-edit">
-                                    <i class='bx bx-edit'></i>
-                                </button>
-                                <button class="i-rotate js-buy-ticket">
-                                    <i class='bx bx-trash'></i>
-                                </button>
-                            </th>
-                        </tr>
+                        @foreach ($tangluongs as $tangluong)
+                            <tr class="">
+                                <th class="h1" scope="row">{{ $tangluong->id }}</th>
+                                <th class="h1" scope="row">{{ $tangluong->manv }}</th>
+                                <th class="h1" scope="row">{{ $tangluong->nhanvien->tennv }}</th>
+                                <th class="h1" scope="row">
+                                    @php
+                                        $newDate = date('d-m-Y', strtotime($tangluong->ngaytangluong));
+                                    @endphp
+                                    {{ $newDate }}
+                                </th>
+                                <th class="h1" scope="row">{{ $tangluong->lydo }}</th>
+                                <th class="h1" scope="row">
+                                    <a href="{{ asset('uploads/files/' . $tangluong->chitiettangluong) }}"
+                                        style="text-decoration: none;">
+                                        <button class="i-save">
+                                            <img src="{{ asset('icon/save.png') }}" alt="">
+                                        </button>
+                                    </a>
+                                    <a href="{{ route('tangluong.edit', ['id' => $tangluong->id]) }}"
+                                        style="text-decoration: none;">
+                                        <button class="i-edit">
+                                            <i class='bx bx-edit'></i>
+                                        </button>
+                                    </a>
+                                    <a action="{{ route('tangluong.destroy', ['id' => $tangluong->id]) }}" method="post">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button class="i-rotate js-buy-ticket" type="submit">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </a>
+                                </th>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
-    </div>
-    <div class="modal-delete js-modal ">
-        <div class="modal-container-delete js-modal-container">
-            <div class="modal-close js-modal-close">
-                <i class="ti-close"></i>
-            </div>
-    
-            <div class="modal-text-delete">
-                <h2>Bạn có chắc chắn muốn xóa không?</h2>
-                <div class="modal-buttons">
-                    <button class="confirm-btn">Xác nhận</button>
-                    <button class="cancel-btn">Hủy</button>
+        <nav aria-label="Page navigation example" class="ml-5">
+            {{ $tangluongs->links('pagination::bootstrap-5') }}
+        </nav>
+
+        <div class="modal-delete js-modal ">
+            <div class="modal-container-delete js-modal-container">
+                <div class="modal-close js-modal-close">
+                    <i class="ti-close"></i>
+                </div>
+
+                <div class="modal-text-delete">
+                    <h2>Bạn có chắc chắn muốn xóa không?</h2>
+                    <div class="modal-buttons">
+                        <button class="confirm-btn">Xác nhận</button>
+                        <button class="cancel-btn">Hủy</button>
+                    </div>
                 </div>
             </div>
         </div>
+        <script>
+            const buyBtns = document.querySelectorAll('.js-buy-ticket');
+            const modal = document.querySelector('.js-modal');
+            const modalContainer = document.querySelector('.js-modal-container')
+            const modalClose = document.querySelector('.js-modal-close');
+
+
+            function showBuyTickets() {
+                modal.classList.add('open')
+            }
+
+            function hideBuyTickets() {
+                modal.classList.remove('open')
+            }
+
+            for (const buyBtn of buyBtns) {
+                buyBtn.addEventListener('click', showBuyTickets)
+            }
+
+            modalClose.addEventListener('click', hideBuyTickets)
+
+            modal.addEventListener('click', hideBuyTickets)
+
+            modalContainer.addEventListener('click', function(event) {
+                event.stopPropagation()
+            })
+        </script>
     </div>
-    <script>
-        const buyBtns = document.querySelectorAll('.js-buy-ticket');
-        const modal = document.querySelector('.js-modal');
-        const modalContainer = document.querySelector('.js-modal-container')
-        const modalClose = document.querySelector('.js-modal-close');
-    
-        function showBuyTickets(){
-            modal.classList.add('open')
-        }
-    
-        function hideBuyTickets(){
-            modal.classList.remove('open')
-        }
-    
-        for (const buyBtn of buyBtns){
-            buyBtn.addEventListener('click', showBuyTickets)
-        }
-    
-        modalClose.addEventListener('click', hideBuyTickets)
-    
-        modal.addEventListener('click', hideBuyTickets)
-        
-        modalContainer.addEventListener('click', function(event)
-        {
-            event.stopPropagation()
-        })
-    </script>
 @endsection

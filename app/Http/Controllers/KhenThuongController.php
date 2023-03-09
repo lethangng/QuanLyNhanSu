@@ -27,7 +27,7 @@ class KhenThuongController extends Controller
     {
         if (Auth::user()) {
             $title = 'Danh sách khen thưởng';
-            $khenthuongs = KhenThuong::paginate(2);
+            $khenthuongs = KhenThuong::paginate(5);
             // dd($khenthuongs);
             return view('khenthuong.index', compact('khenthuongs', 'title')); 
         } else {
@@ -64,15 +64,14 @@ class KhenThuongController extends Controller
             $ext = $request->file('upfile')->extension();
             $file_name = time() . '-' . $request->manv . '.' . $ext;
             $publicPath = public_path('uploads/files');
-            // $file->move($publicPath, $file_name);
-            // KhenThuong::create([
-            //     'manv' => $request->manv,
-            //     'ngaykhenthuong' => $request->ngaykhenthuong,
-            //     'lydo' => $request->lydo,
-            //     'chitietkhenthuong' => $file_name
-            // ]);
+            $file->move($publicPath, $file_name);
+            KhenThuong::create([
+                'manv' => $request->manv,
+                'ngaykhenthuong' => $request->ngaykhenthuong,
+                'lydo' => $request->lydo,
+                'chitietkhenthuong' => $file_name
+            ]);
             return response()->json(["check" => true]);
-            // return redirect()->route('khenthuong.index');
         } else {
             return redirect()->route('khenthuong.index');
         }
@@ -113,16 +112,15 @@ class KhenThuongController extends Controller
 
             $oldFile = KhenThuong::select('chitietkhenthuong')->where('id', $id)->get()[0]->chitietkhenthuong;
             // dd($oldFile);
-            // KhenThuong::where('id', $id)
-            //     ->update([
-            //         'manv' => $request->manv,
-            //         'ngaykhenthuong' => $request->ngaykhenthuong,
-            //         'lydo' => $request->lydo,
-            //         'chitietkhenthuong' => $file_name
-            //     ]);
+            KhenThuong::where('id', $id)
+                ->update([
+                    'manv' => $request->manv,
+                    'ngaykhenthuong' => $request->ngaykhenthuong,
+                    'lydo' => $request->lydo,
+                    'chitietkhenthuong' => $file_name
+                ]);
             // Xoa file cu
-            // unlink(public_path('uploads/files/'.$oldFile));
-            // return redirect()->route('khenthuong.index');
+            unlink(public_path('uploads/files/'.$oldFile));
             return response()->json(["check" => true]);
         } else {
             return redirect()->route('khenthuong.index');
@@ -138,7 +136,6 @@ class KhenThuongController extends Controller
     public function destroy($id)
     {
         KhenThuong::where('id', $id)->delete();
-        toastr()->success('Xóa thành công.', 'Thành công');
         return redirect()->route('khenthuong.index');
     }
 
@@ -150,28 +147,38 @@ class KhenThuongController extends Controller
             'manv' => $request->manv
         ];
         if($data['thang'] && $data['nam'] && $data['manv']) {
+            // dd($data);
             $khenthuongs = KhenThuong::select('*')
                 ->whereMonth('ngaykhenthuong', $request->thang)
                 ->whereYear('ngaykhenthuong', $request->nam)
                 ->where('manv', $request->manv)->paginate(5);
-        } else if($data['thang']) {
+        } else if($data['thang'] && $data['manv']) {
+            // dd($data);
             $khenthuongs = KhenThuong::select('*')
-                ->whereMonth('ngaykhenthuong', $request->thang)->paginate(5);
-        } else if($data['nam']) {
+            ->whereMonth('ngaykhenthuong', $request->thang)
+            ->where('manv', $request->manv)->paginate(5);
+        } else if($data['nam'] && $data['manv']) {
+            // dd($data);
             $khenthuongs = KhenThuong::select('*')
-            ->whereYear('ngaykhenthuong', $request->nam)->paginate(5);
+            ->whereYear('ngaykhenthuong', $request->nam)
+            ->where('manv', $request->manv)->paginate(5);
         } else if($data['nam'] && $data['thang']) {
+            // dd($data);
             $khenthuongs = KhenThuong::select('*')
             ->whereMonth('ngaykhenthuong', $request->thang)
             ->whereYear('ngaykhenthuong', $request->nam)->paginate(5);
-        } else if($data['nam'] && $data['manv']) {
+        } else if($data['thang']) {
+            // dd($data);
             $khenthuongs = KhenThuong::select('*')
-            ->where('manv', $request->manv)
-            ->whereYear('ngaykhenthuong', $request->nam)->paginate(5);
-        } else if($data['thang'] && $data['manv']) {
+                ->whereMonth('ngaykhenthuong', $request->thang)->paginate(5);
+        } else if($data['nam']) {
+            // dd($data);
             $khenthuongs = KhenThuong::select('*')
-            ->where('manv', $request->manv)
             ->whereYear('ngaykhenthuong', $request->nam)->paginate(5);
+        } else if($data['manv']) {
+            // dd($data);
+            $khenthuongs = KhenThuong::select('*')
+            ->where('manv', $request->manv)->paginate(5);
         } else {
             return redirect()->route('khenthuong.index');
         }

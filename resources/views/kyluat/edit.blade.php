@@ -10,7 +10,8 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <form action="" method="post" enctype="multipart/form-data" class="col-sm left-inf">
+                    <form action="{{ route('kyluat.update', ['id' => $kyluat->id]) }}" method="post"
+                        enctype="multipart/form-data" class="col-sm left-inf" id="update-kyluat">
                         @method('PUT')
                         @csrf
                         <div class="tnv">
@@ -29,58 +30,72 @@
                         </div>
                         <input class="ip-ngkt" type="date" name="ngaykyluat" id=""
                             value="{{ $kyluat->ngaykyluat }}">
-                        @error('ngaykyluat')
-                            <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
-                        @enderror
+                        <div id="passwordHelp" class="form-text text-danger ngaykyluat-err"></div>
                         <div class="ld">
                             <label for="">Lý do:</label>
                         </div>
                         <input class="ip-ld" type="text" name="lydo" id="" placeholder="Nhập lý do..."
                             value="{{ $kyluat->lydo }}">
-                        @error('lydo')
-                            <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
-                        @enderror
+                        <div id="passwordHelp" class="form-text text-danger lydo-err"></div>
                         <div class="ctkt">
                             <label for="">Chi tiết kỷ luật:</label>
                         </div>
                         <input type="file" name="upfile" accept=".doc,.docx,.pdf,image/*" class="form-control"
-                            style="width: 400px; border: 1px solid #333;" required>
-                        @error('upfile')
-                            <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
-                        @enderror
-                        <div class="btn-xacnhan">
-                            <button class="text-xacnhan js-buy-ticket" type="submit">Xác nhận</button>
+                            style="width: 400px; border: 1px solid #333;">
+                        <div id="passwordHelp" class="form-text text-danger upfile-err"></div>
+                        <div class="btn-xacnhan-tmkt">
+                            <button class="text-xacnhan-tmkt js-buy-ticket" type="submit">Xác nhận</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    {{-- <div class="modal js-modal ">
-        <div class="modal-container js-modal-container"> --}}
-    {{-- <div class="modal-close js-modal-close">
+    <div class="modal-tmkt js-modal">
+        <div class="modal-container-tmkt js-modal-container">
+            <div class="modal-close js-modal-close">
                 <i class="ti-close"></i>
-            </div> --}}
-
-    {{-- <div class="Update-successful">
-                <span class="icon-successfull">
+            </div>
+            <div class="Update-successful-tmkt">
+                <span class="icon-successfull-tmcv">
                     <img src="{{ asset('css/Img/image 36.png') }}" alt="">
                 </span>
-                <div class="text-dmk">
-                    <span>Thêm thành công</span>
+                <div class="text-tmcv">
+                    <span>Sửa thành công</span>
                 </div>
-                <form action="{{ route('kyluat.index') }}">
-                    <div class="footer-Update-successful">
-                        <button class="confirm"> Xác nhận</button>
-                    </div>
-                </form>
             </div>
         </div>
-    </div> --}}
+    </div>
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
         crossorigin="anonymous"></script>
     <script>
-        // var maNv = $("#ma_nhanvien").attr('src');
+        const buyBtns = document.querySelectorAll('.js-buy-ticket');
+        const modal = document.querySelector('.js-modal');
+        const modalContainer = document.querySelector('.js-modal-container')
+        const modalClose = document.querySelector('.js-modal-close');
+
+        function showBuyTickets() {
+            modal.classList.add('open')
+        }
+
+        function hideBuyTickets() {
+            modal.classList.remove('open')
+            window.location = '{{ route('kyluat.index') }}'
+        }
+
+        // for (const buyBtn of buyBtns) {
+        //     buyBtn.addEventListener('click', showBuyTickets)
+        // }
+
+        modalClose.addEventListener('click', hideBuyTickets)
+
+        modal.addEventListener('click', hideBuyTickets)
+
+        modalContainer.addEventListener('click', function(event) {
+            event.stopPropagation()
+        })
+    </script>
+    <script>
         $("#ma_nhanvien").blur(function(e) {
             console.log($("#ma_nhanvien").val())
             $.ajax({
@@ -104,27 +119,43 @@
                 }
             })
         });
-
-        const buyBtns = document.querySelectorAll('.js-buy-ticket');
-        const modal = document.querySelector('.js-modal');
-        const modalContainer = document.querySelector('.js-modal-container')
-        const modalClose = document.querySelector('.js-modal-close');
-
-        function showBuyTickets() {
-            modal.classList.add('open')
+    </script>
+    <script type="text/javascript">
+        function showErr(msg, $err) {
+            $.each(msg, function(key, value) {
+                $('.' + key + $err).text(value);
+            });
         }
-
-        function hideBuyTickets() {
-            modal.classList.remove('open')
-        }
-        for (const buyBtn of buyBtns) {
-            buyBtn.addEventListener('click', showBuyTickets)
-        }
-        modalClose.addEventListener('click', hideBuyTickets)
-        modal.addEventListener('click', hideBuyTickets)
-
-        modalContainer.addEventListener('click', function(event) {
-            event.stopPropagation()
-        })
+        $(document).ready(function(e) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $('#update-kyluat').submit(function(e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    type: 'POST',
+                    url: $(this).attr('action'),
+                    data: formData,
+                    cache: false,
+                    method: 'POST',
+                    contentType: false,
+                    processData: false,
+                    success: (data) => {
+                        var error = document.querySelectorAll(".error-text");
+                        error.innerHTML = "";
+                        if (data.check == true) {
+                            console.log(data)
+                            modal.classList.add('open')
+                        } else {
+                            console.log(data.error);
+                            showErr(data.error, '-err')
+                        }
+                    }
+                });
+            });
+        });
     </script>
 @endsection

@@ -22,6 +22,7 @@
     <title>@yield('title')</title>
 
 </head>
+
 <body>
     <div class="wrap">
         <nav class="sidebar close">
@@ -97,7 +98,7 @@
                         </li>
 
                         <li class="nav-link">
-                            <a href="{{ route('danhsachtangluong') }}">
+                            <a href="{{ route('tangluong.index') }}">
                                 <span class="icon-home">
                                     <img src="{{ asset('icon/luong.png') }}" alt="">
                                 </span>

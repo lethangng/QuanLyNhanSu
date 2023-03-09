@@ -6,6 +6,7 @@ use App\Http\Controllers\KhenThuongController;
 use App\Http\Controllers\KyLuatController;
 use App\Http\Controllers\NhanVienController;
 use App\Http\Controllers\KhoaController;
+use App\Http\Controllers\TangLuongController;
 use App\Http\Controllers\ThongTinController;
 use Illuminate\Routing\Router;
 
@@ -128,7 +129,6 @@ Route::middleware(['checkNV'])->group(function () {
 
 // Thong tin ca nhan(dung chung)
 Route::prefix('thongtincanhan')->group(function () {
-    // Route::get('{id}', [ThongTinController::class, 'index'])->defaults('id', '')->name('canhan.index');
     Route::get('{id}', [ThongTinController::class, 'index'])->whereNumber('id')->name('canhan.index');
     Route::post('{id}/add-photo', [ThongTinController::class, 'addPhoto'])->whereNumber('id')->name('canhan.addPhoto');
     Route::post('update-password', [ThongTinController::class, 'updatePassword'])->name('canhan.updatePassword');
@@ -144,22 +144,33 @@ Route::prefix('khenthuong')->group(function () {
     Route::delete('{id}/destroy', [KhenThuongController::class, 'destroy'])->whereNumber('id')->name('khenthuong.destroy');
     Route::post('search', [KhenThuongController::class, 'search'])->name('khenthuong.search');
 });
-//ajax
+//ajax 
 Route::post('/ajax_tennv', [KhenThuongController::class, 'findNameNv']);
 
 // Danh sach ky luat
 Route::prefix('kyluat')->group(function () {
     Route::get('/', [KyLuatController::class, 'index'])->name('kyluat.index');
     Route::get('create', [KyLuatController::class, 'create'])->name('kyluat.create');
-    Route::post('create', [KyLuatController::class, 'store']);
+    Route::post('create', [KyLuatController::class, 'store'])->name('kyluat.store');
     Route::get('{id}/edit', [KyLuatController::class, 'edit'])->whereNumber('id')->name('kyluat.edit');
     Route::put('{id}/edit', [KyLuatController::class, 'update'])->whereNumber('id')->name('kyluat.update');
     Route::delete('{id}/destroy', [KyLuatController::class, 'destroy'])->whereNumber('id')->name('kyluat.destroy');
     Route::post('search', [KyLuatController::class, 'search'])->name('kyluat.search');
 });
 
-
+// Danh sach tăng lương
+Route::prefix('tangluong')->group(function () {
+    Route::get('/', [TangLuongController::class, 'index'])->name('tangluong.index');
+    Route::get('create', [TangLuongController::class, 'create'])->name('tangluong.create');
+    Route::post('create', [TangLuongController::class, 'store'])->name('tangluong.store');
+    Route::get('{id}/edit', [TangLuongController::class, 'edit'])->whereNumber('id')->name('tangluong.edit');
+    Route::put('{id}/edit', [TangLuongController::class, 'update'])->whereNumber('id')->name('tangluong.update');
+    Route::delete('{id}/destroy', [TangLuongController::class, 'destroy'])->whereNumber('id')->name('tangluong.destroy');
+    Route::post('search', [TangLuongController::class, 'search'])->name('tangluong.search');
+});
 // Route::post('upfile', [ThongTinCaNhanController::class, 'upfile'])->name('upfile');
+
+
 //test qlns
 Route::get('/sm', [NhanvienController::class, 'index2']);
 //Route::get('/sendtextfind',[ThongTinCaNhanController::class,'find2']);

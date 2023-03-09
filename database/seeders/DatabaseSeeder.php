@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             HopDongSeeder::class,
             TangLuongSeeder::class,
-            // NghiSeeder::class
+            TrangThaiSeeder::class
         ]);
     }
 }

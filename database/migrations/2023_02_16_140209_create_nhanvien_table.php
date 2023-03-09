@@ -27,7 +27,7 @@ return new class extends Migration
             $table->bigInteger('machucvu')->unsigned()->nullable();
             $table->bigInteger('makhoa')->unsigned()->nullable();
             $table->string('anhdaidien')->nullable();
-            $table->string('trangthai')->nullable();
+            $table->bigInteger('matrangthai')->unsigned()->nullable();
             $table->string('email')->nullable();
             $table->float('hsl')->nullable();
             $table->integer('bacluong')->nullable();

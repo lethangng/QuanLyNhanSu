@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\ValidationException;
-class KyLuatRequest extends FormRequest
+class TangLuongRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,7 @@ class KyLuatRequest extends FormRequest
     {
         return [
             'manv' => 'required|exists:nhanvien,id',
-            'ngaykyluat' => 'required|date',
+            'ngaytangluong' => 'required|date',
             'lydo' => 'required',
             'upfile' => 'required|mimes:png,jpg,jpeg,doc,docx,pdf|max:10024',
         ];
@@ -47,7 +47,7 @@ class KyLuatRequest extends FormRequest
     {
         return [
             'manv' => 'Mã nhân viên',
-            'ngaykyluat' => 'Ngày kỷ luật',
+            'ngaytangluong' => 'Ngày tăng lương',
             'lydo' => 'Lý do',
             'upfile' => 'File'
         ];

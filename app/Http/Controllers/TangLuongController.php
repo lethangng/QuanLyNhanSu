@@ -3,18 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\KyLuat;
 use App\Models\NhanVien;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\KyLuatRequest;
+use App\Http\Requests\TangLuongRequest;
+use App\Models\TangLuong;
 use Illuminate\Support\Facades\Auth;
-// use Yoeunes\Toastr\Toastr;
-class KyLuatController extends Controller
+
+class TangLuongController extends Controller
 {
-    protected $kyluat;
+    protected $tangluong;
     protected $nhanvien;
-    public function __construct(){
-        $this->kyluat = new KyLuat;
+    public function __construct()
+    {
+        $this->tangluong = new TangLuong();
         $this->nhanvien = new NhanVien;
     }
     /**
@@ -25,9 +26,9 @@ class KyLuatController extends Controller
     public function index()
     {
         if (Auth::user()) {
-            $title = 'Danh sách kỷ luật';
-            $kyluats = KyLuat::paginate(5);
-            return view('kyluat.index', compact('kyluats', 'title')); 
+            $title = 'Danh sách tăng lương';
+            $tangluongs = TangLuong::paginate(5);
+            return view('tangluong.index', compact('tangluongs', 'title')); 
         } else {
             return redirect()->route('login');
         }
@@ -40,9 +41,9 @@ class KyLuatController extends Controller
      */
     public function create()
     {
-        $title = 'Thêm mới kỷ luật';
+        $title = 'Thêm mới tăng lương';
         if (Auth::user()) {
-            return view('kyluat.create', compact('title'));
+            return view('tangluong.create', compact('title'));
         } else {
             redirect()->route('login');
         }
@@ -54,23 +55,24 @@ class KyLuatController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(KyLuatRequest $request)
+    public function store(TangLuongRequest $request)
     {
+        // dd($request);
         if ($request->file('upfile')) {
             $file = $request->file('upfile');
             $ext = $request->file('upfile')->extension();
             $file_name = time() . '-' . $request->manv . '.' . $ext;
             $publicPath = public_path('uploads/files');
             $file->move($publicPath, $file_name);
-            KyLuat::create([
+            TangLuong::create([
                 'manv' => $request->manv,
-                'ngaykyluat' => $request->ngaykyluat,
+                'ngaytangluong' => $request->ngaytangluong,
                 'lydo' => $request->lydo,
-                'chitietkyluat' => $file_name
+                'chitiettangluong' => $file_name
             ]);
             return response()->json(["check" => true]);
         } else {
-            return redirect()->route('kyluat.index');
+            return redirect()->route('tangluong.index');
         }
     }
 
@@ -82,10 +84,10 @@ class KyLuatController extends Controller
      */
     public function edit($id)
     {
-        $title = 'Cập nhập kỷ luật';
+        $title = 'Cập nhập tăng lương';
         if (Auth::user()) {
-            $kyluat = KyLuat::find($id);
-            return view('kyluat.edit', compact('kyluat', 'title'));
+            $tangluong = TangLuong::find($id);
+            return view('tangluong.edit', compact('tangluong', 'title'));
         } else {
             return redirect()->route('login');
         }
@@ -98,7 +100,7 @@ class KyLuatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(KyLuatRequest $request, $id)
+    public function update(TangLuongRequest $request, $id)
     {
         if ($request->file('upfile')) {
             $file = $request->file('upfile');
@@ -107,20 +109,20 @@ class KyLuatController extends Controller
             $publicPath = public_path('uploads/files');
             $file->move($publicPath, $file_name);
 
-            $oldFile = KyLuat::select('chitietkyluat')->where('id', $id)->get()[0]->chitietkyluat;
+            $oldFile = TangLuong::select('chitiettangluong')->where('id', $id)->get()[0]->chitiettangluong;
             // dd($oldFile);
-            KyLuat::where('id', $id)
+            TangLuong::where('id', $id)
                 ->update([
                     'manv' => $request->manv,
-                    'ngaykyluat' => $request->ngaykyluat,
+                    'ngaytangluong' => $request->ngaytangluong,
                     'lydo' => $request->lydo,
-                    'chitietkyluat' => $file_name
+                    'chitiettangluong' => $file_name
                 ]);
             // Xoa file cu
             unlink(public_path('uploads/files/'.$oldFile));
             return response()->json(["check" => true]);
         } else {
-            return redirect()->route('kyluat.index');
+            return redirect()->route('tangluong.index');
         }
     }
 
@@ -130,47 +132,55 @@ class KyLuatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
-        KyLuat::where('id', $id)->delete();
-        return redirect()->route('kyluat.index');
+        TangLuong::where('id', $id)->delete();
+        return redirect()->route('tangluong.index');
     }
 
-    public function search(Request $request) {
+    public function search(Request $request)
+    {
         $data = [
             'thang' => $request->thang,
             'nam' => $request->nam,
             'manv' => $request->manv
         ];
         if($data['thang'] && $data['nam'] && $data['manv']) {
-            $kyluats = KyLuat::select('*')
-                ->whereMonth('ngaykyluat', $request->thang)
-                ->whereYear('ngaykyluat', $request->nam)
+            // dd($data);
+            $tangluongs = TangLuong::select('*')
+                ->whereMonth('ngaytangluong', $request->thang)
+                ->whereYear('ngaytangluong', $request->nam)
                 ->where('manv', $request->manv)->paginate(5);
         } else if($data['thang'] && $data['manv']) {
-            $kyluats = KyLuat::select('*')
-            ->whereMonth('ngaykyluat', $request->thang)
+            // dd($data);
+            $tangluongs = TangLuong::select('*')
+            ->whereMonth('ngaytangluong', $request->thang)
             ->where('manv', $request->manv)->paginate(5);
         } else if($data['nam'] && $data['manv']) {
-            $kyluats = KyLuat::select('*')
-            ->whereYear('ngaykyluat', $request->nam)
+            // dd($data);
+            $tangluongs = TangLuong::select('*')
+            ->whereYear('ngaytangluong', $request->nam)
             ->where('manv', $request->manv)->paginate(5);
         } else if($data['nam'] && $data['thang']) {
-            $kyluats = KyLuat::select('*')
-            ->whereMonth('ngaykyluat', $request->thang)
-            ->whereYear('ngaykyluat', $request->nam)->paginate(5);
+            // dd($data);
+            $tangluongs = TangLuong::select('*')
+            ->whereMonth('ngaytangluong', $request->thang)
+            ->whereYear('ngaytangluong', $request->nam)->paginate(5);
         } else if($data['thang']) {
-            $kyluats = KyLuat::select('*')
-                ->whereMonth('ngaykyluat', $request->thang)->paginate(5);
+            // dd($data);
+            $tangluongs = TangLuong::select('*')
+                ->whereMonth('ngaytangluong', $request->thang)->paginate(5);
         } else if($data['nam']) {
-            $kyluats = KyLuat::select('*')
-            ->whereYear('ngaykyluat', $request->nam)->paginate(5);
+            // dd($data);
+            $tangluongs = TangLuong::select('*')
+            ->whereYear('ngaytangluong', $request->nam)->paginate(5);
         } else if($data['manv']) {
-            $kyluats = KyLuat::select('*')
+            // dd($data);
+            $tangluongs = TangLuong::select('*')
             ->where('manv', $request->manv)->paginate(5);
         } else {
-            return redirect()->route('kyluat.index');
+            return redirect()->route('tangluong.index');
         }
-        return view('kyluat.index', compact('kyluats', 'data'));
+        return view('tangluong.index', compact('tangluongs', 'data'));
     }
 }
