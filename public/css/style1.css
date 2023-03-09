@@ -401,6 +401,9 @@ td {
     padding: 8px 8px;
     font-weight: 400;
 }
+.h1 a{
+    text-decoration: none;
+}
 .h1 .i-edit{
     padding: 5px 6px;
     background-color: #E3AC6C;
@@ -683,18 +686,6 @@ body.dark .home .text {
 
 .content {
     padding: 12px;
-}
-
-.button {
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 14px 10px;
-    cursor: pointer;
 }
 
 .button1 {

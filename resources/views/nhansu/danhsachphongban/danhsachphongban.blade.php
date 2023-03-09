@@ -37,14 +37,16 @@
                             <th class="h1" scope="row">1</th>
                             <th class="h1" scope="row">Tài chính</th>
                             <th class="h1" scope="row">
-                                <button class="i-edit">
-                                    <a href="{{ route('suaphongban') }}">
+                                <a href="{{ route('suaphongban') }}">
+                                    <button class="i-edit">
                                         <i class='bx bx-edit'></i>
-                                    </a>
-                                </button>
-                                <button class="i-rotate js-buy-ticket">
-                                    <i class='bx bx-trash'></i>
-                                </button>
+                                     </button>
+                                </a>
+                                <a href="#">
+                                    <button class="i-rotate js-buy-ticket">
+                                        <i class='bx bx-trash'></i>
+                                    </button>
+                                </a>
                             </th>
                           </tr>
                 

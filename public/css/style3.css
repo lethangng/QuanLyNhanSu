@@ -110,14 +110,14 @@
     float: right;
 }
 
-.text-xacnhan-tmkt{
+.text-xacnhan{
     padding: 10px 22px;
     background-color:#428BCA;
     border-radius: 10px;
     border: none;
 }
 
-.text-xacnhan-tmkt:hover{
+.text-xacnhan:hover{
     background-color: #A5CDEF;
 }
 
@@ -152,15 +152,34 @@
     padding-left: 64px;
     padding-top: 20px;
 }
-.text-xacnhan-tmcv{
+.text-xacnhan{
     padding: 10px 22px;
     background-color:#428BCA;
     border-radius: 10px;
     border: none;
 }
 
-.text-xacnhan-tmcv:hover{
+.text-xacnhan:hover{
     background-color: #A5CDEF;
+}
+/* ********************* Sửa chức vụ ******************* */
+.scv-main {
+    width: 100%;
+}
+.scv-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+.scv-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+}
+.btn-scv{
+    position: fixed;
+    bottom: 10%;
+    left: 85%;
 }
 /* ********************* Thêm mới phòng ban ******************* */
 .tmpb-main {
@@ -175,6 +194,30 @@
     font-size: 32px;
     font-weight: 400;
     color: white;
+}
+.btn-tmpb{
+    position: fixed;
+    bottom: 10%;
+    left: 85%;
+}
+/* ********************* Sua phòng ban ******************* */
+.spb-main {
+    width: 100%;
+}
+.spb-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+.spb-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+}
+.btn-spb{
+   position: fixed;
+   bottom: 10%;
+   left: 85%;
 }
 /* ******* Modal xóa  ****** */
 .modal-delete{

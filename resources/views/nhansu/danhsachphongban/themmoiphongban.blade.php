@@ -18,8 +18,8 @@
                         <input class="inp-tmcv" type="text" name="" id="" placeholder="Nhập tên phòng ban">
                 </div>
 
-                <div class="btn-tmcv">
-                    <button class="text-xacnhan-tmcv js-buy-ticket">Xác nhận</button>
+                <div class="btn-tmpb">
+                    <button class="text-xacnhan js-buy-ticket">Xác nhận</button>
                 </div>
             </div>
             

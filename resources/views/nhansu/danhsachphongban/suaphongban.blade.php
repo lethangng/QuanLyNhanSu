@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<div class="tmpb-main">
+<div class="spb-main">
     <div class="wrap">
-        <div class="tmpb-title">
+        <div class="spb-title">
             <h1>Sửa phòng ban</h1>
         </div>
         <div class="container">
@@ -17,9 +17,8 @@
                         </div>
                         <input class="inp-tmcv" type="text" name="" id="" placeholder="Nhập tên phòng ban">
                 </div>
-
-                <div class="btn-tmcv">
-                    <button class="text-xacnhan-tmcv js-buy-ticket">Xác nhận</button>
+                <div class="btn-spb">
+                    <button class="text-xacnhan js-buy-ticket">Xác nhận</button>
                 </div>
             </div>
             

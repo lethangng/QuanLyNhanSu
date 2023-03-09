@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<div class="tmcv-main">
+<div class="scv-main">
     <div class="wrap">
-        <div class="tmcv-title">
+        <div class="scv-title">
             <h1>Sửa chức vụ</h1>
         </div>
         <div class="container">
@@ -18,8 +18,8 @@
                         <input class="inp-tmcv" type="text" name="" id="" placeholder="Nhập tên chức vụ">
                 </div>
 
-                <div class="btn-tmcv">
-                    <button class="text-xacnhan-tmcv js-buy-ticket">Xác nhận</button>
+                <div class="btn-scv">
+                    <button class="text-xacnhan js-buy-ticket">Xác nhận</button>
                 </div>
             </div>
             
