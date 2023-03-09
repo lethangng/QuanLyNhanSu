@@ -3,7 +3,7 @@
 <div class="tmnv-main">
     <div class="wrap">
         <div class="tmnv-title">
-            <h1>Thêm mới nhân viên</h1>
+            <h1>Sửa nhân viên</h1>
         </div>
         <div class="container">
             <div class="row">
