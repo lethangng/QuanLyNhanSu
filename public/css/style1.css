@@ -249,12 +249,7 @@ body.dark .switch::before {
 }
 
 .home {
-    /* position: absolute; */
-    /* top: 0; */
-    /* top: 0; */
-    /* left: 250px; */
     height: 100vh;
-    /* width: calc(100% - 250px); */
     background-color: var(--body-color);
     transition: var(--tran-05);
     width: 100% !important;
@@ -576,13 +571,10 @@ body.dark .sidebar li a:hover .text {
     flex-direction: column;
     justify-content: space-between;
     overflow-y: scroll;
-   
 }
-
 .menu-bar::-webkit-scrollbar {
     display: none;
 }
-
 .sidebar .menu-bar .mode {
     border-radius: 6px;
     background-color: var(--primary-color-light);
@@ -1411,4 +1403,97 @@ td {
 }
 .table-dshd{
     width: 98%;
+}
+
+/* ********************* danh sách trạng thái ******************* */
+
+.dstt-main {
+    width: 100%;
+}
+
+.dstt-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+
+
+.dstt-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+    
+}
+
+.btn-tmtt
+{
+    padding-top: 22px;
+    padding-left: 129px;
+}
+
+/* ********************* danh sách tài khoản ******************* */
+
+.dstk-main {
+    width: 100%;
+}
+
+.dstk-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+
+
+.dstk-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+    
+}
+
+.btn-tmtk
+{
+    padding-top: 22px;
+    padding-left: 129px;
+}
+
+/* ********************* Quản lý báo cáo thống kê ******************* */
+.qlbaocao-main {
+    width: 100%;
+}
+.qlbaocao-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+
+.qlbaocao-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+}
+.mid a, .right a, 
+.left a{
+    text-decoration: none;
+    color: #000;
+}
+.container-icon-thongke{
+    background-color:#dcb7ed;
+    border-radius: 50px;
+    margin-top: 38px;
+    margin-left: 26px;
+    width: 368px;
+    height: 219px;
+}
+.container-icon-thongke h4{
+    font-size: 30px;
+    text-align: center;
+    font-weight: 300;
+}
+.icon-thongke img{
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+    margin-left: 150px;
+    margin-top: 60px;
 }
