@@ -6,7 +6,9 @@
                     <h1>Danh sách hợp đồng lao động</h1>
                 </div>
                 <div class="btn-tmhd">
-                    <button class="nv">Thêm mới hợp đồng</button>
+                    <form action="{{ route('themmoihopdong') }}">
+                        <button class="nv">Thêm mới hợp đồng</button>
+                    </form>
                 </div>
                 <div class="date">
                     <label for="">
@@ -75,9 +77,11 @@
                                 <button class="i-save">
                                     <img src="{{ asset('icon/save.png') }}" alt="">
                                 </button>
-                                <button class="i-edit">
-                                    <i class='bx bx-edit'></i>
-                                </button>
+                                <a href="{{ route('suahopdong') }}">
+                                    <button class="i-edit">
+                                        <i class='bx bx-edit'></i>
+                                    </button>
+                                </a>
                                 <button class="i-rotate js-buy-ticket">
                                     <i class='bx bx-trash'></i>
                                 </button>

@@ -77,9 +77,19 @@ Route::get('/danhsachhopdong', function () {
     return view('hopdong.danhsachhopdong');
 })->name('danhsachhopdong');
 
+Route::get('/themmoihopdong', function () {
+    return view('hopdong.themmoihopdong');
+})->name('themmoihopdong');
+
+
+Route::get('/suahopdong', function () {
+    return view('hopdong.suahopdong');
+})->name('suahopdong');
+
 Route::get('/themmoikhenthuong', function () {
     return view('khenthuong.themmoikhenthuong');
 })->name('themmoikhenthuong');
+
 
 Route::get('/themmoiphongban', function () {
     return view('nhansu.danhsachphongban.themmoiphongban');

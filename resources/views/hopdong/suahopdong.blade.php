@@ -1,56 +1,50 @@
 @extends('layouts.app')
-@section('title')
-    {{ $title }}
-@endsection
 @section('content')
     <div class="tmnv-main">
         <div class="wrap">
             <div class="tmnv-title">
-                <h1>Cập nhật kỷ luật</h1>
+                <h1>Sửa hợp đồng</h1>
             </div>
             <div class="container">
                 <div class="row">
-                    <form action="{{ route('kyluat.update', ['id' => $kyluat->id]) }}" method="post"
-                        enctype="multipart/form-data" class="col-sm left-inf" id="update-kyluat">
-                        @method('PUT')
+                    <form action="" method="post" enctype="multipart/form-data" class="col-sm left-inf"
+                        id="add-khenthuong">
                         @csrf
                         <div class="tnv">
                             <label for="">Tên nhân viên:</label>
                         </div>
-                        <input class="ip-tnv" type="text" name="tennv" id="ten_nhanvien" readonly
-                            value="{{ $kyluat->nhanvien->tennv }}">
+                        <input class="ip-tnv" type="text" name="tennv" id="ten_nhanvien" readonly>
                         <div class="mnv">
                             <label for="">Mã nhân viên</label>
                         </div>
                         <input class="ip-mnv" type="text" name="manv" id="ma_nhanvien"
-                            placeholder="Nhập mã nhân viên..." pattern="[0-9]+" value="{{ $kyluat->manv }}">
-                        <div id="err_ajax" class="form-text text-danger text-danger_manv"></div>
+                            placeholder="Nhập mã nhân viên..." pattern="[0-9]+" value="{{ old('manv') }}">
+                        <div id="err_ajax" class="form-text text-danger text-danger_manv manv-err"></div>
                         <div class="ngkt">
-                            <label for="">Ngày kỷ luật:</label>
+                            <label for="">Ngày khen thưởng:</label>
                         </div>
-                        <input class="ip-ngkt" type="date" name="ngaykyluat" id=""
-                            value="{{ $kyluat->ngaykyluat }}">
-                        <div id="passwordHelp" class="form-text text-danger ngaykyluat-err"></div>
+                        <input class="ip-ngkt" type="date" name="ngaykhenthuong" id="">
+                        <div id="passwordHelp" class="form-text text-danger ngaykhenthuong-err"></div>
                         <div class="ld">
                             <label for="">Lý do:</label>
                         </div>
-                        <input class="ip-ld" type="text" name="lydo" id="" placeholder="Nhập lý do..."
-                            value="{{ $kyluat->lydo }}">
+                        <input class="ip-ld" type="text" name="lydo" id="" placeholder="Nhập lý do...">
                         <div id="passwordHelp" class="form-text text-danger lydo-err"></div>
                         <div class="ctkt">
-                            <label for="">Chi tiết kỷ luật:</label>
+                            <label for="">Chi tiết khen thưởng:</label>
                         </div>
                         <input type="file" name="upfile" accept=".doc,.docx,.pdf,image/*" class="form-control"
                             style="width: 400px; border: 1px solid #333;">
                         <div id="passwordHelp" class="form-text text-danger upfile-err"></div>
                         <div class="btn-xacnhan-tmkt">
-                            <button class="text-xacnhan js-buy-ticket" type="submit">Xác nhận</button>
+                            <button class="text-xacnhan js-buy-ticket">Xác nhận</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    {{-- Thêm thành công --}}
     <div class="modal-delete js-modal ">
         <div class="modal-container-delete js-modal-container">
             <div class="modal-close js-modal-close">
@@ -60,13 +54,11 @@
                 <span class="icon-successfull-delete-2">
                     <img src="{{ asset('css/Img/image 36.png') }}" alt="">
                 </span>
-                <h2>Cập nhật thành công</h2>
+                <h2>Thêm thành công</h2>
             </div>
         </div>
-    </div>>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
-        crossorigin="anonymous"></script>
+
     <script>
         const buyBtns = document.querySelectorAll('.js-buy-ticket');
         const modal = document.querySelector('.js-modal');
@@ -79,12 +71,12 @@
 
         function hideBuyTickets() {
             modal.classList.remove('open')
-            window.location = '{{ route('kyluat.index') }}'
+            // window.location = '{{ route('khenthuong.index') }}'
         }
 
-        // for (const buyBtn of buyBtns) {
-        //     buyBtn.addEventListener('click', showBuyTickets)
-        // }
+        for (const buyBtn of buyBtns) {
+            buyBtn.addEventListener('click', showBuyTickets)
+        }
 
         modalClose.addEventListener('click', hideBuyTickets)
 
@@ -94,6 +86,10 @@
             event.stopPropagation()
         })
     </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+        crossorigin="anonymous"></script>
+
     <script>
         $("#ma_nhanvien").blur(function(e) {
             console.log($("#ma_nhanvien").val())
@@ -119,6 +115,7 @@
             })
         });
     </script>
+
     <script type="text/javascript">
         function showErr(msg, $err) {
             $.each(msg, function(key, value) {
@@ -131,12 +128,12 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            $('#update-kyluat').submit(function(e) {
+            $('#add-khenthuong').submit(function(e) {
                 e.preventDefault();
                 var formData = new FormData(this);
                 $.ajax({
                     type: 'POST',
-                    url: $(this).attr('action'),
+                    url: location.href,
                     data: formData,
                     cache: false,
                     method: 'POST',
