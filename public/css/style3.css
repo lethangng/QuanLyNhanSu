@@ -149,8 +149,9 @@
     border: 1px solid #333;
 }
 .btn-tmcv{
-    padding-left: 64px;
-    padding-top: 20px;
+    position: fixed;
+    bottom: 10%;
+    left: 85%;
 }
 .text-xacnhan{
     padding: 10px 22px;

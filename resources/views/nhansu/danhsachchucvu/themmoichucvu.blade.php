@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="btn-tmcv">
-                    <button class="text-xacnhan-tmcv js-buy-ticket">Xác nhận</button>
+                    <button class="text-xacnhan js-buy-ticket">Xác nhận</button>
                 </div>
             </div>
             
