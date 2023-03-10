@@ -5,7 +5,7 @@
                 <div class="dstt-title">
                     <h1>Danh sách trạng thái</h1>
                 </div>
-                <form action="">
+                <form action="{{ route('themmoitrangthai') }}">
                     <div class="btn-tmtt">
                         <button class="nv">Thêm mới trạng thái</button>
                     </div>
@@ -37,7 +37,7 @@
                             <th class="h1" scope="row">1</th>
                             <th class="h1" scope="row">Nghỉ</th>
                             <th class="h1" scope="row">
-                                <a href="#">
+                                <a href="{{ route('suatrangthai') }}">
                                     <button class="i-edit">
                                         <i class='bx bx-edit'></i>
                                      </button>

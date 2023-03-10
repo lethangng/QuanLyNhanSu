@@ -85,6 +85,14 @@ Route::get('/danhsachtrangthai', function () {
     return view('trangthai.danhsachtrangthai');
 })->name('danhsachtrangthai');
 
+Route::get('/themmoitrangthai', function () {
+    return view('trangthai.themmoitrangthai');
+})->name('themmoitrangthai');
+
+Route::get('/suatrangthai', function () {
+    return view('trangthai.suatrangthai');
+})->name('suatrangthai');
+
 Route::get('/qlbaocaothongke', function () {
     return view('thongke.qlbaocaothongke');
 })->name('qlbaocaothongke');

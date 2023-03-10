@@ -290,6 +290,20 @@
     bottom: 10%;
     left: 85%;
 }
+/* ********************* Thêm mới trạng thái ******************* */
+.tmtt-main {
+    width: 100%;
+}
+.tmtt-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+.tmtt-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+}
 /* ******* Modal xóa  ****** */
 .modal-delete{
     position: fixed;
