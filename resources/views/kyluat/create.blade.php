@@ -94,8 +94,9 @@
     <script>
         $("#ma_nhanvien").blur(function(e) {
             console.log($("#ma_nhanvien").val())
+            $('#ten_nhanvien').val('')
             $.ajax({
-                url: '/ajax_tennv',
+                url: "{{ route('kyluat.findNameNv') }}",
                 method: "POST",
                 data: {
                     'dataId': $("input[name='manv']").val()
@@ -108,7 +109,6 @@
                     console.log(data.msg)
                     $('#err_ajax').text('')
                     if (data.check == true) {
-                        $('#ten_nhanvien').val('Tên nhân viên không tồn tại.')
                         $('#err_ajax').text(data.msg)
                     } else
                         $("#ten_nhanvien").val(data.msg)
