@@ -112,7 +112,12 @@
                                     @if ($d3 == 0)
                                         <th class="h1" scope="row">Trống</th>
                                     @endif
-                                    <th class="h1" scope="row">{{ $item->trangthai }}</th>
+
+                                    @foreach($trangThai as $item2)
+                                        @if($item->matrangthai==$item2->id)
+                                        <th class="h1" scope="row">{{ $item2->tentrangthai }}</th>
+                                        @endif
+                                    @endforeach
                                     <th class="h1" scope="row">
                                         <button class="i-save">
                                             <a href="{{ route('canhan.index', ['id' => $item->id]) }}">

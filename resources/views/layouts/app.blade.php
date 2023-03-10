@@ -115,7 +115,7 @@
                             </a>
                         </li>
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="{{ route('danhsachtrangthai') }}">
                                 <span class="icon-home">
                                     <img src="{{ asset('icon/icontrangthai.png') }}" alt="">
                                 </span>
@@ -123,7 +123,7 @@
                             </a>
                         </li>
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="{{ route('qlbaocaothongke') }}">
                                 <span class="icon-home">
                                     <img src="{{ asset('icon/iconthongke.png') }}" alt="">
                                 </span>
@@ -131,7 +131,7 @@
                             </a>
                         </li>
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="{{ route('danhsachtaikhoan') }}">
                                 <span class="icon-home">
                                     <img src="{{ asset('icon/iconqltk.png') }}" alt="">
                                 </span>

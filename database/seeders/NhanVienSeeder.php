@@ -44,7 +44,7 @@ class NhanVienSeeder extends Seeder
                 'machucvu' => 5,
                 'makhoa' => 1,
                 'matrangthai' => 2,
-                'hsl' => 3.2,
+                'hsl' => null,
                 'bacluong' => 4,
                 'email' => 'huy@gmail.com'
             ],

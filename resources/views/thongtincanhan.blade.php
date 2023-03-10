@@ -82,10 +82,12 @@
                         <button class="update-avt" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Cập nhập ảnh đại điện
                         </button>
-                        <!-- Button trigger modal -->
-                        <button class="change-password" data-bs-toggle="modal" data-bs-target="#modalPassword">
-                            Đổi mật khẩu
-                        </button>
+                        @if (Auth::user()->manv == $id)
+                            <!-- Button trigger modal -->
+                            <button class="change-password" data-bs-toggle="modal" data-bs-target="#modalPassword">
+                                Đổi mật khẩu
+                            </button>
+                        @endif
                     </div>
                 </div>
             </div>

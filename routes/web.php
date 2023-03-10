@@ -22,7 +22,6 @@ use Illuminate\Routing\Router;
 |
 */
 Route::get('/danhsachnhanvien', [NhanVienController::class, 'index2'])->name('danhsachnhanvien');
-
 /*
 Route::get('/danhsachnhanvien', function () {
     return view('nhansu.danhsachnhanvien.danhsachnhanvien');
@@ -70,10 +69,6 @@ Route::get('/suanhanvien', function () {
 Route::get('suanhanvien/id={id}', [NhanVienController::class, 'edit'])->name('suanhanvien');
 Route::post('capnhatnhanvien/id={id}', [NhanVienController::class, 'update'])->name('capnhatnhanvien');
 
-Route::get('/danhsachhopdong', function () {
-    return view('hopdong.danhsachhopdong');
-})->name('danhsachhopdong');
-
 Route::get('/themmoiphongban', function () {
     return view('nhansu.danhsachphongban.themmoiphongban');
 })->name('themmoiphongban');
@@ -81,6 +76,18 @@ Route::get('/themmoiphongban', function () {
 Route::get('/suaphongban', function () {
     return view('nhansu.danhsachphongban.suaphongban');
 })->name('suaphongban');
+
+Route::get('/danhsachtrangthai', function () {
+    return view('trangthai.danhsachtrangthai');
+})->name('danhsachtrangthai');
+
+Route::get('/qlbaocaothongke', function () {
+    return view('thongke.qlbaocaothongke');
+})->name('qlbaocaothongke');
+
+Route::get('/danhsachtaikhoan', function () {
+    return view('taikhoan.danhsachtaikhoan');
+})->name('danhsachtaikhoan');
 
 Route::get('/', [loginController::class, "home"])->name('login');
 Route::post('/', [loginController::class, "submitLogin"])->name('submitLogin');

@@ -6,7 +6,7 @@
     <div class="tmnv-main">
         <div class="wrap">
             <div class="tmnv-title">
-                <h1>Cập nhập kỷ luật</h1>
+                <h1>Cập nhật kỷ luật</h1>
             </div>
             <div class="container">
                 <div class="row">
@@ -44,27 +44,26 @@
                             style="width: 400px; border: 1px solid #333;">
                         <div id="passwordHelp" class="form-text text-danger upfile-err"></div>
                         <div class="btn-xacnhan-tmkt">
-                            <button class="text-xacnhan-tmkt js-buy-ticket" type="submit">Xác nhận</button>
+                            <button class="text-xacnhan js-buy-ticket" type="submit">Xác nhận</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal-tmkt js-modal">
-        <div class="modal-container-tmkt js-modal-container">
+    <div class="modal-delete js-modal ">
+        <div class="modal-container-delete js-modal-container">
             <div class="modal-close js-modal-close">
                 <i class="ti-close"></i>
             </div>
-            <div class="Update-successful-tmkt">
-                <span class="icon-successfull-tmcv">
+            <div class="modal-text-delete-2">
+                <span class="icon-successfull-delete-2">
                     <img src="{{ asset('css/Img/image 36.png') }}" alt="">
                 </span>
-                <div class="text-tmcv">
-                    <span>Sửa thành công</span>
-                </div>
+                <h2>Cập nhật thành công</h2>
             </div>
         </div>
+    </div>>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
         crossorigin="anonymous"></script>
