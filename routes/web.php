@@ -22,6 +22,10 @@ use Illuminate\Routing\Router;
 |
 */
 Route::get('/danhsachnhanvien', [NhanVienController::class, 'index2'])->name('danhsachnhanvien');
+Route::get('locphongban/id={id}', [NhanVienController::class, 'locphongban'])->name('locphongban');
+Route::get('locchucvu/id={id}', [NhanVienController::class, 'locchucvu'])->name('locchucvu');
+Route::get('lockhoa/id={id}', [NhanVienController::class, 'lockhoa'])->name('lockhoa');
+
 /*
 Route::get('/danhsachnhanvien', function () {
     return view('nhansu.danhsachnhanvien.danhsachnhanvien');
@@ -132,7 +136,7 @@ Route::prefix('khenthuong')->group(function () {
     Route::delete('{id}/destroy', [KhenThuongController::class, 'destroy'])->whereNumber('id')->name('khenthuong.destroy');
     Route::post('search', [KhenThuongController::class, 'search'])->name('khenthuong.search');
 });
-//ajax 
+//ajax
 Route::post('/ajax_tennv', [KhenThuongController::class, 'findNameNv']);
 
 // Danh sach ky luat

@@ -84,4 +84,31 @@ class NhanVienController extends Controller
         $nhanVien->update();
         return redirect('danhsachnhanvien');
     }
+    public function locphongban($id)
+    {
+        $caNhan = NhanVien::where('maphongban','=',$id)->paginate(5);
+        $phongBan= DB::select('SELECT id,tenphongban from phongban');
+        $khoa= DB::select('SELECT id,tenkhoa from khoa');
+        $chucVu= DB::select('SELECT id,tenchucvu from chucvu');
+        $trangThai= DB::select('SELECT id,tentrangthai from trangthai');
+        return view('nhansu.danhsachnhanvien.danhsachnhanvien', ['caNhan' => $caNhan,'trangThai' => $trangThai,'phongBan' => $phongBan,'khoa' => $khoa,'chucVu' => $chucVu]);
+    }
+    public function locchucvu($id)
+    {
+        $caNhan = NhanVien::where('machucvu','=',$id)->paginate(5);
+        $phongBan= DB::select('SELECT id,tenphongban from phongban');
+        $khoa= DB::select('SELECT id,tenkhoa from khoa');
+        $chucVu= DB::select('SELECT id,tenchucvu from chucvu');
+        $trangThai= DB::select('SELECT id,tentrangthai from trangthai');
+        return view('nhansu.danhsachnhanvien.danhsachnhanvien', ['caNhan' => $caNhan,'trangThai' => $trangThai,'phongBan' => $phongBan,'khoa' => $khoa,'chucVu' => $chucVu]);
+    }
+    public function lockhoa($id)
+    {
+        $caNhan = NhanVien::where('makhoa','=',$id)->paginate(5);
+        $phongBan= DB::select('SELECT id,tenphongban from phongban');
+        $khoa= DB::select('SELECT id,tenkhoa from khoa');
+        $chucVu= DB::select('SELECT id,tenchucvu from chucvu');
+        $trangThai= DB::select('SELECT id,tentrangthai from trangthai');
+        return view('nhansu.danhsachnhanvien.danhsachnhanvien', ['caNhan' => $caNhan,'trangThai' => $trangThai,'phongBan' => $phongBan,'khoa' => $khoa,'chucVu' => $chucVu]);
+    }
 }
