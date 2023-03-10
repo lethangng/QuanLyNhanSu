@@ -97,7 +97,15 @@
                         <label for="">Trạng thái:</label>
                     </div>
                     <select class="inp-tmnv" name="trangthai" id="">
-                    
+                    @foreach($trangThai as $item)
+                        @if($caNhan->matrangthai==$item->id)
+                        <option value="{{$item->id}}" selected>{{$item->tentrangthai}}</option>
+                        @else
+                        <option value="{{$item->id}}">{{$item->tentrangthai}}</option>
+                        @endif
+                    @endforeach
+                    </select>
+
                     </select>
                     <div class="label-name">
                         <label for="">Bậc lương:</label>

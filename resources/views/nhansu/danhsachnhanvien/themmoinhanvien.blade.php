@@ -90,7 +90,13 @@
                     <div class="label-name">
                         <label for="">Trạng thái:</label>
                     </div>
-                    <input class="inp-tmnv" type="text" name="trangthai" id="">
+                    <select class="inp-tmnv" name="trangthai" id="">
+                        @isset($trangThai)
+                            @foreach ($trangThai as $item)
+                            <option value="{{$item->id}}">{{$item->tentrangthai}}</option>
+                            @endforeach
+                        @endisset
+                    </select>
                     <div class="label-name">
                         <label for="">Bậc lương:</label>
                     </div>
