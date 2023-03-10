@@ -107,7 +107,7 @@
                         </li>
 
                         <li class="nav-link">
-                            <a href="{{ route('danhsachhopdong') }}">
+                            <a href="{{ route('hopdong.index') }}">
                                 <span class="icon-home">
                                     <img src="{{ asset('icon/hopdong.png') }}" alt="">
                                 </span>

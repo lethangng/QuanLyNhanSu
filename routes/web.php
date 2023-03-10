@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HopDongController;
 use App\Http\Controllers\loginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KhenThuongController;
@@ -57,11 +58,6 @@ Route::get('/suachucvu', function () {
     return view('nhansu.danhsachchucvu.suachucvu');
 })->name('suachucvu');
 
-Route::get('/index', function () {
-    return view('tangluong.index');
-})->name('danhsachtangluong');
-
-
 Route::get('/themmoinhanvien', [NhanVienController::class, 'create'])->name('themmoinhanvien');
 Route::post('/themnhanvien', [NhanVienController::class, 'store'])->name('themnhanvien');
 
@@ -77,10 +73,6 @@ Route::post('capnhatnhanvien/id={id}', [NhanVienController::class, 'update'])->n
 Route::get('/danhsachhopdong', function () {
     return view('hopdong.danhsachhopdong');
 })->name('danhsachhopdong');
-
-Route::get('/themmoikhenthuong', function () {
-    return view('khenthuong.themmoikhenthuong');
-})->name('themmoikhenthuong');
 
 Route::get('/themmoiphongban', function () {
     return view('nhansu.danhsachphongban.themmoiphongban');
@@ -156,6 +148,17 @@ Route::prefix('tangluong')->group(function () {
     Route::put('{id}/edit', [TangLuongController::class, 'update'])->whereNumber('id')->name('tangluong.update');
     Route::delete('{id}/destroy', [TangLuongController::class, 'destroy'])->whereNumber('id')->name('tangluong.destroy');
     Route::post('search', [TangLuongController::class, 'search'])->name('tangluong.search');
+});
+
+// Danh sach hợp đồng
+Route::prefix('hopdong')->group(function () {
+    Route::get('/', [HopDongController::class, 'index'])->name('hopdong.index');
+    Route::get('create', [HopDongController::class, 'create'])->name('hopdong.create');
+    Route::post('create', [HopDongController::class, 'store'])->name('hopdong.store');
+    Route::get('{id}/edit', [HopDongController::class, 'edit'])->whereNumber('id')->name('hopdong.edit');
+    Route::put('{id}/edit', [HopDongController::class, 'update'])->whereNumber('id')->name('hopdong.update');
+    Route::delete('{id}/destroy', [HopDongController::class, 'destroy'])->whereNumber('id')->name('hopdong.destroy');
+    Route::post('search', [HopDongController::class, 'search'])->name('hopdong.search');
 });
 // Route::post('upfile', [ThongTinCaNhanController::class, 'upfile'])->name('upfile');
 
