@@ -45,7 +45,7 @@ class HopDongController extends Controller
         if (Auth::user()) {
             return view('hopdong.create', compact('title'));
         } else {
-            redirect()->route('login');
+            return redirect()->route('login');
         }
     }
 

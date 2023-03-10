@@ -45,7 +45,7 @@ class TangLuongController extends Controller
         if (Auth::user()) {
             return view('tangluong.create', compact('title'));
         } else {
-            redirect()->route('login');
+            return redirect()->route('login');
         }
     }
 

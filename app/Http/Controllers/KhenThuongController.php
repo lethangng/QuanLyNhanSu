@@ -46,7 +46,7 @@ class KhenThuongController extends Controller
         if (Auth::user()) {
             return view('khenthuong.create', compact('title'));
         } else {
-            redirect()->route('login');
+            return redirect()->route('login');
         }
     }
 

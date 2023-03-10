@@ -44,7 +44,7 @@ class KyLuatController extends Controller
         if (Auth::user()) {
             return view('kyluat.create', compact('title'));
         } else {
-            redirect()->route('login');
+            return redirect()->route('login');
         }
     }
 
@@ -172,5 +172,18 @@ class KyLuatController extends Controller
             return redirect()->route('kyluat.index');
         }
         return view('kyluat.index', compact('kyluats', 'data'));
+    }
+    public function findNameNvKyLuat(Request $request)
+    {
+        if ($user = NhanVien::where('id', $request->dataId)->first()) {
+            $nhanvien = DB::select('SELECT id FROM nhanvien WHERE matrangthai = 2');
+            foreach($nhanvien as $nv) {
+                if($request->dataId == $nv->id) {
+                    return response()->json(['check' => true, "msg" => 'Nhân viên ở trạng thái mang thai không được thêm kỷ luật']);
+                }
+            }
+            return response()->json(['check' => false, 'msg' => $user->tennv]);
+        }
+        return response()->json(['check' => true, 'msg' => 'Mã nhân viên không tồn tại']);
     }
 }

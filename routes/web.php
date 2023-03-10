@@ -144,6 +144,7 @@ Route::prefix('kyluat')->group(function () {
     Route::put('{id}/edit', [KyLuatController::class, 'update'])->whereNumber('id')->name('kyluat.update');
     Route::delete('{id}/destroy', [KyLuatController::class, 'destroy'])->whereNumber('id')->name('kyluat.destroy');
     Route::post('search', [KyLuatController::class, 'search'])->name('kyluat.search');
+    Route::post('ajax_tennv', [KyLuatController::class, 'findNameNvKyLuat'])->name('kyluat.findNameNv');
 });
 
 // Danh sach tăng lương
