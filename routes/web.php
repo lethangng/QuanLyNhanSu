@@ -8,6 +8,8 @@ use App\Http\Controllers\KyLuatController;
 use App\Http\Controllers\NhanVienController;
 use App\Http\Controllers\KhoaController;
 use App\Http\Controllers\TangLuongController;
+use App\Http\Controllers\ChucVuController;
+use App\Http\Controllers\PhongBanController;
 use App\Http\Controllers\ThongTinController;
 use Illuminate\Routing\Router;
 
@@ -31,9 +33,14 @@ Route::get('/danhsachnhanvien', function () {
     return view('nhansu.danhsachnhanvien.danhsachnhanvien');
 })->name('danhsachnhanvien');
 */
+/*
 Route::get('/danhsachchucvu', function () {
     return view('nhansu.danhsachchucvu.danhsachchucvu');
 })->name('danhsachchucvu');
+*/
+Route::get('/danhsachchucvu', [ChucVuController::class, 'index'])->name('danhsachchucvu');
+Route::get('timkiemchucvu/tenchucvu={name}', [ChucVuController::class, 'timchucvu'])->name('timkiemchucvu');
+
 /*
 Route::get('/danhsachkhoa', function () {
     return view('nhansu.danhsachkhoa.danhsachkhoa');
@@ -67,10 +74,18 @@ Route::get('/themmoichucvu', function () {
     return view('nhansu.danhsachchucvu.themmoichucvu');
 })->name('themmoichucvu');
 
+Route::post('/themchucvu', [ChucVuController::class, 'store'])->name('themchucvu');
+
+Route::get('suachucvu/id={id}', [ChucVuController::class, 'edit'])->name('suachucvu');
+Route::post('capnhatchucvu/id={id}', [ChucVuController::class, 'update'])->name('capnhatchucvu');
+
+Route::post('/xoachucvu',[ChucVuController::class, 'destroy'])->name('xoachucvu');
+
+/*
 Route::get('/suachucvu', function () {
     return view('nhansu.danhsachchucvu.suachucvu');
 })->name('suachucvu');
-
+*/
 Route::get('/themmoinhanvien', [NhanVienController::class, 'create'])->name('themmoinhanvien');
 Route::post('/themnhanvien', [NhanVienController::class, 'store'])->name('themnhanvien');
 
