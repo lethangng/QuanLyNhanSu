@@ -23,7 +23,7 @@ class NhanVien extends Model
         'machucvu',
         'makhoa',
         'anhdaidien',
-        'trangthai',
+        'matrangthai',
         'hsl',
         'bacluong',
         'email'

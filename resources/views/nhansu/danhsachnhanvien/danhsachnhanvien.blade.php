@@ -136,7 +136,7 @@
                                                 <i class='bx bx-edit'></i>
                                             </button>
                                         </a>
-                                        <button class="i-rotate js-buy-ticket" type="button" value="{{$item->id}}" id="nut">
+                                        <button class="i-rotate js-buy-ticket" type="button" value="{{$item->id}}" id="nut" onclick="loadval(this.value)">
                                             <i class='bx bx-trash'></i>
                                         </button>
 
@@ -181,8 +181,10 @@
     const modalContainer = document.querySelector('.js-modal-container')
     const modalClose = document.querySelector('.js-modal-close');
 
-    function showBuyTickets() {
-        document.getElementById("nut2").value=document.getElementById("nut").value;
+    function loadval(val){
+        document.getElementById("nut2").value=val;
+    }
+    function showBuyTickets(val) {
         modal.classList.add('open');
     }
 

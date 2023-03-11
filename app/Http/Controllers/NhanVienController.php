@@ -50,9 +50,14 @@ class NhanVienController extends Controller
     }
     public function destroy(Request $request)
     {
+
         $nhanVien = NhanVien::find($request->idxoa);
         $nhanVien->matrangthai=1;
         $nhanVien->update();
+
+        /*
+        $affected = DB::table('nhanvien')->where('id', $request->idxoa)->update(['matrangthai' => 1]);
+        */
         return redirect('danhsachnhanvien');
     }
     public function edit($id)
