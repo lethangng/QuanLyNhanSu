@@ -5,7 +5,7 @@
                 <div class="dstk-title">
                     <h1>Danh sách tài khoản</h1>
                 </div>
-                <form action="">
+                <form action="{{ route('themmoitaikhoan') }}">
                     <div class="btn-tmtk">
                         <button class="nv">Thêm mới tài khoản</button>
                     </div>
@@ -43,7 +43,7 @@
                             <th class="h1" scope="row">thanhvu@</th>
                             <th class="h1" scope="row">*****</th>
                             <th class="h1" scope="row">
-                                <a href="#">
+                                <a href="{{ route('suataikhoan') }}">
                                     <button class="i-edit">
                                         <i class='bx bx-edit'></i>
                                      </button>

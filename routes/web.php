@@ -101,6 +101,15 @@ Route::get('/danhsachtaikhoan', function () {
     return view('taikhoan.danhsachtaikhoan');
 })->name('danhsachtaikhoan');
 
+Route::get('/themmoitaikhoan', function () {
+    return view('taikhoan.themmoitaikhoan');
+})->name('themmoitaikhoan');
+
+Route::get('/suataikhoan', function () {
+    return view('taikhoan.suataikhoan');
+})->name('suataikhoan');
+
+
 Route::get('/', [loginController::class, "home"])->name('login');
 Route::post('/', [loginController::class, "submitLogin"])->name('submitLogin');
 
