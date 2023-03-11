@@ -40,14 +40,24 @@ Route::get('/danhsachkhoa', function () {
 })->name('danhsachkhoa');
 */
 Route::get('/danhsachkhoa', [KhoaController::class, 'index'])->name('danhsachkhoa');
+Route::get('timkiemkhoa/tenkhoa={name}', [KhoaController::class, 'timkhoa'])->name('timkiemkhoa');
+
 
 Route::get('/themmoikkhoa', function () {
     return view('nhansu.danhsachkhoa.themmoikhoa');
 })->name('themmoikhoa');
 
+Route::post('/themkhoa', [KhoaController::class, 'store'])->name('themkhoa');
+
+/*
 Route::get('/suakhoa', function () {
     return view('nhansu.danhsachkhoa.suakhoa');
 })->name('suakhoa');
+*/
+Route::get('suakhoa/id={id}', [KhoaController::class, 'edit'])->name('suakhoa');
+Route::post('capnhatkhoa/id={id}', [KhoaController::class, 'update'])->name('capnhatkhoa');
+Route::post('/xoakhoa',[KhoaController::class, 'destroy'])->name('xoakhoa');
+
 
 Route::get('/danhsachphongban', function () {
     return view('nhansu.danhsachphongban.danhsachphongban');

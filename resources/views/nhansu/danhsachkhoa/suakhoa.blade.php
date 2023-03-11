@@ -7,22 +7,31 @@
         </div>
         <div class="container">
             <div class="row">
+            <form action="{{ url('capnhatkhoa/id='.$khoa->id) }}" method="POST">
+                    @csrf
                 <div class="col-sm left-inf">
+                    @isset($khoa)
                         <div class="label-name-sk">
                             <label for="">Mã khoa:</label>
                         </div>
-                        <input class="inp-tmcv" type="text" name="" id="" placeholder="Nhập mã khoa">
+                        <input class="inp-tmcv" type="text" value="{{$khoa->makhoa}}" name="makhoa" id="" placeholder="Nhập mã khoa">
                         <div class="label-name-sk">
                             <label for="">Tên khoa:</label>
                         </div>
-                        <input class="inp-tmcv" type="text" name="" id="" placeholder="Nhập tên khoa">
+                        <input class="inp-tmcv" type="text" value="{{$khoa->tenkhoa}}" name="tenkhoa" id="" placeholder="Nhập tên khoa">
+                        @endisset
+                        @empty($khoa)
+                        <h1>Sai router ,truy vấn hoặc không có data</h1>
+                    @endempty
+
                 </div>
 
                 <div class="btn-sk">
                     <button class="text-xacnhan js-buy-ticket">Xác nhận</button>
                 </div>
+                </form>
             </div>
-            
+
         </div>
     </div>
 </div>
@@ -32,12 +41,12 @@
             <div class="modal-close js-modal-close">
                 <i class="ti-close"></i>
             </div>
-    
+
             <div class="modal-text-delete-2">
                 <span class="icon-successfull-delete-2">
                     <img src="{{ asset('css/Img/image 36.png') }}" alt="">
                 </span>
-                <h2>Thêm thành công</h2>
+                <h2>Sửa thành công</h2>
             </div>
         </div>
     </div>
@@ -62,7 +71,7 @@
         modalClose.addEventListener('click', hideBuyTickets)
 
         modal.addEventListener('click', hideBuyTickets)
-        
+
         modalContainer.addEventListener('click', function(event)
         {
             event.stopPropagation()

@@ -14,15 +14,15 @@
                 <div class="custom-input">
                     <div class="container-search-reset">
                         <span class="icon-search-1">
-                            <img src="{{ asset('icon/search.png') }}" alt="">
+                           <img src="{{ asset('icon/search.png') }}" alt="" onclick="findname()">
                         </span>
                         <span class="icon-reset-1">
-                            <img src="{{ asset('icon/reset.png') }}" alt="">
+                            <a href="{{ url('danhsachkhoa') }}"><img src="{{ asset('icon/reset.png') }}" alt="" ></a>
                         </span>
                     </div>
 
 
-                    <input class="input-search-name-1" type="text" placeholder="Nhập tên khoa">
+                    <input class="input-search-name-1" type="text" id="tenkhoa" placeholder="Nhập tên khoa">
 
                 </div>
                 <div class="list-dsk">
@@ -40,12 +40,12 @@
                                 <th class="h1" scope="row">{{ $item->id }}</th>
                                     <th class="h1" scope="row">{{ $item->tenkhoa }}</th>
                                     <th class="h1" scope="row">
-                                        <a href="{{ route('suakhoa') }}">
+                                        <a href="{{ url('suakhoa/id='.$item->id) }}">
                                             <button class="i-edit">
                                                 <i class='bx bx-edit'></i>
                                             </button>
                                         </a>
-                                        <button class="i-rotate js-buy-ticket">
+                                        <button class="i-rotate js-buy-ticket" value="{{$item->id}}" id="nut" onclick="loadval(this.value)">
                                             <i class='bx bx-trash'></i>
                                         </button>
                                     </th>
@@ -63,7 +63,11 @@
             </div>
         </div>
     </div>
-
+    <div class="container-footer-kt">
+            <nav aria-label="Page navigation example" class="ml-5 footer-kt">
+                {{ $khoa->links('pagination::bootstrap-4') }}
+            </nav>
+        </div>
     <div class="modal-delete js-modal ">
         <div class="modal-container-delete js-modal-container">
             <div class="modal-close js-modal-close">
@@ -72,10 +76,14 @@
 
             <div class="modal-text-delete">
                 <h2>Bạn có chắc chắn muốn xóa không?</h2>
+                <form action="{{ url('xoakhoa')}}" method="POST" >
+                @csrf
                 <div class="modal-buttons">
+                    <input type="text" id="nut2" name="idxoa" hidden>
                     <button class="confirm-btn">Xác nhận</button>
                     <button class="cancel-btn">Hủy</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>
@@ -85,6 +93,9 @@
         const modalContainer = document.querySelector('.js-modal-container')
         const modalClose = document.querySelector('.js-modal-close');
 
+        function loadval(val){
+            document.getElementById("nut2").value=val;
+        }
         function showBuyTickets(){
             modal.classList.add('open')
         }
@@ -105,5 +116,13 @@
         {
             event.stopPropagation()
         })
+        function findname() {
+        var tenkhoa = document.getElementById("tenkhoa").value;
+        if(tenkhoa!=""){
+            var url="{{ URL::to('timkiemkhoa/tenkhoa=name') }}";
+            url=url.replace('name',tenkhoa);
+            window.location.assign(url);
+        }
+    }
     </script>
 @endsection
