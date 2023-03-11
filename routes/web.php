@@ -25,7 +25,7 @@ Route::get('/danhsachnhanvien', [NhanVienController::class, 'index2'])->name('da
 Route::get('locphongban/id={id}', [NhanVienController::class, 'locphongban'])->name('locphongban');
 Route::get('locchucvu/id={id}', [NhanVienController::class, 'locchucvu'])->name('locchucvu');
 Route::get('lockhoa/id={id}', [NhanVienController::class, 'lockhoa'])->name('lockhoa');
-
+Route::get('timnhanvien/tennv={name}', [NhanVienController::class, 'timnhanvien'])->name('timnhanvien');
 /*
 Route::get('/danhsachnhanvien', function () {
     return view('nhansu.danhsachnhanvien.danhsachnhanvien');
