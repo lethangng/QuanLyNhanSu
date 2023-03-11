@@ -41,13 +41,12 @@
                     @endforeach
                 </select>
                 <span class="icon-reset">
-                    <img src="{{ asset('icon/reset.png') }}" alt="">
+                    <a href="{{ url('danhsachnhanvien') }}"><img src="{{ asset('icon/reset.png') }}" alt=""></a>
                 </span>
                 <span class="icon-search">
-                    <img src="{{ asset('icon/search.png') }}" alt="">
+                    <img src="{{ asset('icon/search.png') }}" alt="" onclick="findname()">
                 </span>
-
-                <input class="input-search-name" type="text" placeholder="Nhập tên nhân viên cần tìm">
+                <input id="tennv" class="input-search-name" type="text" placeholder="Nhập tên nhân viên cần tìm">
 
             </div>
             <div class="list-dsnv">
@@ -268,6 +267,14 @@
                 window.location.assign(url);
             }
 
+        }
+    }
+    function findname() {
+        var tennv = document.getElementById("tennv").value;
+        if(tennv!=""){
+            var url="{{ URL::to('timnhanvien/tennv=name') }}";
+            url=url.replace('name',tennv);
+            window.location.assign(url);
         }
     }
 </script>

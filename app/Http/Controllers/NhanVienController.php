@@ -111,4 +111,13 @@ class NhanVienController extends Controller
         $trangThai= DB::select('SELECT id,tentrangthai from trangthai');
         return view('nhansu.danhsachnhanvien.danhsachnhanvien', ['caNhan' => $caNhan,'trangThai' => $trangThai,'phongBan' => $phongBan,'khoa' => $khoa,'chucVu' => $chucVu]);
     }
+    public function timnhanvien($name)
+    {
+        $caNhan = NhanVien::where('tennv','like','%'.$name.'%')->paginate(5);
+        $phongBan= DB::select('SELECT id,tenphongban from phongban');
+        $khoa= DB::select('SELECT id,tenkhoa from khoa');
+        $chucVu= DB::select('SELECT id,tenchucvu from chucvu');
+        $trangThai= DB::select('SELECT id,tentrangthai from trangthai');
+        return view('nhansu.danhsachnhanvien.danhsachnhanvien', ['caNhan' => $caNhan,'trangThai' => $trangThai,'phongBan' => $phongBan,'khoa' => $khoa,'chucVu' => $chucVu]);
+    }
 }
