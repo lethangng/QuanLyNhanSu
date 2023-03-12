@@ -33,7 +33,7 @@
                             <span class="icon-thongke">
                                 <img src="{{ asset('icon/icon-thongke-1.png') }}" alt="">
                             </span>
-                            <h4>Thống kê nhân viên</h4>
+                            <h4>Thống kê kỷ luật</h4>
                         </div>
                     </a>
                 </div>
@@ -45,7 +45,7 @@
                             <span class="icon-thongke">
                                 <img src="{{ asset('icon/icon-thongke-1.png') }}" alt="">
                             </span>
-                            <h4>Thống kê nhân viên</h4>
+                            <h4>Thống kê hợp đồng</h4>
                         </div>
                     </a>
                 </div>
@@ -55,7 +55,7 @@
                             <span class="icon-thongke">
                                 <img src="{{ asset('icon/icon-thongke-1.png') }}" alt="">
                             </span>
-                            <h4>Thống kê nhân viên</h4>
+                            <h4>Thống kê tăng lương</h4>
                         </div>
                     </a>
                 </div>
