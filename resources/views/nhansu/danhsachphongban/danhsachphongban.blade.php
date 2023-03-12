@@ -20,7 +20,7 @@
                             <a href="{{ url('danhsachphongban') }}"><img src="{{ asset('icon/reset.png') }}" alt=""></a>
                         </span>
                     </div>
-                    <input class="input-search-name-1" type="text" id="tenphongban" placeholder="Nhập tên nhân viên cần tìm">
+                    <input class="input-search-name-1" type="text" id="tenphongban" placeholder="Nhập tên phòng ban cần tìm">
 
                 </div>
                 <div class="list-dspb">
@@ -36,7 +36,7 @@
                         @isset($phongban)
                             @foreach ($phongban as $item)
                             <tr class="">
-                            <th class="h1" scope="row">{{$item->id}}</th>
+                            <th class="h1" scope="row">{{$item->maphongban}}</th>
                             <th class="h1" scope="row">{{$item->tenphongban}}</th>
                             <th class="h1" scope="row">
                                 <a href="{{ url('suaphongban/id='.$item->id) }}">

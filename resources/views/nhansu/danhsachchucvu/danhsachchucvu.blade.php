@@ -19,14 +19,14 @@
                             <a href="{{ url('danhsachchucvu') }}"><img src="{{ asset('icon/reset.png') }}" alt=""></a>
                         </span>
                     </div>
-                    <input class="input-search-name-1" type="text" id="tenchucvu" placeholder="Nhập tên nhân viên cần tìm">
+                    <input class="input-search-name-1" type="text" id="tenchucvu" placeholder="Nhập tên chức vụ cần tìm">
                 </div>
                 <div class="list-dscv">
                     <table class="table-dscv table-bordered">
                         <thead>
                           <tr class = "bg-info">
                             <th class="head-table" scope="col">Mã chức vụ</th>
-                            <th class="head-table" scope="col">Tên chứ vụ</th>
+                            <th class="head-table" scope="col">Tên chức vụ</th>
                             <th class="head-table" scope="col"></th>
                           </tr>
                         </thead>
@@ -34,7 +34,7 @@
                         @isset($chucvu)
                             @foreach ($chucvu as $item)
                             <tr class="">
-                            <th class="h1" scope="row">{{$item->id}}</th>
+                            <th class="h1" scope="row">{{$item->machucvu}}</th>
                             <th class="h1" scope="row">{{$item->tenchucvu}}</th>
                             <th class="h1" scope="row">
                                 <a href="{{ url('suachucvu/id='.$item->id) }}">
