@@ -14,8 +14,8 @@ class KyLuatController extends Controller
     protected $kyluat;
     protected $nhanvien;
     public function __construct(){
-        $this->kyluat = new KyLuat;
-        $this->nhanvien = new NhanVien;
+        $this->kyluat = new KyLuat();
+        $this->nhanvien = new NhanVien();
     }
     /**
      * Display a listing of the resource.
@@ -70,7 +70,7 @@ class KyLuatController extends Controller
             ]);
             return response()->json(["check" => true]);
         } else {
-            return redirect()->route('kyluat.index');
+            return response()->json(['error' => ['upfile' => 'File bắt buộc phải nhập']]);
         }
     }
 
@@ -120,7 +120,13 @@ class KyLuatController extends Controller
             unlink(public_path('uploads/files/'.$oldFile));
             return response()->json(["check" => true]);
         } else {
-            return redirect()->route('kyluat.index');
+            KyLuat::where('id', $id)
+                ->update([
+                    'manv' => $request->manv,
+                    'ngaykyluat' => $request->ngaykyluat,
+                    'lydo' => $request->lydo
+                ]);
+            return response()->json(["check" => true]);
         }
     }
 
@@ -176,10 +182,12 @@ class KyLuatController extends Controller
     public function findNameNvKyLuat(Request $request)
     {
         if ($user = NhanVien::where('id', $request->dataId)->first()) {
-            $nhanvien = DB::select('SELECT id FROM nhanvien WHERE matrangthai = 2');
-            foreach($nhanvien as $nv) {
-                if($request->dataId == $nv->id) {
-                    return response()->json(['check' => true, "msg" => 'Nhân viên ở trạng thái mang thai không được thêm kỷ luật']);
+            $nhanvien = DB::select("SELECT nhanvien.id FROM nhanvien JOIN trangthai ON nhanvien.matrangthai = trangthai.id WHERE trangthai.matrangthai = 'TS'");
+            if($nhanvien) {
+                foreach($nhanvien as $nv) {
+                    if($request->dataId == $nv->id) {
+                        return response()->json(['check' => true, "msg" => 'Nhân viên ở trạng thái mang thai không được thêm kỷ luật']);
+                    }
                 }
             }
             return response()->json(['check' => false, 'msg' => $user->tennv]);

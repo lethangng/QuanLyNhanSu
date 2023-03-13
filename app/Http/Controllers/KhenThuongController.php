@@ -73,7 +73,7 @@ class KhenThuongController extends Controller
             ]);
             return response()->json(["check" => true]);
         } else {
-            return redirect()->route('khenthuong.index');
+            return response()->json(['error' => ['upfile' => 'File bắt buộc phải nhập']]);
         }
     }
 
@@ -123,7 +123,13 @@ class KhenThuongController extends Controller
             unlink(public_path('uploads/files/'.$oldFile));
             return response()->json(["check" => true]);
         } else {
-            return redirect()->route('khenthuong.index');
+            KhenThuong::where('id', $id)
+            ->update([
+                'manv' => $request->manv,
+                'ngaykhenthuong' => $request->ngaykhenthuong,
+                'lydo' => $request->lydo
+            ]);
+            return response()->json(["check" => true]);
         }
     }
 

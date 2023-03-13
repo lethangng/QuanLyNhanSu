@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\HopDongRequest;
 use App\Models\HopDong;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class HopDongController extends Controller
 {
@@ -57,7 +58,13 @@ class HopDongController extends Controller
      */
     public function store(HopDongRequest $request)
     {
-        // dd($request);
+        if($request->ngayketthuc) {
+            $ngaybatdau = Carbon::parse($request->ngaybatdau);
+            $ngayketthuc = Carbon::parse($request->ngayketthuc);
+            if($ngaybatdau->greaterThan($ngayketthuc)) {
+                return response()->json(['error' => ['ngaybatdau' => 'Ngày bắt đầu phải nhỏ hơn ngày kết thúc']]);
+            }
+        }
         if ($request->file('upfile')) {
             $file = $request->file('upfile');
             $ext = $request->file('upfile')->extension();
@@ -72,7 +79,7 @@ class HopDongController extends Controller
             ]);
             return response()->json(["check" => true]);
         } else {
-            return redirect()->route('hopdong.index');
+            return response()->json(['error' => ['upfile' => 'File bắt buộc phải nhập']]);
         }
     }
 
@@ -102,6 +109,13 @@ class HopDongController extends Controller
      */
     public function update(HopDongRequest $request, $id)
     {
+        if($request->ngayketthuc) {
+            $ngaybatdau = Carbon::parse($request->ngaybatdau);
+            $ngayketthuc = Carbon::parse($request->ngayketthuc);
+            if($ngaybatdau->greaterThan($ngayketthuc)) {
+                return response()->json(['error' => ['ngaybatdau' => 'Ngày bắt đầu phải nhỏ hơn ngày kết thúc']]);
+            }
+        }
         if ($request->file('upfile')) {
             $file = $request->file('upfile');
             $ext = $request->file('upfile')->extension();
@@ -122,7 +136,13 @@ class HopDongController extends Controller
             unlink(public_path('uploads/files/'.$oldFile));
             return response()->json(["check" => true]);
         } else {
-            return redirect()->route('hopdong.index');
+            HopDong::where('id', $id)
+                ->update([
+                    'manv' => $request->manv,
+                    'ngaybatdau' => $request->ngaybatdau,
+                    'ngayketthuc' => $request->ngayketthuc
+                ]);
+            return response()->json(["check" => true]);
         }
     }
 

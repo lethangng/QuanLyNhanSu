@@ -14,17 +14,18 @@
                         enctype="multipart/form-data" class="col-sm left-inf" id="update-kyluat">
                         @method('PUT')
                         @csrf
+                        <div class="mnv">
+                            <label for="">Mã nhân viên</label>
+                        </div>
+                        <input class="ip-mnv" type="text" name="manv" id="ma_nhanvien"
+                            placeholder="Nhập mã nhân viên..." pattern="[0-9]+" value="{{ $kyluat->manv }}" readonly>
+                        <div id="err_ajax" class="form-text text-danger text-danger_manv"></div>
                         <div class="tnv">
                             <label for="">Tên nhân viên:</label>
                         </div>
                         <input class="ip-tnv" type="text" name="tennv" id="ten_nhanvien" readonly
                             value="{{ $kyluat->nhanvien->tennv }}">
-                        <div class="mnv">
-                            <label for="">Mã nhân viên</label>
-                        </div>
-                        <input class="ip-mnv" type="text" name="manv" id="ma_nhanvien"
-                            placeholder="Nhập mã nhân viên..." pattern="[0-9]+" value="{{ $kyluat->manv }}">
-                        <div id="err_ajax" class="form-text text-danger text-danger_manv"></div>
+
                         <div class="ngkt">
                             <label for="">Ngày kỷ luật:</label>
                         </div>
@@ -41,7 +42,8 @@
                             <label for="">Chi tiết kỷ luật:</label>
                         </div>
                         <input type="file" name="upfile" accept=".doc,.docx,.pdf,image/*" class="form-control"
-                            style="width: 400px; border: 1px solid #333;">
+                            style="width: 400px; border: 1px solid #333;" id="upfile"
+                            value="{{ $kyluat->chitietkyluat }}">
                         <div id="passwordHelp" class="form-text text-danger upfile-err"></div>
                         <div class="btn-xacnhan-tmkt">
                             <button class="text-xacnhan js-buy-ticket" type="submit">Xác nhận</button>
@@ -97,8 +99,9 @@
     <script>
         $("#ma_nhanvien").blur(function(e) {
             console.log($("#ma_nhanvien").val())
+            $('#ten_nhanvien').val('')
             $.ajax({
-                url: '/ajax_tennv',
+                url: "{{ route('kyluat.findNameNv') }}",
                 method: "POST",
                 data: {
                     'dataId': $("input[name='manv']").val()
@@ -111,7 +114,7 @@
                     console.log(data.msg)
                     $('#err_ajax').text('')
                     if (data.check == true) {
-                        $('#ten_nhanvien').val('Tên nhân viên không tồn tại.')
+                        // $('#ten_nhanvien').val('Tên nhân viên không tồn tại.')
                         $('#err_ajax').text(data.msg)
                     } else
                         $("#ten_nhanvien").val(data.msg)
@@ -143,8 +146,10 @@
                     contentType: false,
                     processData: false,
                     success: (data) => {
-                        var error = document.querySelectorAll(".error-text");
-                        error.innerHTML = "";
+                        var error = document.querySelectorAll(".text-danger");
+                        for (var i = 0; i < error.length; i++) {
+                            error[i].innerHTML = "";
+                        }
                         if (data.check == true) {
                             console.log(data)
                             modal.classList.add('open')

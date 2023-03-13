@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('trangthai', function (Blueprint $table) {
             $table->id();
-            $table->string('matrangthai')->nullable();
+            $table->string('matrangthai')->unique()->nullable();
             $table->string('tentrangthai')->nullable();
             $table->timestamps();
         });

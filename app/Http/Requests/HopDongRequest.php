@@ -29,8 +29,7 @@ class HopDongRequest extends FormRequest
         return [
             'manv' => 'required|exists:nhanvien,id',
             'ngaybatdau' => 'required|date',
-            'ngayketthuc' => 'required|date',
-            'upfile' => 'required|mimes:png,jpg,jpeg,doc,docx,pdf|max:10024',
+            'upfile' => 'mimes:png,jpg,jpeg,doc,docx,pdf|max:10024',
         ];
     }
     public function messages()
@@ -38,7 +37,6 @@ class HopDongRequest extends FormRequest
         return [
             'required' => ':attribute bắt buộc phải nhập',
             'date' => ':attribute phải là định dạng ngày tháng',
-            'exists' => ':attribute không tồn tại.',
             'upfile.max' => ':attribute phải nhỏ hơn 10 MB',
             'upfile.mimes' => ':attribute phải có đuôi png, jpg, jpeg, doc, docx hoặc pdf'
         ];

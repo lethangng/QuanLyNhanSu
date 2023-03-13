@@ -27,9 +27,9 @@ class KyLuatRequest extends FormRequest
     {
         return [
             'manv' => 'required|exists:nhanvien,id',
-            'ngaykyluat' => 'required|date',
+            'ngaykyluat' => 'required|date|before_or_equal:today',
             'lydo' => 'required',
-            'upfile' => 'required|mimes:png,jpg,jpeg,doc,docx,pdf|max:10024',
+            'upfile' => 'mimes:png,jpg,jpeg,doc,docx,pdf|max:10024',
         ];
     }
 
@@ -37,9 +37,10 @@ class KyLuatRequest extends FormRequest
     {
         return [
             'required' => ':attribute bắt buộc phải nhập',
-            'date' => ':attribute phải là định dạng ngày tháng',
+            'ngaykyluat.date' => ':attribute phải là định dạng ngày tháng',
             'exists' => ':attribute không tồn tại.',
-            'upfile.max' => ':attribute phải nhỏ hơn 10 MB'
+            'upfile.max' => ':attribute phải nhỏ hơn 10 MB',
+            'upfile.mimes' => ':attribute phải có đuôi png, jpg, doc, docx hoặc pdf'
         ];
     }
 

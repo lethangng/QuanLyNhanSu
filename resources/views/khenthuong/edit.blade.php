@@ -14,17 +14,17 @@
                         enctype="multipart/form-data" class="col-sm left-inf" id="update-khenthuong">
                         @method('PUT')
                         @csrf
+                        <div class="mnv">
+                            <label for="">Mã nhân viên</label>
+                        </div>
+                        <input class="ip-mnv" type="text" name="manv" id="ma_nhanvien"
+                            placeholder="Nhập mã nhân viên..." pattern="[0-9]+" value="{{ $khenthuong->manv }}" readonly>
+                        <div id="err_ajax" class="form-text text-danger text-danger_manv manv-err"></div>
                         <div class="tnv">
                             <label for="">Tên nhân viên:</label>
                         </div>
                         <input class="ip-tnv" type="text" name="tennv" id="ten_nhanvien" readonly
                             value="{{ $khenthuong->nhanvien->tennv }}">
-                        <div class="mnv">
-                            <label for="">Mã nhân viên</label>
-                        </div>
-                        <input class="ip-mnv" type="text" name="manv" id="ma_nhanvien"
-                            placeholder="Nhập mã nhân viên..." pattern="[0-9]+" value="{{ $khenthuong->manv }}">
-                        <div id="err_ajax" class="form-text text-danger text-danger_manv manv-err"></div>
                         <div class="ngkt">
                             <label for="">Ngày khen thưởng:</label>
                         </div>
@@ -146,8 +146,10 @@
                     contentType: false,
                     processData: false,
                     success: (data) => {
-                        var error = document.querySelectorAll(".error-text");
-                        error.innerHTML = "";
+                        var error = document.querySelectorAll(".text-danger");
+                        for (var i = 0; i < error.length; i++) {
+                            error[i].innerHTML = "";
+                        }
                         if (data.check == true) {
                             console.log(data)
                             modal.classList.add('open')

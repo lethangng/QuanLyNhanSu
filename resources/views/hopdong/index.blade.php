@@ -94,8 +94,14 @@
                                     @endif
                                 </th>
                                 <th class="h1" scope="row">
-                                    <a href="{{ asset('uploads/files/' . $hopdong->chitiethopdong) }}"
-                                        style="text-decoration: none;">
+                                    @php
+                                        if ($hopdong->chitiethopdong) {
+                                            $url = asset('uploads/files/' . $hopdong->chitiethopdong);
+                                        } else {
+                                            $url = '#';
+                                        }
+                                    @endphp
+                                    <a href="{{ $url }}" style="text-decoration: none;">
                                         <button class="i-save">
                                             <img src="{{ asset('icon/save.png') }}" alt="">
                                         </button>
@@ -134,7 +140,7 @@
                         @method('DELETE')
                         @csrf
                         <button class="confirm-btn" type="submit">Xác nhận</button>
-                        <button class="cancel-btn">Hủy</button>
+                        <button class="cancel-btn" type="button" onclick="hideBuyTickets()">Hủy</button>
                     </form>
                 </div>
             </div>
