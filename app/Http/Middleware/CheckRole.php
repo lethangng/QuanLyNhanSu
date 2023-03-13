@@ -20,13 +20,8 @@ class CheckRole
     {
 
         if (Auth::check()) {
-            Auth::user()->findRoleId(Auth::user()->id);
-            if (Auth::user()->roleId == 1) {
-                return $next($request);
-            } else {
-                return back();
-            }
+            return $next($request);
         }
-        return abort(404);
+        return back();
     }
 }
