@@ -47,13 +47,13 @@
 
 /* ********************* Thêm mới khen thưởng ******************* */
 
-.tnv, .mnv, .ngkt, .ld, .ctkt{
+.tnv, .mnv, .ngkt, .ld, .ctkt, .email, .mk{
     font-size: 26px;
     font-weight: 600;
     padding-top: 14px;
 }
 
-.ip-tnv, .ip-mnv, .ip-ngkt, .ip-ld{
+.ip-tnv, .ip-mnv, .ip-ngkt, .ip-ld, .ip-email, .ip-mk{
     width: 400px;
     height: 40px;
     border-radius: 10px;
@@ -290,7 +290,85 @@
     bottom: 10%;
     left: 85%;
 }
-/* ******* Modal xóa  ****** */
+/* ********************* Thêm mới trạng thái ******************* */
+.tmtt-main {
+    width: 100%;
+}
+.tmtt-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+.tmtt-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+}
+/* ********************* Thêm mới tài khoản ******************* */
+.tmtk-main {
+    width: 100%;
+}
+.tmtk-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+.tmtk-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+}
+
+
+/* ********************* Sửa tài khoản ******************* */
+.stk-main {
+    width: 100%;
+}
+.stk-title {
+    text-align: center;
+    padding: 8px 0;
+    background: #5582F8;
+}
+.stk-title h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+}
+/* *********** Hiển thị password ********** */
+.container-pw{
+    position: relative;
+    height: 55px;
+    width: 320px;
+    border-radius: 5px;
+  }
+  .container-pw input{
+    width: 450px;
+    height: 40px;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid #333;
+  }
+  .container-pw input::placeholder{
+    font-size: 17px;
+  }
+  .container-pw span{
+    position: absolute;
+    left: 130%;
+    top: 50%;
+    transform: translateY(-68%);
+    font-size: 20px;
+    color: #8e44ad;
+    cursor: pointer;
+    display: none;
+  }
+  .container-pw input:valid ~ span{
+    display: block;
+  }
+  .container-pw span i.hide-btn::before{
+    content: "\f070";
+  }
+/* ******* Modal xóa  ******  */
 .modal-delete{
     position: fixed;
     top: 0;

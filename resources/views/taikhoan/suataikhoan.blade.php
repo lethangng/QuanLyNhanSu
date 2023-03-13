@@ -1,29 +1,40 @@
 @extends('layouts.app')
 @section('content')
-<div class="tmtt-main">
+<div class="stk-main">
     <div class="wrap">
-        <div class="tmtt-title">
-            <h1>Thêm mới trạng thái</h1>
+        <div class="stk-title">
+            <h1>Sửa tài khoản</h1>
         </div>
         <div class="container">
             <div class="row">
-                <form id='update' action="" method='POST' >
+                <form id='FormSubmit' action="" method="POST" >
                     @csrf
                     <div class="col-sm left-inf">
-                            <div class="label-name-tmcv">
-                                <label for="">Mã trạng thái:</label>
-                            </div>
-                            <input class="inp-tmcv" type="text" name="matrangthai"  placeholder="Nhập mã trạng thái">
-                            <small class="text-danger error-text matrangthai_err"></small>
-                            <div class="label-name-tmcv">
-                                <label for="">Tên trạng thái:</label>
-                            </div>
-                            <input class="inp-tmcv" type="text" name="tentrangthai"   placeholder="Nhập tên trạng thái">
-                            <small class="text-danger error-text tentrangthai_err"></small>
+                        <div class="label-name-tmpb">
+                            <label for="">Mã nhân viên:</label>
                         </div>
-        
-                    <div class="btn-tmcv">
-                        <button type="submit" class="text-xacnhan js-buy-ticket " id='js-buttom' >Xác nhận</button>
+                        <input readonly class="inp-tmcv" type="text" name="id" value="{{ $data->id }}"   placeholder="Nhập mã nhân viên">
+                        <div class="label-name-tmpb">
+                            <label for="">Tên nhân viên:</label>
+                        </div>
+                        <input readonly class="inp-tmcv" type="text" name="email"  value="{{ $data->nhanvien->tennv }}" placeholder="Nhập tên nhân viên">
+                        <div class="label-name-tmpb">
+                            <label for="">Email:</label>
+                        </div>
+                        <input class="inp-tmcv" type="email" name="email"  value="{{ $data->email }}" placeholder="Nhập email">
+                        <small class="text-danger error-text email_err"></small>
+                        <div class="label-name-tmpb">
+                            <label for="">Mật khẩu:</label>
+                        </div>
+                        <div class="container-pw">
+                            <input class="pw" type="password" name='password' value="" placeholder="Nhập Mật Khẩu" required>
+                            <span class="show-btn"><i class="fas fa-eye"></i></span>
+                        </div>
+                        <small class="text-danger error-text password_err"></small>
+                    </div>
+                    
+                    <div class="btn-tmpb">
+                        <button type="submit" class="text-xacnhan js-buy-ticket">Xác nhận</button>
                     </div>
                 </form>
             </div>
@@ -31,6 +42,7 @@
         </div>
     </div>
 </div>
+{{-- JS Hiển thị password --}}
 {{-- modal them chuc vu moi --}}
     <div class="modal-delete js-modal ">
         <div class="modal-container-delete js-modal-container">
@@ -42,24 +54,38 @@
                 <span class="icon-successfull-delete-2">
                     <img src="{{ asset('css/Img/image 36.png') }}" alt="">
                 </span>
-                <h2>Thêm thành công</h2>
+                <h2>Sửa thành công</h2>
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
-    crossorigin="anonymous"></script>
+<script>
+    const passField = document.querySelector(".pw");
+    const showBtn = document.querySelector("span i");
+    showBtn.onclick = (()=>{
+    if(passField.type === "password"){
+      passField.type = "text";
+      showBtn.classList.add("hide-btn");
+    }else{
+      passField.type = "password";
+      showBtn.classList.remove("hide-btn");
+    }
+  });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+        crossorigin="anonymous"></script>
     <script>
         const buyBtns = document.querySelectorAll('.js-buy-ticket');
         const modal = document.querySelector('.js-modal');
         const modalContainer = document.querySelector('.js-modal-container')
         const modalClose = document.querySelector('.js-modal-close');
-        
-        $("#update").on('submit', function(e) {
+
+        $("#FormSubmit").on('submit', function(e) {
             console.log(1)
             e.preventDefault();
             $.ajax({
                 url: $(this).attr('action'),
-                method: 'POST',
+                method: $(this).attr('method'),
                 data: $(this).serialize(),
                 headers: {
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
@@ -67,28 +93,32 @@
                 },
                 processData: false,
                 success: function(data) {
+                    modal.classList.add('open')
                     var error = document.querySelectorAll(".error-text");
                     for (var i = 0; i < error.length; i++) {
                         error[i].innerHTML = "";
                     }
-                    if (data.errCheck == true) {
+                    if (data.error_check == true) {
                         for (const buyBtn of buyBtns){
                             buyBtn.addEventListener('click', showBuyTickets)
                         }
                         setTimeout(function() { 
                             window.location.href = data.url;
                         }, 1000);
-                    } else {
+                    }  else {
+                        console.log(data.msg)
                         printErrorMsg(data.error, '_err');
                     }
                 }
             });
         });
+
         function printErrorMsg(msg, $err) {
             $.each(msg, function(key, value) {
                 $('.' + key + $err).text(value);
             });
         }
+
         function showBuyTickets(){
             modal.classList.add('open')
         }
@@ -97,9 +127,7 @@
             modal.classList.remove('open')
         }
 
-        for (const buyBtn of buyBtns){
-            buyBtn.addEventListener('click', showBuyTickets)
-        }
+        
 
         modalClose.addEventListener('click', hideBuyTickets)
 

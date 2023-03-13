@@ -14,32 +14,39 @@
             <div class="text-filter">
                 <span>Lọc theo:</span>
                 <label class="form-filter">
-                    <input type="radio" checked="checked" name="radio"> Phòng ban
+                    <input type="radio" name="radio" id="b1" onclick="ShowHideDiv()"> Phòng ban
                     <span class="checkmark"></span>
                 </label>
                 <label class="form-filter">
-                    <input type="radio" checked="checked" name="radio"> Chức vụ
+                    <input type="radio" name="radio" id="b2" onclick="ShowHideDiv()"> Chức vụ
                     <span class="checkmark"></span>
                 </label>
                 <label class="form-filter">
-                    <input type="radio" checked="checked" name="radio"> Khoa
+                    <input type="radio" name="radio" id="b3" onclick="ShowHideDiv()"> Khoa
                     <span class="checkmark"></span>
                 </label>
             </div>
 
             <div class="custom-select-input">
-                <select class="select-name" name="" id="">
+                <select class="select-name" name="" id="bb" onchange="myFunctionz()">
                     <option value=""></option>
-                    <option value="">abc</option>
+                    @foreach ($phongBan as $item)
+                        <option value="{{ $item->id }}" id="bb1" hidden >{{ $item->tenphongban }}</option>
+                    @endforeach
+                    @foreach ($chucVu as $item)
+                        <option value="{{ $item->id }}" id="bb2" hidden >{{ $item->tenchucvu }}</option>
+                    @endforeach
+                    @foreach ($khoa as $item)
+                        <option value="{{ $item->id }}" id="bb3" hidden >{{ $item->tenkhoa }}</option>
+                    @endforeach
                 </select>
                 <span class="icon-reset">
-                    <img src="{{ asset('icon/reset.png') }}" alt="">
+                    <a href="{{ url('danhsachnhanvien') }}"><img src="{{ asset('icon/reset.png') }}" alt=""></a>
                 </span>
                 <span class="icon-search">
-                    <img src="{{ asset('icon/search.png') }}" alt="">
+                    <img src="{{ asset('icon/search.png') }}" alt="" onclick="findname()">
                 </span>
-
-                <input class="input-search-name" type="text" placeholder="Nhập tên nhân viên cần tìm">
+                <input id="tennv" class="input-search-name" type="text" placeholder="Nhập tên nhân viên cần tìm">
 
             </div>
             <div class="list-dsnv">
@@ -129,7 +136,7 @@
                                                 <i class='bx bx-edit'></i>
                                             </button>
                                         </a>
-                                        <button class="i-rotate js-buy-ticket" type="button" value="{{$item->id}}" id="nut">
+                                        <button class="i-rotate js-buy-ticket" type="button" value="{{$item->id}}" id="nut" onclick="loadval(this.value)">
                                             <i class='bx bx-trash'></i>
                                         </button>
 
@@ -174,8 +181,10 @@
     const modalContainer = document.querySelector('.js-modal-container')
     const modalClose = document.querySelector('.js-modal-close');
 
-    function showBuyTickets() {
-        document.getElementById("nut2").value=document.getElementById("nut").value;
+    function loadval(val){
+        document.getElementById("nut2").value=val;
+    }
+    function showBuyTickets(val) {
         modal.classList.add('open');
     }
 
@@ -194,6 +203,82 @@
     modalContainer.addEventListener('click', function(event) {
         event.stopPropagation()
     })
+
+
+    function ShowHideDiv() {
+        var phongban = document.getElementById("b1");
+        var chucvu = document.getElementById("b2");
+        var khoa= document.getElementById("b3");
+        if(phongban.checked){
+            //document.getElementById("bb1").hidden = false;
+            document.querySelectorAll('[id="bb1"]').forEach(element => {
+            element.hidden = false
+            })
+            //
+            document.querySelectorAll('[id="bb2"]').forEach(element => {
+            element.hidden = true
+            })
+            document.querySelectorAll('[id="bb3"]').forEach(element => {
+            element.hidden = true
+            })
+        }
+        else if(chucvu.checked){
+            document.querySelectorAll('[id="bb2"]').forEach(element => {
+            element.hidden = false
+            })
+            //
+            document.querySelectorAll('[id="bb1"]').forEach(element => {
+            element.hidden = true
+            })
+            document.querySelectorAll('[id="bb3"]').forEach(element => {
+            element.hidden = true
+            })
+        }
+        else if(khoa.checked){
+            document.querySelectorAll('[id="bb3"]').forEach(element => {
+            element.hidden = false
+            })
+            //
+            document.querySelectorAll('[id="bb1"]').forEach(element => {
+            element.hidden = true
+            })
+            document.querySelectorAll('[id="bb2"]').forEach(element => {
+            element.hidden = true
+            })
+        }
+    }
+    function myFunctionz() {
+        var z=document.getElementById("bb");
+        if(z.value!=""){
+            //d = z.options[z.selectedIndex].id;
+            //alert(d);
+            if(z.options[z.selectedIndex].id=="bb1"){
+                var url="{{ URL::to('locphongban/id=phongbanid') }}";
+                url=url.replace('phongbanid',z.options[z.selectedIndex].value);
+                window.location.assign(url);
+            }
+            if(z.options[z.selectedIndex].id=="bb2"){
+                var url="{{ URL::to('locchucvu/id=chucvuid') }}";
+                url=url.replace('chucvuid',z.options[z.selectedIndex].value);
+                window.location.assign(url);
+            }
+
+            if(z.options[z.selectedIndex].id=="bb3"){
+                var url="{{ URL::to('lockhoa/id=khoaid') }}";
+                url=url.replace('khoaid',z.options[z.selectedIndex].value);
+                window.location.assign(url);
+            }
+
+        }
+    }
+    function findname() {
+        var tennv = document.getElementById("tennv").value;
+        if(tennv!=""){
+            var url="{{ URL::to('timnhanvien/tennv=name') }}";
+            url=url.replace('name',tennv);
+            window.location.assign(url);
+        }
+    }
 </script>
 </body>
 
