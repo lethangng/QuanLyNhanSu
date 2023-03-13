@@ -39,36 +39,25 @@ Route::get('/danhsachnhanvien', function () {
     return view('nhansu.danhsachnhanvien.danhsachnhanvien');
 })->name('danhsachnhanvien');
 */
-<<<<<<< HEAD
-    Route::get('/danhsachchucvu', function () {
-        return view('nhansu.danhsachchucvu.danhsachchucvu');
-    })->name('danhsachchucvu');
+
     /*
-=======
-/*
 Route::get('/danhsachchucvu', function () {
     return view('nhansu.danhsachchucvu.danhsachchucvu');
 })->name('danhsachchucvu');
 */
-Route::get('/danhsachchucvu', [ChucVuController::class, 'index'])->name('danhsachchucvu');
-Route::get('timkiemchucvu/tenchucvu={name}', [ChucVuController::class, 'timchucvu'])->name('timkiemchucvu');
-
-/*
->>>>>>> 47cd308f994360418338a09cb6a5327a96dd079a
+    Route::get('/danhsachchucvu', [ChucVuController::class, 'index'])->name('danhsachchucvu');
+    Route::get('timkiemchucvu/tenchucvu={name}', [ChucVuController::class, 'timchucvu'])->name('timkiemchucvu');
+    /*
 Route::get('/danhsachkhoa', function () {
     return view('nhansu.danhsachkhoa.danhsachkhoa');
 })->name('danhsachkhoa');
 */
     Route::get('/danhsachkhoa', [KhoaController::class, 'index'])->name('danhsachkhoa');
     Route::get('timkiemkhoa/tenkhoa={name}', [KhoaController::class, 'timkhoa'])->name('timkiemkhoa');
-
-
     Route::get('/themmoikkhoa', function () {
         return view('nhansu.danhsachkhoa.themmoikhoa');
     })->name('themmoikhoa');
-
     Route::post('/themkhoa', [KhoaController::class, 'store'])->name('themkhoa');
-
     /*
 Route::get('/suakhoa', function () {
     return view('nhansu.danhsachkhoa.suakhoa');
@@ -77,49 +66,31 @@ Route::get('/suakhoa', function () {
     Route::get('suakhoa/id={id}', [KhoaController::class, 'edit'])->name('suakhoa');
     Route::post('capnhatkhoa/id={id}', [KhoaController::class, 'update'])->name('capnhatkhoa');
     Route::post('/xoakhoa', [KhoaController::class, 'destroy'])->name('xoakhoa');
-
-<<<<<<< HEAD
-
-    Route::get('/danhsachphongban', function () {
-        return view('nhansu.danhsachphongban.danhsachphongban');
-    })->name('danhsachphongban');
-=======
-/*
+    /*
 Route::get('/danhsachphongban', function () {
     return view('nhansu.danhsachphongban.danhsachphongban');
 })->name('danhsachphongban');
 */
-Route::get('/danhsachphongban', [PhongBanController::class, 'index'])->name('danhsachphongban');
-Route::get('timkiemphongban/tenphongban={name}', [PhongBanController::class, 'timphongban'])->name('timkiemphongban');
->>>>>>> 47cd308f994360418338a09cb6a5327a96dd079a
+    Route::get('/danhsachphongban', [PhongBanController::class, 'index'])->name('danhsachphongban');
+    Route::get('timkiemphongban/tenphongban={name}', [PhongBanController::class, 'timphongban'])->name('timkiemphongban');
+
 
     Route::get('/themmoichucvu', function () {
         return view('nhansu.danhsachchucvu.themmoichucvu');
     })->name('themmoichucvu');
 
-<<<<<<< HEAD
-    Route::get('/suachucvu', function () {
-        return view('nhansu.danhsachchucvu.suachucvu');
-    })->name('suachucvu');
 
-    Route::get('/themmoinhanvien', [NhanVienController::class, 'create'])->name('themmoinhanvien');
-    Route::post('/themnhanvien', [NhanVienController::class, 'store'])->name('themnhanvien');
-=======
-Route::post('/themchucvu', [ChucVuController::class, 'store'])->name('themchucvu');
-
-Route::get('suachucvu/id={id}', [ChucVuController::class, 'edit'])->name('suachucvu');
-Route::post('capnhatchucvu/id={id}', [ChucVuController::class, 'update'])->name('capnhatchucvu');
-
-Route::post('/xoachucvu',[ChucVuController::class, 'destroy'])->name('xoachucvu');
-
-/*
+    Route::post('/themchucvu', [ChucVuController::class, 'store'])->name('themchucvu');
+    Route::get('suachucvu/id={id}', [ChucVuController::class, 'edit'])->name('suachucvu');
+    Route::post('capnhatchucvu/id={id}', [ChucVuController::class, 'update'])->name('capnhatchucvu');
+    Route::post('/xoachucvu', [ChucVuController::class, 'destroy'])->name('xoachucvu');
+    /*
 Route::get('/suachucvu', function () {
     return view('nhansu.danhsachchucvu.suachucvu');
 })->name('suachucvu');
 */
-Route::get('/themmoinhanvien', [NhanVienController::class, 'create'])->name('themmoinhanvien');
-Route::post('/themnhanvien', [NhanVienController::class, 'store'])->name('themnhanvien');
->>>>>>> 47cd308f994360418338a09cb6a5327a96dd079a
+    Route::get('/themmoinhanvien', [NhanVienController::class, 'create'])->name('themmoinhanvien');
+    Route::post('/themnhanvien', [NhanVienController::class, 'store'])->name('themnhanvien');
 
     Route::post('/xoanhanvien', [NhanVienController::class, 'destroy'])->name('xoanhanvien');
     /*
@@ -129,32 +100,21 @@ Route::get('/suanhanvien', function () {
 */
     Route::get('suanhanvien/id={id}', [NhanVienController::class, 'edit'])->name('suanhanvien');
     Route::post('capnhatnhanvien/id={id}', [NhanVienController::class, 'update'])->name('capnhatnhanvien');
-
-<<<<<<< HEAD
     Route::get('/themmoiphongban', function () {
         return view('nhansu.danhsachphongban.themmoiphongban');
     })->name('themmoiphongban');
+    Route::post('/themphongban', [PhongBanController::class, 'store'])->name('themphongban');
 
-    Route::get('/suaphongban', function () {
-        return view('nhansu.danhsachphongban.suaphongban');
-    })->name('suaphongban');
-    Route::prefix('danhsachtrangthai')->group(function () {
-        Route::get('/', [TrangThaiController::class, 'index'])->name('danhsachtrangthai');
-=======
-Route::get('/themmoiphongban', function () {
-    return view('nhansu.danhsachphongban.themmoiphongban');
-})->name('themmoiphongban');
-Route::post('/themphongban', [PhongBanController::class, 'store'])->name('themphongban');
-
-/*
+    /*
 Route::get('/suaphongban', function () {
     return view('nhansu.danhsachphongban.suaphongban');
 })->name('suaphongban');
 */
-Route::get('suaphongban/id={id}', [PhongBanController::class, 'edit'])->name('suaphongban');
-Route::post('capnhatphongban/id={id}', [PhongBanController::class, 'update'])->name('capnhatphongban');
-Route::post('/xoaphongban',[PhongBanController::class, 'destroy'])->name('xoaphongban');
->>>>>>> 47cd308f994360418338a09cb6a5327a96dd079a
+    Route::get('suaphongban/id={id}', [PhongBanController::class, 'edit'])->name('suaphongban');
+    Route::post('capnhatphongban/id={id}', [PhongBanController::class, 'update'])->name('capnhatphongban');
+    Route::post('/xoaphongban', [PhongBanController::class, 'destroy'])->name('xoaphongban');
+    Route::prefix('danhsachtrangthai')->group(function () {
+        Route::get('/', [TrangThaiController::class, 'index'])->name('danhsachtrangthai');
 
         Route::post('/xoa', [TrangThaiController::class, 'del'])->name('xoatrangthai');
 
