@@ -37,7 +37,7 @@
                         <tbody>
                         @isset($khoa)
                             @foreach ($khoa as $item)
-                                <th class="h1" scope="row">{{ $item->id }}</th>
+                                <th class="h1" scope="row">{{ $item->makhoa }}</th>
                                     <th class="h1" scope="row">{{ $item->tenkhoa }}</th>
                                     <th class="h1" scope="row">
                                         <a href="{{ url('suakhoa/id='.$item->id) }}">

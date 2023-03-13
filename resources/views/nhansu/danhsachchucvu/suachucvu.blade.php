@@ -7,22 +7,31 @@
         </div>
         <div class="container">
             <div class="row">
+            <form action="{{ url('capnhatchucvu/id='.$chucvu->id) }}" method="POST">
+                    @csrf
                 <div class="col-sm left-inf">
+                    @isset($chucvu)
                         <div class="label-name-scv">
                             <label for="">Mã chức vụ:</label>
                         </div>
-                        <input class="inp-tmcv" type="text" name="" id="" placeholder="Nhập mã chức vụ">
+                        <input class="inp-tmcv" type="text" name="machucvu" id="" value="{{$chucvu->machucvu}}" placeholder="Nhập mã chức vụ">
                         <div class="label-name-scv">
                             <label for="">Tên chức vụ:</label>
                         </div>
-                        <input class="inp-tmcv" type="text" name="" id="" placeholder="Nhập tên chức vụ">
+                        <input class="inp-tmcv" type="text" name="tenchucvu" id="" value="{{$chucvu->tenchucvu}}" placeholder="Nhập tên chức vụ">
+                        @endisset
+                        @empty($chucvu)
+                        <h1>Sai router ,truy vấn hoặc không có data</h1>
+                    @endempty
+
                 </div>
 
                 <div class="btn-scv">
                     <button class="text-xacnhan js-buy-ticket">Xác nhận</button>
                 </div>
+                </form>
             </div>
-            
+
         </div>
     </div>
 </div>
@@ -63,7 +72,7 @@
         modalClose.addEventListener('click', hideBuyTickets)
 
         modal.addEventListener('click', hideBuyTickets)
-        
+
         modalContainer.addEventListener('click', function(event)
         {
             event.stopPropagation()

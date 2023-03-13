@@ -7,22 +7,25 @@
         </div>
         <div class="container">
             <div class="row">
+                <form action="{{url('themchucvu')}}" method="POST">
+                @csrf
                 <div class="col-sm left-inf">
                         <div class="label-name-tmcv">
                             <label for="">Mã chức vụ:</label>
                         </div>
-                        <input class="inp-tmcv" type="text" name="" id="" placeholder="Nhập mã chức vụ">
+                        <input class="inp-tmcv" type="text" name="machucvu" id="" placeholder="Nhập mã chức vụ">
                         <div class="label-name-tmcv">
                             <label for="">Tên chức vụ:</label>
                         </div>
-                        <input class="inp-tmcv" type="text" name="" id="" placeholder="Nhập tên chức vụ">
+                        <input class="inp-tmcv" type="text" name="tenchucvu" id="" placeholder="Nhập tên chức vụ">
                 </div>
 
                 <div class="btn-tmcv">
                     <button class="text-xacnhan js-buy-ticket">Xác nhận</button>
                 </div>
+                </form>
             </div>
-            
+
         </div>
     </div>
 </div>
@@ -32,7 +35,7 @@
             <div class="modal-close js-modal-close">
                 <i class="ti-close"></i>
             </div>
-    
+
             <div class="modal-text-delete-2">
                 <span class="icon-successfull-delete-2">
                     <img src="{{ asset('css/Img/image 36.png') }}" alt="">
@@ -62,7 +65,7 @@
         modalClose.addEventListener('click', hideBuyTickets)
 
         modal.addEventListener('click', hideBuyTickets)
-        
+
         modalContainer.addEventListener('click', function(event)
         {
             event.stopPropagation()
