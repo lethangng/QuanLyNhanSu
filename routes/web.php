@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HopDongController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\ThongKeHDController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KhenThuongController;
 use App\Http\Controllers\KyLuatController;
@@ -222,7 +223,9 @@ Route::get('/suaphongban', function () {
         Route::post('search', [HopDongController::class, 'search'])->name('hopdong.search');
     });
     // Route::post('upfile', [ThongTinCaNhanController::class, 'upfile'])->name('upfile');
-
+    // Route::get('thong-ke-hop-dong', [ThongKeHDController::class, 'index'])->name('thongke.hopdong');
+    Route::post('thong-ke-hop-dong', [ThongKeHDController::class, 'thongke'])->name('thongkehopdong');
+    
 
     //test qlns
     Route::get('/sm', [NhanvienController::class, 'index2']);

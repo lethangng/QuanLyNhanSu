@@ -10,7 +10,7 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('fonts/themify-icons/themify-icons.css') }}">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
     <!----======== CSS ======== -->
     {{-- <link rel="stylesheet" href="./css/style1.css"> --}}
@@ -21,7 +21,7 @@
     <!----===== Boxicons CSS ===== -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
-
+    @yield('script')
 </head>
 
 <body>

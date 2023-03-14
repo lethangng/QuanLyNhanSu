@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class ChucVuController extends Controller
 {
-
     public function index(){
         $chucvu=ChucVu::paginate(5);
         return view('nhansu.danhsachchucvu.danhsachchucvu',['chucvu'=>$chucvu]);
