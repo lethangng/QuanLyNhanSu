@@ -1484,6 +1484,7 @@ td {
     margin-left: 26px;
     width: 368px;
     height: 219px;
+    border: none;
 }
 .container-icon-thongke h4{
     font-size: 30px;
@@ -1496,4 +1497,54 @@ td {
     padding: 10px;
     margin-left: 150px;
     margin-top: 60px;
+}
+.icon-thongke-5 img{
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+    margin-top: 30px;
+}
+/* ***** Thống kê  hợp đồng ***** */
+.tkhd {
+    max-width: 1500px !important;
+}
+.tkhd h4{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    padding-top: 8px;
+}
+.tkhd .form-tkhd{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+.nam{
+    padding-right: 10px;
+    padding-top: 3px;
+    font-size: 18px;
+}
+.inp-nam{
+    padding: 2px 10px;
+    margin-left: 4px;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+.btn-tkkd{
+    margin-left: 20px;
+    padding: 2px 4px;
+    border-radius: 10px;
+    background-color: #81f281;
+}
+.icon-search-tkhd img{
+    width: 24px;
+}
+
+.list-tkhd h4{
+    margin-top: 20px;
+    font-size: 33px;
+}
+.left-tkhd{
+    padding-left: 100px;
+    padding-top: 6px;
 }

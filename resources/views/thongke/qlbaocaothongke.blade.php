@@ -30,7 +30,7 @@
                     <div class="col-4 right">
                         <a href="#">
                             <div class="container-icon-thongke">
-                                <span class="icon-thongke">
+                                <span class="icon-thongke-5">
                                     <img src="{{ asset('icon/icon-thongke-1.png') }}" alt="">
                                 </span>
                                 <h4>Thống kê nhân viên</h4>
@@ -40,24 +40,27 @@
                 </div>
                 <div class="row">
                     <div class="col-4 left">
-                        <a href="#">
-                            <div class="container-icon-thongke">
-                                <span class="icon-thongke">
+                        <form action="{{ route('thongketangluong') }}" method="post">
+                            @php
+                                use Carbon\Carbon;
+                                $year_now = Carbon::now()->year;
+                            @endphp
+                            <input type="text" name="nam" value="{{ $year_now }}" hidden>
+                            @csrf
+                            <button type="submit" class="container-icon-thongke">
+                                <span class="icon-thongke-5">
                                     <img src="{{ asset('icon/icon-thongke-1.png') }}" alt="">
                                 </span>
                                 <h4>Thống kê tăng lương</h4>
-                            </div>
-                        </a>
+                            </button>
+                        </form>
                     </div>
                     <div class="col-4 mid">
                         <form action="{{ route('thongkehopdong') }}" method="post">
-                            @php
-                                use Carbon\Carbon;
-                            @endphp
-                            <input type="text" name="nam" value="{{ Carbon::now()->year }}" hidden>
+                            <input type="text" name="nam" value="{{ $year_now }}" hidden>
                             @csrf
                             <button type="submit" class="container-icon-thongke">
-                                <span class="icon-thongke">
+                                <span class="icon-thongke-5">
                                     <img src="{{ asset('icon/icon-thongke-1.png') }}" alt="">
                                 </span>
                                 <h4>Thống kê hợp đồng</h4>

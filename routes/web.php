@@ -15,6 +15,7 @@ use App\Http\Controllers\PhongBanController;
 use App\Http\Controllers\ThongTinController;
 use App\Http\Controllers\TrangThaiController;
 use Illuminate\Routing\Router;
+use App\Http\Controllers\ThongKeTLController;
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +225,9 @@ Route::get('/suaphongban', function () {
     });
     // Route::post('upfile', [ThongTinCaNhanController::class, 'upfile'])->name('upfile');
     // Route::get('thong-ke-hop-dong', [ThongKeHDController::class, 'index'])->name('thongke.hopdong');
+    // Thống kê
     Route::post('thong-ke-hop-dong', [ThongKeHDController::class, 'thongke'])->name('thongkehopdong');
+    Route::Post('thong-ke-tang-luong', [ThongKeTLController::class, 'thongke'])->name('thongketangluong');
     
 
     //test qlns

@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\NhanVien;
-use Illuminate\Support\Facades\DB;
-use App\Http\Requests\HopDongRequest;
 use App\Models\HopDong;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
 
 class ThongKeHDController extends Controller
 {
@@ -21,16 +17,13 @@ class ThongKeHDController extends Controller
         if(Auth::user()) {
             if($request->nam) {
                 $hopdongs = $this->hopdong->thongkehethan($request->nam);
-                // dd($hopdong);
-                // dd($hopdong);
                 $hethan = count($hopdongs);
-                // dd($hethan);
                 $conhan = $this->hopdong->conhan($request->nam);
                 $nam = $request->nam;
                 $data = [
-                    ['Task', 'Hours per Day'],
+                    ['Task', 'Số lượng'],
                     ['Còn hạn', $conhan],
-                    ['Hết hạn', $hethan]
+                    ['Đã hết hạn', $hethan]
                 ];
                 return view('thongke.thongkehopdong', compact('data', 'hopdongs', 'nam'));
             } 
