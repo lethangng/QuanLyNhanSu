@@ -9,7 +9,7 @@
                 <form action="{{ route('thongkehopdong') }}" method="POST">
                     @csrf
                     <label for="">Năm</label>
-                    <input type="text" placeholder="Nhập năm" name="nam">
+                    <input type="text" placeholder="Nhập năm" name="nam" required>
                     <button type="submit">Tìm kiếm</button>
                 </form>
                 <div id="piechart" style="width: 900px; height: 500px;"></div>

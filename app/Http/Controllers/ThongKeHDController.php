@@ -18,18 +18,24 @@ class ThongKeHDController extends Controller
         $this->hopdong = new HopDong();
     }
     public function thongke(Request $request) {
-        $hopdongs = $this->hopdong->thongkehethan($request->nam);
-        // dd($hopdong);
-        // dd($hopdong);
-        $hethan = count($hopdongs);
-        // dd($hethan);
-        $conhan = $this->hopdong->conhan($request->nam);
-        $nam = $request->nam;
-        $data = [
-            ['Task', 'Hours per Day'],
-            ['Còn hạn', $conhan],
-            ['Hết hạn', $hethan]
-        ];
-        return view('thongke.thongkehopdong', compact('data', 'hopdongs', 'nam'));
+        if(Auth::user()) {
+            if($request->nam) {
+                $hopdongs = $this->hopdong->thongkehethan($request->nam);
+                // dd($hopdong);
+                // dd($hopdong);
+                $hethan = count($hopdongs);
+                // dd($hethan);
+                $conhan = $this->hopdong->conhan($request->nam);
+                $nam = $request->nam;
+                $data = [
+                    ['Task', 'Hours per Day'],
+                    ['Còn hạn', $conhan],
+                    ['Hết hạn', $hethan]
+                ];
+                return view('thongke.thongkehopdong', compact('data', 'hopdongs', 'nam'));
+            } 
+        } else {
+            return redirect()->route('login');
+        }
     }
 }
