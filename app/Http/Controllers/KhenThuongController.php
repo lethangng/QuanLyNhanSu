@@ -29,7 +29,7 @@ class KhenThuongController extends Controller
             $title = 'Danh sách khen thưởng';
             $khenthuongs = KhenThuong::paginate(5);
             // dd($khenthuongs);
-            return view('khenthuong.index', compact('khenthuongs', 'title')); 
+            return view('khenthuong.index', compact('khenthuongs', 'title'));
         } else {
             return redirect()->route('login');
         }
@@ -73,7 +73,7 @@ class KhenThuongController extends Controller
             ]);
             return response()->json(["check" => true]);
         } else {
-            return redirect()->route('khenthuong.index');
+            return response()->json(['error' => ['upfile' => 'File bắt buộc phải nhập']]);
         }
     }
 
@@ -123,7 +123,13 @@ class KhenThuongController extends Controller
             unlink(public_path('uploads/files/'.$oldFile));
             return response()->json(["check" => true]);
         } else {
-            return redirect()->route('khenthuong.index');
+            KhenThuong::where('id', $id)
+            ->update([
+                'manv' => $request->manv,
+                'ngaykhenthuong' => $request->ngaykhenthuong,
+                'lydo' => $request->lydo
+            ]);
+            return response()->json(["check" => true]);
         }
     }
 
@@ -155,18 +161,18 @@ class KhenThuongController extends Controller
         } else if($data['thang'] && $data['manv']) {
             // dd($data);
             $khenthuongs = KhenThuong::select('*')
-            ->whereMonth('ngaykhenthuong', $request->thang)
-            ->where('manv', $request->manv)->paginate(5);
+                ->whereMonth('ngaykhenthuong', $request->thang)
+                ->where('manv', $request->manv)->paginate(5);
         } else if($data['nam'] && $data['manv']) {
             // dd($data);
             $khenthuongs = KhenThuong::select('*')
-            ->whereYear('ngaykhenthuong', $request->nam)
-            ->where('manv', $request->manv)->paginate(5);
+                ->whereYear('ngaykhenthuong', $request->nam)
+                ->where('manv', $request->manv)->paginate(5);
         } else if($data['nam'] && $data['thang']) {
             // dd($data);
             $khenthuongs = KhenThuong::select('*')
-            ->whereMonth('ngaykhenthuong', $request->thang)
-            ->whereYear('ngaykhenthuong', $request->nam)->paginate(5);
+                ->whereMonth('ngaykhenthuong', $request->thang)
+                ->whereYear('ngaykhenthuong', $request->nam)->paginate(5);
         } else if($data['thang']) {
             // dd($data);
             $khenthuongs = KhenThuong::select('*')
@@ -174,11 +180,11 @@ class KhenThuongController extends Controller
         } else if($data['nam']) {
             // dd($data);
             $khenthuongs = KhenThuong::select('*')
-            ->whereYear('ngaykhenthuong', $request->nam)->paginate(5);
+                ->whereYear('ngaykhenthuong', $request->nam)->paginate(5);
         } else if($data['manv']) {
             // dd($data);
             $khenthuongs = KhenThuong::select('*')
-            ->where('manv', $request->manv)->paginate(5);
+                ->where('manv', $request->manv)->paginate(5);
         } else {
             return redirect()->route('khenthuong.index');
         }

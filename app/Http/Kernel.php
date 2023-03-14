@@ -58,7 +58,7 @@ class Kernel extends HttpKernel
         'checkNV' => \App\Http\Middleware\checkNV::class,
         'checkGV' => \App\Http\Middleware\checkGV::class,
         'checkNVTC' => \App\Http\Middleware\checkNVTC::class,
-        'checkHT' => \App\Http\Middleware\CheckRole::class,
+        'checklogin' => \App\Http\Middleware\CheckRole::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,

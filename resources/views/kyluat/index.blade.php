@@ -85,8 +85,14 @@
                                 </th>
                                 <th class="h1" scope="row">{{ $kyluat->lydo }}</th>
                                 <th class="h1" scope="row">
-                                    <a href="{{ asset('uploads/files/' . $kyluat->chitietkyluat) }}"
-                                        style="text-decoration: none;">
+                                    @php
+                                        if ($kyluat->chitietkyluat) {
+                                            $url = asset('uploads/files/' . $kyluat->chitietkyluat);
+                                        } else {
+                                            $url = '#';
+                                        }
+                                    @endphp
+                                    <a href="{{ $url }}" style="text-decoration: none;">
                                         <button class="i-save">
                                             <img src="{{ asset('icon/save.png') }}" alt="">
                                         </button>
@@ -97,13 +103,9 @@
                                             <i class='bx bx-edit'></i>
                                         </button>
                                     </a>
-                                    <a action="{{ route('kyluat.destroy', ['id' => $kyluat->id]) }}" method="post">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button class="i-rotate js-buy-ticket" type="submit">
-                                            <i class='bx bx-trash'></i>
-                                        </button>
-                                    </a>
+                                    <button class="i-rotate js-buy-ticket">
+                                        <i class='bx bx-trash'></i>
+                                    </button>
                                 </th>
                             </tr>
                         @endforeach
@@ -111,22 +113,26 @@
                 </table>
             </div>
         </div>
-        <nav aria-label="Page navigation example" class="ml-5">
-            {{ $kyluats->links('pagination::bootstrap-5') }}
-        </nav>
+        <div class="container-footer-kt">
+            <nav aria-label="Page navigation example" class="ml-5 footer-kt">
+                {{ $kyluats->links('pagination::bootstrap-5') }}
+            </nav>
+        </div>
 
-        <div class="modal-delete js-modal ">
+        <div class="modal-delete js-modal">
             <div class="modal-container-delete js-modal-container">
                 <div class="modal-close js-modal-close">
                     <i class="ti-close"></i>
                 </div>
-        
                 <div class="modal-text-delete">
                     <h2>Bạn có chắc chắn muốn xóa không?</h2>
-                    <div class="modal-buttons">
-                        <button class="confirm-btn">Xác nhận</button>
-                        <button class="cancel-btn">Hủy</button>
-                    </div>
+                    <form class="modal-buttons" action="{{ route('kyluat.destroy', ['id' => $kyluat->id]) }}"
+                        method="post">
+                        @method('DELETE')
+                        @csrf
+                        <button class="confirm-btn" type="submit">Xác nhận</button>
+                        <button class="cancel-btn" type="button" onclick="hideBuyTickets()">Hủy</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -135,25 +141,24 @@
             const modal = document.querySelector('.js-modal');
             const modalContainer = document.querySelector('.js-modal-container')
             const modalClose = document.querySelector('.js-modal-close');
-        
-            function showBuyTickets(){
+
+            function showBuyTickets() {
                 modal.classList.add('open')
             }
-        
-            function hideBuyTickets(){
+
+            function hideBuyTickets() {
                 modal.classList.remove('open')
             }
-        
-            for (const buyBtn of buyBtns){
+
+            for (const buyBtn of buyBtns) {
                 buyBtn.addEventListener('click', showBuyTickets)
             }
-        
+
             modalClose.addEventListener('click', hideBuyTickets)
-        
+
             modal.addEventListener('click', hideBuyTickets)
-            
-            modalContainer.addEventListener('click', function(event)
-            {
+
+            modalContainer.addEventListener('click', function(event) {
                 event.stopPropagation()
             })
         </script>

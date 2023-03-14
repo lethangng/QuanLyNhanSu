@@ -87,8 +87,14 @@
                                 </th>
                                 <th class="h1" scope="row">{{ $tangluong->lydo }}</th>
                                 <th class="h1" scope="row">
-                                    <a href="{{ asset('uploads/files/' . $tangluong->chitiettangluong) }}"
-                                        style="text-decoration: none;">
+                                    @php
+                                        if ($tangluong->chitiettangluong) {
+                                            $url = asset('uploads/files/' . $tangluong->chitiettangluong);
+                                        } else {
+                                            $url = '#';
+                                        }
+                                    @endphp
+                                    <a href="{{ $url }}" style="text-decoration: none;">
                                         <button class="i-save">
                                             <img src="{{ asset('icon/save.png') }}" alt="">
                                         </button>
@@ -99,13 +105,9 @@
                                             <i class='bx bx-edit'></i>
                                         </button>
                                     </a>
-                                    <a action="{{ route('tangluong.destroy', ['id' => $tangluong->id]) }}" method="post">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button class="i-rotate js-buy-ticket" type="submit">
-                                            <i class='bx bx-trash'></i>
-                                        </button>
-                                    </a>
+                                    <button class="i-rotate js-buy-ticket" type="submit">
+                                        <i class='bx bx-trash'></i>
+                                    </button>
                                 </th>
                             </tr>
                         @endforeach
@@ -113,9 +115,11 @@
                 </table>
             </div>
         </div>
-        <nav aria-label="Page navigation example" class="ml-5">
-            {{ $tangluongs->links('pagination::bootstrap-5') }}
-        </nav>
+        <div class="container-footer-kt">
+            <nav aria-label="Page navigation example" class="ml-5 footer-kt">
+                {{ $tangluongs->links('pagination::bootstrap-5') }}
+            </nav>
+        </div>
 
         <div class="modal-delete js-modal ">
             <div class="modal-container-delete js-modal-container">
@@ -125,10 +129,13 @@
 
                 <div class="modal-text-delete">
                     <h2>Bạn có chắc chắn muốn xóa không?</h2>
-                    <div class="modal-buttons">
+                    <form class="modal-buttons" action="{{ route('tangluong.destroy', ['id' => $tangluong->id]) }}"
+                        method="post">
+                        @method('DELETE')
+                        @csrf
                         <button class="confirm-btn">Xác nhận</button>
-                        <button class="cancel-btn">Hủy</button>
-                    </div>
+                        <button class="cancel-btn" type="button" onclick="hideBuyTickets()">Hủy</button>
+                    </form>
                 </div>
             </div>
         </div>

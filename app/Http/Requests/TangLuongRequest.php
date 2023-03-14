@@ -29,7 +29,7 @@ class TangLuongRequest extends FormRequest
             'manv' => 'required|exists:nhanvien,id',
             'ngaytangluong' => 'required|date',
             'lydo' => 'required',
-            'upfile' => 'required|mimes:png,jpg,jpeg,doc,docx,pdf|max:10024',
+            'upfile' => 'mimes:png,jpg,jpeg,doc,docx,pdf|max:10024',
         ];
     }
 
@@ -39,7 +39,8 @@ class TangLuongRequest extends FormRequest
             'required' => ':attribute bắt buộc phải nhập',
             'date' => ':attribute phải là định dạng ngày tháng',
             'exists' => ':attribute không tồn tại.',
-            'upfile.max' => ':attribute phải nhỏ hơn 10 MB'
+            'upfile.max' => ':attribute phải nhỏ hơn 10 MB',
+            'upfile.mimes' => ':attribute phải có đuôi png, jpg, doc, docx hoặc pdf'
         ];
     }
 

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use App\Models\NhanVien;
 
 class User extends Authenticatable
 {
@@ -20,6 +21,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
     public function findRoleId($id)
     {
         $user = DB::table('nhanvien')->where('machucvu', $id)->get();
@@ -88,4 +90,45 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function nhanvien()
+    {
+        return $this->belongsTo(NhanVien::class, 'manv', 'id');
+    }
+    public function updateUser($email, $pass)
+    {
+        $this::update([
+            'email' => $email,
+            'password' => bcrypt($pass),
+        ]);
+    }
+    public function insertUser($manv, $email, $pass)
+    {
+        $this::insert([
+            'manv' => $manv,
+            'email' => $email,
+            'password' => bcrypt($pass),
+        ]);
+    }
+    public function searchElm()
+    {
+        return ' <tr class="">
+        <th class="h1" scope="row"> ' . $this->id . ' </th>
+        <th class="h1" scope="row"> ' . $this->manv . ' </th>
+        <th class="h1" scope="row"> ' . $this->nhanvien->tennv . ' </th>
+        <th class="h1" scope="row"> ' . $this->email . ' </th>
+        <th class="h1" scope="row">******</th>
+        <th class="h1" scope="row">
+            <a href="' . route('suataikhoan', ['id' => $this->id]) . '">
+                <button class="i-edit">
+                    <i class="bx bx-edit"></i>
+                </button>
+            </a>
+            <a href="#">
+                <button class="i-rotate js-buy-ticket">
+                    <i class="bx bx-trash"></i>
+                </button>
+            </a>
+        </th>
+        </tr>     ';
+    }
 }

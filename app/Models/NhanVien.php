@@ -28,17 +28,25 @@ class NhanVien extends Model
         'bacluong',
         'email'
     ];
-    public function chucVu() {
+    public function chucVu()
+    {
         return $this->belongsTo(ChucVu::class, 'machucvu', 'id');
     }
-    public function khoa() {
+    public function khoa()
+    {
         return $this->belongsTo(Khoa::class, 'makhoa', 'id');
     }
-    public function phongBan() {
+    public function phongBan()
+    {
         return $this->belongsTo(PhongBan::class, 'maphongban', 'id');
     }
-    public function info($id = null) {
-        if($id) {
+    // public function user()
+    // {
+    //     return $this->belongsTo(user::class, 'id', 'manv');
+    // }
+    public function info($id = null)
+    {
+        if ($id) {
             return NhanVien::select(DB::raw('*'))->where('id', $id)->first();
         } else {
             // return DB::raw('SELECT * FROM nhanvien WHERE id = ' . Auth::user()->manv) . ' LIMIT 1';
@@ -46,7 +54,15 @@ class NhanVien extends Model
             // return NhanVien::select(DB::raw('*'))->where('id', 1001)->first();
         }
     }
-    public function findId($id) {
+    public function findId($id)
+    {
         return NhanVien::select(DB::raw('tennv'))->where('id', $id)->first();
+    }
+    public function checkMachucvu()
+    {
+        if ($this->machucvu == 2) {
+            return true;
+        }
+        return false;
     }
 }
