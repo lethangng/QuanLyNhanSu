@@ -30,23 +30,34 @@ class NhanVienController extends Controller
     }
     public function store(Request $request)
     {
-        $nhanVien=new NhanVien;
-        $nhanVien->tennv=$request->hoten;
-        $nhanVien->ngaysinh=$request->ngaysinh;
-        $nhanVien->gioitinh=$request->gioitinh;
-        $nhanVien->cccd=$request->cccd;
-        $nhanVien->diachi=$request->diachi;
-        $nhanVien->email=$request->email;
-        $nhanVien->hsl=$request->hsl;
-        $nhanVien->quequan=$request->quequan;
-        $nhanVien->sdt=$request->sodienthoai;
-        $nhanVien->maphongban=$request->phongban;
-        $nhanVien->machucvu=$request->chucvu;
-        $nhanVien->makhoa=$request->khoa;
-        $nhanVien->matrangthai=$request->trangthai;
-        $nhanVien->bacluong=$request->bacluong;
-        $nhanVien->save();
-        return redirect()->route('danhsachnhanvien');
+        if($request->hoten=="" || $request->ngaysinh=="" || $request->gioitinh=="" || $request->cccd=="" || $request->diachi=="" || $request->email=="" || $request->hsl=="" || $request->quequan=="" || $request->sodienthoai=="" || $request->phongban=="" || $request->chucvu==""  || $request->khoa=="" || $request->trangthai=="" || $request->bacluong==""){
+            return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+        }
+        else{
+            if( DB::select('SELECT id from nhanvien where cccd='.$request->cccd)!=null){
+                return redirect()->back()->with('message', 'Căn cước công dân đã tồn tại');
+            }
+            else{
+                $nhanVien=new NhanVien;
+                $nhanVien->tennv=$request->hoten;
+                $nhanVien->ngaysinh=$request->ngaysinh;
+                $nhanVien->gioitinh=$request->gioitinh;
+                $nhanVien->cccd=$request->cccd;
+                $nhanVien->diachi=$request->diachi;
+                $nhanVien->email=$request->email;
+                $nhanVien->hsl=$request->hsl;
+                $nhanVien->quequan=$request->quequan;
+                $nhanVien->sdt=$request->sodienthoai;
+                $nhanVien->maphongban=$request->phongban;
+                $nhanVien->machucvu=$request->chucvu;
+                $nhanVien->makhoa=$request->khoa;
+                $nhanVien->matrangthai=$request->trangthai;
+                $nhanVien->bacluong=$request->bacluong;
+                $nhanVien->save();
+                return redirect()->route('danhsachnhanvien');
+            }
+
+        }
     }
     public function destroy(Request $request)
     {
@@ -71,23 +82,55 @@ class NhanVienController extends Controller
     }
     public function update(Request $request,$id)
     {
-        $nhanVien = NhanVien::find($id);
-        $nhanVien->tennv=$request->hoten;
-        $nhanVien->ngaysinh=$request->ngaysinh;
-        $nhanVien->gioitinh=$request->gioitinh;
-        $nhanVien->cccd=$request->cccd;
-        $nhanVien->diachi=$request->diachi;
-        $nhanVien->email=$request->email;
-        $nhanVien->hsl=$request->hsl;
-        $nhanVien->quequan=$request->quequan;
-        $nhanVien->sdt=$request->sodienthoai;
-        $nhanVien->maphongban=$request->phongban;
-        $nhanVien->machucvu=$request->chucvu;
-        $nhanVien->makhoa=$request->khoa;
-        $nhanVien->matrangthai=$request->trangthai;
-        $nhanVien->bacluong=$request->bacluong;
-        $nhanVien->update();
-        return redirect('danhsachnhanvien');
+
+        if($request->hoten=="" || $request->ngaysinh=="" || $request->gioitinh=="" || $request->cccd=="" || $request->diachi=="" || $request->email=="" || $request->hsl=="" || $request->quequan=="" || $request->sodienthoai=="" || $request->phongban=="" || $request->chucvu==""  || $request->khoa=="" || $request->trangthai=="" || $request->bacluong==""){
+            return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+        }
+        else{
+            $cn=NhanVien::find($id);
+            if($cn->cccd==$request->cccd){//trung cccd cũ
+                $nhanVien = NhanVien::find($id);
+                $nhanVien->tennv=$request->hoten;
+                $nhanVien->ngaysinh=$request->ngaysinh;
+                $nhanVien->gioitinh=$request->gioitinh;
+                $nhanVien->cccd=$request->cccd;
+                $nhanVien->diachi=$request->diachi;
+                $nhanVien->email=$request->email;
+                $nhanVien->hsl=$request->hsl;
+                $nhanVien->quequan=$request->quequan;
+                $nhanVien->sdt=$request->sodienthoai;
+                $nhanVien->maphongban=$request->phongban;
+                $nhanVien->machucvu=$request->chucvu;
+                $nhanVien->makhoa=$request->khoa;
+                $nhanVien->matrangthai=$request->trangthai;
+                $nhanVien->bacluong=$request->bacluong;
+                $nhanVien->update();
+                return redirect('danhsachnhanvien');
+            }
+            elseif( DB::select('SELECT id from nhanvien where cccd='.$request->cccd)!=null){//trung cccd
+                return redirect()->back()->with('message', 'Căn cước công dân đã tồn tại');
+            }
+            else{
+                $nhanVien = NhanVien::find($id);
+                $nhanVien->tennv=$request->hoten;
+                $nhanVien->ngaysinh=$request->ngaysinh;
+                $nhanVien->gioitinh=$request->gioitinh;
+                $nhanVien->cccd=$request->cccd;
+                $nhanVien->diachi=$request->diachi;
+                $nhanVien->email=$request->email;
+                $nhanVien->hsl=$request->hsl;
+                $nhanVien->quequan=$request->quequan;
+                $nhanVien->sdt=$request->sodienthoai;
+                $nhanVien->maphongban=$request->phongban;
+                $nhanVien->machucvu=$request->chucvu;
+                $nhanVien->makhoa=$request->khoa;
+                $nhanVien->matrangthai=$request->trangthai;
+                $nhanVien->bacluong=$request->bacluong;
+                $nhanVien->update();
+                return redirect('danhsachnhanvien');
+            }
+
+        }
     }
     public function locphongban($id)
     {

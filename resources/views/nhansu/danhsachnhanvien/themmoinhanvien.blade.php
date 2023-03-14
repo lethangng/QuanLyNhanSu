@@ -28,7 +28,7 @@
                         <div class="label-name">
                             <label for="">CMND:</label>
                         </div>
-                        <input class="inp-tmnv" type="text" name="cccd" id="">
+                        <input class="inp-tmnv" type="number" name="cccd" id="">
                         <div class="label-name">
                             <label for="">Địa chỉ:</label>
                         </div>
@@ -36,11 +36,11 @@
                         <div class="label-name">
                             <label for="">Email:</label>
                         </div>
-                        <input class="inp-tmnv" type="text" name="email" id="">
+                        <input class="inp-tmnv" type="email" name="email" id="">
                         <div class="label-name">
                             <label for="">HSL:</label>
                         </div>
-                        <input class="inp-tmnv" type="text" name="hsl" id="">
+                        <input class="inp-tmnv" type="number" step="any" name="hsl" id="">
                 </div>
                 <div class="col-sm right-inf-tmnv">
                     <div class="label-name">
@@ -50,7 +50,7 @@
                     <div class="label-name">
                         <label for="">Số điện thoại:</label>
                     </div>
-                    <input class="inp-tmnv" type="text" name="sodienthoai" id="">
+                    <input class="inp-tmnv" type="number" name="sodienthoai" id="">
                     <div class="label-name">
                         <label for="">Phòng ban:</label>
                     </div>
@@ -100,9 +100,15 @@
                     <div class="label-name">
                         <label for="">Bậc lương:</label>
                     </div>
-                    <input class="inp-tmnv" type="text" name="bacluong" id="">
+                    <input class="inp-tmnv" type="number" name="bacluong" id="">
                 </div>
+                @if (\Session::has('message'))
+                <div class="alert alert-danger">
+                <strong>{!! \Session::get('message') !!}</strong>
+                </div>
+                @endif
             </div>
+
             <div class="btn-tmnv">
                 <button class="text-xacnhan-tmnv">Xác nhận</button>
             </form>
