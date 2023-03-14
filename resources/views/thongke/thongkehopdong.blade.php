@@ -5,43 +5,55 @@
             <div class="qlbaocao-title">
                 <h1>Quản lý báo cáo thống kê</h1>
             </div>
-            <div class="container">
-                <form action="{{ route('thongkehopdong') }}" method="POST">
+            <div class="container tkhd">
+                <h4>Thống kê hợp đồng</h4>
+               
+                <form class="form-tkhd" action="{{ route('thongkehopdong') }}" method="POST">
                     @csrf
-                    <label for="">Năm</label>
-                    <input type="text" placeholder="Nhập năm" name="nam">
-                    <button type="submit">Tìm kiếm</button>
+                    <label class="nam" for="">Năm:</label>
+                    <input class="inp-nam" type="text" placeholder="Nhập năm" name="nam">
+                    <button class="btn-tkkd">
+                        <span class="icon-search-tkhd">
+                            <img src="{{ asset('icon/search.png') }}">
+                        </span>
+                    </button>
                 </form>
-                <div id="piechart" style="width: 900px; height: 500px;"></div>
-                <div class="list-dskt">
-                    <h1>Danh sách các hợp đồng đã hết hạn năm {{ $nam }}</h1>
-                    <table class="table-dskt table-bordered">
-                        <thead>
-                            <tr class="bg-info">
-                                <th class="head-table" scope="col">Mã nhân viên</th>
-                                <th class="head-table" scope="col">Tên nhân viên</th>
-                                <th class="head-table" scope="col">Mã hợp đồng</th>
-                                <th class="head-table" scope="col">Ngày hết hạn</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($hopdongs as $hopdong)
-                                <tr class="">
-                                    <th class="h1" scope="row">{{ $hopdong->manv }}</th>
-                                    <th class="h1" scope="row">{{ $hopdong->nhanvien->tennv }}</th>
-                                    <th class="h1" scope="row">{{ $hopdong->id }}</th>
-                                    <th class="h1" scope="row">
-                                        @if ($hopdong->ngayketthuc)
-                                            @php
-                                                $newEndDate = date('d-m-Y', strtotime($hopdong->ngayketthuc));
-                                            @endphp
-                                            {{ $newEndDate }}
-                                        @endif
-                                    </th>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                <div class="row">
+                    <div class="col left-tkhd">
+                        <div id="piechart" style="width: 600px; height: 400px;"></div>
+                    </div>
+                    <div class="col right-tkhd">
+                        <div class="list-tkhd">
+                            <h4>Danh sách các hợp đồng đã hết hạn năm {{ $nam }}</h4>
+                            <table class="table-dskt table-bordered">
+                                <thead>
+                                    <tr class="bg-info">
+                                        <th class="head-table" scope="col">Mã nhân viên</th>
+                                        <th class="head-table" scope="col">Tên nhân viên</th>
+                                        <th class="head-table" scope="col">Mã hợp đồng</th>
+                                        <th class="head-table" scope="col">Ngày hết hạn</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($hopdongs as $hopdong)
+                                        <tr class="">
+                                            <th class="h1" scope="row">{{ $hopdong->manv }}</th>
+                                            <th class="h1" scope="row">{{ $hopdong->nhanvien->tennv }}</th>
+                                            <th class="h1" scope="row">{{ $hopdong->id }}</th>
+                                            <th class="h1" scope="row">
+                                                @if ($hopdong->ngayketthuc)
+                                                    @php
+                                                        $newEndDate = date('d-m-Y', strtotime($hopdong->ngayketthuc));
+                                                    @endphp
+                                                    {{ $newEndDate }}
+                                                @endif
+                                            </th>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
