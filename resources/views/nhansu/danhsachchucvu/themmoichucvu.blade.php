@@ -19,7 +19,11 @@
                         </div>
                         <input class="inp-tmcv" type="text" name="tenchucvu" id="" placeholder="Nhập tên chức vụ">
                 </div>
-
+                @if (\Session::has('message'))
+                <div class="alert alert-danger">
+                <strong>{!! \Session::get('message') !!}</strong>
+                </div>
+                @endif
                 <div class="btn-tmcv">
                     <button class="text-xacnhan js-buy-ticket">Xác nhận</button>
                 </div>
@@ -30,20 +34,21 @@
     </div>
 </div>
 {{-- modal them chuc vu moi --}}
-    <div class="modal-delete js-modal ">
+<!-- <div class="modal-delete js-modal ">
         <div class="modal-container-delete js-modal-container">
             <div class="modal-close js-modal-close">
                 <i class="ti-close"></i>
             </div>
-
             <div class="modal-text-delete-2">
                 <span class="icon-successfull-delete-2">
                     <img src="{{ asset('css/Img/image 36.png') }}" alt="">
                 </span>
                 <h2>Thêm thành công</h2>
             </div>
+
         </div>
-    </div>
+    </div> -->
+
     <script>
         const buyBtns = document.querySelectorAll('.js-buy-ticket');
         const modal = document.querySelector('.js-modal');

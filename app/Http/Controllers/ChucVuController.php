@@ -14,11 +14,22 @@ class ChucVuController extends Controller
     }
     public function store(Request $request)
     {
-        $chucvu=new ChucVu;
-        $chucvu->machucvu=$request->machucvu;
-        $chucvu->tenchucvu=$request->tenchucvu;
-        $chucvu->save();
-        return redirect()->route('danhsachchucvu');
+
+        if($request->machucvu=="" || $request->tenchucvu==""){
+            return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+        }
+        else{
+            if( DB::select("SELECT id from chucvu where machucvu='".$request->machucvu."'")!=null){
+                return redirect()->back()->with('message', 'Mã chức vụ đã tồn tại');
+            }
+            else{
+                $chucvu=new ChucVu;
+                $chucvu->machucvu=$request->machucvu;
+                $chucvu->tenchucvu=$request->tenchucvu;
+                $chucvu->save();
+                return redirect()->route('danhsachchucvu');
+            }
+        }
     }
     public function edit($id)
     {
@@ -27,11 +38,34 @@ class ChucVuController extends Controller
     }
     public function update(Request $request,$id)
     {
-        $chucvu = ChucVu::find($id);
-        $chucvu->machucvu=$request->machucvu;
-        $chucvu->tenchucvu=$request->tenchucvu;
-        $chucvu->update();
-        return redirect('danhsachchucvu');
+
+
+        if($request->machucvu=="" || $request->tenchucvu==""){
+            return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+        }
+        else{
+            $cn=ChucVu::find($id);
+            if($cn->machucvu==$request->machucvu){//trung  cũ
+                $chucvu = ChucVu::find($id);
+                $chucvu->machucvu=$request->machucvu;
+                $chucvu->tenchucvu=$request->tenchucvu;
+                $chucvu->update();
+                return redirect('danhsachchucvu');
+            }
+            elseif( DB::select("SELECT id from chucvu where machucvu='".$request->machucvu."'")!=null){//trung 
+                return redirect()->back()->with('message', 'Mã chức vụ đã tồn tại');
+            }
+            else{
+                $chucvu = ChucVu::find($id);
+                $chucvu->machucvu=$request->machucvu;
+                $chucvu->tenchucvu=$request->tenchucvu;
+                $chucvu->update();
+                return redirect('danhsachchucvu');
+            }
+
+        }
+
+
     }
     public function destroy(Request $request)
     {

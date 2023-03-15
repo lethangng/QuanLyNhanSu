@@ -25,6 +25,11 @@
                         <h1>Sai router ,truy vấn hoặc không có data</h1>
                     @endempty
                 </div>
+                @if (\Session::has('message'))
+                <div class="alert alert-danger">
+                <strong>{!! \Session::get('message') !!}</strong>
+                </div>
+                @endif
                 <div class="btn-spb">
                     <button class="text-xacnhan js-buy-ticket">Xác nhận</button>
                 </div>
@@ -33,7 +38,7 @@
         </div>
     </div>
 </div>
-{{-- modal them chuc vu moi --}}
+<!--
     <div class="modal-delete js-modal ">
         <div class="modal-container-delete js-modal-container">
             <div class="modal-close js-modal-close">
@@ -47,7 +52,8 @@
                 <h2>Sửa thành công</h2>
             </div>
         </div>
-    </div>
+    </div> -->
+{{-- modal them chuc vu moi --}}
     <script>
         const buyBtns = document.querySelectorAll('.js-buy-ticket');
         const modal = document.querySelector('.js-modal');

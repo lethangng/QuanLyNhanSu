@@ -14,11 +14,22 @@ class KhoaController extends Controller
     }
     public function store(Request $request)
     {
-        $khoa=new Khoa;
-        $khoa->makhoa=$request->makhoa;
-        $khoa->tenkhoa=$request->tenkhoa;
-        $khoa->save();
-        return redirect()->route('danhsachkhoa');
+
+        if($request->makhoa=="" || $request->tenkhoa==""){
+            return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+        }
+        else{
+            if( DB::select("SELECT id from khoa where makhoa='".$request->makhoa."'")!=null){
+                return redirect()->back()->with('message', 'Mã khoa đã tồn tại');
+            }
+            else{
+                $khoa=new Khoa;
+                $khoa->makhoa=$request->makhoa;
+                $khoa->tenkhoa=$request->tenkhoa;
+                $khoa->save();
+                return redirect()->route('danhsachkhoa');
+            }
+        }
     }
     public function edit($id)
     {
@@ -27,11 +38,33 @@ class KhoaController extends Controller
     }
     public function update(Request $request,$id)
     {
-        $khoa = Khoa::find($id);
-        $khoa->makhoa=$request->makhoa;
-        $khoa->tenkhoa=$request->tenkhoa;
-        $khoa->update();
-        return redirect('danhsachkhoa');
+
+        if($request->makhoa=="" || $request->tenkhoa==""){
+            return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+        }
+        else{
+            $cn=Khoa::find($id);
+            if($cn->makhoa==$request->makhoa){//trung  cũ
+                $khoa = Khoa::find($id);
+                $khoa->makhoa=$request->makhoa;
+                $khoa->tenkhoa=$request->tenkhoa;
+                $khoa->update();
+                return redirect('danhsachkhoa');
+            }
+            elseif( DB::select("SELECT id from khoa where makhoa='".$request->makhoa."'")!=null){//trung
+                return redirect()->back()->with('message', 'Mã khoa đã tồn tại');
+            }
+            else{
+                $khoa = Khoa::find($id);
+                $khoa->makhoa=$request->makhoa;
+                $khoa->tenkhoa=$request->tenkhoa;
+                $khoa->update();
+                return redirect('danhsachkhoa');
+            }
+
+        }
+
+
     }
     public function destroy(Request $request)
     {

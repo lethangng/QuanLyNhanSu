@@ -15,11 +15,24 @@ class PhongBanController extends Controller
     }
     public function store(Request $request)
     {
-        $phongban=new PhongBan;
-        $phongban->maphongban=$request->maphongban;
-        $phongban->tenphongban=$request->tenphongban;
-        $phongban->save();
-        return redirect()->route('danhsachphongban');
+
+        if($request->maphongban=="" || $request->tenphongban==""){
+            return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+        }
+        else{
+            if( DB::select("SELECT id from phongban where maphongban='".$request->maphongban."'")!=null){
+                return redirect()->back()->with('message', 'Mã phòng ban đã tồn tại');
+            }
+            else{
+                $phongban=new PhongBan;
+                $phongban->maphongban=$request->maphongban;
+                $phongban->tenphongban=$request->tenphongban;
+                $phongban->save();
+                return redirect()->route('danhsachphongban');
+            }
+        }
+
+
     }
     public function edit($id)
     {
@@ -28,11 +41,31 @@ class PhongBanController extends Controller
     }
     public function update(Request $request,$id)
     {
-        $phongban = PhongBan::find($id);
-        $phongban->maphongban=$request->maphongban;
-        $phongban->tenphongban=$request->tenphongban;
-        $phongban->update();
-        return redirect('danhsachphongban');
+
+        if($request->maphongban=="" || $request->tenphongban==""){
+            return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+        }
+        else{
+            $cn=PhongBan::find($id);
+            if($cn->maphongban==$request->maphongban){//trung  cũ
+                $phongban = PhongBan::find($id);
+                $phongban->maphongban=$request->maphongban;
+                $phongban->tenphongban=$request->tenphongban;
+                $phongban->update();
+                return redirect('danhsachphongban');
+            }
+            elseif( DB::select("SELECT id from phongban where maphongban='".$request->maphongban."'")!=null){//trung
+                return redirect()->back()->with('message', 'Mã chức vụ đã tồn tại');
+            }
+            else{
+                $phongban = PhongBan::find($id);
+                $phongban->maphongban=$request->maphongban;
+                $phongban->tenphongban=$request->tenphongban;
+                $phongban->update();
+                return redirect('danhsachphongban');//gui tb tc
+            }
+
+        }
     }
     public function destroy(Request $request)
     {
