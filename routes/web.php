@@ -153,6 +153,7 @@ Route::get('/suaphongban', function () {
         return view('thongke.qlbaocaothongke');
     })->name('qlbaocaothongke');
 
+    Route::get('/thongkenhanvien', [NhanVienController::class, 'thongkenhanvien'])->name('thongkenhanvien');
 
 
 
@@ -228,7 +229,7 @@ Route::get('/suaphongban', function () {
     // Thống kê
     Route::post('thong-ke-hop-dong', [ThongKeHDController::class, 'thongke'])->name('thongkehopdong');
     Route::Post('thong-ke-tang-luong', [ThongKeTLController::class, 'thongke'])->name('thongketangluong');
-    
+
 
     //test qlns
     Route::get('/sm', [NhanvienController::class, 'index2']);

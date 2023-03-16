@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-4 left">
-                        <a href="#">
+                        <a href="{{ route('thongkenhanvien') }}">
                             <div class="container-icon-thongke">
                                 <span class="icon-thongke">
                                     <img src="{{ asset('icon/icon-thongke-1.png') }}" alt="">
@@ -24,16 +24,6 @@
                                     <img src="{{ asset('icon/icon-thongke-1.png') }}" alt="">
                                 </span>
                                 <h4>Thống kê khen thưởng</h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-4 right">
-                        <a href="#">
-                            <div class="container-icon-thongke">
-                                <span class="icon-thongke-5">
-                                    <img src="{{ asset('icon/icon-thongke-1.png') }}" alt="">
-                                </span>
-                                <h4>Thống kê nhân viên</h4>
                             </div>
                         </a>
                     </div>

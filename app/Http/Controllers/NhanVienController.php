@@ -168,4 +168,28 @@ class NhanVienController extends Controller
         $trangThai= DB::select('SELECT id,tentrangthai from trangthai');
         return view('nhansu.danhsachnhanvien.danhsachnhanvien', ['caNhan' => $caNhan,'trangThai' => $trangThai,'phongBan' => $phongBan,'khoa' => $khoa,'chucVu' => $chucVu]);
     }
+    public function thongkenhanvien()
+    {
+        $result=DB::select('select tenchucvu,count(tenchucvu) as sochucvu from nhanvien,chucvu where nhanvien.machucvu=chucvu.id group by tenchucvu;');
+        $data="";
+        foreach ($result as $val){
+            $data.="['".$val->tenchucvu."',    ".$val->sochucvu."],";
+        }
+        $chartData=$data;
+
+        $result=DB::select('select tentrangthai,count(tentrangthai) as sotrangthai from nhanvien,trangthai where nhanvien.matrangthai=trangthai.id group by tentrangthai;');
+        $data="";
+        foreach ($result as $val){
+            $data.="['".$val->tentrangthai."',    ".$val->sotrangthai."],";
+        }
+        $chartData2=$data;
+
+        $result=DB::select('select gioitinh,COUNT(gioitinh) as sogioitinh from nhanvien group by gioitinh;');
+        $data="";
+        foreach ($result as $val){
+            $data.="['".$val->gioitinh."',    ".$val->sogioitinh."],";
+        }
+        $chartData3=$data;
+        return view('thongke.thongkenhanvien',compact('chartData','chartData2','chartData3'));
+    }
 }
