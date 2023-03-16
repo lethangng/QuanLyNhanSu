@@ -46,7 +46,7 @@
                 <span class="icon-search">
                     <img src="{{ asset('icon/search.png') }}" alt="" onclick="findname()">
                 </span>
-                <input id="tennv" class="input-search-name" type="text" placeholder="Nhập tên nhân viên cần tìm">
+                <input id="tennv" class="input-search-name" type="text" placeholder="Nhập tên nhân viên cần tìm" onkeyup="checkch(this)">
 
             </div>
             <div class="list-dsnv">

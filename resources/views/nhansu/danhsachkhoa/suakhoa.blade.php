@@ -14,11 +14,11 @@
                         <div class="label-name-sk">
                             <label for="">Mã khoa:</label>
                         </div>
-                        <input class="inp-tmcv" type="text" value="{{$khoa->makhoa}}" name="makhoa" id="" placeholder="Nhập mã khoa">
+                        <input class="inp-tmcv" type="text" value="{{$khoa->makhoa}}" name="makhoa" id="" placeholder="Nhập mã khoa" onkeyup="checkch(this)">
                         <div class="label-name-sk">
                             <label for="">Tên khoa:</label>
                         </div>
-                        <input class="inp-tmcv" type="text" value="{{$khoa->tenkhoa}}" name="tenkhoa" id="" placeholder="Nhập tên khoa">
+                        <input class="inp-tmcv" type="text" value="{{$khoa->tenkhoa}}" name="tenkhoa" id="" placeholder="Nhập tên khoa" onkeyup="checkch(this)">
                         @endisset
                         @empty($khoa)
                         <h1>Sai router ,truy vấn hoặc không có data</h1>

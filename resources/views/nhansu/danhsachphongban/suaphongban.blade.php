@@ -15,11 +15,11 @@
                         <div class="label-name-spb">
                             <label for="">Mã phòng ban:</label>
                         </div>
-                        <input class="inp-tmcv" type="text" value="{{$phongban->maphongban}}" name="maphongban" id="" placeholder="Nhập mã phòng ban">
+                        <input class="inp-tmcv" type="text" value="{{$phongban->maphongban}}" name="maphongban" id="" placeholder="Nhập mã phòng ban" onkeyup="checkch(this)">
                         <div class="label-name-spb">
                             <label for="">Tên phòng ban:</label>
                         </div>
-                        <input class="inp-tmcv" type="text" value="{{$phongban->tenphongban}}" name="tenphongban" id="" placeholder="Nhập tên phòng ban">
+                        <input class="inp-tmcv" type="text" value="{{$phongban->tenphongban}}" name="tenphongban" id="" placeholder="Nhập tên phòng ban" onkeyup="checkch(this)">
                         @endisset
                         @empty($phongban)
                         <h1>Sai router ,truy vấn hoặc không có data</h1>
