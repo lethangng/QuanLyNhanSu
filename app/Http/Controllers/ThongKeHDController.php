@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\HopDong;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ThongKeHDController extends Controller
 {
@@ -13,22 +14,34 @@ class ThongKeHDController extends Controller
     {
         $this->hopdong = new HopDong();
     }
-    public function thongke(Request $request) {
+    public function index() {
         if(Auth::user()) {
-            if($request->nam) {
-                $hopdongs = $this->hopdong->thongkehethan($request->nam);
-                $hethan = count($hopdongs);
-                $conhan = $this->hopdong->conhan($request->nam);
-                $nam = $request->nam;
-                $data = [
-                    ['Task', 'Số lượng'],
-                    ['Còn hạn', $conhan],
-                    ['Đã hết hạn', $hethan]
-                ];
-                return view('thongke.thongkehopdong', compact('data', 'hopdongs', 'nam'));
-            } 
+            $nam = Carbon::now()->year;
+            $hopdongs = $this->hopdong->thongkehethan($nam);
+            $hethan = count($hopdongs);
+            $conhan = $this->hopdong->conhan($nam);
+            $data = [
+                ['Task', 'Số lượng'],
+                ['Còn hạn', $conhan],
+                ['Đã hết hạn', $hethan]
+            ];
+            return view('thongke.thongkehopdong', compact('data', 'hopdongs', 'nam'));
         } else {
             return redirect()->route('login');
+        }
+    }
+    public function thongke(Request $request) {
+        if($request->nam) { 
+            $hopdongs = $this->hopdong->thongkehethan($request->nam);
+            $hethan = count($hopdongs);
+            $conhan = $this->hopdong->conhan($request->nam);
+            $nam = $request->nam;
+            $data = [
+                ['Task', 'Số lượng'],
+                ['Còn hạn', $conhan],
+                ['Đã hết hạn', $hethan]
+            ];
+            return view('thongke.thongkehopdong', compact('data', 'hopdongs', 'nam'));
         }
     }
 }

@@ -326,11 +326,13 @@
             });
             $('#update-password').submit(function(e) {
                 e.preventDefault();
-                const new_password = $('#new-password');
-                // console.log(new_password)
-                const re_new_password = $("#re-new-password");
-                if (re_new_password.val() !== new_password.val()) {
-                    $('.re-new-password').text("Mật khẩu nhập lại không chính xác.")
+                if ($('#new-password').val() === '') {
+                    $('.new-password').text("Mật khẩu mới bắt buộc phải nhập.")
+                } else {
+                    $('.new-password').text("")
+                    if ($('.re-new-password').val() !== $('#new-password').val()) {
+                        $('.re-new-password').text("Mật khẩu nhập lại không chính xác.")
+                    }
                 }
                 var formData = new FormData(this);
                 $.ajax({

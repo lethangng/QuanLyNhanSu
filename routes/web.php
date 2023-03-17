@@ -225,7 +225,8 @@ Route::get('/suaphongban', function () {
         Route::post('search', [HopDongController::class, 'search'])->name('hopdong.search');
     });
     // Route::post('upfile', [ThongTinCaNhanController::class, 'upfile'])->name('upfile');
-    // Route::get('thong-ke-hop-dong', [ThongKeHDController::class, 'index'])->name('thongke.hopdong');
+    Route::get('thong-ke-hop-dong', [ThongKeHDController::class, 'index'])->name('thongke.hopdong');
+    Route::get('thong-ke-tang-luong', [ThongKeTLController::class, 'index'])->name('thongke.tangluong');
     // Thống kê
     Route::post('thong-ke-hop-dong', [ThongKeHDController::class, 'thongke'])->name('thongkehopdong');
     Route::Post('thong-ke-tang-luong', [ThongKeTLController::class, 'thongke'])->name('thongketangluong');
