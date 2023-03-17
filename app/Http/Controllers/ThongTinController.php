@@ -68,14 +68,15 @@ class ThongTinController extends Controller
     public function updatePassword(Request $request) {
         $matKhauCu = Auth::user()->password;
         if(Hash::check($request->matkhaucu, $matKhauCu)) {
-            if($request->matkhaumoi == $request->nhaplai) {
-                User::where('id', Auth::user()->id)
-                ->update([
-                    'password' => Hash::make($request->matkhaumoi)
-                ]);
-                return response()->json(["check" => true]);
+            if($request->matkhaumoi) {
+                if($request->matkhaumoi == $request->nhaplai) {
+                    User::where('id', Auth::user()->id)
+                    ->update([
+                        'password' => Hash::make($request->matkhaumoi)
+                    ]);
+                    return response()->json(["check" => true]);
+                }
             }
-            return response()->json(['error' => '']);
         } else {
             return response()->json(['error' => 'Mật khẩu không chính xác']);
         }
