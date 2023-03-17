@@ -31,7 +31,7 @@
                 </div>
                 @endif
                 <div class="btn-scv">
-                    <button class="text-xacnhan js-buy-ticket">Xác nhận</button>
+                    <button class="text-xacnhan">Xác nhận</button>
                 </div>
                 </form>
             </div>
@@ -40,13 +40,14 @@
     </div>
 </div>
 {{-- modal them chuc vu moi --}}
-<!--
+
         <div class="modal-delete js-modal ">
         <div class="modal-container-delete js-modal-container">
-            <div class="modal-close js-modal-close">
+            <a href="{{url('danhsachchucvu')}}">
+                <div class="modal-close js-modal-close">
                 <i class="ti-close"></i>
-            </div>
-
+                </div>
+            </a>
             <div class="modal-text-delete-2">
                 <span class="icon-successfull-delete-2">
                     <img src="{{ asset('css/Img/image 36.png') }}" alt="">
@@ -55,8 +56,6 @@
             </div>
         </div>
     </div>
--->
-
 
     <script>
         const buyBtns = document.querySelectorAll('.js-buy-ticket');
@@ -85,5 +84,12 @@
             event.stopPropagation()
         })
     </script>
+     @if (\Session::has('message2'))
+    <script>
+    window.addEventListener("load", (event) => {
+        modal.classList.add('open');
+        });
+    </script>
+    @endif
 </div>
 @endsection

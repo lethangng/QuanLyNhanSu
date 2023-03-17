@@ -27,7 +27,7 @@ class ChucVuController extends Controller
                 $chucvu->machucvu=$request->machucvu;
                 $chucvu->tenchucvu=$request->tenchucvu;
                 $chucvu->save();
-                return redirect()->route('danhsachchucvu');
+                return redirect()->back()->with('message2', 'thongbao');
             }
         }
     }
@@ -50,9 +50,9 @@ class ChucVuController extends Controller
                 $chucvu->machucvu=$request->machucvu;
                 $chucvu->tenchucvu=$request->tenchucvu;
                 $chucvu->update();
-                return redirect('danhsachchucvu');
+                return redirect()->back()->with('message2', 'thongbao');
             }
-            elseif( DB::select("SELECT id from chucvu where machucvu='".$request->machucvu."'")!=null){//trung 
+            elseif( DB::select("SELECT id from chucvu where machucvu='".$request->machucvu."'")!=null){//trung
                 return redirect()->back()->with('message', 'Mã chức vụ đã tồn tại');
             }
             else{
@@ -60,7 +60,7 @@ class ChucVuController extends Controller
                 $chucvu->machucvu=$request->machucvu;
                 $chucvu->tenchucvu=$request->tenchucvu;
                 $chucvu->update();
-                return redirect('danhsachchucvu');
+                return redirect()->back()->with('message2', 'thongbao');
             }
 
         }

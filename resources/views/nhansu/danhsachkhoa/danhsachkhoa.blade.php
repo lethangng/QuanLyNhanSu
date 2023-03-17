@@ -81,7 +81,7 @@
                 <div class="modal-buttons">
                     <input type="text" id="nut2" name="idxoa" hidden>
                     <button class="confirm-btn">Xác nhận</button>
-                    <button class="cancel-btn">Hủy</button>
+                    <button class="cancel-btn" type="button" onclick="hideBuyTickets()">Hủy</button>
                 </div>
                 </form>
             </div>

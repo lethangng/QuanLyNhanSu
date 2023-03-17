@@ -27,7 +27,7 @@ class KhoaController extends Controller
                 $khoa->makhoa=$request->makhoa;
                 $khoa->tenkhoa=$request->tenkhoa;
                 $khoa->save();
-                return redirect()->route('danhsachkhoa');
+                return redirect()->back()->with('message2', 'thongbao');
             }
         }
     }
@@ -49,7 +49,8 @@ class KhoaController extends Controller
                 $khoa->makhoa=$request->makhoa;
                 $khoa->tenkhoa=$request->tenkhoa;
                 $khoa->update();
-                return redirect('danhsachkhoa');
+                return redirect()->back()->with('message2', 'thongbao');
+
             }
             elseif( DB::select("SELECT id from khoa where makhoa='".$request->makhoa."'")!=null){//trung
                 return redirect()->back()->with('message', 'Mã khoa đã tồn tại');
@@ -59,7 +60,7 @@ class KhoaController extends Controller
                 $khoa->makhoa=$request->makhoa;
                 $khoa->tenkhoa=$request->tenkhoa;
                 $khoa->update();
-                return redirect('danhsachkhoa');
+                return redirect()->back()->with('message2', 'thongbao');
             }
 
         }

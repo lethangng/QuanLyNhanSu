@@ -28,7 +28,7 @@ class PhongBanController extends Controller
                 $phongban->maphongban=$request->maphongban;
                 $phongban->tenphongban=$request->tenphongban;
                 $phongban->save();
-                return redirect()->route('danhsachphongban');
+                return redirect()->back()->with('message2', 'thongbao');
             }
         }
 
@@ -52,7 +52,8 @@ class PhongBanController extends Controller
                 $phongban->maphongban=$request->maphongban;
                 $phongban->tenphongban=$request->tenphongban;
                 $phongban->update();
-                return redirect('danhsachphongban');
+                return redirect()->back()->with('message2', 'thongbao');
+
             }
             elseif( DB::select("SELECT id from phongban where maphongban='".$request->maphongban."'")!=null){//trung
                 return redirect()->back()->with('message', 'Mã chức vụ đã tồn tại');
@@ -62,7 +63,8 @@ class PhongBanController extends Controller
                 $phongban->maphongban=$request->maphongban;
                 $phongban->tenphongban=$request->tenphongban;
                 $phongban->update();
-                return redirect('danhsachphongban');//gui tb tc
+                return redirect()->back()->with('message2', 'thongbao');
+
             }
 
         }

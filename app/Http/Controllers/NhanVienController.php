@@ -54,7 +54,7 @@ class NhanVienController extends Controller
                 $nhanVien->matrangthai=$request->trangthai;
                 $nhanVien->bacluong=$request->bacluong;
                 $nhanVien->save();
-                return redirect()->route('danhsachnhanvien');
+                return redirect()->back()->with('message2', 'thongbao');
             }
 
         }
@@ -105,7 +105,7 @@ class NhanVienController extends Controller
                 $nhanVien->matrangthai=$request->trangthai;
                 $nhanVien->bacluong=$request->bacluong;
                 $nhanVien->update();
-                return redirect('danhsachnhanvien');
+                return redirect()->back()->with('message2', 'thongbao');
             }
             elseif( DB::select('SELECT id from nhanvien where cccd='.$request->cccd)!=null){//trung cccd
                 return redirect()->back()->with('message', 'Căn cước công dân đã tồn tại');
@@ -127,7 +127,7 @@ class NhanVienController extends Controller
                 $nhanVien->matrangthai=$request->trangthai;
                 $nhanVien->bacluong=$request->bacluong;
                 $nhanVien->update();
-                return redirect('danhsachnhanvien');
+                return redirect()->back()->with('message2', 'thongbao');
             }
 
         }
