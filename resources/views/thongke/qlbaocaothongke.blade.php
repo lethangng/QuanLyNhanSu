@@ -6,8 +6,8 @@
                 <h1>Quản lý báo cáo thống kê</h1>
             </div>
             <div class="container">
-                <div class="row">
-                    <div class="col-4 left">
+                <div class="row top">
+                    <div class="col left">
                         <a href="{{ route('thongkenhanvien') }}">
                             <div class="container-icon-thongke">
                                 <span class="icon-thongke">
@@ -17,7 +17,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-4 mid">
+                    <div class="col right">
                         <a href="">
                             <div class="container-icon-thongke">
                                 <span class="icon-thongke">
@@ -28,8 +28,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-4 left">
+                <div class="row bot">
+                    <div class="col left">
                         <form action="{{ route('thongketangluong') }}" method="post">
                             @php
                                 use Carbon\Carbon;
@@ -45,7 +45,7 @@
                             </button>
                         </form>
                     </div>
-                    <div class="col-4 mid">
+                    <div class="col right">
                         <form action="{{ route('thongkehopdong') }}" method="post">
                             <input type="text" name="nam" value="{{ $year_now }}" hidden>
                             @csrf

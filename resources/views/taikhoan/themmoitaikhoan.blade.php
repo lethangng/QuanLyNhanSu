@@ -28,7 +28,7 @@
                             <label for="">Mật khẩu:</label>
                         </div>
                         <div class="container-pw">
-                            <input class="pw" type="password" name="password" placeholder="Nhập Mật Khẩu" >
+                            <input class="pw" type="password" name="password" placeholder="Nhập Mật Khẩu" required>
                             <div id="err_ajax" class="form-text text-danger text-danger_manv password-err"></div>
                             <span class="show-btn"><i class="fas fa-eye"></i></span>
                         </div>

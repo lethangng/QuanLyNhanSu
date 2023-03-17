@@ -42,7 +42,7 @@
         </div>
     </div>
 </div>
-{{-- JS Hiển thị password --}}
+
 {{-- modal them chuc vu moi --}}
     <div class="modal-delete js-modal ">
         <div class="modal-container-delete js-modal-container">
@@ -58,6 +58,7 @@
             </div>
         </div>
     </div>
+{{-- JS Hiển thị password --}}
 <script>
     const passField = document.querySelector(".pw");
     const showBtn = document.querySelector("span i");

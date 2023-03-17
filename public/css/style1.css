@@ -1472,7 +1472,12 @@ td {
     font-weight: 400;
     color: white;
 }
-.mid a, .right a, 
+.top,
+.bot{
+    padding-left: 100px;
+    padding-top: 30px;
+}
+.right a, 
 .left a{
     text-decoration: none;
     color: #000;
@@ -1482,8 +1487,8 @@ td {
     border-radius: 50px;
     margin-top: 38px;
     margin-left: 26px;
-    width: 368px;
-    height: 219px;
+    width: 380px;
+    height: 220px;
     border: none;
 }
 .container-icon-thongke h4{
@@ -1505,9 +1510,6 @@ td {
     margin-top: 30px;
 }
 /* ***** Thống kê  hợp đồng ***** */
-.tkhd {
-    max-width: 1500px !important;
-}
 .tkhd h4{
     text-align: center;
     font-size: 30px;

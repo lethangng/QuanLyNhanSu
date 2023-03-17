@@ -341,7 +341,7 @@
     width: 320px;
     border-radius: 5px;
   }
-  .container-pw input{
+.container-pw input{
     width: 450px;
     height: 40px;
     border-radius: 5px;
@@ -349,10 +349,10 @@
     padding-right: 10px;
     border: 1px solid #333;
   }
-  .container-pw input::placeholder{
+.container-pw input::placeholder{
     font-size: 17px;
   }
-  .container-pw span{
+.container-pw span{
     position: absolute;
     left: 130%;
     top: 50%;
@@ -361,13 +361,37 @@
     color: #8e44ad;
     cursor: pointer;
     display: none;
-  }
-  .container-pw input:valid ~ span{
-    display: block;
-  }
-  .container-pw span i.hide-btn::before{
+}
+.container-pw span i.hide-btn::before{
     content: "\f070";
-  }
+}
+
+.container-pw input:valid ~ span{
+    display: block;
+}
+
+.show-btn-1, .show-btn-2, .show-btn-3{
+    position: absolute;
+    color: #8e44ad;
+    font-size: 18px;
+    cursor: pointer;
+    left: 90%;
+}
+.show-btn-1 {
+   top: 19%;
+}
+.show-btn-2{
+    top: 49%;
+}
+.show-btn-3{
+   top: 79%;
+}
+.show-btn-1 .hide-btn::before,
+.show-btn-2 .hide-btn::before,
+.show-btn-3 .hide-btn::before{
+    content: "\f070";
+}
+
 /* ******* Modal xóa  ******  */
 .modal-delete{
     position: fixed;
