@@ -144,14 +144,14 @@
                             <div class="mb-3">
                                 <label class="form-label">Mật khẩu cũ</label>
                                 <input type="password" class="form-control pw1" name="matkhaucu"
-                                    placeholder="Nhập mật khẩu cũ..." required>
+                                    placeholder="Nhập mật khẩu cũ...">
                                 <span class="show-btn-1"><i class="fas fa-eye"></i></span>
                                 <div id="passwordHelp" class="form-text text-danger error-text old-password"></div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Mật khẩu mới</label>
                                 <input type="password" class="form-control pw2" name="matkhaumoi"
-                                    placeholder="Nhập mật khẩu mới..." id="new-password" required>
+                                    placeholder="Nhập mật khẩu mới..." id="new-password">
                                 <span class="show-btn-2"><i class="fas fa-eye"></i></span>
                                 <div id="passwordHelp" class="form-text text-danger error-text new-password">
                                 </div>
@@ -174,51 +174,51 @@
         </form>
     </section>
     </div>
-{{-- JS Hiển thị password --}}
-<script>
-    const passField1 = document.querySelector(".pw1");
-    const showBtn1 = document.querySelector(".show-btn-1 i");
-    showBtn1.onclick = (()=>{
-    if(passField1.type === "password"){
-      passField1.type = "text";
-      showBtn1.classList.add("hide-btn");
-    }else{
-      passField1.type = "password";
-      showBtn1.classList.remove("hide-btn");
-    }
-  });
-</script>
+    {{-- JS Hiển thị password --}}
+    <script>
+        const passField1 = document.querySelector(".pw1");
+        const showBtn1 = document.querySelector(".show-btn-1 i");
+        showBtn1.onclick = (() => {
+            if (passField1.type === "password") {
+                passField1.type = "text";
+                showBtn1.classList.add("hide-btn");
+            } else {
+                passField1.type = "password";
+                showBtn1.classList.remove("hide-btn");
+            }
+        });
+    </script>
 
-<script>
-    const passField2 = document.querySelector(".pw2");
-    const showBtn2 = document.querySelector(".show-btn-2 i");
-    showBtn2.onclick = (()=>{
-    if(passField2.type === "password"){
-      passField2.type = "text";
-      showBtn2.classList.add("hide-btn");
-    }else{
-      passField2.type = "password";
-      showBtn2.classList.remove("hide-btn");
-    }
-  });
-</script>
+    <script>
+        const passField2 = document.querySelector(".pw2");
+        const showBtn2 = document.querySelector(".show-btn-2 i");
+        showBtn2.onclick = (() => {
+            if (passField2.type === "password") {
+                passField2.type = "text";
+                showBtn2.classList.add("hide-btn");
+            } else {
+                passField2.type = "password";
+                showBtn2.classList.remove("hide-btn");
+            }
+        });
+    </script>
 
 
-<script>
-    const passField3 = document.querySelector(".pw3");
-    const showBtn3= document.querySelector(".show-btn-3 i");
-    showBtn3.onclick = (()=>{
-    if(passField3.type === "password"){
-      passField3.type = "text";
-      showBtn3.classList.add("hide-btn");
-    }else{
-      passField3.type = "password";
-      showBtn3.classList.remove("hide-btn");
-    }
-  });
-</script>
+    <script>
+        const passField3 = document.querySelector(".pw3");
+        const showBtn3 = document.querySelector(".show-btn-3 i");
+        showBtn3.onclick = (() => {
+            if (passField3.type === "password") {
+                passField3.type = "text";
+                showBtn3.classList.add("hide-btn");
+            } else {
+                passField3.type = "password";
+                showBtn3.classList.remove("hide-btn");
+            }
+        });
+    </script>
 
-{{-- ***************** --}}
+    {{-- ***************** --}}
     {{-- Form cập nhật thành công --}}
     <div class="modal js-modal ">
         <div class="modal-container js-modal-container">
@@ -326,14 +326,6 @@
             });
             $('#update-password').submit(function(e) {
                 e.preventDefault();
-                if ($('#new-password').val() === '') {
-                    $('.new-password').text("Mật khẩu mới bắt buộc phải nhập.")
-                } else {
-                    $('.new-password').text("")
-                    if ($('.re-new-password').val() !== $('#new-password').val()) {
-                        $('.re-new-password').text("Mật khẩu nhập lại không chính xác.")
-                    }
-                }
                 var formData = new FormData(this);
                 $.ajax({
                     type: 'POST',
@@ -347,11 +339,21 @@
                         // this.reset();
                         var error = document.querySelectorAll(".error-text");
                         error.innerHTML = "";
+                        $(".old-password").text('');
                         if (data.check == true) {
                             console.log(data)
                             modal.classList.add('open')
                         } else {
                             $(".old-password").text(data.error);
+                            if ($('#new-password').val() === '') {
+                                $('.new-password').text("Mật khẩu mới bắt buộc phải nhập.")
+                            } else {
+                                $('.new-password').text("")
+                                if ($('.re-new-password').val() !== $('#new-password').val()) {
+                                    $('.re-new-password').text(
+                                        "Mật khẩu nhập lại không chính xác.")
+                                }
+                            }
                             console.log(data);
                         }
                     }

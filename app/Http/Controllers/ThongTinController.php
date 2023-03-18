@@ -78,7 +78,7 @@ class ThongTinController extends Controller
                 }
             }
         } else {
-            return response()->json(['error' => 'Mật khẩu không chính xác']);
+            return response()->json(['error' => 'Mật khẩu cũ không chính xác']);
         }
     }
 
