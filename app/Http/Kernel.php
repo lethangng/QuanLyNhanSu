@@ -54,10 +54,7 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
 
-        'checkNVNS' => \App\Http\Middleware\checkNVNS::class,
-        'checkNV' => \App\Http\Middleware\checkNV::class,
-        'checkGV' => \App\Http\Middleware\checkGV::class,
-        'checkNVTC' => \App\Http\Middleware\checkNVTC::class,
+        'checkQLNS' => \App\Http\Middleware\checkNVNS::class,
         'checklogin' => \App\Http\Middleware\CheckRole::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,

@@ -56,22 +56,7 @@ class User extends Authenticatable
         'token',
         'manv'
     ];
-    public function controller($roleId)
-    {
-        if ($roleId == 1) {
-            return response()->json(['error_check' => false, 'url' => route('canhan.index', ['id' => Auth::user()->manv])]);
-        } else if ($roleId == 2) {
-            return response()->json(['error_check' => false, 'url' => route('canhan.index', ['id' => Auth::user()->manv])]);
-        } else if ($roleId == 3) {
-            return response()->json(['error_check' => false, 'url' => route('canhan.index', ['id' => Auth::user()->manv])]);
-        } else if ($roleId == 4) {
-            return response()->json(['error_check' => false, 'url' => route('canhan.index', ['id' => Auth::user()->manv])]);
-        } else if ($roleId == 5) {
-            return response()->json(['error_check' => false, 'url' => route('canhan.index', ['id' => Auth::user()->manv])]);
-        } else {
-            return response()->json(['error_check' => false, 'url' => ""]);
-        }
-    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -130,5 +115,13 @@ class User extends Authenticatable
             </a>
         </th>
         </tr>     ';
+    }
+    public function checkRoleInUser($id)
+    {
+        $user = NhanVien::where('id', $id)->first();
+        if ($user->maphongban == 2 && $user->machucvu == 3) {
+            return true;
+        }
+        return false;
     }
 }

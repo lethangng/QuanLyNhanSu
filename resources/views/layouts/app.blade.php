@@ -131,7 +131,9 @@
                                 <span class="text nav-text">Quản lý báo cáo</span>
                             </a>
                         </li>
-                        <li class="nav-link">
+                        {{--   --}}
+                        @if (Auth::user()->checkRoleInUser(Auth::user()->manv))
+                            <li class="nav-link">
                             <a href="{{ route('danhsachtaikhoan') }}">
                                 <span class="icon-home">
                                     <img src="{{ asset('icon/iconqltk.png') }}" alt="">
@@ -139,6 +141,8 @@
                                 <span class="text nav-text">Quản lý tài khoản</span>
                             </a>
                         </li>
+                        @endif
+
                         <li class="nav-link">
                             <a href="{{ route('canhan.index', ['id' => Auth::user()->manv]) }}">
                                 <span class="icon-home">
@@ -149,7 +153,7 @@
                         </li>
                         <div class="bottom-content">
                             <li class="">
-                                <a href="{{ route('login') }}">
+                                <a href="{{ route('logout') }}">
                                     <span class="icon-home">
                                         <img src="{{ asset('icon/logout.png') }}" alt="">
                                     </span>

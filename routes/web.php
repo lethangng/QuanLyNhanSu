@@ -12,10 +12,12 @@ use App\Http\Controllers\TaiKhoanController;
 use App\Http\Controllers\TangLuongController;
 use App\Http\Controllers\ChucVuController;
 use App\Http\Controllers\PhongBanController;
+use App\Http\Controllers\thongkeKTController;
 use App\Http\Controllers\ThongTinController;
 use App\Http\Controllers\TrangThaiController;
 use Illuminate\Routing\Router;
 use App\Http\Controllers\ThongKeTLController;
+use App\Http\Controllers\thongkeKLController;
 
 /*
 |--------------------------------------------------------------------------
@@ -132,28 +134,17 @@ Route::get('/suaphongban', function () {
     });
 
 
-    Route::prefix('danhsachtaikhoan')->group(function () {
-        Route::get('/', [TaiKhoanController::class, 'index'])->name('danhsachtaikhoan');
 
-        Route::get('/them', [TaiKhoanController::class, 'formAdd'])->name('themmoitaikhoan');
-        Route::post('/them', [TaiKhoanController::class, 'Add']);
-
-        Route::get('/sua', [TaiKhoanController::class, 'formUpdate'])->name('suataikhoan');
-        Route::post('/sua', [TaiKhoanController::class, 'Update']);
-
-        Route::post('/xoa', [TaiKhoanController::class, 'del'])->name('xoataikhoan');
-
-        Route::post('/tim', [TaiKhoanController::class, 'search']);
-        Route::get('/tim', [TaiKhoanController::class, 'searchAll']);
-
-        Route::post('/timten', [TaiKhoanController::class, 'findNameNv']);
-    });
 
     Route::get('/qlbaocaothongke', function () {
         return view('thongke.qlbaocaothongke');
     })->name('qlbaocaothongke');
 
     Route::get('/thongkenhanvien', [NhanVienController::class, 'thongkenhanvien'])->name('thongkenhanvien');
+    Route::get('/thongkekhenthuong', [thongkeKTController::class, 'index'])->name('thongkekhenthuong');
+    Route::post('/thongkekhenthuong', [thongkeKTController::class, 'findYear']);
+    Route::get('/thongkekyluat', [thongkeKLController::class, 'index'])->name('thongkekyluat');
+    Route::post('/thongkekyluat', [thongkeKLController::class, 'findYear']);
 
 
 
@@ -240,6 +231,24 @@ Route::get('/suaphongban', function () {
     Route::view('/sm2', 'nhansu.danhsachnhanvien.danhsachnhanvien');
 });
 
+Route::middleware(['checkQLNS'])->group(function () {
+    Route::prefix('danhsachtaikhoan')->group(function () {
+        Route::get('/', [TaiKhoanController::class, 'index'])->name('danhsachtaikhoan');
+
+        Route::get('/them', [TaiKhoanController::class, 'formAdd'])->name('themmoitaikhoan');
+        Route::post('/them', [TaiKhoanController::class, 'Add']);
+
+        Route::get('/sua', [TaiKhoanController::class, 'formUpdate'])->name('suataikhoan');
+        Route::post('/sua', [TaiKhoanController::class, 'Update']);
+
+        Route::post('/xoa', [TaiKhoanController::class, 'del'])->name('xoataikhoan');
+
+        Route::post('/tim', [TaiKhoanController::class, 'search']);
+        Route::get('/tim', [TaiKhoanController::class, 'searchAll']);
+
+        Route::post('/timten', [TaiKhoanController::class, 'findNameNv']);
+    });
+});
 
 Route::get('/', [loginController::class, "home"])->name('login');
 Route::post('/', [loginController::class, "submitLogin"])->name('submitLogin');
@@ -248,3 +257,4 @@ Route::post('/fogotPassword', [loginController::class, "fogotPassword"])->name('
 
 Route::get('/fogotPassword/{id}/{token}', [loginController::class, "formFogotPassword"])->name('formFogotPassword');
 Route::post('/fogotPassword/{id}/{token}', [loginController::class, "postFormFogotPassword"])->name('postFormFogotPassword');
+Route::get('/logout', [loginController::class, "getLogout"])->name('logout');
