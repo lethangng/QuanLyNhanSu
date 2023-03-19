@@ -37,8 +37,7 @@ class loginController extends Controller
         $validator = Validator::make($request->all(), $rules, $messsages);
         if ($validator->passes()) {
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password], false)) {
-                Auth::user()->findRoleId(Auth::user()->id);
-                return  Auth::user()->controller(Auth::user()->roleId);
+                return  response()->json(['error_check' => false, 'url' => route('canhan.index', ['id' => Auth::user()->manv])]);
             } else {
                 if (User::where('email', $request->email)->first()) {
                     return response()->json(['error_check' => true, 'checkUser' => true, 'msg' => "Mật khẩu không chính xác"]);
@@ -60,7 +59,7 @@ class loginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return view('login/login');
+        return redirect('/');
     }
     public function fogotPassword(Request $request)
     {
@@ -130,8 +129,7 @@ class loginController extends Controller
                 $user =  User::find($id);
                 $user->updatePass($request->password);
                 if (Auth::attempt(['email' => $user->email, 'password' => $request->password])) {
-                    Auth::user()->findRoleId(Auth::user()->id);
-                    return  Auth::user()->controller(Auth::user()->roleId);
+                    return  response()->json(['error_check' => false, 'url' => route('canhan.index', ['id' => Auth::user()->manv])]);
                 } else {
                     return response()->json(['error_check' => true,  'msg' => 'Bạn nhập sai! Vui lòng nhập lại']);
                 }

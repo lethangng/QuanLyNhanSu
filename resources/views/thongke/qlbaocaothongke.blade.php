@@ -18,12 +18,22 @@
                         </a>
                     </div>
                     <div class="col right">
-                        <a href="">
+                        <a href="{{ route('thongkekhenthuong') }}">
                             <div class="container-icon-thongke">
                                 <span class="icon-thongke">
                                     <img src="{{ asset('icon/icon-thongke-1.png') }}" alt="">
                                 </span>
                                 <h4>Thống kê khen thưởng</h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col right">
+                        <a href="{{ route('thongkekyluat') }}">
+                            <div class="container-icon-thongke">
+                                <span class="icon-thongke">
+                                    <img src="{{ asset('icon/icon-thongke-1.png') }}" alt="">
+                                </span>
+                                <h4>Thống kê kỷ luật</h4>
                             </div>
                         </a>
                     </div>

@@ -120,15 +120,15 @@ class KhenThuongController extends Controller
                     'chitietkhenthuong' => $file_name
                 ]);
             // Xoa file cu
-            unlink(public_path('uploads/files/'.$oldFile));
+            unlink(public_path('uploads/files/' . $oldFile));
             return response()->json(["check" => true]);
         } else {
             KhenThuong::where('id', $id)
-            ->update([
-                'manv' => $request->manv,
-                'ngaykhenthuong' => $request->ngaykhenthuong,
-                'lydo' => $request->lydo
-            ]);
+                ->update([
+                    'manv' => $request->manv,
+                    'ngaykhenthuong' => $request->ngaykhenthuong,
+                    'lydo' => $request->lydo
+                ]);
             return response()->json(["check" => true]);
         }
     }
@@ -152,36 +152,36 @@ class KhenThuongController extends Controller
             'nam' => $request->nam,
             'manv' => $request->manv
         ];
-        if($data['thang'] && $data['nam'] && $data['manv']) {
+        if ($data['thang'] && $data['nam'] && $data['manv']) {
             // dd($data);
             $khenthuongs = KhenThuong::select('*')
                 ->whereMonth('ngaykhenthuong', $request->thang)
                 ->whereYear('ngaykhenthuong', $request->nam)
                 ->where('manv', $request->manv)->paginate(5);
-        } else if($data['thang'] && $data['manv']) {
+        } else if ($data['thang'] && $data['manv']) {
             // dd($data);
             $khenthuongs = KhenThuong::select('*')
                 ->whereMonth('ngaykhenthuong', $request->thang)
                 ->where('manv', $request->manv)->paginate(5);
-        } else if($data['nam'] && $data['manv']) {
+        } else if ($data['nam'] && $data['manv']) {
             // dd($data);
             $khenthuongs = KhenThuong::select('*')
                 ->whereYear('ngaykhenthuong', $request->nam)
                 ->where('manv', $request->manv)->paginate(5);
-        } else if($data['nam'] && $data['thang']) {
+        } else if ($data['nam'] && $data['thang']) {
             // dd($data);
             $khenthuongs = KhenThuong::select('*')
                 ->whereMonth('ngaykhenthuong', $request->thang)
                 ->whereYear('ngaykhenthuong', $request->nam)->paginate(5);
-        } else if($data['thang']) {
+        } else if ($data['thang']) {
             // dd($data);
             $khenthuongs = KhenThuong::select('*')
                 ->whereMonth('ngaykhenthuong', $request->thang)->paginate(5);
-        } else if($data['nam']) {
+        } else if ($data['nam']) {
             // dd($data);
             $khenthuongs = KhenThuong::select('*')
                 ->whereYear('ngaykhenthuong', $request->nam)->paginate(5);
-        } else if($data['manv']) {
+        } else if ($data['manv']) {
             // dd($data);
             $khenthuongs = KhenThuong::select('*')
                 ->where('manv', $request->manv)->paginate(5);

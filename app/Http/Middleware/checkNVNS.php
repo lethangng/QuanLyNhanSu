@@ -28,13 +28,12 @@ class checkNVNS
         // }
 
         if (Auth::check()) {
-            Auth::user()->findRoleId(Auth::user()->id);
-            if (Auth::user()->roleId == 4) {
+            if (Auth::user()->checkRoleInUser(Auth::user()->manv)) {
                 return $next($request);
             } else {
                 return back();
             }
         }
-        return abort(404);
+        return redirect('/');
     }
 }
