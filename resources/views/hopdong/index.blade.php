@@ -101,7 +101,7 @@
                                             $url = '#';
                                         }
                                     @endphp
-                                    <a href="{{ $url }}" style="text-decoration: none;">
+                                    <a href="{{ $url }}" style="text-decoration: none;" target="_blank">
                                         <button class="i-save">
                                             <img src="{{ asset('icon/save.png') }}" alt="">
                                         </button>
