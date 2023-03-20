@@ -119,7 +119,14 @@
         })
         function findname() {
         var tenphongban = document.getElementById("tenphongban").value;
-        if(tenphongban!=""){
+        let chck=tenphongban;
+        let dem=0;
+        for (let i = 0; i < chck.length; i++) {
+            if(chck.charAt(i)==" "){
+                dem=dem+1;
+            }
+        }
+        if(tenphongban!="" && dem!=chck.length){
             var url="{{ URL::to('timkiemphongban/tenphongban=name') }}";
             url=url.replace('name',tenphongban);
             window.location.assign(url);

@@ -118,7 +118,14 @@
         })
         function findname() {
         var tenkhoa = document.getElementById("tenkhoa").value;
-        if(tenkhoa!=""){
+        let chck=tenkhoa;
+        let dem=0;
+        for (let i = 0; i < chck.length; i++) {
+            if(chck.charAt(i)==" "){
+                dem=dem+1;
+            }
+        }
+        if(tenkhoa!="" && dem!=chck.length){
             var url="{{ URL::to('timkiemkhoa/tenkhoa=name') }}";
             url=url.replace('name',tenkhoa);
             window.location.assign(url);

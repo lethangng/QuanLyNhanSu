@@ -116,7 +116,14 @@
         })
         function findname() {
         var tenchucvu = document.getElementById("tenchucvu").value;
-        if(tenchucvu!=""){
+        let chck=tenchucvu;
+        let dem=0;
+        for (let i = 0; i < chck.length; i++) {
+            if(chck.charAt(i)==" "){
+                dem=dem+1;
+            }
+        }
+        if(tenchucvu!="" && dem!=chck.length){
             var url="{{ URL::to('timkiemchucvu/tenchucvu=name') }}";
             url=url.replace('name',tenchucvu);
             window.location.assign(url);
