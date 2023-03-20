@@ -14,11 +14,11 @@
                         <div class="label-name-scv">
                             <label for="">Mã chức vụ:</label>
                         </div>
-                        <input class="inp-tmcv" type="text" name="machucvu" id="" value="{{$chucvu->machucvu}}" placeholder="Nhập mã chức vụ" onkeyup="checkch(this)">
+                        <input class="inp-tmcv" type="text" name="machucvu" id="" value="{{$chucvu->machucvu}}" placeholder="Nhập mã chức vụ" >
                         <div class="label-name-scv">
                             <label for="">Tên chức vụ:</label>
                         </div>
-                        <input class="inp-tmcv" type="text" name="tenchucvu" id="" value="{{$chucvu->tenchucvu}}" placeholder="Nhập tên chức vụ" onkeyup="checkch(this)">
+                        <input class="inp-tmcv" type="text" name="tenchucvu" id="" value="{{$chucvu->tenchucvu}}" placeholder="Nhập tên chức vụ" >
                         @endisset
                         @empty($chucvu)
                         <h1>Sai router ,truy vấn hoặc không có data</h1>

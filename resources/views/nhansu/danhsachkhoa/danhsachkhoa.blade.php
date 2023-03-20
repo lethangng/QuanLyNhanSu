@@ -22,7 +22,7 @@
                     </div>
 
 
-                    <input class="input-search-name-1" type="text" id="tenkhoa" placeholder="Nhập tên khoa" onkeyup="checkch(this)">
+                    <input class="input-search-name-1" type="text" id="tenkhoa" placeholder="Nhập tên khoa">
 
                 </div>
                 <div class="list-dsk">

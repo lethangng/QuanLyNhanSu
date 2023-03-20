@@ -14,9 +14,15 @@ class ChucVuController extends Controller
     }
     public function store(Request $request)
     {
-
-        if($request->machucvu=="" || $request->tenchucvu==""){
-            return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+        $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+        //i: ko pb chu hoa ,thuong
+        if(!preg_match($patt,$request->machucvu) || !preg_match($patt,$request->tenchucvu) ){
+            if($request->machucvu=="" || $request->tenchucvu==""){
+                return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+            }
+            else{
+                return redirect()->back()->with('message', 'Phải nhập đúng kiểu ký tự');
+            }
         }
         else{
             if( DB::select("SELECT id from chucvu where machucvu='".$request->machucvu."'")!=null){
@@ -38,10 +44,14 @@ class ChucVuController extends Controller
     }
     public function update(Request $request,$id)
     {
-
-
-        if($request->machucvu=="" || $request->tenchucvu==""){
-            return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+        $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+        if(!preg_match($patt,$request->machucvu) || !preg_match($patt,$request->tenchucvu) ){
+            if($request->machucvu=="" || $request->tenchucvu==""){
+                return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+            }
+            else{
+                return redirect()->back()->with('message', 'Phải nhập đúng kiểu ký tự');
+            }
         }
         else{
             $cn=ChucVu::find($id);

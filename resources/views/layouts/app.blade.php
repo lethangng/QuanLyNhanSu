@@ -177,10 +177,6 @@
             toggle.addEventListener("click", () => {
                 sidebar.classList.toggle("close");
             })
-            function checkch(input){
-            var regex=/[^a-z0-9A-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]/u;
-            input.value=input.value.split(regex).join("");
-            }
         </script>
     </div>
 </body>

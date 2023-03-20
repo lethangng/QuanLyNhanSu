@@ -13,7 +13,7 @@
                         <div class="label-name">
                             <label for="">Họ tên:</label>
                         </div>
-                        <input class="inp-tmnv" type="text" name="hoten" id="" onkeyup="checkch(this)">
+                        <input class="inp-tmnv" type="text" name="hoten" id="" >
                         <div class="label-name">
                             <label for="">Ngày sinh:</label>
                         </div>
@@ -32,7 +32,7 @@
                         <div class="label-name">
                             <label for="">Địa chỉ:</label>
                         </div>
-                        <input class="inp-tmnv" type="text" name="diachi" id="" onkeyup="checkch(this)">
+                        <input class="inp-tmnv" type="text" name="diachi" id="" >
                         <div class="label-name">
                             <label for="">Email:</label>
                         </div>
@@ -46,7 +46,7 @@
                     <div class="label-name">
                         <label for="">Quê quán:</label>
                     </div>
-                    <input class="inp-tmnv" type="text" name="quequan" id="" onkeyup="checkch(this)">
+                    <input class="inp-tmnv" type="text" name="quequan" id="" >
                     <div class="label-name">
                         <label for="">Số điện thoại:</label>
                     </div>

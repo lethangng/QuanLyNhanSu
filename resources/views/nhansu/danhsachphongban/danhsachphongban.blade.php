@@ -20,7 +20,7 @@
                             <a href="{{ url('danhsachphongban') }}"><img src="{{ asset('icon/reset.png') }}" alt=""></a>
                         </span>
                     </div>
-                    <input class="input-search-name-1" type="text" id="tenphongban" placeholder="Nhập tên phòng ban cần tìm" onkeyup="checkch(this)">
+                    <input class="input-search-name-1" type="text" id="tenphongban" placeholder="Nhập tên phòng ban cần tìm" >
 
                 </div>
                 <div class="list-dspb">
