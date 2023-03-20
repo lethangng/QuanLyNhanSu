@@ -273,7 +273,14 @@
     }
     function findname() {
         var tennv = document.getElementById("tennv").value;
-        if(tennv!=""){
+        let chck=tennv;
+        let dem=0;
+        for (let i = 0; i < chck.length; i++) {
+            if(chck.charAt(i)==" "){
+                dem=dem+1;
+            }
+        }
+        if(tennv!="" && dem!=chck.length){
             var url="{{ URL::to('timnhanvien/tennv=name') }}";
             url=url.replace('name',tennv);
             window.location.assign(url);
