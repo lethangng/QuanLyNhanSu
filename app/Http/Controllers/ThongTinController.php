@@ -27,6 +27,7 @@ class ThongTinController extends Controller
             }
             return view('thongtincanhan', compact('canhan', 'title', 'id'));
         } else {
+            // return view('login.login');
             return redirect()->route('login');
         }
     }
@@ -35,8 +36,9 @@ class ThongTinController extends Controller
         $canhan = $this->nhanvien->info($id);
         $messsages = array(
             'required' => ':attribute bắt buộc phải nhập',
-            'mimes' => ':attribute phải là ảnh đuôi png, jpg hoặc jpeg',
+            'mimes' => ':attribute phải có đuôi đuôi png, jpg hoặc jpeg',
             'max' => ':attribute phải nhỏ hơn 1 MB',
+            'image' => ':attribute phải định dạng ảnh',
         );
         $rules = array(
             'photo' => 'required|image|mimes:png,jpg,jpeg|max:1024'
@@ -82,17 +84,17 @@ class ThongTinController extends Controller
         }
     }
 
-    public function upfile(Request $request) {
-        if($request->has('upfile')) {
-            $file = $request->file('upfile');
-            $ext = $request->file('upfile')->extension();
-            $file_name = time().''.'.'.$ext;
-            $publicPath = public_path('uploads/files');
-            $file->move($publicPath, $file_name);
-            // toastr()->success('Tải lên thành công.', 'Thành công');
-            return redirect()->route('canhan.index', ['id' => Auth::user()->manv]);
-        } else {
-            toastr()->success('Tải lên thất bại.', 'Thất bại');
-        }
-    }
+    // public function upfile(Request $request) {
+    //     if($request->has('upfile')) {
+    //         $file = $request->file('upfile');
+    //         $ext = $request->file('upfile')->extension();
+    //         $file_name = time().''.'.'.$ext;
+    //         $publicPath = public_path('uploads/files');
+    //         $file->move($publicPath, $file_name);
+    //         // toastr()->success('Tải lên thành công.', 'Thành công');
+    //         return redirect()->route('canhan.index', ['id' => Auth::user()->manv]);
+    //     } else {
+    //         toastr()->success('Tải lên thất bại.', 'Thất bại');
+    //     }
+    // }
 }

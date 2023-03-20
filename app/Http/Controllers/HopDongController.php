@@ -9,6 +9,8 @@ use App\Http\Requests\HopDongRequest;
 use App\Models\HopDong;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Exception;
+use PhpParser\Node\Stmt\TryCatch;
 
 class HopDongController extends Controller
 {
@@ -59,8 +61,12 @@ class HopDongController extends Controller
     public function store(HopDongRequest $request)
     {
         if($request->ngayketthuc) {
+            try {
+                $ngayketthuc = Carbon::parse($request->ngayketthuc);
+            } catch(Exception $e) {
+                return response()->json(['error' => ['ngayketthuc' => 'Định dạng ngày tháng không đúng']]);
+            }
             $ngaybatdau = Carbon::parse($request->ngaybatdau);
-            $ngayketthuc = Carbon::parse($request->ngayketthuc);
             if($ngaybatdau->greaterThan($ngayketthuc)) {
                 return response()->json(['error' => ['ngaybatdau' => 'Ngày bắt đầu phải nhỏ hơn ngày kết thúc']]);
             }
@@ -110,8 +116,13 @@ class HopDongController extends Controller
     public function update(HopDongRequest $request, $id)
     {
         if($request->ngayketthuc) {
+            try {
+                $ngayketthuc = Carbon::parse($request->ngayketthuc);
+            } catch(Exception $e) {
+                return response()->json(['error' => ['ngayketthuc' => 'Định dạng ngày tháng không đúng']]);
+            }
             $ngaybatdau = Carbon::parse($request->ngaybatdau);
-            $ngayketthuc = Carbon::parse($request->ngayketthuc);
+            // $ngayketthuc = Carbon::parse($request->ngayketthuc);
             if($ngaybatdau->greaterThan($ngayketthuc)) {
                 return response()->json(['error' => ['ngaybatdau' => 'Ngày bắt đầu phải nhỏ hơn ngày kết thúc']]);
             }

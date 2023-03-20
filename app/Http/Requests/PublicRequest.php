@@ -24,23 +24,21 @@ class PublicRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'dimensions:min_width=500,max_width=1500'
-            'photo' => 'required|image|mimes:png,jpg,jpeg|max:1024'
+            'nam' => 'required|date_format:Y'
         ];
     }
     public function messages()
     {
         return [
             'required' => ':attribute bắt buộc phải nhập',
-            'mimes' => ':attribute phải là ảnh đuôi png, jpg hoặc jpeg',
-            'max' => ':attribute phải nhỏ hơn 1 MB',
+            'date_format' => ':attribute định dạng không chính xác'
         ];
     }
 
     public function attributes()
     {
         return [
-            'photo' => 'Ảnh'
+            'nam' => 'Năm'
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PublicRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\TangLuong;
@@ -29,7 +30,7 @@ class ThongKeTLController extends Controller
             return redirect()->route('login');
         }
     }
-    public function thongke(Request $request) {
+    public function thongke(PublicRequest $request) {
         if($request->nam) {
             $data_tangluong = $this->tangluong->thongke($request->nam);
             // dd($data_tangluong);
@@ -43,6 +44,6 @@ class ThongKeTLController extends Controller
             }
             // dd($data);
             return view('thongke.thongketangluong', compact('data', 'nam'));
-        } 
+        }
     }
 }

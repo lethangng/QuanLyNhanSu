@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PublicRequest;
 use Illuminate\Http\Request;
 use App\Models\HopDong;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +22,7 @@ class ThongKeHDController extends Controller
             $hethan = count($hopdongs);
             $conhan = $this->hopdong->conhan($nam);
             $data = [
-                ['Task', 'Số lượng'],
+                ['Trạng thái', 'Số lượng'],
                 ['Còn hạn', $conhan],
                 ['Đã hết hạn', $hethan]
             ];
@@ -30,7 +31,7 @@ class ThongKeHDController extends Controller
             return redirect()->route('login');
         }
     }
-    public function thongke(Request $request) {
+    public function thongke(PublicRequest $request) {
         if($request->nam) { 
             $hopdongs = $this->hopdong->thongkehethan($request->nam);
             $hethan = count($hopdongs);
@@ -42,6 +43,8 @@ class ThongKeHDController extends Controller
                 ['Đã hết hạn', $hethan]
             ];
             return view('thongke.thongkehopdong', compact('data', 'hopdongs', 'nam'));
+        } else {
+            return redirect()->route('thongke.hopdong');
         }
     }
 }

@@ -11,8 +11,13 @@
                 <form class="form-tkhd" action="{{ route('thongkehopdong') }}" method="POST">
                     @csrf
                     <label class="nam" for="">Năm:</label>
-                    <input class="inp-nam" type="text" placeholder="Nhập năm" name="nam" required>
-                    <button class="btn-tkkd">
+                    <div>
+                        <input class="inp-nam" type="number" placeholder="Nhập năm" name="nam" required>
+                        @error('nam')
+                            <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <button class="btn-tkkd" type="submit">
                         <span class="icon-search-tkhd">
                             <img src="{{ asset('icon/search.png') }}">
                         </span>
@@ -52,6 +57,11 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{-- <div class="container-footer-kt">
+                                <nav aria-label="Page navigation example" class="ml-5 footer-kt">
+                                    {{ $hopdongs->links('pagination::bootstrap-5') }}
+                                </nav>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
