@@ -17,7 +17,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col right">
+                    <div class="col mid">
                         <a href="{{ route('thongkekhenthuong') }}">
                             <div class="container-icon-thongke">
                                 <span class="icon-thongke">
@@ -56,7 +56,7 @@
                             </button>
                         </form>
                     </div>
-                    <div class="col right">
+                    <div class="col mid">
                         <a href="{{ route('thongke.hopdong') }}">
                             <div class="container-icon-thongke">
                                 <span class="icon-thongke">
@@ -65,6 +65,8 @@
                                 <h4>Thống kê hợp đồng</h4>
                             </div>
                         </a>
+                    </div>
+                    <div class="col right">
                     </div>
                 </div>
             </div>
