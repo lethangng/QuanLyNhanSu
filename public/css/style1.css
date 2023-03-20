@@ -1472,11 +1472,14 @@ td {
     font-weight: 400;
     color: white;
 }
+
 .top,
 .bot{
-    padding-left: 100px;
+    padding-left: 30px;
     padding-top: 30px;
 }
+
+.mid a,
 .right a, 
 .left a{
     text-decoration: none;
@@ -1522,6 +1525,7 @@ td {
     padding-bottom: 10px;
 }
 .nam{
+    padding-left: 10px;
     padding-right: 10px;
     padding-top: 3px;
     font-size: 18px;
