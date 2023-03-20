@@ -11,7 +11,12 @@
                 <form class="form-tkhd" action="{{ route('thongketangluong') }}" method="POST">
                     @csrf
                     <label class="nam" for="">Năm:</label>
-                    <input class="inp-nam" type="text" placeholder="Nhập năm" name="nam" required>
+                    <div>
+                        <input class="inp-nam" type="number" placeholder="Nhập năm" name="nam" required>
+                        @error('nam')
+                            <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
                     <button class="btn-tkkd">
                         <span class="icon-search-tkhd">
                             <img src="{{ asset('icon/search.png') }}">

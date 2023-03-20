@@ -16,9 +16,9 @@ class HopDong extends Model
     protected $fillable = [
         'manv',
         'ngaybatdau',
-        'ngaykethuc',
+        'ngayketthuc',
         'tenhopdong',
-        'chitietkhenthuong'
+        'chitiethopdong'
     ];
 
     public function nhanvien() {

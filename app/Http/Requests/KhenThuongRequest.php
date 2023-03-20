@@ -28,7 +28,7 @@ class KhenThuongRequest extends FormRequest
     {
         return [
             'manv' => 'required|exists:nhanvien,id',
-            'ngaykhenthuong' => 'required|date',
+            'ngaykhenthuong' => 'required|date|before_or_equal:today',
             'lydo' => 'required',
             'upfile' => 'mimes:png,jpg,jpeg,doc,docx,pdf|max:10024',
         ];
@@ -37,7 +37,8 @@ class KhenThuongRequest extends FormRequest
     {
         return [
             'required' => ':attribute bắt buộc phải nhập',
-            'ngaykyluat.date' => ':attribute phải là định dạng ngày tháng',
+            'date' => ':attribute phải là định dạng ngày tháng',
+            'ngaykhenthuong.before_or_equal' => ':attribute phải trước hoặc bằng hôm nay',
             'exists' => ':attribute không tồn tại.',
             'upfile.max' => ':attribute phải nhỏ hơn 10 MB',
             'upfile.mimes' => ':attribute phải có đuôi png, jpg, doc, docx hoặc pdf'
@@ -66,10 +67,11 @@ class KhenThuongRequest extends FormRequest
     protected function failedValidation(Validator $validator) {
         if ($this->ajax()){
             throw new HttpResponseException(response()->json(['error' => $validator->errors()]));
-        } else{
-            throw (new ValidationException($validator))
-                            ->errorBag($this->errorBag)
-                            ->redirectTo($this->getRedirectUrl());
-        }
+        } 
+        // else{
+        //     throw (new ValidationException($validator))
+        //                     ->errorBag($this->errorBag)
+        //                     ->redirectTo($this->getRedirectUrl());
+        // }
     }
 }

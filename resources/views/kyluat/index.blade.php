@@ -106,6 +106,26 @@
                                     <button class="i-rotate js-buy-ticket">
                                         <i class='bx bx-trash'></i>
                                     </button>
+
+                                    <div class="modal-delete js-modal">
+                                        <div class="modal-container-delete js-modal-container">
+                                            <div class="modal-close js-modal-close">
+                                                <i class="ti-close"></i>
+                                            </div>
+                                            <div class="modal-text-delete">
+                                                <h2>Bạn có chắc chắn muốn xóa không?</h2>
+                                                <form class="modal-buttons"
+                                                    action="{{ route('kyluat.destroy', ['id' => $kyluat->id]) }}"
+                                                    method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button class="confirm-btn" type="submit">Xác nhận</button>
+                                                    <button class="cancel-btn" type="button"
+                                                        onclick="hideBuyTickets()">Hủy</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </th>
                             </tr>
                         @endforeach
@@ -119,23 +139,7 @@
             </nav>
         </div>
 
-        <div class="modal-delete js-modal">
-            <div class="modal-container-delete js-modal-container">
-                <div class="modal-close js-modal-close">
-                    <i class="ti-close"></i>
-                </div>
-                <div class="modal-text-delete">
-                    <h2>Bạn có chắc chắn muốn xóa không?</h2>
-                    <form class="modal-buttons" action="{{ route('kyluat.destroy', ['id' => $kyluat->id]) }}"
-                        method="post">
-                        @method('DELETE')
-                        @csrf
-                        <button class="confirm-btn" type="submit">Xác nhận</button>
-                        <button class="cancel-btn" type="button" onclick="hideBuyTickets()">Hủy</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+
         <script>
             const buyBtns = document.querySelectorAll('.js-buy-ticket');
             const modal = document.querySelector('.js-modal');

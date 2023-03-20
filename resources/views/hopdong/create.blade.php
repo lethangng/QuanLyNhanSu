@@ -31,7 +31,7 @@
                         <div class="ngkt">
                             <label for="">Ngày kết thúc:</label>
                         </div>
-                        <input class="ip-ngkt" type="date" name="ngayketthuc" id="">
+                        <input class="ip-ngkt" type="date" name="ngayketthuc">
                         <div id="passwordHelp" class="form-text text-danger ngayketthuc-err"></div>
                         <div class="ctkt">
                             <label for="">Chi tiết hợp đồng:</label>

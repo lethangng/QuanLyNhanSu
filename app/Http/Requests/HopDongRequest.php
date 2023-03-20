@@ -29,6 +29,7 @@ class HopDongRequest extends FormRequest
         return [
             'manv' => 'required|exists:nhanvien,id',
             'ngaybatdau' => 'required|date',
+            // 'ngayketthuc' => 'date',
             'upfile' => 'mimes:png,jpg,jpeg,doc,docx,pdf|max:10024',
         ];
     }
@@ -50,14 +51,16 @@ class HopDongRequest extends FormRequest
             'upfile' => 'File'
         ];
     }
-
+    // Kiem tra xem co loi validate khong
     protected function failedValidation(Validator $validator) {
+        // Neu co ajax thi tra ve ngoai le response kieu json cho view
         if ($this->ajax()){
             throw new HttpResponseException(response()->json(['error' => $validator->errors()]));
-        } else{
-            throw (new ValidationException($validator))
-                            ->errorBag($this->errorBag)
-                            ->redirectTo($this->getRedirectUrl());
-        }
+        } 
+        // else{
+        //     throw (new ValidationException($validator))
+        //                     ->errorBag($this->errorBag)
+        //                     ->redirectTo($this->getRedirectUrl());
+        // }
     }
 }
