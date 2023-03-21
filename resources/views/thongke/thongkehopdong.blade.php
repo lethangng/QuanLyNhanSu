@@ -30,27 +30,23 @@
                     <div class="col right-tkhd">
                         <div class="list-tkhd">
                             <h4>Danh sách các hợp đồng đã hết hạn năm {{ $nam }}</h4>
-                            <div class="list-tkhd">
-                                <table class="table table-tkhd-1 table-bordered">
+                            <div class="row">
+                                <table class="table table-tkhd-1 table-bordered table-fixed">
                                     <thead>
-                                        <tr class="bg-info">
-                                            <th class="col-3"  scope="col">Mã nhân viên</th>
-                                            <th class="col-3"  scope="col">Tên nhân viên</th>
-                                            <th class="col-3"  scope="col">Mã hợp đồng</th>
-                                            <th class="col-3"  scope="col">Ngày hết hạn</th>
+                                        <tr>
+                                            <th class="col"  scope="col">Mã nhân viên</th>
+                                            <th class="col"  scope="col">Tên nhân viên</th>
+                                            <th class="col"  scope="col">Mã hợp đồng</th>
+                                            <th class="col"  scope="col">Ngày hết hạn</th>
                                         </tr>
                                     </thead>
-                                </table>
-
-                                <div class="table-scrollbar">
-                                    <table class="table table-tkhd-2 table-bordered">
-                                        <tbody>
-                                            @foreach ($hopdongs as $hopdong)
+                                    <tbody>
+                                        @foreach ($hopdongs as $hopdong)
                                                 <tr class="">
-                                                    <td class="col-3" scope="row">{{ $hopdong->manv }}</td>
-                                                    <td class="col-3" scope="row">{{ $hopdong->nhanvien->tennv }}</td>
-                                                    <td class="col-3" scope="row">{{ $hopdong->id }}</td>
-                                                    <td class="col-3" scope="row">
+                                                    <td class="col" scope="row">{{ $hopdong->manv }}</td>
+                                                    <td class="col" scope="row">{{ $hopdong->nhanvien->tennv }}</td>
+                                                    <td class="col" scope="row">{{ $hopdong->id }}</td>
+                                                    <td class="col" scope="row">
                                                         @if ($hopdong->ngayketthuc)
                                                             @php
                                                                 $newEndDate = date('d-m-Y', strtotime($hopdong->ngayketthuc));
@@ -60,63 +56,51 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                                <tr>
-                                                    <td class="col-3" scope="row">1</td>
-                                                    <td class="col-3" >Phạm Khánh Long</td>
-                                                    <td class="col-3" >12</td>
-                                                    <td class="col-3" >12/2/2024</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="col-3" scope="row">1</td>
-                                                    <td class="col-3" >Phạm Khánh Long</td>
-                                                    <td class="col-3" >12</td>
-                                                    <td class="col-3" >12/2/2024</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="col-3" scope="row">1</td>
-                                                    <td class="col-3" >Phạm Khánh Long</td>
-                                                    <td class="col-3" >12</td>
-                                                    <td class="col-3" >12/2/2024</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="col-3" scope="row">1</td>
-                                                    <td class="col-3" >Phạm Khánh Long</td>
-                                                    <td class="col-3" >12</td>
-                                                    <td class="col-3" >12/2/2024</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="col-3" scope="row">1</td>
-                                                    <td class="col-3" >Phạm Khánh Long</td>
-                                                    <td class="col-3" >12</td>
-                                                    <td class="col-3" >12/2/2024</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="col-3" scope="row">1</td>
-                                                    <td class="col-3" >Phạm Khánh Long</td>
-                                                    <td class="col-3" >12</td>
-                                                    <td class="col-3" >12/2/2024</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="col-3" scope="row">1</td>
-                                                    <td class="col-3" >Phạm Khánh Long</td>
-                                                    <td class="col-3" >12</td>
-                                                    <td class="col-3" >12/2/2024</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="col-3" scope="row">1</td>
-                                                    <td class="col-3" >Phạm Khánh Long</td>
-                                                    <td class="col-3" >12</td>
-                                                    <td class="col-3" >12/2/2024</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="col-3" scope="row">1</td>
-                                                    <td class="col-3" >Phạm Khánh Long</td>
-                                                    <td class="col-3" >12</td>
-                                                    <td class="col-3" >12/2/2024</td>
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        <tr>
+                                            <td class="col" >1</td>
+                                            <td class="col" >Phạm Khánh Long</td>
+                                            <td class="col" >12</td>
+                                            <td class="col" >12/2/2024</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col" >1</td>
+                                            <td class="col" >Phạm Khánh Long</td>
+                                            <td class="col" >12</td>
+                                            <td class="col" >12/2/2024</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col" >1</td>
+                                            <td class="col" >Phạm Khánh Long</td>
+                                            <td class="col" >12</td>
+                                            <td class="col" >12/2/2024</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col" >1</td>
+                                            <td class="col" >Phạm Khánh Long</td>
+                                            <td class="col" >12</td>
+                                            <td class="col" >12/2/2024</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col" >1</td>
+                                            <td class="col" >Phạm Khánh Long</td>
+                                            <td class="col" >12</td>
+                                            <td class="col" >12/2/2024</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col" >1</td>
+                                            <td class="col" >Phạm Khánh Long</td>
+                                            <td class="col" >12</td>
+                                            <td class="col" >12/2/2024</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col" >1</td>
+                                            <td class="col" >Phạm Khánh Long</td>
+                                            <td class="col" >12</td>
+                                            <td class="col" >12/2/2024</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
                             </div>
                         </div>
                     </div>

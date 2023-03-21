@@ -1513,22 +1513,44 @@ td {
     margin-top: 30px;
 }
 /* ***** Thống kê  hợp đồng ***** */
-.list-tkhd{
+.table-fixed thead>tr>th{
+    background-color:  #66B0F4;
+}
+.table-fixed thead>tr>th {
+    font-size: 15px !important;
+}
+.table-bordered th{
     text-align: center;
+    border: 1px solid #333 !important;
 }
-.table-scrollbar {
-    position: relative;
-    height: 264px;
-    overflow: auto;
-    width: 100%;
-    margin-top: -17px;
+.table-fixed tbody tr td {
+    text-align: center;
+    border-left: 1px solid #333 !important;
+    border-right: 1px solid #333 !important;
+    border-bottom: 1px solid #333 !important;
 }
-.table-bordered{
-    border: 1px solid #333;
+.table-fixed tbody td,
+.table-fixed thead>tr>th {
+    float: left;
+    font-size: 12px;
+    /* padding-left: 20px !important; */
 }
-.table-tkhd-2 td{
-    font-size: 14px;
+.table-fixed .col {
+    padding-top: 10px;
+    height: 49.9px;
+    width: 25%;
+    line-height: 28px;
 }
+.table-fixed tbody {
+    display: block;
+    height: 300px;
+    overflow-y: auto;
+    background-color: #fff;
+}
+.table-fixed tr {
+    border: none;
+    display: block;
+} 
 .tkhd h4{
     text-align: center;
     font-size: 30px;
@@ -1565,6 +1587,6 @@ td {
     font-size: 31px;
 }
 .left-tkhd{
-    padding-left: 100px;
-    padding-top: 6px;
+    padding-left: 78px;
+    padding-top: 32px;
 }
