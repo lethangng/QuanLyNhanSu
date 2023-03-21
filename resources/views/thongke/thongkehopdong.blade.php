@@ -39,7 +39,6 @@
                                             <th class="col-3"  scope="col">Mã hợp đồng</th>
                                             <th class="col-3"  scope="col">Ngày hết hạn</th>
                                         </tr>
-<<<<<<< HEAD
                                     </thead>
                                 </table>
 
