@@ -14,7 +14,7 @@
                         <div class="label-name">
                             <label for="">Họ tên:</label>
                         </div>
-                        <input class="inp-tmnv" type="text" name="hoten" id="" value="{{ $caNhan->tennv }}" onkeyup="checkch(this)">
+                        <input class="inp-tmnv" type="text" name="hoten" id="" value="{{ $caNhan->tennv }}">
                         <div class="label-name">
                             <label for="">Ngày sinh:</label>
                         </div>
@@ -38,7 +38,7 @@
                         <div class="label-name">
                             <label for="">Địa chỉ:</label>
                         </div>
-                        <input class="inp-tmnv" type="text" name="diachi" id="" value="{{ $caNhan->diachi }}" onkeyup="checkch(this)">
+                        <input class="inp-tmnv" type="text" name="diachi" id="" value="{{ $caNhan->diachi }}" >
                         <div class="label-name">
                             <label for="">Email:</label>
                         </div>
@@ -52,7 +52,7 @@
                     <div class="label-name">
                         <label for="">Quê quán:</label>
                     </div>
-                    <input class="inp-tmnv" type="text" name="quequan" id="" value="{{ $caNhan->quequan }}" onkeyup="checkch(this)">
+                    <input class="inp-tmnv" type="text" name="quequan" id="" value="{{ $caNhan->quequan }}">
                     <div class="label-name">
                         <label for="">Số điện thoại:</label>
                     </div>

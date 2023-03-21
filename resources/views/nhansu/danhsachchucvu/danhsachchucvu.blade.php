@@ -19,7 +19,7 @@
                             <a href="{{ url('danhsachchucvu') }}"><img src="{{ asset('icon/reset.png') }}" alt=""></a>
                         </span>
                     </div>
-                    <input class="input-search-name-1" type="text" id="tenchucvu" placeholder="Nhập tên chức vụ cần tìm" onkeyup="checkch(this)">
+                    <input class="input-search-name-1" type="text" id="tenchucvu" placeholder="Nhập tên chức vụ cần tìm">
                 </div>
                 <div class="list-dscv">
                     <table class="table-dscv table-bordered">
