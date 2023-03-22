@@ -10,19 +10,24 @@
                         <button class="nv">Thêm mới phòng ban</button>
                     </div>
                 </form>
-
+                <form action="{{url('timkiemphongban')}}" method="GET">
                 <div class="custom-input">
                     <div class="container-search-reset">
                         <span class="icon-search-1">
-                            <img src="{{ asset('icon/search.png') }}" alt="" onclick="findname()">
+                        <button class="btn btn-link p-0 m-0"><img src="{{ asset('icon/search.png') }}" alt=""></button>
                         </span>
                         <span class="icon-reset-1">
                             <a href="{{ url('danhsachphongban') }}"><img src="{{ asset('icon/reset.png') }}" alt=""></a>
                         </span>
                     </div>
-                    <input class="input-search-name-1" type="text" id="tenphongban" placeholder="Nhập tên phòng ban cần tìm" onkeyup="checkch(this)">
-
+                    <input class="input-search-name-1" type="text" name="tenphongban" id="tenphongban" placeholder="Nhập tên phòng ban cần tìm" >
                 </div>
+                </form>
+                @if (\Session::has('message'))
+                <div class="alert alert-danger text-center">
+                <strong>{!! \Session::get('message') !!}</strong>
+                </div>
+                @endif
                 <div class="list-dspb">
                     <table class="table-dspb table-bordered">
                         <thead>
@@ -117,20 +122,6 @@
         {
             event.stopPropagation()
         })
-        function findname() {
-        var tenphongban = document.getElementById("tenphongban").value;
-        let chck=tenphongban;
-        let dem=0;
-        for (let i = 0; i < chck.length; i++) {
-            if(chck.charAt(i)==" "){
-                dem=dem+1;
-            }
-        }
-        if(tenphongban!="" && dem!=chck.length){
-            var url="{{ URL::to('timkiemphongban/tenphongban=name') }}";
-            url=url.replace('name',tenphongban);
-            window.location.assign(url);
-        }
-    }
+
     </script>
 @endsection

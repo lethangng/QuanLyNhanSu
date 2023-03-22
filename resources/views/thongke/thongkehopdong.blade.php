@@ -30,38 +30,78 @@
                     <div class="col right-tkhd">
                         <div class="list-tkhd">
                             <h4>Danh sách các hợp đồng đã hết hạn năm {{ $nam }}</h4>
-                            <table class="table-dskt table-bordered">
-                                <thead>
-                                    <tr class="bg-info">
-                                        <th class="head-table" scope="col">Mã nhân viên</th>
-                                        <th class="head-table" scope="col">Tên nhân viên</th>
-                                        <th class="head-table" scope="col">Mã hợp đồng</th>
-                                        <th class="head-table" scope="col">Ngày hết hạn</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($hopdongs as $hopdong)
-                                        <tr class="">
-                                            <th class="h1" scope="row">{{ $hopdong->manv }}</th>
-                                            <th class="h1" scope="row">{{ $hopdong->nhanvien->tennv }}</th>
-                                            <th class="h1" scope="row">{{ $hopdong->id }}</th>
-                                            <th class="h1" scope="row">
-                                                @if ($hopdong->ngayketthuc)
-                                                    @php
-                                                        $newEndDate = date('d-m-Y', strtotime($hopdong->ngayketthuc));
-                                                    @endphp
-                                                    {{ $newEndDate }}
-                                                @endif
-                                            </th>
+                            <div class="row">
+                                <table class="table table-tkhd-1 table-bordered table-fixed">
+                                    <thead>
+                                        <tr>
+                                            <th class="col"  scope="col">Mã nhân viên</th>
+                                            <th class="col"  scope="col">Tên nhân viên</th>
+                                            <th class="col"  scope="col">Mã hợp đồng</th>
+                                            <th class="col"  scope="col">Ngày hết hạn</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            {{-- <div class="container-footer-kt">
-                                <nav aria-label="Page navigation example" class="ml-5 footer-kt">
-                                    {{ $hopdongs->links('pagination::bootstrap-5') }}
-                                </nav>
-                            </div> --}}
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($hopdongs as $hopdong)
+                                                <tr class="">
+                                                    <td class="col" scope="row">{{ $hopdong->manv }}</td>
+                                                    <td class="col" scope="row">{{ $hopdong->nhanvien->tennv }}</td>
+                                                    <td class="col" scope="row">{{ $hopdong->id }}</td>
+                                                    <td class="col" scope="row">
+                                                        @if ($hopdong->ngayketthuc)
+                                                            @php
+                                                                $newEndDate = date('d-m-Y', strtotime($hopdong->ngayketthuc));
+                                                            @endphp
+                                                            {{ $newEndDate }}
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        <tr>
+                                            <td class="col" >1</td>
+                                            <td class="col" >Phạm Khánh Long</td>
+                                            <td class="col" >12</td>
+                                            <td class="col" >12/2/2024</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col" >1</td>
+                                            <td class="col" >Phạm Khánh Long</td>
+                                            <td class="col" >12</td>
+                                            <td class="col" >12/2/2024</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col" >1</td>
+                                            <td class="col" >Phạm Khánh Long</td>
+                                            <td class="col" >12</td>
+                                            <td class="col" >12/2/2024</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col" >1</td>
+                                            <td class="col" >Phạm Khánh Long</td>
+                                            <td class="col" >12</td>
+                                            <td class="col" >12/2/2024</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col" >1</td>
+                                            <td class="col" >Phạm Khánh Long</td>
+                                            <td class="col" >12</td>
+                                            <td class="col" >12/2/2024</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col" >1</td>
+                                            <td class="col" >Phạm Khánh Long</td>
+                                            <td class="col" >12</td>
+                                            <td class="col" >12/2/2024</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col" >1</td>
+                                            <td class="col" >Phạm Khánh Long</td>
+                                            <td class="col" >12</td>
+                                            <td class="col" >12/2/2024</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
                         </div>
                     </div>
                 </div>

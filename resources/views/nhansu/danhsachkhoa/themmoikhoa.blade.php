@@ -13,11 +13,11 @@
                         <div class="label-name-tmk">
                             <label for="">Mã khoa:</label>
                         </div>
-                        <input class="inp-tmcv" type="text" name="makhoa" id="" placeholder="Nhập mã khoa" onkeyup="checkch(this)">
+                        <input class="inp-tmcv" type="text" name="makhoa" id="" placeholder="Nhập mã khoa">
                         <div class="label-name-tmk">
                             <label for="">Tên khoa:</label>
                         </div>
-                        <input class="inp-tmcv" type="text" name="tenkhoa" id="" placeholder="Nhập tên khoa" onkeyup="checkch(this)">
+                        <input class="inp-tmcv" type="text" name="tenkhoa" id="" placeholder="Nhập tên khoa">
                 </div>
                 @if (\Session::has('message'))
                 <div class="alert alert-danger">

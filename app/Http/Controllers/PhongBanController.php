@@ -75,8 +75,19 @@ class PhongBanController extends Controller
         $phongban->delete();
         return redirect('danhsachphongban');
     }
-    public function timphongban($name){
-        $phongban=PhongBan::where('tenphongban','like','%'.$name.'%')->paginate(5);
+    public function timphongban(Request $request){
+        $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+        if(!preg_match($patt,$request->tenphongban) ){
+            if($request->tenphongban==""){
+                return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+            }
+            else{
+                return redirect()->back()->with('message', 'Phải nhập đúng kiểu ký tự');
+            }
+        }
+        else{
+        $phongban=PhongBan::where('tenphongban','like','%'.$request->tenphongban.'%')->paginate(5);
         return view('nhansu.danhsachphongban.danhsachphongban',['phongban'=>$phongban]);
+        }
     }
 }

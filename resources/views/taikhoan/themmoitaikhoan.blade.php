@@ -150,9 +150,9 @@
             modal.classList.remove('open')
         }
 
-        for (const buyBtn of buyBtns){
-            buyBtn.addEventListener('click', showBuyTickets)
-        }
+        // for (const buyBtn of buyBtns){
+        //     buyBtn.addEventListener('click', showBuyTickets)
+        // }
 
         modalClose.addEventListener('click', hideBuyTickets)
 
