@@ -27,7 +27,7 @@
                             </div>
                         </a>
                     </div>
-                    {{-- <div class="col right">
+                    <div class="col right">
                         <a href="{{ route('thongkekyluat') }}">
                             <div class="container-icon-thongke">
                                 <span class="icon-thongke">
@@ -36,7 +36,7 @@
                                 <h4>Thống kê kỷ luật</h4>
                             </div>
                         </a>
-                    </div> --}}
+                    </div>
                 </div>
 
                 <div class="row bot">
