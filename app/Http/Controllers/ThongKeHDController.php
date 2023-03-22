@@ -34,6 +34,7 @@ class ThongKeHDController extends Controller
     public function thongke(PublicRequest $request) {
         if($request->nam) { 
             $hopdongs = $this->hopdong->thongkehethan($request->nam);
+            // dd($hopdongs);
             $hethan = count($hopdongs);
             $conhan = $this->hopdong->conhan($request->nam);
             $nam = $request->nam;

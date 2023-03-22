@@ -34,29 +34,29 @@
                                 <table class="table table-tkhd-1 table-bordered table-fixed">
                                     <thead>
                                         <tr>
-                                            <th class="col"  scope="col">Mã nhân viên</th>
-                                            <th class="col"  scope="col">Tên nhân viên</th>
-                                            <th class="col"  scope="col">Mã hợp đồng</th>
-                                            <th class="col"  scope="col">Ngày hết hạn</th>
+                                            <th class="col" scope="col">Mã nhân viên</th>
+                                            <th class="col" scope="col">Tên nhân viên</th>
+                                            <th class="col" scope="col">Mã hợp đồng</th>
+                                            <th class="col" scope="col">Ngày hết hạn</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($hopdongs as $hopdong)
-                                                <tr class="">
-                                                    <td class="col" scope="row">{{ $hopdong->manv }}</td>
-                                                    <td class="col" scope="row">{{ $hopdong->nhanvien->tennv }}</td>
-                                                    <td class="col" scope="row">{{ $hopdong->id }}</td>
-                                                    <td class="col" scope="row">
-                                                        @if ($hopdong->ngayketthuc)
-                                                            @php
-                                                                $newEndDate = date('d-m-Y', strtotime($hopdong->ngayketthuc));
-                                                            @endphp
-                                                            {{ $newEndDate }}
-                                                        @endif
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        <tr>
+                                            <tr class="">
+                                                <td class="col" scope="row">{{ $hopdong->manv }}</td>
+                                                <td class="col" scope="row">{{ $hopdong->nhanvien->tennv }}</td>
+                                                <td class="col" scope="row">{{ $hopdong->id }}</td>
+                                                <td class="col" scope="row">
+                                                    @if ($hopdong->ngayketthuc)
+                                                        @php
+                                                            $newEndDate = date('d-m-Y', strtotime($hopdong->ngayketthuc));
+                                                        @endphp
+                                                        {{ $newEndDate }}
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        {{-- <tr>
                                             <td class="col" >1</td>
                                             <td class="col" >Phạm Khánh Long</td>
                                             <td class="col" >12</td>
@@ -97,10 +97,9 @@
                                             <td class="col" >Phạm Khánh Long</td>
                                             <td class="col" >12</td>
                                             <td class="col" >12/2/2024</td>
-                                        </tr>
+                                        </tr> --}}
                                     </tbody>
                                 </table>
-
                             </div>
                         </div>
                     </div>

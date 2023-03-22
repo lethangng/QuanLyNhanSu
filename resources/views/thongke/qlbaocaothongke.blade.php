@@ -73,3 +73,6 @@
         </div>
     </div>
 @endsection
+@section('title')
+    {{ 'Quản lý báo cáo' }}
+@endsection
