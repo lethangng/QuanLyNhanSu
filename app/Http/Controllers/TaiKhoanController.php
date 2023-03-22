@@ -121,13 +121,10 @@ class TaiKhoanController extends Controller
     public function findNameNv(Request $request)
     {
         if ($nv = NhanVien::find($request->data)) {
-            if ($user = User::where('manv', $request->data)->first()) {
+            if (User::where('manv', $request->data)->first()) {
                 return response()->json(['check' => true, 'msg' => 'Nhân viên đã có tài khoản']);
             } else {
-                if ($nv->checkMachucvu()) {
-                    return response()->json(['check' => false, 'msg' => $nv->tennv]);
-                }
-                return response()->json(['check' => true, 'msg' => 'Nhân viên không thuộc phòng nhân sự']);
+                return response()->json(['check' => false, 'msg' => $nv->tennv]);
             }
         } else {
             return response()->json(['check' => true, 'msg' => 'Mã nhân viên không tồn tại']);
