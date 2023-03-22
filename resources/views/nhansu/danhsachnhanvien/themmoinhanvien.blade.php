@@ -40,7 +40,7 @@
                         <div class="label-name">
                             <label for="">HSL:</label>
                         </div>
-                        <input class="inp-tmnv" type="number" step="any" name="hsl" id="">
+                        <input class="inp-tmnv" type="number" step="any" name="hsl" id="hs">
                 </div>
                 <div class="col-sm right-inf-tmnv">
                     <div class="label-name">
@@ -68,7 +68,7 @@
                     </div>
                     @empty($chucVu)
                     @endempty
-                    <select class="inp-tmnv" name="chucvu" id="">
+                    <select class="inp-tmnv" name="chucvu" id="cv" onchange="checkcv()">
                         @isset($chucVu)
                             @foreach ($chucVu as $item)
                             <option value="{{$item->id}}">{{$item->tenchucvu}}</option>
@@ -100,7 +100,7 @@
                     <div class="label-name">
                         <label for="">Bậc lương:</label>
                     </div>
-                    <input class="inp-tmnv" type="number" name="bacluong" id="">
+                    <input class="inp-tmnv" type="number" name="bacluong" id="bl">
                 </div>
                 @if (\Session::has('message'))
                 <div class="alert alert-danger">
@@ -160,6 +160,30 @@
         {
             event.stopPropagation()
         })
+        function checkcv(){
+            var e = document.getElementById("cv");
+            if(e.options[e.selectedIndex].text=="Giảng viên"){
+                document.getElementById("bl").readOnly= false;
+                document.getElementById("hs").readOnly= true;
+            }
+            else{
+                document.getElementById("bl").readOnly= true;
+                document.getElementById("hs").readOnly= false;
+            }
+
+        }
+        window.addEventListener("load", (event) => {
+            var e = document.getElementById("cv");
+            if(e.options[e.selectedIndex].text=="Giảng viên"){
+                document.getElementById("bl").readOnly= false;
+                document.getElementById("hs").readOnly= true;
+            }
+            else{
+                document.getElementById("bl").readOnly= true;
+                document.getElementById("hs").readOnly= false;
+            }
+
+        });
     </script>
     @if (\Session::has('message2'))
     <script>
