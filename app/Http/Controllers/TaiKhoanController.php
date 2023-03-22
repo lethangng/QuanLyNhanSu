@@ -124,7 +124,10 @@ class TaiKhoanController extends Controller
             if (User::where('manv', $request->data)->first()) {
                 return response()->json(['check' => true, 'msg' => 'Nhân viên đã có tài khoản']);
             } else {
-                return response()->json(['check' => false, 'msg' => $nv->tennv]);
+                if ($nv->checkMachucvu()) {
+                    return response()->json(['check' => false, 'msg' => $nv->tennv]);
+                }
+                return response()->json(['check' => true, 'msg' => 'Nhân viên không thuộc phòng nhân sự']);
             }
         } else {
             return response()->json(['check' => true, 'msg' => 'Mã nhân viên không tồn tại']);
