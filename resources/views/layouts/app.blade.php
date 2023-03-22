@@ -37,7 +37,7 @@
                         <span class="profession">Web developer</span>
                     </div>
                 </div>
-
+                
                 <i class='bx bx-chevron-right toggle'></i>
             </header>
 
