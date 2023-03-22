@@ -16,8 +16,14 @@ class PhongBanController extends Controller
     public function store(Request $request)
     {
 
-        if($request->maphongban=="" || $request->tenphongban==""){
-            return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+        $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+        if(!preg_match($patt,$request->maphongban) || !preg_match($patt,$request->tenphongban) ){
+            if($request->maphongban=="" || $request->tenphongban==""){
+                return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+            }
+            else{
+                return redirect()->back()->with('message', 'Phải nhập đúng kiểu ký tự');
+            }
         }
         else{
             if( DB::select("SELECT id from phongban where maphongban='".$request->maphongban."'")!=null){
@@ -42,8 +48,14 @@ class PhongBanController extends Controller
     public function update(Request $request,$id)
     {
 
-        if($request->maphongban=="" || $request->tenphongban==""){
-            return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+        $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+        if(!preg_match($patt,$request->maphongban) || !preg_match($patt,$request->tenphongban) ){
+            if($request->maphongban=="" || $request->tenphongban==""){
+                return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+            }
+            else{
+                return redirect()->back()->with('message', 'Phải nhập đúng kiểu ký tự');
+            }
         }
         else{
             $cn=PhongBan::find($id);

@@ -107,6 +107,11 @@
                 <strong>{!! \Session::get('message') !!}</strong>
                 </div>
                 @endif
+                @error('bacluong')
+                <div class="alert alert-danger">
+                <strong>{{$message}}</strong>
+                </div>
+                @enderror
             </div>
 
             <div class="btn-tmnv">

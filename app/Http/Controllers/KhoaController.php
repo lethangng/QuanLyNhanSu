@@ -15,8 +15,14 @@ class KhoaController extends Controller
     public function store(Request $request)
     {
 
-        if($request->makhoa=="" || $request->tenkhoa==""){
-            return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+        $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+        if(!preg_match($patt,$request->makhoa) || !preg_match($patt,$request->tenkhoa) ){
+            if($request->makhoa=="" || $request->tenkhoa==""){
+                return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+            }
+            else{
+                return redirect()->back()->with('message', 'Phải nhập đúng kiểu ký tự');
+            }
         }
         else{
             if( DB::select("SELECT id from khoa where makhoa='".$request->makhoa."'")!=null){
@@ -39,8 +45,14 @@ class KhoaController extends Controller
     public function update(Request $request,$id)
     {
 
-        if($request->makhoa=="" || $request->tenkhoa==""){
-            return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+        $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+        if(!preg_match($patt,$request->makhoa) || !preg_match($patt,$request->tenkhoa) ){
+            if($request->makhoa=="" || $request->tenkhoa==""){
+                return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+            }
+            else{
+                return redirect()->back()->with('message', 'Phải nhập đúng kiểu ký tự');
+            }
         }
         else{
             $cn=Khoa::find($id);
