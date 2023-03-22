@@ -26,7 +26,7 @@
                     <span class="checkmark"></span>
                 </label>
             </div>
-
+            <form action="{{url('timkiemnhanvien')}}" method="GET">
             <div class="custom-select-input">
                 <select class="select-name" name="" id="bb" onchange="myFunctionz()">
                     <option value=""></option>
@@ -44,11 +44,16 @@
                     <a href="{{ url('danhsachnhanvien') }}"><img src="{{ asset('icon/reset.png') }}" alt=""></a>
                 </span>
                 <span class="icon-search">
-                    <img src="{{ asset('icon/search.png') }}" alt="" onclick="findname()">
+                <button class="btn btn-link p-0 m-0"><img src="{{ asset('icon/search.png') }}" alt=""></button>
                 </span>
-                <input id="tennv" class="input-search-name" type="text" placeholder="Nhập tên nhân viên cần tìm">
-
+                <input id="tennv" class="input-search-name" name="tennhanvien" type="text" placeholder="Nhập tên nhân viên cần tìm">
             </div>
+            </form>
+            @if (\Session::has('message'))
+                <div class="alert alert-danger text-center">
+                <strong>{!! \Session::get('message') !!}</strong>
+                </div>
+            @endif
             <div class="list-dsnv">
                 <table class="table-dsnv table-bordered">
                     <thead>
@@ -271,21 +276,7 @@
 
         }
     }
-    function findname() {
-        var tennv = document.getElementById("tennv").value;
-        let chck=tennv;
-        let dem=0;
-        for (let i = 0; i < chck.length; i++) {
-            if(chck.charAt(i)==" "){
-                dem=dem+1;
-            }
-        }
-        if(tennv!="" && dem!=chck.length){
-            var url="{{ URL::to('timnhanvien/tennv=name') }}";
-            url=url.replace('name',tennv);
-            window.location.assign(url);
-        }
-    }
+
 </script>
 </body>
 

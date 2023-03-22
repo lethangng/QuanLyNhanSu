@@ -73,8 +73,19 @@ class KhoaController extends Controller
         $khoa->delete();
         return redirect('danhsachkhoa');
     }
-    public function timkhoa($name){
-        $khoa=Khoa::where('tenkhoa','like','%'.$name.'%')->paginate(5);
+    public function timkhoa(Request $request){
+        $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+        if(!preg_match($patt,$request->tenkhoa) ){
+            if($request->tenkhoa==""){
+                return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+            }
+            else{
+                return redirect()->back()->with('message', 'Phải nhập đúng kiểu ký tự');
+            }
+        }
+        else{
+        $khoa=Khoa::where('tenkhoa','like','%'.$request->tenkhoa.'%')->paginate(5);
         return view('nhansu.danhsachkhoa.danhsachkhoa',['khoa'=>$khoa]);
+        }
     }
 }

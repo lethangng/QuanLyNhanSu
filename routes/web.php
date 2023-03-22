@@ -37,7 +37,7 @@ Route::middleware(['checklogin'])->group(function () {
     Route::get('locphongban/id={id}', [NhanVienController::class, 'locphongban'])->name('locphongban');
     Route::get('locchucvu/id={id}', [NhanVienController::class, 'locchucvu'])->name('locchucvu');
     Route::get('lockhoa/id={id}', [NhanVienController::class, 'lockhoa'])->name('lockhoa');
-    Route::get('timnhanvien/tennv={name}', [NhanVienController::class, 'timnhanvien'])->name('timnhanvien');
+    Route::get('timkiemnhanvien', [NhanVienController::class, 'timnhanvien'])->name('timkiemnhanvien');
     /*
 Route::get('/danhsachnhanvien', function () {
     return view('nhansu.danhsachnhanvien.danhsachnhanvien');
@@ -50,14 +50,14 @@ Route::get('/danhsachchucvu', function () {
 })->name('danhsachchucvu');
 */
     Route::get('/danhsachchucvu', [ChucVuController::class, 'index'])->name('danhsachchucvu');
-    Route::get('timkiemchucvu/tenchucvu={name}', [ChucVuController::class, 'timchucvu'])->name('timkiemchucvu');
+    Route::get('/timkiemchucvu', [ChucVuController::class, 'timchucvu'])->name('timkiemchucvu');
     /*
 Route::get('/danhsachkhoa', function () {
     return view('nhansu.danhsachkhoa.danhsachkhoa');
 })->name('danhsachkhoa');
 */
     Route::get('/danhsachkhoa', [KhoaController::class, 'index'])->name('danhsachkhoa');
-    Route::get('timkiemkhoa/tenkhoa={name}', [KhoaController::class, 'timkhoa'])->name('timkiemkhoa');
+    Route::get('timkiemkhoa', [KhoaController::class, 'timkhoa'])->name('timkiemkhoa');
     Route::get('/themmoikkhoa', function () {
         return view('nhansu.danhsachkhoa.themmoikhoa');
     })->name('themmoikhoa');
@@ -76,7 +76,7 @@ Route::get('/danhsachphongban', function () {
 })->name('danhsachphongban');
 */
     Route::get('/danhsachphongban', [PhongBanController::class, 'index'])->name('danhsachphongban');
-    Route::get('timkiemphongban/tenphongban={name}', [PhongBanController::class, 'timphongban'])->name('timkiemphongban');
+    Route::get('timkiemphongban', [PhongBanController::class, 'timphongban'])->name('timkiemphongban');
 
 
     Route::get('/themmoichucvu', function () {

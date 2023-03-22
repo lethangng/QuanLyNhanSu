@@ -10,21 +10,24 @@
                         <button class="nv">Thêm mới khoa</button>
                     </div>
                 </form>
-
+                <form action="{{url('timkiemkhoa')}}" method="GET">
                 <div class="custom-input">
                     <div class="container-search-reset">
                         <span class="icon-search-1">
-                           <img src="{{ asset('icon/search.png') }}" alt="" onclick="findname()">
+                        <button class="btn btn-link p-0 m-0"><img src="{{ asset('icon/search.png') }}" alt=""></button>
                         </span>
                         <span class="icon-reset-1">
                             <a href="{{ url('danhsachkhoa') }}"><img src="{{ asset('icon/reset.png') }}" alt="" ></a>
                         </span>
                     </div>
-
-
-                    <input class="input-search-name-1" type="text" id="tenkhoa" placeholder="Nhập tên khoa">
-
+                    <input class="input-search-name-1" type="text" name="tenkhoa" id="tenkhoa" placeholder="Nhập tên khoa">
                 </div>
+                </form>
+                @if (\Session::has('message'))
+                <div class="alert alert-danger text-center">
+                <strong>{!! \Session::get('message') !!}</strong>
+                </div>
+                @endif
                 <div class="list-dsk">
                     <table class="table-dsk table-bordered">
                         <thead>
@@ -116,20 +119,6 @@
         {
             event.stopPropagation()
         })
-        function findname() {
-        var tenkhoa = document.getElementById("tenkhoa").value;
-        let chck=tenkhoa;
-        let dem=0;
-        for (let i = 0; i < chck.length; i++) {
-            if(chck.charAt(i)==" "){
-                dem=dem+1;
-            }
-        }
-        if(tenkhoa!="" && dem!=chck.length){
-            var url="{{ URL::to('timkiemkhoa/tenkhoa=name') }}";
-            url=url.replace('name',tenkhoa);
-            window.location.assign(url);
-        }
-    }
+
     </script>
 @endsection

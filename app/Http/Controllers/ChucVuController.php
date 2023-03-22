@@ -15,7 +15,6 @@ class ChucVuController extends Controller
     public function store(Request $request)
     {
         $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
-        //i: ko pb chu hoa ,thuong
         if(!preg_match($patt,$request->machucvu) || !preg_match($patt,$request->tenchucvu) ){
             if($request->machucvu=="" || $request->tenchucvu==""){
                 return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
@@ -83,8 +82,20 @@ class ChucVuController extends Controller
         $chucvu->delete();
         return redirect('danhsachchucvu');
     }
-    public function timchucvu($name){
-        $chucvu=ChucVu::where('tenchucvu','like','%'.$name.'%')->paginate(5);
-        return view('nhansu.danhsachchucvu.danhsachchucvu',['chucvu'=>$chucvu]);
+    public function timchucvu(Request $request){
+        $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+        if(!preg_match($patt,$request->tenchucvu) ){
+            if($request->tenchucvu==""){
+                return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+            }
+            else{
+                return redirect()->back()->with('message', 'Phải nhập đúng kiểu ký tự');
+            }
+        }
+        else{
+            $chucvu=ChucVu::where('tenchucvu','like','%'.$request->tenchucvu.'%')->paginate(5);
+            return view('nhansu.danhsachchucvu.danhsachchucvu',['chucvu'=>$chucvu]);
+        }
+
     }
 }

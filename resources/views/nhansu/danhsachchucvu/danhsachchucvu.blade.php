@@ -10,17 +10,24 @@
                         <button class="nv">Thêm mới chức vụ</button>
                     </div>
                 </form>
+                <form action="{{url('timkiemchucvu')}}" method="GET">
                 <div class="custom-input">
                     <div class="container-search-reset">
                         <span class="icon-search-1">
-                            <img src="{{ asset('icon/search.png') }}" alt="" onclick="findname()">
+                            <button class="btn btn-link p-0 m-0"><img src="{{ asset('icon/search.png') }}" alt=""></button>
                         </span>
                         <span class="icon-reset-1">
                             <a href="{{ url('danhsachchucvu') }}"><img src="{{ asset('icon/reset.png') }}" alt=""></a>
                         </span>
                     </div>
-                    <input class="input-search-name-1" type="text" id="tenchucvu" placeholder="Nhập tên chức vụ cần tìm">
+                    <input class="input-search-name-1" type="text" name="tenchucvu" id="tenchucvu" placeholder="Nhập tên chức vụ cần tìm">
                 </div>
+                </form>
+                @if (\Session::has('message'))
+                <div class="alert alert-danger text-center">
+                <strong>{!! \Session::get('message') !!}</strong>
+                </div>
+                @endif
                 <div class="list-dscv">
                     <table class="table-dscv table-bordered">
                         <thead>
@@ -114,20 +121,6 @@
         {
             event.stopPropagation()
         })
-        function findname() {
-        var tenchucvu = document.getElementById("tenchucvu").value;
-        let chck=tenchucvu;
-        let dem=0;
-        for (let i = 0; i < chck.length; i++) {
-            if(chck.charAt(i)==" "){
-                dem=dem+1;
-            }
-        }
-        if(tenchucvu!="" && dem!=chck.length){
-            var url="{{ URL::to('timkiemchucvu/tenchucvu=name') }}";
-            url=url.replace('name',tenchucvu);
-            window.location.assign(url);
-        }
-    }
+
     </script>
 @endsection

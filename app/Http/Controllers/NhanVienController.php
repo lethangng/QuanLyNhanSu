@@ -159,14 +159,25 @@ class NhanVienController extends Controller
         $trangThai= DB::select('SELECT id,tentrangthai from trangthai');
         return view('nhansu.danhsachnhanvien.danhsachnhanvien', ['caNhan' => $caNhan,'trangThai' => $trangThai,'phongBan' => $phongBan,'khoa' => $khoa,'chucVu' => $chucVu]);
     }
-    public function timnhanvien($name)
+    public function timnhanvien(Request $request)
     {
-        $caNhan = NhanVien::where('tennv','like','%'.$name.'%')->paginate(5);
+        $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+        if(!preg_match($patt,$request->tennhanvien) ){
+            if($request->tennhanvien==""){
+                return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+            }
+            else{
+                return redirect()->back()->with('message', 'Phải nhập đúng kiểu ký tự');
+            }
+        }
+        else{
+        $caNhan = NhanVien::where('tennv','like','%'.$request->tennhanvien.'%')->paginate(5);
         $phongBan= DB::select('SELECT id,tenphongban from phongban');
         $khoa= DB::select('SELECT id,tenkhoa from khoa');
         $chucVu= DB::select('SELECT id,tenchucvu from chucvu');
         $trangThai= DB::select('SELECT id,tentrangthai from trangthai');
         return view('nhansu.danhsachnhanvien.danhsachnhanvien', ['caNhan' => $caNhan,'trangThai' => $trangThai,'phongBan' => $phongBan,'khoa' => $khoa,'chucVu' => $chucVu]);
+        }
     }
     public function thongkenhanvien()
     {
