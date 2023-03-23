@@ -56,48 +56,6 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                        <tr>
-                                            <td class="col" >1</td>
-                                            <td class="col" >Phạm Khánh Long</td>
-                                            <td class="col" >12</td>
-                                            <td class="col" >12/2/2024</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col" >1</td>
-                                            <td class="col" >Phạm Khánh Long</td>
-                                            <td class="col" >12</td>
-                                            <td class="col" >12/2/2024</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col" >1</td>
-                                            <td class="col" >Phạm Khánh Long</td>
-                                            <td class="col" >12</td>
-                                            <td class="col" >12/2/2024</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col" >1</td>
-                                            <td class="col" >Phạm Khánh Long</td>
-                                            <td class="col" >12</td>
-                                            <td class="col" >12/2/2024</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col" >1</td>
-                                            <td class="col" >Phạm Khánh Long</td>
-                                            <td class="col" >12</td>
-                                            <td class="col" >12/2/2024</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col" >1</td>
-                                            <td class="col" >Phạm Khánh Long</td>
-                                            <td class="col" >12</td>
-                                            <td class="col" >12/2/2024</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col" >1</td>
-                                            <td class="col" >Phạm Khánh Long</td>
-                                            <td class="col" >12</td>
-                                            <td class="col" >12/2/2024</td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
