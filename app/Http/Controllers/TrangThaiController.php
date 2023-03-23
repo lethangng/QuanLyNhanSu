@@ -43,7 +43,7 @@ class TrangThaiController extends Controller
         $validator = Validator::make($request->all(), $rules, $messsages);
         if ($validator->passes()) {
             $data = TrangThai::find($request->id);
-            $data->addOrUpdate($request->matrangthai, $request->tentrangthai);
+            $data->addOrUpdate($this->delAllSpace($request->matrangthai), $this->delSpaceInString($request->tentrangthai));
             return response()->json(['errCheck' => true, 'url' => route('danhsachtrangthai')]);
         } else {
             return response()->json(['error' => $validator->errors()]);
@@ -61,9 +61,13 @@ class TrangThaiController extends Controller
         );
         $validator = Validator::make($request->all(), $rules, $messsages);
         if ($validator->passes()) {
-            $trangthai = new TrangThai;
-            $trangthai->addOrUpdate($request->matrangthai, $request->tentrangthai);
-            return response()->json(['errCheck' => true, 'url' => route('danhsachtrangthai')]);
+            if (TrangThai::where('matrangthai', '=', $this->delAllSpace($request->matrangthai))->first()) {
+                return response()->json(['errCheck' => false, 'msg' => 'mã trạng thái đã tồn tại']);
+            } else {
+                $trangthai = new TrangThai;
+                $trangthai->addOrUpdate($this->delAllSpace($request->matrangthai), $this->delSpaceInString($request->tentrangthai));
+                return response()->json(['errCheck' => true, 'url' => route('danhsachtrangthai')]);
+            }
         } else {
             return response()->json(['error' => $validator->errors()]);
         }
@@ -72,26 +76,40 @@ class TrangThaiController extends Controller
     {
         $data = TrangThai::find($request->data);
         $data->delete();
-        return $this->searchAll();
+        return response()->json(['msg' => $this->StrElement()]);
     }
     public function search(Request $request)
     {
-        if ($trangthai = TrangThai::where('matrangthai', $request->data)->first()) {
+        if ($request->data == '') {
+
+            return response()->json(['msg' => $this->StrElement()]);
+        }
+        $str = $this->delSpaceInString($request->data);
+        if ($trangthai = TrangThai::where('tentrangthai', 'like', '%' . $str . '%')->first()) {
             $strQr = $trangthai->searchElm();
-            return response()->json(['check' => true, 'msg' => $strQr]);
+            return response()->json(['check' => true, 'msg' => $strQr, 'str' => $str]);
         }
-        return response()->json(['check' => false, 'msg' => '']);
+        return response()->json(['check' => false, 'msg' => '', 'str' => $str]);
     }
-    public function searchAll()
+    public function delSpaceInString($string)
     {
-        $listdata = TrangThai::all();
-        $strQr = '';
-        $count = 0;
-        foreach ($listdata as $trangthai) {
-            $count++;
-            $strQr .= $trangthai->searchElm();
-            if ($count == 5)
-                return response()->json(['check' => true, 'msg' => $strQr]);
+        $pattern = '/\s{2,}/';
+        $newString = preg_replace($pattern, ' ', $string);
+        return trim($newString);
+    }
+    public function delAllSpace($string)
+    {
+        $pattern = '/\s{1,}/';
+        $newString = preg_replace($pattern, '', $string);
+        return trim($newString);
+    }
+    public function StrElement()
+    {
+        $dataTrangThai = TrangThai::all();
+        $strEle = '';
+        foreach ($dataTrangThai as $data) {
+            $strEle .= $data->searchElm();
         }
+        return $strEle;
     }
 }

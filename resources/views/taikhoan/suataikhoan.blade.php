@@ -94,15 +94,12 @@
                 },
                 processData: false,
                 success: function(data) {
-                    modal.classList.add('open')
                     var error = document.querySelectorAll(".error-text");
                     for (var i = 0; i < error.length; i++) {
                         error[i].innerHTML = "";
                     }
                     if (data.error_check == true) {
-                        for (const buyBtn of buyBtns){
-                            buyBtn.addEventListener('click', showBuyTickets)
-                        }
+                        modal.classList.add('open')
                         setTimeout(function() { 
                             window.location.href = data.url;
                         }, 1000);

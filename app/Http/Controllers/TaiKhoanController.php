@@ -55,7 +55,7 @@ class TaiKhoanController extends Controller
         $validator = Validator::make($request->all(), $rules, $messsages);
         if ($validator->passes()) {
             $user = User::find($request->id);
-            $user->updateUser($request->email, $request->password);
+            $user->updateUser($request->email, $this->delAllSpace($request->password));
             return response()->json(['error_check' => true,  'url' => route('danhsachtaikhoan')]);
         } else {
             return response()->json(['error' => $validator->errors()]);
@@ -84,7 +84,7 @@ class TaiKhoanController extends Controller
                 return response()->json(['errCheck' => false, 'msg' => 'Email đã tồn tại']);
             } else {
                 $user = new User();
-                $user->insertUser($request->manv, $request->email, $request->password);
+                $user->insertUser($request->manv, $request->email, $this->delAllSpace($request->password));
                 return response()->json(['errCheck' => true, 'url' => route('danhsachtaikhoan')]);
             }
         } else {
@@ -99,7 +99,10 @@ class TaiKhoanController extends Controller
     }
     public function search(Request $request)
     {
-        if ($user = User::where('id', $request->data)->first()) {
+        if ($request->data == '') {
+            return $this->searchAll();
+        }
+        if ($user = User::where('id', $this->delAllSpace($request->data))->first()) {
             $strQr = $user->searchElm();
             return response()->json(['msg' => $strQr]);
         }
@@ -114,14 +117,15 @@ class TaiKhoanController extends Controller
             $count++;
             $strQr .= $user->searchElm();
             if ($count == 5)
-                return response()->json(['check' => true, 'msg' => $strQr]);
+                return response()->json(['msg' => $strQr]);
         }
-        return response()->json(['check' => true, 'msg' => $strQr]);
+        return response()->json(['msg' => $strQr]);
     }
     public function findNameNv(Request $request)
     {
-        if ($nv = NhanVien::find($request->data)) {
-            if (User::where('manv', $request->data)->first()) {
+
+        if ($nv = NhanVien::find($this->delAllSpace($request->data))) {
+            if (User::where('manv', $this->delAllSpace($request->data))->first()) {
                 return response()->json(['check' => true, 'msg' => 'Nhân viên đã có tài khoản']);
             } else {
                 if ($nv->checkMachucvu()) {
@@ -132,5 +136,12 @@ class TaiKhoanController extends Controller
         } else {
             return response()->json(['check' => true, 'msg' => 'Mã nhân viên không tồn tại']);
         }
+    }
+
+    public function delAllSpace($string)
+    {
+        $pattern = '/\s{1,}/';
+        $newString = preg_replace($pattern, '', $string);
+        return trim($newString);
     }
 }
