@@ -144,7 +144,13 @@ class KhenThuongController extends Controller
     public function destroy($id)
     {
         KhenThuong::where('id', $id)->delete();
-        return redirect()->route('khenthuong.index');
+        // return redirect()->route('khenthuong.index');
+        $khenthuong = KhenThuong::find($id);
+        if($khenthuong) {
+            return response()->json(['msg' => '']);
+        } else {
+            return response()->json(["check" => true]);
+        }
     }
 
     public function search(Request $request)

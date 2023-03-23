@@ -139,7 +139,12 @@ class KyLuatController extends Controller
     public function destroy(Request $request, $id)
     {
         KyLuat::where('id', $id)->delete();
-        return redirect()->route('kyluat.index');
+        $kyluat = KyLuat::find($id);
+        if($kyluat) {
+            return response()->json(['msg' => '']);
+        } else {
+            return response()->json(["check" => true]);
+        }
     }
 
     public function search(Request $request) {

@@ -141,7 +141,12 @@ class TangLuongController extends Controller
     public function destroy($id)
     {
         TangLuong::where('id', $id)->delete();
-        return redirect()->route('tangluong.index');
+        $tangluong = TangLuong::find($id);
+        if($tangluong) {
+            return response()->json(['msg' => '']);
+        } else {
+            return response()->json(["check" => true]);
+        }
     }
 
     public function search(Request $request)

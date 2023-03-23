@@ -148,14 +148,24 @@
                 </table>
             </div>
         </div>
-        @if ($hopdongs->count() > 0)
-        @endif
         <div class="container-footer-kt">
             <nav aria-label="Page navigation example" class="ml-5 footer-kt">
                 {{ $hopdongs->links('pagination::bootstrap-5') }}
             </nav>
         </div>
-
+        <div class="modal-delete js-modal-del success">
+            <div class="modal-container-delete js-modal-container">
+                <div class="modal-close js-modal-close" onclick="hideBuyTickets()">
+                    <i class="ti-close"></i>
+                </div>
+                <div class="modal-text-delete-2">
+                    <span class="icon-successfull-delete-2">
+                        <img src="{{ asset('css/Img/image 36.png') }}" alt="">
+                    </span>
+                    <h2>Xóa thành công</h2>
+                </div>
+            </div>
+        </div>
 
         <script>
             const buyBtns = document.querySelectorAll('.js-buy-ticket');
@@ -168,27 +178,35 @@
             }
 
             function hideBuyTickets(i) {
-                modal[i].classList.remove('open')
+                if (i) {
+                    modal[i].classList.remove('open')
+                } else {
+                    $('.success').removeClass('open')
+                    window.location = location.href;
+                }
             }
-
-            for (const buyBtn of buyBtns) {
-                buyBtn.addEventListener('click', showBuyTickets)
-            }
-
-            // modalClose.addEventListener('click', hideBuyTickets)
-
-            // modal.addEventListener('click', hideBuyTickets)
-
-            $('.js-modal').click(function() {
-                $(this).removeClass('open')
-            })
-            $('.js-modal-container').click(function() {
-                $(this).stopPropagation()
-            })
-
-            // modalContainer.addEventListener('click', function(event) {
-            //     event.stopPropagation()
-            // })
+        </script>
+        <script>
+            $('.modal-buttons').submit(function(e) {
+                // modal.classList.remove('open')
+                e.preventDefault();
+                var formData = new FormData(this);
+                console.log($(this).attr('action'))
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(data) {
+                        if (data.check == true) {
+                            document.querySelector('.success').classList.add('open')
+                        } else {
+                            alert('không xóa được bạn ơi!');
+                        }
+                    }
+                });
+            });
         </script>
     </div>
 @endsection

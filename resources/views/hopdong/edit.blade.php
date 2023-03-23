@@ -97,7 +97,7 @@
         })
     </script>
 
-    {{-- <script>
+    <script>
         $("#ma_nhanvien").blur(function(e) {
             console.log($("#ma_nhanvien").val())
             $.ajax({
@@ -121,7 +121,7 @@
                 }
             })
         });
-    </script> --}}
+    </script>
 
     <script type="text/javascript">
         function showErr(msg, $err) {
@@ -139,7 +139,7 @@
                 e.preventDefault();
                 var formData = new FormData(this);
                 $.ajax({
-                    type: 'POST',
+                    type: 'PUT',
                     url: $(this).attr('action'),
                     data: formData,
                     cache: false,

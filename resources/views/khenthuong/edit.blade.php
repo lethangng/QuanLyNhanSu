@@ -138,7 +138,7 @@
                 e.preventDefault();
                 var formData = new FormData(this);
                 $.ajax({
-                    type: 'POST',
+                    type: 'PUT',
                     url: $(this).attr('action'),
                     data: formData,
                     cache: false,
