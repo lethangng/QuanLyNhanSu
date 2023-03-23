@@ -13,14 +13,16 @@
                             <div class="label-name-tmcv">
                                 <label for="">Mã trạng thái:</label>
                             </div>
-                            <input class="inp-tmcv" type="text" name="matrangthai"  placeholder="Nhập mã trạng thái">
+                            <div>
+                                <input class="inp-tmcv" type="text" name="matrangthai"  placeholder="Nhập mã trạng thái">
+                                </div>
                             <small class="text-danger error-text matrangthai_err"></small>
                             <div class="label-name-tmcv">
                                 <label for="">Tên trạng thái:</label>
                             </div>
                             <input class="inp-tmcv" type="text" name="tentrangthai"   placeholder="Nhập tên trạng thái">
-                            <small class="text-danger error-text tentrangthai_err"></small>
                         </div>
+                        <small class="text-danger error-text tentrangthai_err"></small>
         
                     <div class="btn-tmcv">
                         <button type="submit" class="text-xacnhan js-buy-ticket " id='js-buttom' >Xác nhận</button>
@@ -97,9 +99,9 @@
             modal.classList.remove('open')
         }
 
-        for (const buyBtn of buyBtns){
-            buyBtn.addEventListener('click', showBuyTickets)
-        }
+        // for (const buyBtn of buyBtns){
+        //     buyBtn.addEventListener('click', showBuyTickets)
+        // }
 
         modalClose.addEventListener('click', hideBuyTickets)
 

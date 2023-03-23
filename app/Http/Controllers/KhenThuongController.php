@@ -7,6 +7,8 @@ use App\Models\KhenThuong;
 use App\Models\NhanVien;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\KhenThuongRequest;
+use Hamcrest\Type\IsInteger;
+use Hamcrest\Type\IsNumeric;
 use Illuminate\Support\Facades\Auth;
 
 class KhenThuongController extends Controller
@@ -142,7 +144,13 @@ class KhenThuongController extends Controller
     public function destroy($id)
     {
         KhenThuong::where('id', $id)->delete();
-        return redirect()->route('khenthuong.index');
+        // return redirect()->route('khenthuong.index');
+        $khenthuong = KhenThuong::find($id);
+        if($khenthuong) {
+            return response()->json(['msg' => '']);
+        } else {
+            return response()->json(["check" => true]);
+        }
     }
 
     public function search(Request $request)
@@ -193,8 +201,14 @@ class KhenThuongController extends Controller
 
     public function findNameNv(Request $request)
     {
-        if ($user = NhanVien::where('id', $request->dataId)->first()) {
-            return response()->json(['check' => false, 'msg' => $user->tennv]);
+        // dd($request->dataId);
+        if(!is_numeric($request->dataId)) {
+            return response()->json(['check' => true, 'msg' => 'Mã nhân viên không tồn tại']);
+        }else {
+            $user = NhanVien::where('id', $request->dataId)->first();
+            if($user) {
+                return response()->json(['check' => false, 'msg' => $user->tennv]);
+            }
         }
         return response()->json(['check' => true, 'msg' => 'Mã nhân viên không tồn tại']);
     }

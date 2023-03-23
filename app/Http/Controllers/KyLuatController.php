@@ -139,7 +139,12 @@ class KyLuatController extends Controller
     public function destroy(Request $request, $id)
     {
         KyLuat::where('id', $id)->delete();
-        return redirect()->route('kyluat.index');
+        $kyluat = KyLuat::find($id);
+        if($kyluat) {
+            return response()->json(['msg' => '']);
+        } else {
+            return response()->json(["check" => true]);
+        }
     }
 
     public function search(Request $request) {
@@ -181,16 +186,21 @@ class KyLuatController extends Controller
     }
     public function findNameNvKyLuat(Request $request)
     {
-        if ($user = NhanVien::where('id', $request->dataId)->first()) {
-            $nhanvien = DB::select("SELECT nhanvien.id FROM nhanvien JOIN trangthai ON nhanvien.matrangthai = trangthai.id WHERE trangthai.matrangthai = 'TS'");
-            if($nhanvien) {
-                foreach($nhanvien as $nv) {
-                    if($request->dataId == $nv->id) {
-                        return response()->json(['check' => true, "msg" => 'Nhân viên ở trạng thái mang thai không được thêm kỷ luật']);
+        if(!is_numeric($request->dataId)) {
+            return response()->json(['check' => true, 'msg' => 'Mã nhân viên không tồn tại']);
+        } else {
+            $user = NhanVien::where('id', $request->dataId)->first();
+            if ($user) {
+                $nhanvien = DB::select("SELECT nhanvien.id FROM nhanvien JOIN trangthai ON nhanvien.matrangthai = trangthai.id WHERE trangthai.matrangthai = 'TS'");
+                if($nhanvien) {
+                    foreach($nhanvien as $nv) {
+                        if($request->dataId == $nv->id) {
+                            return response()->json(['check' => true, "msg" => 'Nhân viên ở trạng thái mang thai không được thêm kỷ luật']);
+                        }
                     }
                 }
+                return response()->json(['check' => false, 'msg' => $user->tennv]);
             }
-            return response()->json(['check' => false, 'msg' => $user->tennv]);
         }
         return response()->json(['check' => true, 'msg' => 'Mã nhân viên không tồn tại']);
     }

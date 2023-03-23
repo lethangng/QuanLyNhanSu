@@ -166,7 +166,12 @@ class HopDongController extends Controller
     public function destroy($id)
     {
         HopDong::where('id', $id)->delete();
-        return redirect()->route('hopdong.index');
+        $hopdong = HopDong::find($id);
+        if($hopdong) {
+            return response()->json(['msg' => '']);
+        } else {
+            return response()->json(["check" => true]);
+        }
     }
 
     public function search(Request $request)

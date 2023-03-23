@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\NhanVien;
+use Carbon\Carbon;
 
 
 class HopDong extends Model
@@ -26,10 +27,28 @@ class HopDong extends Model
     }
 
     public function thongkehethan($year=null) {
-        return $this::select('*')->whereYear('ngayketthuc', '<=', $year)->get();
+        $today = Carbon::today();
+        // Nếu năm nhập vào nhỏ hơn năm hiện tại thì chỉ cần truy vấn các bản ghi 
+        // có năm của ngayketthuc bằng năm nhập vào là được
+        if($year < $today->year || $year > $today->year) {
+            return $this::select('*')->whereYear('ngayketthuc', $year)->get();
+            // Nếu năm nhập vào bằng năm hiện tại thì phải lấy ra các bản ghi có ngayketthuc bằng năm hiện tại 
+            // và ngayketthuc phải nhỏ hơn ngày hiện tại
+        } else if($year == $today->year) {
+            return $this::select('*')->whereYear('ngayketthuc', $year)->whereDate('ngayketthuc', '<=', $today)->get();
+        } 
     }
     public function conhan($year=null) {
-        return $this::whereYear('ngayketthuc', '>=', $year)
-        ->orWhereNull('ngayketthuc')->count();
+        $today = Carbon::today();
+        // Nếu năm nhập vào nhỏ hơn năm hiện tại thì chỉ cần truy vấn 
+        // các bản ghi có năm của ngayketthuc lớn hơn là được
+        if($year < $today->year || $year > $today->year) {
+            return $this::whereYear('ngayketthuc', '>', $year)->orWhereNull('ngayketthuc')->count();
+            // Nếu năm nhập vào bằng năm hiện tại thì phải lấy ra các bản ghi có ngayketthuc lớn hơn ngày hiện tại
+        } else if($year == $today->year) {
+            return $this::whereDate('ngayketthuc', '>', $today)->orWhereNull('ngayketthuc')->count();
+        } else {
+            return null;
+        }
     }
 }

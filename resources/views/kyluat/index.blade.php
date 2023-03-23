@@ -73,6 +73,9 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $i = 0;
+                        @endphp
                         @foreach ($kyluats as $kyluat)
                             <tr class="">
                                 <th class="h1" scope="row">{{ $kyluat->manv }}</th>
@@ -103,13 +106,14 @@
                                             <i class='bx bx-edit'></i>
                                         </button>
                                     </a>
-                                    <button class="i-rotate js-buy-ticket">
+                                    <button class="i-rotate js-buy-ticket" onclick="showBuyTickets({{ $i }})">
                                         <i class='bx bx-trash'></i>
                                     </button>
 
                                     <div class="modal-delete js-modal">
                                         <div class="modal-container-delete js-modal-container">
-                                            <div class="modal-close js-modal-close">
+                                            <div class="modal-close js-modal-close"
+                                                onclick="hideBuyTickets({{ $i }})">
                                                 <i class="ti-close"></i>
                                             </div>
                                             <div class="modal-text-delete">
@@ -121,13 +125,16 @@
                                                     @csrf
                                                     <button class="confirm-btn" type="submit">Xác nhận</button>
                                                     <button class="cancel-btn" type="button"
-                                                        onclick="hideBuyTickets()">Hủy</button>
+                                                        onclick="hideBuyTickets({{ $i }})">Hủy</button>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
                                 </th>
                             </tr>
+                            @php
+                                $i++;
+                            @endphp
                         @endforeach
                     </tbody>
                 </table>
@@ -138,33 +145,60 @@
                 {{ $kyluats->links('pagination::bootstrap-5') }}
             </nav>
         </div>
-
+        <div class="modal-delete js-modal-del success">
+            <div class="modal-container-delete js-modal-container">
+                <div class="modal-close js-modal-close" onclick="hideBuyTickets()">
+                    <i class="ti-close"></i>
+                </div>
+                <div class="modal-text-delete-2">
+                    <span class="icon-successfull-delete-2">
+                        <img src="{{ asset('css/Img/image 36.png') }}" alt="">
+                    </span>
+                    <h2>Xóa thành công</h2>
+                </div>
+            </div>
+        </div>
 
         <script>
             const buyBtns = document.querySelectorAll('.js-buy-ticket');
-            const modal = document.querySelector('.js-modal');
-            const modalContainer = document.querySelector('.js-modal-container')
-            const modalClose = document.querySelector('.js-modal-close');
+            const modal = document.querySelectorAll('.js-modal');
+            const modalContainer = document.querySelectorAll('.js-modal-container')
+            const modalClose = document.querySelectorAll('.js-modal-close');
 
-            function showBuyTickets() {
-                modal.classList.add('open')
+            function showBuyTickets(i) {
+                modal[i].classList.add('open')
             }
 
-            function hideBuyTickets() {
-                modal.classList.remove('open')
+            function hideBuyTickets(i) {
+                if (i) {
+                    modal[i].classList.remove('open')
+                } else {
+                    $('.success').removeClass('open')
+                    window.location = location.href;
+                }
             }
-
-            for (const buyBtn of buyBtns) {
-                buyBtn.addEventListener('click', showBuyTickets)
-            }
-
-            modalClose.addEventListener('click', hideBuyTickets)
-
-            modal.addEventListener('click', hideBuyTickets)
-
-            modalContainer.addEventListener('click', function(event) {
-                event.stopPropagation()
-            })
+        </script>
+        <script>
+            $('.modal-buttons').submit(function(e) {
+                // modal.classList.remove('open')
+                e.preventDefault();
+                var formData = new FormData(this);
+                console.log($(this).attr('action'))
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(data) {
+                        if (data.check == true) {
+                            document.querySelector('.success').classList.add('open')
+                        } else {
+                            alert('không xóa được bạn ơi!');
+                        }
+                    }
+                });
+            });
         </script>
     </div>
 @endsection
