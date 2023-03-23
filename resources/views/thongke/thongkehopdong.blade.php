@@ -42,7 +42,6 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($hopdongs as $hopdong)
-<<<<<<< HEAD
                                                 <tr class="">
                                                     <td class="col" scope="row">{{ $hopdong->manv }}</td>
                                                     <td class="col" scope="row">{{ $hopdong->nhanvien->tennv }}</td>
@@ -57,7 +56,6 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
-=======
                                             <tr class="">
                                                 <td class="col" scope="row">{{ $hopdong->manv }}</td>
                                                 <td class="col" scope="row">{{ $hopdong->nhanvien->tennv }}</td>
