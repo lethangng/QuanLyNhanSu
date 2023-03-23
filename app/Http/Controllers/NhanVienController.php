@@ -30,10 +30,82 @@ class NhanVienController extends Controller
     }
     public function store(Request $request)
     {
+
         if($request->chucvu==1){
-            if($request->hoten=="" || $request->ngaysinh=="" || $request->gioitinh=="" || $request->cccd=="" || $request->diachi=="" || $request->email=="" || $request->quequan=="" || $request->sodienthoai=="" || $request->phongban=="" || $request->chucvu==""  || $request->khoa=="" || $request->trangthai=="" || $request->bacluong==""){
-                return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
-            }
+            $request->validate([
+            'ngaysinh'=>'required|date',
+            'cccd'=>'required|numeric',
+            'sodienthoai'=>'required|numeric',
+            'email'=>'required|email',
+            'phongban'=>'required|integer',
+            'chucvu'=>'required|integer',
+            'khoa'=>'required|integer',
+            'trangthai'=>'required|integer',
+            'bacluong'=>'required|integer',
+        ], [
+            'ngaysinh.required'=>'Phải nhập đủ thông tin',
+            'cccd.required'=>'Phải nhập đủ thông tin',
+            'sodienthoai.required'=>'Phải nhập đủ thông tin',
+            'email.required'=>'Phải nhập đủ thông tin',
+            'phongban.required'=>'Phải nhập đủ thông tin',
+            'chucvu.required'=>'Phải nhập đủ thông tin',
+            'khoa.required'=>'Phải nhập đủ thông tin',
+            'trangthai.required'=>'Phải nhập đủ thông tin',
+            'bacluong.required'=>'Phải nhập đủ thông tin',
+            'ngaysinh.date'=>'Phải nhập đúng kiểu ký tự',
+            'cccd.numeric'=>'Phải nhập đúng kiểu ký tự',
+            'sodienthoai.numeric'=>'Phải nhập đúng kiểu ký tự',
+            'email.email'=>'Phải nhập đúng kiểu ký tự',
+            'phongban.integer'=>'Phải nhập đúng kiểu ký tự',
+            'chucvu.integer'=>'Phải nhập đúng kiểu ký tự',
+            'khoa.integer'=>'Phải nhập đúng kiểu ký tự',
+            'trangthai.integer'=>'Phải nhập đúng kiểu ký tự',
+            'bacluong.integer'=>'Phải nhập đúng kiểu ký tự'
+        ]);
+        }else{
+            $request->validate([
+                'ngaysinh'=>'required|date',
+                'cccd'=>'required|numeric',
+                'sodienthoai'=>'required|numeric',
+                'email'=>'required|email',
+                'phongban'=>'required|integer',
+                'chucvu'=>'required|integer',
+                'khoa'=>'required|integer',
+                'trangthai'=>'required|integer',
+                'hsl'=>'required|integer',
+            ], [
+                'ngaysinh.required'=>'Phải nhập đủ thông tin',
+                'cccd.required'=>'Phải nhập đủ thông tin',
+                'sodienthoai.required'=>'Phải nhập đủ thông tin',
+                'email.required'=>'Phải nhập đủ thông tin',
+                'phongban.required'=>'Phải nhập đủ thông tin',
+                'chucvu.required'=>'Phải nhập đủ thông tin',
+                'khoa.required'=>'Phải nhập đủ thông tin',
+                'trangthai.required'=>'Phải nhập đủ thông tin',
+                'hsl.required'=>'Phải nhập đủ thông tin',
+                'ngaysinh.date'=>'Phải nhập đúng kiểu ký tự',
+                'cccd.numeric'=>'Phải nhập đúng kiểu ký tự',
+                'sodienthoai.numeric'=>'Phải nhập đúng kiểu ký tự',
+                'email.email'=>'Phải nhập đúng kiểu ký tự',
+                'phongban.integer'=>'Phải nhập đúng kiểu ký tự',
+                'chucvu.integer'=>'Phải nhập đúng kiểu ký tự',
+                'khoa.integer'=>'Phải nhập đúng kiểu ký tự',
+                'trangthai.integer'=>'Phải nhập đúng kiểu ký tự',
+                'hsl.integer'=>'Phải nhập đúng kiểu ký tự'
+            ]);
+        }
+
+
+        if($request->chucvu==1){
+                $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+                if(!preg_match($patt,$request->hoten) || !preg_match($patt,$request->gioitinh) || !preg_match($patt,$request->diachi) || !preg_match($patt,$request->quequan)){
+                    if($request->hoten=="" || $request->gioitinh=="" || $request->diachi=="" || $request->quequan==""){
+                        return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+                    }
+                    else{
+                        return redirect()->back()->with('message', 'Phải nhập đúng kiểu ký tự');
+                    }
+                }
             else{
                 if( DB::select('SELECT id from nhanvien where cccd='.$request->cccd)!=null){
                     return redirect()->back()->with('message', 'Căn cước công dân đã tồn tại');
@@ -59,9 +131,15 @@ class NhanVienController extends Controller
             }
         }
         else{
-            if($request->hoten=="" || $request->ngaysinh=="" || $request->gioitinh=="" || $request->cccd=="" || $request->diachi=="" || $request->email=="" || $request->hsl=="" || $request->quequan=="" || $request->sodienthoai=="" || $request->phongban=="" || $request->chucvu==""  || $request->khoa=="" || $request->trangthai==""){
-                return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
-            }
+            $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+                if(!preg_match($patt,$request->hoten) || !preg_match($patt,$request->gioitinh) || !preg_match($patt,$request->diachi) || !preg_match($patt,$request->quequan)){
+                    if($request->hoten=="" || $request->gioitinh=="" || $request->diachi=="" || $request->quequan==""){
+                        return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+                    }
+                    else{
+                        return redirect()->back()->with('message', 'Phải nhập đúng kiểu ký tự');
+                    }
+                }
             else{
                 if( DB::select('SELECT id from nhanvien where cccd='.$request->cccd)!=null){
                     return redirect()->back()->with('message', 'Căn cước công dân đã tồn tại');
@@ -113,9 +191,78 @@ class NhanVienController extends Controller
     public function update(Request $request,$id)
     {
         if($request->chucvu==1){
-            if($request->hoten=="" || $request->ngaysinh=="" || $request->gioitinh=="" || $request->cccd=="" || $request->diachi=="" || $request->email=="" || $request->quequan=="" || $request->sodienthoai=="" || $request->phongban=="" || $request->chucvu==""  || $request->khoa=="" || $request->trangthai=="" || $request->bacluong==""){
-                return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
-            }
+            $request->validate([
+            'ngaysinh'=>'required|date',
+            'cccd'=>'required|numeric',
+            'sodienthoai'=>'required|numeric',
+            'email'=>'required|email',
+            'phongban'=>'required|integer',
+            'chucvu'=>'required|integer',
+            'khoa'=>'required|integer',
+            'trangthai'=>'required|integer',
+            'bacluong'=>'required|integer',
+        ], [
+            'ngaysinh.required'=>'Phải nhập đủ thông tin',
+            'cccd.required'=>'Phải nhập đủ thông tin',
+            'sodienthoai.required'=>'Phải nhập đủ thông tin',
+            'email.required'=>'Phải nhập đủ thông tin',
+            'phongban.required'=>'Phải nhập đủ thông tin',
+            'chucvu.required'=>'Phải nhập đủ thông tin',
+            'khoa.required'=>'Phải nhập đủ thông tin',
+            'trangthai.required'=>'Phải nhập đủ thông tin',
+            'bacluong.required'=>'Phải nhập đủ thông tin',
+            'ngaysinh.date'=>'Phải nhập đúng kiểu ký tự',
+            'cccd.numeric'=>'Phải nhập đúng kiểu ký tự',
+            'sodienthoai.numeric'=>'Phải nhập đúng kiểu ký tự',
+            'email.email'=>'Phải nhập đúng kiểu ký tự',
+            'phongban.integer'=>'Phải nhập đúng kiểu ký tự',
+            'chucvu.integer'=>'Phải nhập đúng kiểu ký tự',
+            'khoa.integer'=>'Phải nhập đúng kiểu ký tự',
+            'trangthai.integer'=>'Phải nhập đúng kiểu ký tự',
+            'bacluong.integer'=>'Phải nhập đúng kiểu ký tự'
+        ]);
+        }else{
+            $request->validate([
+                'ngaysinh'=>'required|date',
+                'cccd'=>'required|numeric',
+                'sodienthoai'=>'required|numeric',
+                'email'=>'required|email',
+                'phongban'=>'required|integer',
+                'chucvu'=>'required|integer',
+                'khoa'=>'required|integer',
+                'trangthai'=>'required|integer',
+                'hsl'=>'required|integer',
+            ], [
+                'ngaysinh.required'=>'Phải nhập đủ thông tin',
+                'cccd.required'=>'Phải nhập đủ thông tin',
+                'sodienthoai.required'=>'Phải nhập đủ thông tin',
+                'email.required'=>'Phải nhập đủ thông tin',
+                'phongban.required'=>'Phải nhập đủ thông tin',
+                'chucvu.required'=>'Phải nhập đủ thông tin',
+                'khoa.required'=>'Phải nhập đủ thông tin',
+                'trangthai.required'=>'Phải nhập đủ thông tin',
+                'hsl.required'=>'Phải nhập đủ thông tin',
+                'ngaysinh.date'=>'Phải nhập đúng kiểu ký tự',
+                'cccd.numeric'=>'Phải nhập đúng kiểu ký tự',
+                'sodienthoai.numeric'=>'Phải nhập đúng kiểu ký tự',
+                'email.email'=>'Phải nhập đúng kiểu ký tự',
+                'phongban.integer'=>'Phải nhập đúng kiểu ký tự',
+                'chucvu.integer'=>'Phải nhập đúng kiểu ký tự',
+                'khoa.integer'=>'Phải nhập đúng kiểu ký tự',
+                'trangthai.integer'=>'Phải nhập đúng kiểu ký tự',
+                'hsl.integer'=>'Phải nhập đúng kiểu ký tự'
+            ]);
+        }
+        if($request->chucvu==1){
+            $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+                if(!preg_match($patt,$request->hoten) || !preg_match($patt,$request->gioitinh) || !preg_match($patt,$request->diachi) || !preg_match($patt,$request->quequan)){
+                    if($request->hoten=="" || $request->gioitinh=="" || $request->diachi=="" || $request->quequan==""){
+                        return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+                    }
+                    else{
+                        return redirect()->back()->with('message', 'Phải nhập đúng kiểu ký tự');
+                    }
+                }
             else{
                 $cn=NhanVien::find($id);
                 if($cn->cccd==$request->cccd){//trung cccd cũ
@@ -162,8 +309,14 @@ class NhanVienController extends Controller
             }
         }
         else{
-            if($request->hoten=="" || $request->ngaysinh=="" || $request->gioitinh=="" || $request->cccd=="" || $request->diachi=="" || $request->email=="" || $request->hsl=="" || $request->quequan=="" || $request->sodienthoai=="" || $request->phongban=="" || $request->chucvu==""  || $request->khoa=="" || $request->trangthai==""){
-                return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+            $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+            if(!preg_match($patt,$request->hoten) || !preg_match($patt,$request->gioitinh) || !preg_match($patt,$request->diachi) || !preg_match($patt,$request->quequan)){
+                if($request->hoten=="" || $request->gioitinh=="" || $request->diachi=="" || $request->quequan==""){
+                    return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+                }
+                else{
+                    return redirect()->back()->with('message', 'Phải nhập đúng kiểu ký tự');
+                }
             }
             else{
                 $cn=NhanVien::find($id);
