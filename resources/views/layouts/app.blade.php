@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="{{ asset('fonts/themify-icons/themify-icons.css') }}">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!----======== CSS ======== -->
     {{-- <link rel="stylesheet" href="./css/style1.css"> --}}
     <link rel="stylesheet" href="{{ asset('css/style3.css') }}">
@@ -134,13 +136,13 @@
                         {{--   --}}
                         @if (Auth::user()->checkRoleInUser(Auth::user()->manv))
                             <li class="nav-link">
-                            <a href="{{ route('danhsachtaikhoan') }}">
-                                <span class="icon-home">
-                                    <img src="{{ asset('icon/iconqltk.png') }}" alt="">
-                                </span>
-                                <span class="text nav-text">Quản lý tài khoản</span>
-                            </a>
-                        </li>
+                                <a href="{{ route('danhsachtaikhoan') }}">
+                                    <span class="icon-home">
+                                        <img src="{{ asset('icon/iconqltk.png') }}" alt="">
+                                    </span>
+                                    <span class="text nav-text">Quản lý tài khoản</span>
+                                </a>
+                            </li>
                         @endif
 
                         <li class="nav-link">

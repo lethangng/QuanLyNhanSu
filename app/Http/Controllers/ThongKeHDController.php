@@ -37,6 +37,7 @@ class ThongKeHDController extends Controller
             // dd($hopdongs);
             $hethan = count($hopdongs);
             $conhan = $this->hopdong->conhan($request->nam);
+            // dd($conhan);
             $nam = $request->nam;
             $data = [
                 ['Task', 'Số lượng'],

@@ -74,6 +74,9 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $i = 0;
+                        @endphp
                         @foreach ($hopdongs as $hopdong)
                             <tr class="">
                                 <th class="h1" scope="row">{{ $hopdong->id }}</th>
@@ -112,13 +115,13 @@
                                             <i class='bx bx-edit'></i>
                                         </button>
                                     </a>
-                                    <button class="i-rotate js-buy-ticket">
+                                    <button class="i-rotate js-buy-ticket" onclick="showBuyTickets({{ $i }})">
                                         <i class='bx bx-trash'></i>
                                     </button>
-
-                                    <div class="modal-delete js-modal ">
+                                    <div class="modal-delete js-modal">
                                         <div class="modal-container-delete js-modal-container">
-                                            <div class="modal-close js-modal-close">
+                                            <div class="modal-close js-modal-close"
+                                                onclick="hideBuyTickets({{ $i }})">
                                                 <i class="ti-close"></i>
                                             </div>
                                             <div class="modal-text-delete">
@@ -130,18 +133,23 @@
                                                     @csrf
                                                     <button class="confirm-btn" type="submit">Xác nhận</button>
                                                     <button class="cancel-btn" type="button"
-                                                        onclick="hideBuyTickets()">Hủy</button>
+                                                        onclick="hideBuyTickets({{ $i }})">Hủy</button>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
                                 </th>
                             </tr>
+                            @php
+                                $i++;
+                            @endphp
                         @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
+        @if ($hopdongs->count() > 0)
+        @endif
         <div class="container-footer-kt">
             <nav aria-label="Page navigation example" class="ml-5 footer-kt">
                 {{ $hopdongs->links('pagination::bootstrap-5') }}
@@ -151,29 +159,36 @@
 
         <script>
             const buyBtns = document.querySelectorAll('.js-buy-ticket');
-            const modal = document.querySelector('.js-modal');
-            const modalContainer = document.querySelector('.js-modal-container')
-            const modalClose = document.querySelector('.js-modal-close');
+            const modal = document.querySelectorAll('.js-modal');
+            const modalContainer = document.querySelectorAll('.js-modal-container')
+            const modalClose = document.querySelectorAll('.js-modal-close');
 
-            function showBuyTickets() {
-                modal.classList.add('open')
+            function showBuyTickets(i) {
+                modal[i].classList.add('open')
             }
 
-            function hideBuyTickets() {
-                modal.classList.remove('open')
+            function hideBuyTickets(i) {
+                modal[i].classList.remove('open')
             }
 
             for (const buyBtn of buyBtns) {
                 buyBtn.addEventListener('click', showBuyTickets)
             }
 
-            modalClose.addEventListener('click', hideBuyTickets)
+            // modalClose.addEventListener('click', hideBuyTickets)
 
-            modal.addEventListener('click', hideBuyTickets)
+            // modal.addEventListener('click', hideBuyTickets)
 
-            modalContainer.addEventListener('click', function(event) {
-                event.stopPropagation()
+            $('.js-modal').click(function() {
+                $(this).removeClass('open')
             })
+            $('.js-modal-container').click(function() {
+                $(this).stopPropagation()
+            })
+
+            // modalContainer.addEventListener('click', function(event) {
+            //     event.stopPropagation()
+            // })
         </script>
     </div>
 @endsection
