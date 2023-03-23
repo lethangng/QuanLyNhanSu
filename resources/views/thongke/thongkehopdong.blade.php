@@ -55,20 +55,6 @@
                                                         @endif
                                                     </td>
                                                 </tr>
-                                            @endforeach
-                                            <tr class="">
-                                                <td class="col" scope="row">{{ $hopdong->manv }}</td>
-                                                <td class="col" scope="row">{{ $hopdong->nhanvien->tennv }}</td>
-                                                <td class="col" scope="row">{{ $hopdong->id }}</td>
-                                                <td class="col" scope="row">
-                                                    @if ($hopdong->ngayketthuc)
-                                                        @php
-                                                            $newEndDate = date('d-m-Y', strtotime($hopdong->ngayketthuc));
-                                                        @endphp
-                                                        {{ $newEndDate }}
-                                                    @endif
-                                                </td>
-                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
