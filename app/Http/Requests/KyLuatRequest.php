@@ -28,7 +28,10 @@ class KyLuatRequest extends FormRequest
         return [
             'manv' => 'required|exists:nhanvien,id',
             'ngaykyluat' => 'required|date|before_or_equal:today',
-            'lydo' => 'required|not_in:@,#,$,%,^,&,*,(,),_,+',
+            'lydo' => [
+                'required',
+                'regex:/^[^!@#$%^&*(),.?":{}|<>_+=\-\[\]\\;\']*$/'
+            ],
             'upfile' => 'mimes:png,jpg,jpeg,doc,docx,pdf|max:10024',
         ];
     }
@@ -42,7 +45,7 @@ class KyLuatRequest extends FormRequest
             'exists' => ':attribute không tồn tại.',
             'upfile.max' => ':attribute phải nhỏ hơn 10 MB',
             'upfile.mimes' => ':attribute phải có đuôi png, jpg, doc, docx hoặc pdf',
-            'lydo.not_in' => ':attribute không được chứa các ký tự đặc biệt',
+            'lydo.regex' => ':attribute không được chứa các ký tự đặc biệt',
         ];
     }
 
