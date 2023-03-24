@@ -202,6 +202,9 @@ class KhenThuongController extends Controller
     public function findNameNv(Request $request)
     {
         // dd($request->dataId);
+        if(!$request->dataId) {
+            return response()->json(['check' => true, 'msg' => 'Vui lòng nhập mã nhân viên']);
+        }
         if(!is_numeric($request->dataId)) {
             return response()->json(['check' => true, 'msg' => 'Mã nhân viên không tồn tại']);
         }else {

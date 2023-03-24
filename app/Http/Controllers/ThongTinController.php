@@ -46,25 +46,22 @@ class ThongTinController extends Controller
         $attributes = [
             'photo' => 'Ảnh'
         ];
-        if($request->file('photo')) {
-            $validator = Validator::make($request->all(), $rules, $messsages, $attributes);
-            if ($validator->passes()) {
-                $file = $request->photo;
-                $ext = $request->photo->extension();
-                $file_name = time().'-'.$canhan->id.'.'.$ext;
-                $file->move(public_path('uploads/images'), $file_name);
+        $validator = Validator::make($request->all(), $rules, $messsages, $attributes);
+        if ($validator->passes()) {
+            $file = $request->photo;
+            $ext = $request->photo->extension();
+            $file_name = time().'-'.$canhan->id.'.'.$ext;
+            $file->move(public_path('uploads/images'), $file_name);
 
-                $oldFile = NhanVien::select('anhdaidien')->where('id', $id)->get()[0]->anhdaidien;
-                NhanVien::where('id', $id)
-                ->update([
-                    'anhdaidien' => $file_name
-                ]);
-                unlink(public_path('uploads/images/'.$oldFile));
-                return response()->json(["check" => true]);
-            } else {
-                return response()->json(['error' => $validator->errors()]);
-            } 
-        }
+            $oldFile = NhanVien::select('anhdaidien')->where('id', $id)->get()[0]->anhdaidien;
+            NhanVien::where('id', $id)
+            ->update([
+                'anhdaidien' => $file_name
+            ]);
+            unlink(public_path('uploads/images/'.$oldFile));
+            return response()->json(["check" => true]);
+        } 
+        return response()->json(['error' => $validator->errors()]);
     }
 
     public function updatePassword(Request $request) {

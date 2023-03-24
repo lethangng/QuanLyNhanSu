@@ -307,8 +307,8 @@
                             console.log(modal);
                             modal.classList.add('open')
                         } else {
-                            printErrorMsg(data.error, '_err')
                             console.log(data);
+                            printErrorMsg(data.error, '_err')
                         }
                     }
                 });

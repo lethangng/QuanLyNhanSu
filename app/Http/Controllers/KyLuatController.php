@@ -186,6 +186,9 @@ class KyLuatController extends Controller
     }
     public function findNameNvKyLuat(Request $request)
     {
+        if(!$request->dataId) {
+            return response()->json(['check' => true, 'msg' => 'Vui lòng nhập mã nhân viên']);
+        }
         if(!is_numeric($request->dataId)) {
             return response()->json(['check' => true, 'msg' => 'Mã nhân viên không tồn tại']);
         } else {
