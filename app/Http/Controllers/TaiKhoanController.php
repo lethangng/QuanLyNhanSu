@@ -123,9 +123,12 @@ class TaiKhoanController extends Controller
     }
     public function findNameNv(Request $request)
     {
-
-        if ($nv = NhanVien::find($this->delAllSpace($request->data))) {
-            if (User::where('manv', $this->delAllSpace($request->data))->first()) {
+        $Str = $this->delAllSpace($request->data);
+        if ($Str == '') {
+            return response()->json(['check' => true, 'msg' => 'Vui lòng nhập mã']);
+        }
+        if ($nv = NhanVien::find($Str)) {
+            if (User::where('manv', $Str)->first()) {
                 return response()->json(['check' => true, 'msg' => 'Nhân viên đã có tài khoản']);
             } else {
                 if ($nv->checkMachucvu()) {
