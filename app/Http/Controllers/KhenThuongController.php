@@ -144,7 +144,6 @@ class KhenThuongController extends Controller
     public function destroy($id)
     {
         KhenThuong::where('id', $id)->delete();
-        // return redirect()->route('khenthuong.index');
         $khenthuong = KhenThuong::find($id);
         if($khenthuong) {
             return response()->json(['msg' => '']);
@@ -204,16 +203,17 @@ class KhenThuongController extends Controller
         // dd($request->dataId);
         if(!$request->dataId) {
             return response()->json(['check' => true, 'msg' => 'Vui lòng nhập mã nhân viên']);
-        }
-        if(!is_numeric($request->dataId)) {
-            return response()->json(['check' => true, 'msg' => 'Mã nhân viên không tồn tại']);
-        }else {
-            $user = NhanVien::where('id', $request->dataId)->first();
-            if($user) {
-                return response()->json(['check' => false, 'msg' => $user->tennv]);
+        } else {
+            $manv = $this->formatInput($request->dataId);
+            if(!is_numeric($manv)) {
+                return response()->json(['check' => true, 'msg' => 'Mã nhân viên không tồn tại', 'manv' => $manv]);
+            }else {
+                $user = NhanVien::where('id', $manv)->first();
+                if($user) {
+                    return response()->json(['check' => false, 'msg' => $user->tennv, 'manv' => $manv]);
+                }
             }
         }
-        return response()->json(['check' => true, 'msg' => 'Mã nhân viên không tồn tại']);
     }
 
     public function formatInput($input) {

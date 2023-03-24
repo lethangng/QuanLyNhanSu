@@ -113,6 +113,7 @@
                 success: function(data) {
                     console.log(data.msg)
                     $('#err_ajax').text('')
+                    $('#ma_nhanvien').val(data.manv);
                     if (data.check == true) {
                         $('#ten_nhanvien').val('Tên nhân viên không tồn tại.')
                         $('#err_ajax').text(data.msg)

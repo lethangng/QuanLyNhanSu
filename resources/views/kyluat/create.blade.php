@@ -109,6 +109,7 @@
                 success: function(data) {
                     console.log(data.msg)
                     $('#err_ajax').text('')
+                    $('#ma_nhanvien').val(data.manv);
                     if (data.check == true) {
                         $('#err_ajax').text(data.msg)
                     } else

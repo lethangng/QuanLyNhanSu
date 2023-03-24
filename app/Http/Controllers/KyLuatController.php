@@ -136,7 +136,7 @@ class KyLuatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
         KyLuat::where('id', $id)->delete();
         $kyluat = KyLuat::find($id);
@@ -188,24 +188,24 @@ class KyLuatController extends Controller
     {
         if(!$request->dataId) {
             return response()->json(['check' => true, 'msg' => 'Vui lòng nhập mã nhân viên']);
-        }
-        if(!is_numeric($request->dataId)) {
-            return response()->json(['check' => true, 'msg' => 'Mã nhân viên không tồn tại']);
         } else {
-            $user = NhanVien::where('id', $request->dataId)->first();
-            if ($user) {
-                $nhanvien = DB::select("SELECT nhanvien.id FROM nhanvien JOIN trangthai ON nhanvien.matrangthai = trangthai.id WHERE trangthai.matrangthai = 'TS'");
-                if($nhanvien) {
-                    foreach($nhanvien as $nv) {
-                        if($request->dataId == $nv->id) {
-                            return response()->json(['check' => true, "msg" => 'Nhân viên ở trạng thái mang thai không được thêm kỷ luật']);
-                        }
+            $manv = $this->formatInput($request->dataId);
+            if(!is_numeric($manv)) {
+                return response()->json(['check' => true, 'msg' => 'Mã nhân viên không tồn tại', 'manv' => $manv]);
+            } else {
+                $user = NhanVien::where('id', $manv)->first();
+                if ($user) {
+                    // Kiểm tra xem nhân viên nhập vào có ở trạng thái "thai sản" không
+                    $nhanvien = DB::select("SELECT nhanvien.id FROM nhanvien JOIN trangthai ON nhanvien.matrangthai = trangthai.id 
+                    WHERE trangthai.matrangthai = 'TS' AND nhanvien.id = ".$manv);
+                    if($nhanvien) {
+                        return response()->json(['check' => true, 
+                        "msg" => 'Nhân viên ở trạng thái mang thai không được thêm kỷ luật', 'manv' => $manv]);
                     }
+                return response()->json(['check' => false, 'msg' => $user->tennv, 'manv' => $manv]);
                 }
-                return response()->json(['check' => false, 'msg' => $user->tennv]);
             }
         }
-        return response()->json(['check' => true, 'msg' => 'Mã nhân viên không tồn tại']);
     }
     public function formatInput($input) {
         $output = str_replace(' ', '', $input);
