@@ -26,8 +26,8 @@ class PhongBanController extends Controller
             }
         }
         else{
-            if( DB::select("SELECT id from phongban where maphongban='".$request->maphongban."'")!=null){
-                return redirect()->back()->with('message', 'Mã phòng ban đã tồn tại');
+            if( DB::select("SELECT id from phongban where maphongban='".$request->maphongban."'")!=null || DB::select("SELECT id from phongban where tenphongban='".$request->tenphongban."'")!=null){
+                return redirect()->back()->with('message', 'Mã phòng ban hoặc tên phòng ban đã tồn tại');
             }
             else{
                 $phongban=new PhongBan;
@@ -59,7 +59,7 @@ class PhongBanController extends Controller
         }
         else{
             $cn=PhongBan::find($id);
-            if($cn->maphongban==$request->maphongban){//trung  cũ
+            if($cn->maphongban==$request->maphongban && $cn->tenphongban==$request->tenphongban){//trung  cũ
                 $phongban = PhongBan::find($id);
                 $phongban->maphongban=$request->maphongban;
                 $phongban->tenphongban=$request->tenphongban;
@@ -67,8 +67,8 @@ class PhongBanController extends Controller
                 return redirect()->back()->with('message2', 'thongbao');
 
             }
-            elseif( DB::select("SELECT id from phongban where maphongban='".$request->maphongban."'")!=null){//trung
-                return redirect()->back()->with('message', 'Mã chức vụ đã tồn tại');
+            elseif(DB::select("SELECT * from phongban where maphongban='".$request->maphongban."'"." EXCEPT SELECT * from phongban where id ='".$id."'")!=null || DB::select("SELECT * from phongban where tenphongban='".$request->tenphongban."'"." EXCEPT SELECT * from phongban where id ='".$id."'")!=null){//trung
+                return redirect()->back()->with('message', 'Mã phòng ban hoặc tên phòng ban đã tồn tại');
             }
             else{
                 $phongban = PhongBan::find($id);

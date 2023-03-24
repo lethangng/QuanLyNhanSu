@@ -25,8 +25,8 @@ class KhoaController extends Controller
             }
         }
         else{
-            if( DB::select("SELECT id from khoa where makhoa='".$request->makhoa."'")!=null){
-                return redirect()->back()->with('message', 'Mã khoa đã tồn tại');
+            if( DB::select("SELECT id from khoa where makhoa='".$request->makhoa."'")!=null || DB::select("SELECT id from khoa where tenkhoa='".$request->tenkhoa."'")!=null){
+                return redirect()->back()->with('message', 'Mã khoa hoặc tên khoa đã tồn tại');
             }
             else{
                 $khoa=new Khoa;
@@ -56,7 +56,7 @@ class KhoaController extends Controller
         }
         else{
             $cn=Khoa::find($id);
-            if($cn->makhoa==$request->makhoa){//trung  cũ
+            if($cn->makhoa==$request->makhoa && $cn->tenkhoa==$request->tenkhoa){//trung  cũ
                 $khoa = Khoa::find($id);
                 $khoa->makhoa=$request->makhoa;
                 $khoa->tenkhoa=$request->tenkhoa;
@@ -64,8 +64,8 @@ class KhoaController extends Controller
                 return redirect()->back()->with('message2', 'thongbao');
 
             }
-            elseif( DB::select("SELECT id from khoa where makhoa='".$request->makhoa."'")!=null){//trung
-                return redirect()->back()->with('message', 'Mã khoa đã tồn tại');
+            elseif(DB::select("SELECT * from khoa where makhoa='".$request->makhoa."'"." EXCEPT SELECT * from khoa where id ='".$id."'")!=null || DB::select("SELECT * from khoa where tenkhoa='".$request->tenkhoa."'"." EXCEPT SELECT * from khoa where id ='".$id."'")!=null){//trung
+                return redirect()->back()->with('message', 'Mã khoa hoặc tên khoa đã tồn tại');
             }
             else{
                 $khoa = Khoa::find($id);

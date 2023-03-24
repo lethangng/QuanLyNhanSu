@@ -24,8 +24,8 @@ class ChucVuController extends Controller
             }
         }
         else{
-            if( DB::select("SELECT id from chucvu where machucvu='".$request->machucvu."'")!=null){
-                return redirect()->back()->with('message', 'Mã chức vụ đã tồn tại');
+            if( DB::select("SELECT id from chucvu where machucvu='".$request->machucvu."'")!=null || DB::select("SELECT id from chucvu where tenchucvu='".$request->tenchucvu."'")!=null){
+                return redirect()->back()->with('message', 'Mã chức vụ hoặc tên chức vụ đã tồn tại');
             }
             else{
                 $chucvu=new ChucVu;
@@ -54,15 +54,15 @@ class ChucVuController extends Controller
         }
         else{
             $cn=ChucVu::find($id);
-            if($cn->machucvu==$request->machucvu){//trung  cũ
+            if($cn->machucvu==$request->machucvu && $cn->tenchucvu==$request->tenchucvu){//trung  cũ
                 $chucvu = ChucVu::find($id);
                 $chucvu->machucvu=$request->machucvu;
                 $chucvu->tenchucvu=$request->tenchucvu;
                 $chucvu->update();
                 return redirect()->back()->with('message2', 'thongbao');
             }
-            elseif( DB::select("SELECT id from chucvu where machucvu='".$request->machucvu."'")!=null){//trung
-                return redirect()->back()->with('message', 'Mã chức vụ đã tồn tại');
+            elseif( DB::select("SELECT * from chucvu where machucvu='".$request->machucvu."'"." EXCEPT SELECT * from chucvu where id ='".$id."'")!=null || DB::select("SELECT * from chucvu where tenchucvu='".$request->tenchucvu."'"." EXCEPT SELECT * from chucvu where id ='".$id."'")!=null){
+                return redirect()->back()->with('message', 'Mã chức vụ hoặc tên chức vụ đã tồn tại');
             }
             else{
                 $chucvu = ChucVu::find($id);
