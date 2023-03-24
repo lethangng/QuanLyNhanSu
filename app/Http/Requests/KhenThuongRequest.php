@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Validation\Rule;
 
 class KhenThuongRequest extends FormRequest
 {
@@ -29,7 +29,7 @@ class KhenThuongRequest extends FormRequest
         return [
             'manv' => 'required|exists:nhanvien,id',
             'ngaykhenthuong' => 'required|date|before_or_equal:today',
-            'lydo' => 'required',
+            'lydo' => 'required|alpha_num',
             'upfile' => 'mimes:png,jpg,jpeg,doc,docx,pdf|max:10024',
         ];
     }
@@ -41,7 +41,8 @@ class KhenThuongRequest extends FormRequest
             'ngaykhenthuong.before_or_equal' => ':attribute phải trước hoặc bằng hôm nay',
             'exists' => ':attribute không tồn tại.',
             'upfile.max' => ':attribute phải nhỏ hơn 10 MB',
-            'upfile.mimes' => ':attribute phải có đuôi png, jpg, doc, docx hoặc pdf'
+            'upfile.mimes' => ':attribute phải có đuôi png, jpg, doc, docx hoặc pdf',
+            'lydo.alpha_num' => ':attribute không được chứa các ký tự đặc biệt',
         ];
     }
     public function attributes()
