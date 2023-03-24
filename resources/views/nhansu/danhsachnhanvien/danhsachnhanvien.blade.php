@@ -179,7 +179,7 @@
             <nav aria-label="Page navigation example" class="ml-5 footer-kt">
                 {{ $caNhan->links('pagination::bootstrap-4') }}
             </nav>
-        </div>
+    </div>
 <script>
     const buyBtns = document.querySelectorAll('.js-buy-ticket');
     const modal = document.querySelector('.js-modal');
