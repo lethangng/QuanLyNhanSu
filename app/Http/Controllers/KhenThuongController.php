@@ -158,41 +158,41 @@ class KhenThuongController extends Controller
         $data = [
             'thang' => $request->thang,
             'nam' => $request->nam,
-            'manv' => $request->manv
+            'manv' => $this->formatInput($request->manv)
         ];
         if ($data['thang'] && $data['nam'] && $data['manv']) {
             // dd($data);
             $khenthuongs = KhenThuong::select('*')
-                ->whereMonth('ngaykhenthuong', $request->thang)
-                ->whereYear('ngaykhenthuong', $request->nam)
-                ->where('manv', $request->manv)->paginate(5);
+                ->whereMonth('ngaykhenthuong', $data['thang'])
+                ->whereYear('ngaykhenthuong', $data['nam'])
+                ->where('manv', $data['manv'])->paginate(5);
         } else if ($data['thang'] && $data['manv']) {
             // dd($data);
             $khenthuongs = KhenThuong::select('*')
-                ->whereMonth('ngaykhenthuong', $request->thang)
-                ->where('manv', $request->manv)->paginate(5);
+                ->whereMonth('ngaykhenthuong', $data['thang'])
+                ->where('manv', $data['manv'])->paginate(5);
         } else if ($data['nam'] && $data['manv']) {
             // dd($data);
             $khenthuongs = KhenThuong::select('*')
-                ->whereYear('ngaykhenthuong', $request->nam)
-                ->where('manv', $request->manv)->paginate(5);
+                ->whereYear('ngaykhenthuong', $data['nam'])
+                ->where('manv', $data['manv'])->paginate(5);
         } else if ($data['nam'] && $data['thang']) {
             // dd($data);
             $khenthuongs = KhenThuong::select('*')
-                ->whereMonth('ngaykhenthuong', $request->thang)
-                ->whereYear('ngaykhenthuong', $request->nam)->paginate(5);
+                ->whereMonth('ngaykhenthuong', $data['thang'])
+                ->whereYear('ngaykhenthuong', $data['nam'])->paginate(5);
         } else if ($data['thang']) {
             // dd($data);
             $khenthuongs = KhenThuong::select('*')
-                ->whereMonth('ngaykhenthuong', $request->thang)->paginate(5);
+                ->whereMonth('ngaykhenthuong', $data['thang'])->paginate(5);
         } else if ($data['nam']) {
             // dd($data);
             $khenthuongs = KhenThuong::select('*')
-                ->whereYear('ngaykhenthuong', $request->nam)->paginate(5);
+                ->whereYear('ngaykhenthuong', $data['nam'])->paginate(5);
         } else if ($data['manv']) {
             // dd($data);
             $khenthuongs = KhenThuong::select('*')
-                ->where('manv', $request->manv)->paginate(5);
+                ->where('manv', $data['manv'])->paginate(5);
         } else {
             return redirect()->route('khenthuong.index');
         }
@@ -211,5 +211,10 @@ class KhenThuongController extends Controller
             }
         }
         return response()->json(['check' => true, 'msg' => 'Mã nhân viên không tồn tại']);
+    }
+
+    public function formatInput($input) {
+        $output = str_replace(' ', '', $input);
+        return trim($output);
     }
 }

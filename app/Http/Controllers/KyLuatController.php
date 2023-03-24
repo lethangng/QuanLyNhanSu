@@ -151,34 +151,34 @@ class KyLuatController extends Controller
         $data = [
             'thang' => $request->thang,
             'nam' => $request->nam,
-            'manv' => $request->manv
+            'manv' => $this->formatInput($request->manv)
         ];
         if($data['thang'] && $data['nam'] && $data['manv']) {
             $kyluats = KyLuat::select('*')
-                ->whereMonth('ngaykyluat', $request->thang)
-                ->whereYear('ngaykyluat', $request->nam)
-                ->where('manv', $request->manv)->paginate(5);
+                ->whereMonth('ngaykyluat', $data['thang'])
+                ->whereYear('ngaykyluat', $data['nam'])
+                ->where('manv', $data['manv'])->paginate(5);
         } else if($data['thang'] && $data['manv']) {
             $kyluats = KyLuat::select('*')
-            ->whereMonth('ngaykyluat', $request->thang)
-            ->where('manv', $request->manv)->paginate(5);
+            ->whereMonth('ngaykyluat', $data['thang'])
+            ->where('manv', $data['manv'])->paginate(5);
         } else if($data['nam'] && $data['manv']) {
             $kyluats = KyLuat::select('*')
-            ->whereYear('ngaykyluat', $request->nam)
-            ->where('manv', $request->manv)->paginate(5);
+            ->whereYear('ngaykyluat', $data['nam'])
+            ->where('manv', $data['manv'])->paginate(5);
         } else if($data['nam'] && $data['thang']) {
             $kyluats = KyLuat::select('*')
-            ->whereMonth('ngaykyluat', $request->thang)
-            ->whereYear('ngaykyluat', $request->nam)->paginate(5);
+            ->whereMonth('ngaykyluat', $data['thang'])
+            ->whereYear('ngaykyluat', $data['nam'])->paginate(5);
         } else if($data['thang']) {
             $kyluats = KyLuat::select('*')
-                ->whereMonth('ngaykyluat', $request->thang)->paginate(5);
+                ->whereMonth('ngaykyluat', $data['thang'])->paginate(5);
         } else if($data['nam']) {
             $kyluats = KyLuat::select('*')
-            ->whereYear('ngaykyluat', $request->nam)->paginate(5);
+            ->whereYear('ngaykyluat', $data['nam'])->paginate(5);
         } else if($data['manv']) {
             $kyluats = KyLuat::select('*')
-            ->where('manv', $request->manv)->paginate(5);
+            ->where('manv', $data['manv'])->paginate(5);
         } else {
             return redirect()->route('kyluat.index');
         }
@@ -203,5 +203,9 @@ class KyLuatController extends Controller
             }
         }
         return response()->json(['check' => true, 'msg' => 'Mã nhân viên không tồn tại']);
+    }
+    public function formatInput($input) {
+        $output = str_replace(' ', '', $input);
+        return trim($output);
     }
 }

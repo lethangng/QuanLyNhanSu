@@ -179,37 +179,41 @@ class HopDongController extends Controller
         $data = [
             'thang' => $request->thang,
             'nam' => $request->nam,
-            'manv' => $request->manv
+            'manv' => $this->formatInput($request->manv)
         ];
         if($data['thang'] && $data['nam'] && $data['manv']) {
             $hopdongs = HopDong::select('*')
-                ->whereMonth('ngaybatdau', $request->thang)
-                ->whereYear('ngaybatdau', $request->nam)
-                ->where('manv', $request->manv)->paginate(5);
+                ->whereMonth('ngaybatdau', $data['thang'])
+                ->whereYear('ngaybatdau', $data['nam'])
+                ->where('manv', $data['manv'])->paginate(5);
         } else if($data['thang'] && $data['manv']) {
             $hopdongs = HopDong::select('*')
-            ->whereMonth('ngaybatdau', $request->thang)
-            ->where('manv', $request->manv)->paginate(5);
+            ->whereMonth('ngaybatdau', $data['thang'])
+            ->where('manv', $data['manv'])->paginate(5);
         } else if($data['nam'] && $data['manv']) {
             $hopdongs = HopDong::select('*')
-            ->whereYear('ngaybatdau', $request->nam)
-            ->where('manv', $request->manv)->paginate(5);
+            ->whereYear('ngaybatdau', $data['nam'])
+            ->where('manv', $data['manv'])->paginate(5);
         } else if($data['nam'] && $data['thang']) {
             $hopdongs = HopDong::select('*')
-            ->whereMonth('ngaybatdau', $request->thang)
-            ->whereYear('ngaybatdau', $request->nam)->paginate(5);
+            ->whereMonth('ngaybatdau', $data['thang'])
+            ->whereYear('ngaybatdau', $data['nam'])->paginate(5);
         } else if($data['thang']) {
             $hopdongs = HopDong::select('*')
-                ->whereMonth('ngaybatdau', $request->thang)->paginate(5);
+                ->whereMonth('ngaybatdau', $data['thang'])->paginate(5);
         } else if($data['nam']) {
             $hopdongs = HopDong::select('*')
-            ->whereYear('ngaybatdau', $request->nam)->paginate(5);
+            ->whereYear('ngaybatdau', $data['nam'])->paginate(5);
         } else if($data['manv']) {
             $hopdongs = HopDong::select('*')
-            ->where('manv', $request->manv)->paginate(5);
+            ->where('manv', $data['manv'])->paginate(5);
         } else {
             return redirect()->route('hopdong.index');
         }
         return view('hopdong.index', compact('hopdongs', 'data'));
+    }
+    public function formatInput($input) {
+        $output = str_replace(' ', '', $input);
+        return trim($output);
     }
 }

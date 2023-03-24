@@ -154,44 +154,49 @@ class TangLuongController extends Controller
         $data = [
             'thang' => $request->thang,
             'nam' => $request->nam,
-            'manv' => $request->manv
+            'manv' => $this->formatInput($request->manv)
         ];
         if($data['thang'] && $data['nam'] && $data['manv']) {
             // dd($data);
             $tangluongs = TangLuong::select('*')
-                ->whereMonth('ngaytangluong', $request->thang)
-                ->whereYear('ngaytangluong', $request->nam)
-                ->where('manv', $request->manv)->paginate(5);
+                ->whereMonth('ngaytangluong', $data['thang'])
+                ->whereYear('ngaytangluong', $data['nam'])
+                ->where('manv', $data['manv'])->paginate(5);
         } else if($data['thang'] && $data['manv']) {
             // dd($data);
             $tangluongs = TangLuong::select('*')
-            ->whereMonth('ngaytangluong', $request->thang)
-            ->where('manv', $request->manv)->paginate(5);
+            ->whereMonth('ngaytangluong', $data['thang'])
+            ->where('manv', $data['manv'])->paginate(5);
         } else if($data['nam'] && $data['manv']) {
             // dd($data);
             $tangluongs = TangLuong::select('*')
-            ->whereYear('ngaytangluong', $request->nam)
-            ->where('manv', $request->manv)->paginate(5);
+            ->whereYear('ngaytangluong', $data['nam'])
+            ->where('manv', $data['manv'])->paginate(5);
         } else if($data['nam'] && $data['thang']) {
             // dd($data);
             $tangluongs = TangLuong::select('*')
-            ->whereMonth('ngaytangluong', $request->thang)
-            ->whereYear('ngaytangluong', $request->nam)->paginate(5);
+            ->whereMonth('ngaytangluong', $data['thang'])
+            ->whereYear('ngaytangluong', $data['nam'])->paginate(5);
         } else if($data['thang']) {
             // dd($data);
             $tangluongs = TangLuong::select('*')
-                ->whereMonth('ngaytangluong', $request->thang)->paginate(5);
+                ->whereMonth('ngaytangluong', $data['thang'])->paginate(5);
         } else if($data['nam']) {
             // dd($data);
             $tangluongs = TangLuong::select('*')
-            ->whereYear('ngaytangluong', $request->nam)->paginate(5);
+            ->whereYear('ngaytangluong', $data['nam'])->paginate(5);
         } else if($data['manv']) {
             // dd($data);
             $tangluongs = TangLuong::select('*')
-            ->where('manv', $request->manv)->paginate(5);
+            ->where('manv', $data['manv'])->paginate(5);
         } else {
             return redirect()->route('tangluong.index');
         }
         return view('tangluong.index', compact('tangluongs', 'data'));
+    }
+
+    public function formatInput($input) {
+        $output = str_replace(' ', '', $input);
+        return trim($output);
     }
 }
