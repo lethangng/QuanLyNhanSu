@@ -179,7 +179,8 @@ Route::get('/suaphongban', function () {
         Route::delete('{id}/destroy', [KhenThuongController::class, 'destroy'])->whereNumber('id')->name('khenthuong.destroy');
         Route::post('search', [KhenThuongController::class, 'search'])->name('khenthuong.search');
     });
-    //ajax
+
+    //ajax tìm tên nhân viên
     Route::post('/ajax_tennv', [KhenThuongController::class, 'findNameNv']);
 
     // Danh sach ky luat
@@ -215,12 +216,14 @@ Route::get('/suaphongban', function () {
         Route::delete('{id}/destroy', [HopDongController::class, 'destroy'])->whereNumber('id')->name('hopdong.destroy');
         Route::post('search', [HopDongController::class, 'search'])->name('hopdong.search');
     });
-    // Route::post('upfile', [ThongTinCaNhanController::class, 'upfile'])->name('upfile');
+
+    // Thống kê hợp đồng
     Route::get('thong-ke-hop-dong', [ThongKeHDController::class, 'index'])->name('thongke.hopdong');
-    Route::get('thong-ke-tang-luong', [ThongKeTLController::class, 'index'])->name('thongke.tangluong');
-    // Thống kê
     Route::post('thong-ke-hop-dong', [ThongKeHDController::class, 'thongke'])->name('thongkehopdong');
-    Route::Post('thong-ke-tang-luong', [ThongKeTLController::class, 'thongke'])->name('thongketangluong');
+
+    // Thống kê tăng lương
+    Route::get('thong-ke-tang-luong', [ThongKeTLController::class, 'index'])->name('thongke.tangluong');
+    Route::post('thong-ke-tang-luong', [ThongKeTLController::class, 'thongke'])->name('thongketangluong');
 
 
     //test qlns

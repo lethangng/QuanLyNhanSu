@@ -80,7 +80,9 @@
                         setTimeout(function() { 
                             window.location.href = data.url;
                         }, 1000);
-                    } else {
+                    } else if(data.errCheck == false){
+                        $('.matrangthai_err').text(data.msg)
+                    }else {
                         printErrorMsg(data.error, '_err');
                     }
                 }

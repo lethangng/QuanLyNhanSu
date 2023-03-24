@@ -108,11 +108,9 @@ class User extends Authenticatable
                     <i class="bx bx-edit"></i>
                 </button>
             </a>
-            <a href="#">
-                <button class="i-rotate js-buy-ticket">
+                <button class="i-rotate js-buy-ticket click_del" id="' . $this->id . '" onclick="showBuyTickets()">
                     <i class="bx bx-trash"></i>
                 </button>
-            </a>
         </th>
         </tr>     ';
     }

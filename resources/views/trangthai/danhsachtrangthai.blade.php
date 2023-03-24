@@ -23,7 +23,7 @@
                         </a>
                         
                     </div>
-                    <input class="input-search-name-1" type="text" placeholder="Nhập mã trạng thái">
+                    <input class="input-search-name-1" type="text" placeholder="Nhập tên trạng thái" id='Idtrangthai'>
                    
                 </div>
                 <div class="list-dspb">
@@ -46,11 +46,10 @@
                                         <i class='bx bx-edit'></i>
                                     </button>
                                 </a>
-                                {{-- <a href="{{ route('xoatrangthai' , ['id' => $data->id]) }}"> --}}
-                                    <button class="i-rotate js-buy-ticket">
+                                    <button class="i-rotate js-buy-ticket click_del" id='{{ $data->id  }}' onclick="showBuyTickets()">
                                         <i class='bx bx-trash'></i>
                                     </button>
-                                </a>
+                                
                             </th>
                             </tr>
                             @endforeach
@@ -71,12 +70,12 @@
             <div class="modal-close js-modal-close">
                 <i class="ti-close"></i>
             </div>
-    
+            <input type="hidden" value="" id='valDel'>
             <div class="modal-text-delete">
                 <h2>Bạn có chắc chắn muốn xóa không?</h2>
                 <div class="modal-buttons">
                     <button class="confirm-btn">
-                        <input type="hidden" value="{{ $data->id }}" id='val_del' >
+                        
                         Xác nhận</button>
                     <button class="cancel-btn">Hủy</button>
                 </div>
@@ -99,11 +98,12 @@
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
     crossorigin="anonymous"></script>
     <script>
-        const buyBtns = document.querySelectorAll('.js-buy-ticket');
-        const modal = document.querySelector('.js-modal');
-        const modalContainer = document.querySelector('.js-modal-container')
-        const modalClose = document.querySelector('.js-modal-close');
-        const tableBody = document.getElementById("trangthai");
+        var buyBtns = document.querySelectorAll('.js-buy-ticket');
+        var modal = document.querySelector('.js-modal');
+        var modalContainer = document.querySelector('.js-modal-container')
+        var modalClose = document.querySelector('.js-modal-close');
+        var tableBody = document.getElementById("trangthai");
+        cliclbtn()
         $('.icon-search-1').click(function (e) { 
             e.preventDefault();
             $.ajax({
@@ -118,6 +118,9 @@
                 },
                 success: function(data) {
                     $('#trangthai').html(data.msg)
+                    $('#Idtrangthai').val(data.str) 
+                    cliclbtn()
+
                     
                 },
             });
@@ -136,6 +139,7 @@
                 success: function(data) {
                     if (data.check == true) {
                         $('#trangthai').html(data.msg)
+                        cliclbtn()
 
                     } else {
                         $('.input-search-name-1').val(data.msg)
@@ -144,8 +148,7 @@
             });
             
         });
-
-
+        
         $('.confirm-btn').click(function (e) { 
             modal.classList.remove('open')
             e.preventDefault();
@@ -153,7 +156,7 @@
                 url: '/danhsachtrangthai/xoa',
                 method: 'POST',
                 data: {
-                    'data': $('#val_del').val(),
+                    'data': $('#valDel').val(),
                 },
                 headers: {
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
@@ -164,8 +167,9 @@
                     document.querySelector('.js-modal-del').classList.add('open')
                     setTimeout(function() { 
                         document.querySelector('.js-modal-del').classList.remove('open')
-                    }, 1000);
-                },
+                    }, 1000)
+                    cliclbtn()
+                }
             });
             
         });
@@ -180,7 +184,12 @@
         for (const buyBtn of buyBtns){
             buyBtn.addEventListener('click', showBuyTickets)
         }
-    
+        function cliclbtn(){
+                $('.click_del').click(function (e) { 
+                    $('#valDel').val(this.id)
+                    console.log(this.id)
+                });
+            }
         modalClose.addEventListener('click', hideBuyTickets)
     
         modal.addEventListener('click', hideBuyTickets)

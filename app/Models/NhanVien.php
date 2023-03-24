@@ -60,7 +60,7 @@ class NhanVien extends Model
     }
     public function checkMachucvu()
     {
-        if ($this->machucvu == 2) {
+        if ($this->maphongban == 2) {
             return true;
         }
         return false;

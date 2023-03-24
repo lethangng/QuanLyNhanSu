@@ -12,7 +12,8 @@
                     @csrf
                     <label class="nam" for="">Năm:</label>
                     <div>
-                        <input class="inp-nam" type="number" placeholder="Nhập năm" name="nam" required>
+                        <input class="inp-nam" type="number" placeholder="Nhập năm" name="nam"
+                            value="{{ $nam ?? '' }}" required>
                         @error('nam')
                             <div id="passwordHelp" class="form-text text-danger">{{ $message }}</div>
                         @enderror

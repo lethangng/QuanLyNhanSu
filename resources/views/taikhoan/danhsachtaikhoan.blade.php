@@ -49,11 +49,9 @@
                                             <i class='bx bx-edit'></i>
                                         </button>
                                     </a>
-                                    <a href="#">
-                                        <button class="i-rotate js-buy-ticket">
+                                        <button class="i-rotate js-buy-ticket click_del" id="{{ $data->id }}" onclick="showBuyTickets()">
                                             <i class='bx bx-trash'></i>
                                         </button>
-                                    </a>
                                 </th>
                                 </tr>      
                             @endforeach
@@ -69,13 +67,12 @@
             <div class="modal-close js-modal-close">
                 <i class="ti-close"></i>
             </div>
-    
+            <input type="hidden" value="" id='valDel'>
             <div class="modal-text-delete">
                 <h2>Bạn có chắc chắn muốn xóa không?</h2>
                 <div class="modal-buttons">
                     {{-- <button class="confirm-btn"><a href="{{ route('xoataikhoan' , ['id' => $data->id]) }}" class="confirm-btn">Xác nhận</a></button> --}}
                     <button class="confirm-btn"> 
-                        <input type="hidden" id='val_del' value="{{ $data->id }}">
                         Xác nhận</button>
                     <button class="cancel-btn">Hủy</button>
                 </div>
@@ -103,7 +100,7 @@
         const modal = document.querySelector('.js-modal');
         const modalContainer = document.querySelector('.js-modal-container')
         const modalClose = document.querySelector('.js-modal-close');
-    
+        cliclbtn()
         $('.confirm-btn').click(function (e) { 
             modal.classList.remove('open')
             e.preventDefault();
@@ -111,7 +108,7 @@
                 url: '/danhsachtaikhoan/xoa',
                 method: 'POST',
                 data: {
-                    'data': $('#val_del').val(),
+                    'data': $('#valDel').val(),
                 },
                 headers: {
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
@@ -123,6 +120,7 @@
                     setTimeout(function() { 
                         document.querySelector('.js-modal-del').classList.remove('open')
                     }, 1000);
+                    cliclbtn()
                 },
             });
             
@@ -142,6 +140,7 @@
                 },
                 success: function(data) {
                     $('#danhsach').html(data.msg)
+                    cliclbtn()
                 },
             });
             
@@ -157,19 +156,16 @@
                         'content')
                 },
                 success: function(data) {
-                    if (data.check == true) {
-                        $('#danhsach').html(data.msg)
-                        $('.input-search-name-1').val('')
-
-                    } else {
-                        $('.input-search-name-1').val(data.msg)
-                    }
+                    $('#danhsach').html(data.msg)
+                    $('.input-search-name-1').val('')
+                    cliclbtn()
                 },
             });
             
         });
         function showBuyTickets(){
             modal.classList.add('open')
+            
         }
     
         function hideBuyTickets(){
@@ -188,5 +184,10 @@
         {
             event.stopPropagation()
         })
+        function cliclbtn(){
+            $('.click_del').click(function (e) { 
+                $('#valDel').val(this.id)
+                         });
+        }
     </script>
 @endsection

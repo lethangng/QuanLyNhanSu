@@ -98,9 +98,7 @@
                         error[i].innerHTML = "";
                     }
                     if (data.errCheck == true) {
-                        for (const buyBtn of buyBtns){
-                            buyBtn.addEventListener('click', showBuyTickets)
-                        }
+                        modal.classList.add('open')
                         setTimeout(function() { 
                             window.location.href = data.url;
                         }, 1000);
