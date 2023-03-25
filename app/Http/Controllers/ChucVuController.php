@@ -86,10 +86,11 @@ class ChucVuController extends Controller
         $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀẾỂưăạảấầẩẫậắằẳẵặẹẻẽềềếểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳýỵỷỹ\s]+)$/i";
         if(!preg_match($patt,$request->tenchucvu) ){
             if($request->tenchucvu==""){
-                return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+                return redirect()->route('danhsachchucvu');
             }
             else{
-                return redirect()->back()->with('message', 'Phải nhập đúng kiểu ký tự');
+                $chucvu=ChucVu::where('tenchucvu','like','')->paginate(5);
+                return view('nhansu.danhsachchucvu.danhsachchucvu',['chucvu'=>$chucvu]);
             }
         }
         else{
