@@ -15,7 +15,7 @@ class KhoaController extends Controller
     public function store(Request $request)
     {
 
-        $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+        $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀẾỂưăạảấầẩẫậắằẳẵặẹẻẽềềếểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳýỵỷỹ\s]+)$/i";
         if(!preg_match($patt,$request->makhoa) || !preg_match($patt,$request->tenkhoa) ){
             if($request->makhoa=="" || $request->tenkhoa==""){
                 return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
@@ -45,7 +45,7 @@ class KhoaController extends Controller
     public function update(Request $request,$id)
     {
 
-        $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+        $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀẾỂưăạảấầẩẫậắằẳẵặẹẻẽềềếểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳýỵỷỹ\s]+)$/i";
         if(!preg_match($patt,$request->makhoa) || !preg_match($patt,$request->tenkhoa) ){
             if($request->makhoa=="" || $request->tenkhoa==""){
                 return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
@@ -86,7 +86,7 @@ class KhoaController extends Controller
         return redirect()->back()->with('message2', 'thongbao');
     }
     public function timkhoa(Request $request){
-        $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+        $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀẾỂưăạảấầẩẫậắằẳẵặẹẻẽềềếểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳýỵỷỹ\s]+)$/i";
         if(!preg_match($patt,$request->tenkhoa) ){
             if($request->tenkhoa==""){
                 return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
@@ -96,8 +96,10 @@ class KhoaController extends Controller
             }
         }
         else{
-        $khoa=Khoa::where('tenkhoa','like','%'.$request->tenkhoa.'%')->paginate(5);
-        return view('nhansu.danhsachkhoa.danhsachkhoa',['khoa'=>$khoa]);
+            $str=trim($request->tenkhoa);
+            $str = preg_replace('/\s+/', ' ', $str);
+            $khoa=Khoa::where('tenkhoa','like','%'.$str.'%')->paginate(5);
+            return view('nhansu.danhsachkhoa.danhsachkhoa',['khoa'=>$khoa]);
         }
     }
 }
