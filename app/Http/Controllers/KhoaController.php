@@ -89,10 +89,11 @@ class KhoaController extends Controller
         $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀẾỂưăạảấầẩẫậắằẳẵặẹẻẽềềếểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳýỵỷỹ\s]+)$/i";
         if(!preg_match($patt,$request->tenkhoa) ){
             if($request->tenkhoa==""){
-                return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+                return redirect()->route('danhsachkhoa');
             }
             else{
-                return redirect()->back()->with('message', 'Phải nhập đúng kiểu ký tự');
+                $khoa=Khoa::where('tenkhoa','like','')->paginate(5);
+                return view('nhansu.danhsachkhoa.danhsachkhoa',['khoa'=>$khoa]);
             }
         }
         else{
