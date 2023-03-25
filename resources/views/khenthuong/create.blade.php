@@ -18,7 +18,7 @@
                         </div>
                         <input class="ip-mnv" type="text" name="manv" id="ma_nhanvien"
                             placeholder="Nhập mã nhân viên..." pattern="[0-9]+">
-                        <div id="err_ajax" class="form-text text-danger text-danger_manv manv-err"></div>
+                        <div id="err_ajax" class="form-text text-danger manv-err"></div>
                         <div class="tnv">
                             <label for="">Tên nhân viên:</label>
                         </div>
@@ -111,8 +111,8 @@
                     $('#err_ajax').text('')
                     $('#ma_nhanvien').val(data.manv);
                     if (data.check == true) {
-                        $('#ten_nhanvien').val('Tên nhân viên không tồn tại.');
-                        $('#err_ajax').text(data);
+                        // $('#ten_nhanvien').val('Tên nhân viên không tồn tại.');
+                        $('#err_ajax').text(data.msg);
                     } else {
                         $("#ten_nhanvien").val(data.msg);
                     }

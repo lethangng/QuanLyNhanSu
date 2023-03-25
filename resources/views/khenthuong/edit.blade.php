@@ -114,7 +114,7 @@
                     $('#err_ajax').text('')
                     $('#ma_nhanvien').val(data.manv);
                     if (data.check == true) {
-                        $('#ten_nhanvien').val('Tên nhân viên không tồn tại.')
+                        // $('#ten_nhanvien').val('Tên nhân viên không tồn tại.')
                         $('#err_ajax').text(data.msg)
                     } else
                         $("#ten_nhanvien").val(data.msg)

@@ -210,6 +210,13 @@ class KhenThuongController extends Controller
             }else {
                 $user = NhanVien::where('id', $manv)->first();
                 if($user) {
+                    // Kiểm tra xem nhân viên ở trạng thái nghỉ việc không
+                    $nhanvien = DB::select("SELECT nhanvien.id FROM nhanvien JOIN trangthai ON nhanvien.matrangthai = trangthai.id 
+                    WHERE trangthai.matrangthai = 'NV' AND nhanvien.id = ".$manv);
+                    if($nhanvien) {
+                        return response()->json(['check' => true, 
+                        "msg" => 'Nhân viên ở trạng thái nghỉ việc', 'manv' => $manv]);
+                    }
                     return response()->json(['check' => false, 'msg' => $user->tennv, 'manv' => $manv]);
                 }
             }
