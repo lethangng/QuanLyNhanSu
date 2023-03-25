@@ -85,7 +85,7 @@ class PhongBanController extends Controller
     {
         $phongban = PhongBan::find($request->idxoa);
         $phongban->delete();
-        return redirect('danhsachphongban');
+        return redirect()->back()->with('message2', 'thongbao');
     }
     public function timphongban(Request $request){
         $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";

@@ -177,7 +177,7 @@ class NhanVienController extends Controller
         /*
         $affected = DB::table('nhanvien')->where('id', $request->idxoa)->update(['matrangthai' => 1]);
         */
-        return redirect('danhsachnhanvien');
+        return redirect()->back()->with('message2', 'thongbao');
     }
     public function edit($id)
     {

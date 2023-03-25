@@ -83,7 +83,7 @@ class KhoaController extends Controller
     {
         $khoa = Khoa::find($request->idxoa);
         $khoa->delete();
-        return redirect('danhsachkhoa');
+        return redirect()->back()->with('message2', 'thongbao');
     }
     public function timkhoa(Request $request){
         $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";

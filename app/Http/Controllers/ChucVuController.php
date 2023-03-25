@@ -80,7 +80,7 @@ class ChucVuController extends Controller
     {
         $chucvu = ChucVu::find($request->idxoa);
         $chucvu->delete();
-        return redirect('danhsachchucvu');
+        return redirect()->back()->with('message2', 'thongbao');
     }
     public function timchucvu(Request $request){
         $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
