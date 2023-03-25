@@ -23,11 +23,6 @@
                     <input class="input-search-name-1" type="text" name="tenchucvu" id="tenchucvu" placeholder="Nhập tên chức vụ cần tìm">
                 </div>
                 </form>
-                @if (\Session::has('message'))
-                <div class="alert alert-danger text-center">
-                <strong>{!! \Session::get('message') !!}</strong>
-                </div>
-                @endif
                 <div class="list-dscv">
                     <table class="table-dscv table-bordered">
                         <thead>
@@ -52,27 +47,23 @@
                                 <button class="i-rotate js-buy-ticket"  value="{{$item->id}}" id="nut" onclick="loadval(this.value)">
                                     <i class='bx bx-trash'></i>
                                 </button>
-
                             </th>
                           </tr>
                             @endforeach
                         @endisset
-                        @empty($chucvu)
-                        <h1>Sai router ,truy vấn hoặc không có data</h1>
-                    @endempty
-
-
                         </tbody>
                       </table>
                 </div>
             </div>
         </div>
     </div>
+    @isset($chucvu)
     <div class="container-footer-kt">
             <nav aria-label="Page navigation example" class="ml-5 footer-kt">
                 {{ $chucvu->links('pagination::bootstrap-4') }}
             </nav>
         </div>
+    @endisset
     <div class="modal-delete js-modal ">
         <div class="modal-container-delete js-modal-container">
             <div class="modal-close js-modal-close">

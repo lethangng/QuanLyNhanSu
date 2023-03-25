@@ -91,10 +91,11 @@ class PhongBanController extends Controller
         $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀẾỂưăạảấầẩẫậắằẳẵặẹẻẽềềếểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳýỵỷỹ\s]+)$/i";
         if(!preg_match($patt,$request->tenphongban) ){
             if($request->tenphongban==""){
-                return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+                return redirect()->route('danhsachphongban');
             }
             else{
-                return redirect()->back()->with('message', 'Phải nhập đúng kiểu ký tự');
+                $phongban=PhongBan::where('tenphongban','like','')->paginate(5);
+                return view('nhansu.danhsachphongban.danhsachphongban',['phongban'=>$phongban]);
             }
         }
         else{
