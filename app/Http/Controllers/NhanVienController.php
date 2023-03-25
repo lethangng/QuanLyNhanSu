@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\NhanVien;
+use App\Models\ChucVu;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
@@ -30,8 +31,9 @@ class NhanVienController extends Controller
     }
     public function store(Request $request)
     {
+        $cn=ChucVu::find($request->chucvu);
 
-        if($request->chucvu==1){
+        if($cn->tenchucvu=="Giảng viên"){
             $request->validate([
             'ngaysinh'=>'required|date',
             'cccd'=>'required|numeric',
@@ -96,7 +98,7 @@ class NhanVienController extends Controller
         }
 
 
-        if($request->chucvu==1){
+        if($cn->tenchucvu=="Giảng viên"){
             $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀẾỂưăạảấầẩẫậắằẳẵặẹẻẽềềếểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳýỵỷỹ\s]+)$/i";
                 if(!preg_match($patt,$request->hoten) || !preg_match($patt,$request->gioitinh) || !preg_match($patt,$request->diachi) || !preg_match($patt,$request->quequan)){
                     if($request->hoten=="" || $request->gioitinh=="" || $request->diachi=="" || $request->quequan==""){
@@ -190,7 +192,9 @@ class NhanVienController extends Controller
     }
     public function update(Request $request,$id)
     {
-        if($request->chucvu==1){
+        $cn=ChucVu::find($request->chucvu);
+
+        if($cn->tenchucvu=="Giảng viên"){
             $request->validate([
             'ngaysinh'=>'required|date',
             'cccd'=>'required|numeric',
@@ -253,7 +257,7 @@ class NhanVienController extends Controller
                 'hsl.integer'=>'Phải nhập đúng kiểu ký tự'
             ]);
         }
-        if($request->chucvu==1){
+        if($cn->tenchucvu=="Giảng viên"){
             $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀẾỂưăạảấầẩẫậắằẳẵặẹẻẽềềếểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳýỵỷỹ\s]+)$/i";
                 if(!preg_match($patt,$request->hoten) || !preg_match($patt,$request->gioitinh) || !preg_match($patt,$request->diachi) || !preg_match($patt,$request->quequan)){
                     if($request->hoten=="" || $request->gioitinh=="" || $request->diachi=="" || $request->quequan==""){
@@ -280,6 +284,7 @@ class NhanVienController extends Controller
                     $nhanVien->makhoa=$request->khoa;
                     $nhanVien->matrangthai=$request->trangthai;
                     $nhanVien->bacluong=$request->bacluong;
+                    $nhanVien->hsl=null;
                     $nhanVien->update();
                     return redirect()->back()->with('message2', 'thongbao');
                 }
@@ -294,7 +299,6 @@ class NhanVienController extends Controller
                     $nhanVien->cccd=$request->cccd;
                     $nhanVien->diachi=$request->diachi;
                     $nhanVien->email=$request->email;
-                    $nhanVien->hsl=$request->hsl;
                     $nhanVien->quequan=$request->quequan;
                     $nhanVien->sdt=$request->sodienthoai;
                     $nhanVien->maphongban=$request->phongban;
@@ -302,6 +306,7 @@ class NhanVienController extends Controller
                     $nhanVien->makhoa=$request->khoa;
                     $nhanVien->matrangthai=$request->trangthai;
                     $nhanVien->bacluong=$request->bacluong;
+                    $nhanVien->hsl=null;
                     $nhanVien->update();
                     return redirect()->back()->with('message2', 'thongbao');
                 }
@@ -335,6 +340,7 @@ class NhanVienController extends Controller
                     $nhanVien->machucvu=$request->chucvu;
                     $nhanVien->makhoa=$request->khoa;
                     $nhanVien->matrangthai=$request->trangthai;
+                    $nhanVien->bacluong=null;
                     $nhanVien->update();
                     return redirect()->back()->with('message2', 'thongbao');
                 }
@@ -356,7 +362,7 @@ class NhanVienController extends Controller
                     $nhanVien->machucvu=$request->chucvu;
                     $nhanVien->makhoa=$request->khoa;
                     $nhanVien->matrangthai=$request->trangthai;
-                    $nhanVien->bacluong=$request->bacluong;
+                    $nhanVien->bacluong=null;
                     $nhanVien->update();
                     return redirect()->back()->with('message2', 'thongbao');
                 }
