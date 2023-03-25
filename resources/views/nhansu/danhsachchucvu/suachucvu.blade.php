@@ -41,7 +41,7 @@
 </div>
 {{-- modal them chuc vu moi --}}
 
-        <div class="modal-delete js-modal ">
+    <div class="modal-delete js-modal ">
         <div class="modal-container-delete js-modal-container">
             <a href="{{url('danhsachchucvu')}}">
                 <div class="modal-close js-modal-close">

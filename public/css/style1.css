@@ -223,19 +223,6 @@ td {
 .h1 a{
     text-decoration: none;
 }
-.h1 .i-edit{
-    padding: 5px 6px;
-    background-color: #E3AC6C;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    transition: .2s linear;
-}
-.i-edit a{
-    color: #333;
-}
 
 /******************************************************/
 
@@ -245,8 +232,6 @@ td {
     width: auto;
     padding: 10px 14px;
     background: var(--sidebar-color);
-    transition: var(--tran-05);
-    z-index: 100;
 }
 
 .sidebar header .image-2 {
@@ -518,15 +503,12 @@ body.dark .sidebar header .toggle {
     padding-top: 31px;
     padding-left: 129px;
 }
-
 .select-name{
     width: 300px;
     height: 40px;
     border-radius: 10px;
     padding: 0 10px;
 }
-
-
 .input-search-name{
     width: 400px;
     height: 50px;
@@ -584,7 +566,7 @@ body.dark .sidebar header .toggle {
     padding: 10px;
 }
 .h1 .i-edit {
-    padding: 5px 6px;
+    padding: 6px 6px;
     background-color: #E3AC6C;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -594,7 +576,7 @@ body.dark .sidebar header .toggle {
     transition: .2s linear;
 }
 .h1 .i-rotate{
-    padding: 5px 6px;
+    padding: 6px 6px;
     background-color: #E53535;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -676,7 +658,6 @@ body.dark .sidebar header .toggle {
     padding: 0px;
     border-radius: 10px;
     border: 1px solid #333;
-    
 }
 
 .icon-reset-1 img{
@@ -701,38 +682,6 @@ body.dark .sidebar header .toggle {
 }
 .table-dscv{
     width: 98%;
-}
-
-.i-rotate{
-    padding: 5px 6px;
-    background-color: #E53535;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    transition: .2s linear;
-}
-.i-save {
-    border: none;
-}
-.i-save img{
-    width: 32px;
-    margin-top: -4px;
-    background-color: #27E050;
-    padding: 2px 2px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.i-rotate:hover{
-    background-color: #F6A3A3;
-}
-.i-save img:hover{
-    background-color: #ACDFAB;
-}
-.i-edit:hover{
-    background-color: #F4D6B2;
 }
 
 /* ********************* danh sach phong ban ******************* */
@@ -777,38 +726,6 @@ body.dark .sidebar header .toggle {
     width: 98%;
 }
 
-.i-rotate{
-    padding: 5px 6px;
-    background-color: #E53535;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    transition: .2s linear;
-}
-.i-save {
-    border: none;
-}
-.i-save img{
-    width: 32px;
-    margin-top: -4px;
-    background-color: #27E050;
-    padding: 2px 2px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.i-rotate:hover{
-    background-color: #F6A3A3;
-}
-.i-save img:hover{
-    background-color: #ACDFAB;
-}
-.i-edit:hover{
-    background-color: #F4D6B2;
-}
-
 /* ********************* danh sach khen thuong ******************* */
 
 .dskt-main {
@@ -847,12 +764,6 @@ body.dark .sidebar header .toggle {
     padding-left: 8px;
     width: 130px;
 }
-/* .icon-search-1{
-    margin-top: -8px;
-    padding: 0 12px;
-    float: right;
-    
-} */
 .icon-search-1 img {
     height: 52px;
     width: 50px;
@@ -885,38 +796,6 @@ body.dark .sidebar header .toggle {
     width: 98%;
 }
 
-.i-rotate{
-    padding: 5px 6px;
-    background-color: #E53535;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    transition: .2s linear;
-}
-.i-save {
-    border: none;
-}
-.i-save img{
-    width: 32px;
-    margin-top: -4px;
-    background-color: #27E050;
-    padding: 2px 2px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.i-rotate:hover{
-    background-color: #F6A3A3;
-}
-.i-save img:hover{
-    background-color: #ACDFAB;
-}
-.i-edit:hover{
-    background-color: #F4D6B2;
-}
-
 /* ********************* danh sach ky luat ******************* */
 .dskl-main {
     width: 100%;
@@ -933,7 +812,6 @@ body.dark .sidebar header .toggle {
     font-size: 32px;
     font-weight: 400;
     color: white;
-    
 }
 
 .btn-tkl

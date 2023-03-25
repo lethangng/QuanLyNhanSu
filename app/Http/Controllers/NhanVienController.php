@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\NhanVien;
+use App\Models\ChucVu;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
@@ -30,8 +31,9 @@ class NhanVienController extends Controller
     }
     public function store(Request $request)
     {
+        $cn=ChucVu::find($request->chucvu);
 
-        if($request->chucvu==1){
+        if($cn->tenchucvu=="Giảng viên"){
             $request->validate([
             'ngaysinh'=>'required|date',
             'cccd'=>'required|numeric',
@@ -96,8 +98,8 @@ class NhanVienController extends Controller
         }
 
 
-        if($request->chucvu==1){
-                $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+        if($cn->tenchucvu=="Giảng viên"){
+            $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀẾỂưăạảấầẩẫậắằẳẵặẹẻẽềềếểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳýỵỷỹ\s]+)$/i";
                 if(!preg_match($patt,$request->hoten) || !preg_match($patt,$request->gioitinh) || !preg_match($patt,$request->diachi) || !preg_match($patt,$request->quequan)){
                     if($request->hoten=="" || $request->gioitinh=="" || $request->diachi=="" || $request->quequan==""){
                         return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
@@ -131,7 +133,7 @@ class NhanVienController extends Controller
             }
         }
         else{
-            $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+            $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀẾỂưăạảấầẩẫậắằẳẵặẹẻẽềềếểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳýỵỷỹ\s]+)$/i";
                 if(!preg_match($patt,$request->hoten) || !preg_match($patt,$request->gioitinh) || !preg_match($patt,$request->diachi) || !preg_match($patt,$request->quequan)){
                     if($request->hoten=="" || $request->gioitinh=="" || $request->diachi=="" || $request->quequan==""){
                         return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
@@ -177,7 +179,7 @@ class NhanVienController extends Controller
         /*
         $affected = DB::table('nhanvien')->where('id', $request->idxoa)->update(['matrangthai' => 1]);
         */
-        return redirect('danhsachnhanvien');
+        return redirect()->back()->with('message2', 'thongbao');
     }
     public function edit($id)
     {
@@ -190,7 +192,9 @@ class NhanVienController extends Controller
     }
     public function update(Request $request,$id)
     {
-        if($request->chucvu==1){
+        $cn=ChucVu::find($request->chucvu);
+
+        if($cn->tenchucvu=="Giảng viên"){
             $request->validate([
             'ngaysinh'=>'required|date',
             'cccd'=>'required|numeric',
@@ -253,8 +257,8 @@ class NhanVienController extends Controller
                 'hsl.integer'=>'Phải nhập đúng kiểu ký tự'
             ]);
         }
-        if($request->chucvu==1){
-            $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+        if($cn->tenchucvu=="Giảng viên"){
+            $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀẾỂưăạảấầẩẫậắằẳẵặẹẻẽềềếểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳýỵỷỹ\s]+)$/i";
                 if(!preg_match($patt,$request->hoten) || !preg_match($patt,$request->gioitinh) || !preg_match($patt,$request->diachi) || !preg_match($patt,$request->quequan)){
                     if($request->hoten=="" || $request->gioitinh=="" || $request->diachi=="" || $request->quequan==""){
                         return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
@@ -280,6 +284,7 @@ class NhanVienController extends Controller
                     $nhanVien->makhoa=$request->khoa;
                     $nhanVien->matrangthai=$request->trangthai;
                     $nhanVien->bacluong=$request->bacluong;
+                    $nhanVien->hsl=null;
                     $nhanVien->update();
                     return redirect()->back()->with('message2', 'thongbao');
                 }
@@ -294,7 +299,6 @@ class NhanVienController extends Controller
                     $nhanVien->cccd=$request->cccd;
                     $nhanVien->diachi=$request->diachi;
                     $nhanVien->email=$request->email;
-                    $nhanVien->hsl=$request->hsl;
                     $nhanVien->quequan=$request->quequan;
                     $nhanVien->sdt=$request->sodienthoai;
                     $nhanVien->maphongban=$request->phongban;
@@ -302,6 +306,7 @@ class NhanVienController extends Controller
                     $nhanVien->makhoa=$request->khoa;
                     $nhanVien->matrangthai=$request->trangthai;
                     $nhanVien->bacluong=$request->bacluong;
+                    $nhanVien->hsl=null;
                     $nhanVien->update();
                     return redirect()->back()->with('message2', 'thongbao');
                 }
@@ -309,7 +314,7 @@ class NhanVienController extends Controller
             }
         }
         else{
-            $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+            $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀẾỂưăạảấầẩẫậắằẳẵặẹẻẽềềếểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳýỵỷỹ\s]+)$/i";
             if(!preg_match($patt,$request->hoten) || !preg_match($patt,$request->gioitinh) || !preg_match($patt,$request->diachi) || !preg_match($patt,$request->quequan)){
                 if($request->hoten=="" || $request->gioitinh=="" || $request->diachi=="" || $request->quequan==""){
                     return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
@@ -335,6 +340,7 @@ class NhanVienController extends Controller
                     $nhanVien->machucvu=$request->chucvu;
                     $nhanVien->makhoa=$request->khoa;
                     $nhanVien->matrangthai=$request->trangthai;
+                    $nhanVien->bacluong=null;
                     $nhanVien->update();
                     return redirect()->back()->with('message2', 'thongbao');
                 }
@@ -356,7 +362,7 @@ class NhanVienController extends Controller
                     $nhanVien->machucvu=$request->chucvu;
                     $nhanVien->makhoa=$request->khoa;
                     $nhanVien->matrangthai=$request->trangthai;
-                    $nhanVien->bacluong=$request->bacluong;
+                    $nhanVien->bacluong=null;
                     $nhanVien->update();
                     return redirect()->back()->with('message2', 'thongbao');
                 }
@@ -394,17 +400,24 @@ class NhanVienController extends Controller
     }
     public function timnhanvien(Request $request)
     {
-        $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+)$/i";
+        $patt="/^([a-zA-Z0-9ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀẾỂưăạảấầẩẫậắằẳẵặẹẻẽềềếểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳýỵỷỹ\s]+)$/i";
         if(!preg_match($patt,$request->tennhanvien) ){
             if($request->tennhanvien==""){
-                return redirect()->back()->with('message', 'Phải nhập đủ thông tin');
+                return redirect()->route('danhsachnhanvien');
             }
             else{
-                return redirect()->back()->with('message', 'Phải nhập đúng kiểu ký tự');
+                $caNhan = NhanVien::where('tennv','like','')->paginate(5);
+                $phongBan= DB::select('SELECT id,tenphongban from phongban');
+                $khoa= DB::select('SELECT id,tenkhoa from khoa');
+                $chucVu= DB::select('SELECT id,tenchucvu from chucvu');
+                $trangThai= DB::select('SELECT id,tentrangthai from trangthai');
+                return view('nhansu.danhsachnhanvien.danhsachnhanvien', ['caNhan' => $caNhan,'trangThai' => $trangThai,'phongBan' => $phongBan,'khoa' => $khoa,'chucVu' => $chucVu]);
             }
         }
         else{
-        $caNhan = NhanVien::where('tennv','like','%'.$request->tennhanvien.'%')->paginate(5);
+        $str=trim($request->tennhanvien);
+        $str = preg_replace('/\s+/', ' ', $str);
+        $caNhan = NhanVien::where('tennv','like','%'.$str.'%')->paginate(5);
         $phongBan= DB::select('SELECT id,tenphongban from phongban');
         $khoa= DB::select('SELECT id,tenkhoa from khoa');
         $chucVu= DB::select('SELECT id,tenchucvu from chucvu');

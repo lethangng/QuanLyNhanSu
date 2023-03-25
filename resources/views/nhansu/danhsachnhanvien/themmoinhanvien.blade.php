@@ -107,11 +107,14 @@
                 <strong>{!! \Session::get('message') !!}</strong>
                 </div>
                 @endif
-                @error('bacluong')
+                @if ($errors->any())
                 <div class="alert alert-danger">
-                <strong>{{$message}}</strong>
+                        @foreach ($errors->all() as $error)
+                            <strong>{{ $error }}</strong>
+                            @break
+                        @endforeach
                 </div>
-                @enderror
+                @endif
             </div>
 
             <div class="btn-tmnv">

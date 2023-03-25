@@ -93,11 +93,28 @@
         </div>
     </div>
 
+    <div class="modal-delete js-modal2 ">
+        <div class="modal-container-delete js-modal-container2">
+                <div class="modal-close js-modal-close2">
+                <i class="ti-close"></i>
+                </div>
+            <div class="modal-text-delete-2">
+                <span class="icon-successfull-delete-2">
+                    <img src="{{ asset('css/Img/image 36.png') }}" alt="">
+                </span>
+                <h2>Xóa thành công</h2>
+            </div>
+        </div>
+    </div>
     <script>
         const buyBtns = document.querySelectorAll('.js-buy-ticket');
         const modal = document.querySelector('.js-modal');
         const modalContainer = document.querySelector('.js-modal-container')
         const modalClose = document.querySelector('.js-modal-close');
+        const modal2 = document.querySelector('.js-modal2');
+        const modalContainer2 = document.querySelector('.js-modal-container2')
+        const modalClose2 = document.querySelector('.js-modal-close2');
+
 
         function loadval(val){
             document.getElementById("nut2").value=val;
@@ -109,6 +126,10 @@
         function hideBuyTickets(){
             modal.classList.remove('open')
         }
+        function hideBuyTickets2(){
+            modal2.classList.remove('open')
+        }
+
 
         for (const buyBtn of buyBtns){
             buyBtn.addEventListener('click', showBuyTickets)
@@ -118,10 +139,21 @@
 
         modal.addEventListener('click', hideBuyTickets)
 
+        modalClose2.addEventListener('click', hideBuyTickets2)
+
+        modal2.addEventListener('click', hideBuyTickets2)
+
         modalContainer.addEventListener('click', function(event)
         {
             event.stopPropagation()
         })
 
     </script>
+     @if (\Session::has('message2'))
+    <script>
+    window.addEventListener("load", (event) => {
+        modal2.classList.add('open');
+        });
+    </script>
+    @endif
 @endsection
