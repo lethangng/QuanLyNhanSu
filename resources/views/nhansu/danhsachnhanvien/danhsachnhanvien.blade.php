@@ -83,7 +83,7 @@
                                         $d1 = 0;
                                         $d2 = 0;
                                         $d3 = 0;
-                                        
+                                        $d4=0;
                                     @endphp
                                     @foreach ($chucVu as $item2)
                                         @if ($item->machucvu == $item2->id)
@@ -127,10 +127,18 @@
                                     @endif
 
                                     @foreach($trangThai as $item2)
-                                        @if($item->matrangthai==$item2->id)
+                                    @if($item->matrangthai==$item2->id)
                                         <th class="h1" scope="row">{{ $item2->tentrangthai }}</th>
-                                        @endif
+                                        @php
+                                            $d4 = 1;
+                                        @endphp
+                                    @break
+                                    @endif
                                     @endforeach
+                                    
+                                    @if ($d4 == 0)
+                                        <th class="h1" scope="row">Trống</th>
+                                    @endif
                                     <th class="h1" scope="row">
                                         <button class="i-save">
                                             <a href="{{ route('canhan.index', ['id' => $item->id]) }}">

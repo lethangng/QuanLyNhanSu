@@ -196,11 +196,7 @@ class KyLuatController extends Controller
                 $user = NhanVien::where('id', $manv)->first();
                 if ($user) {
                     // Kiểm tra xem nhân viên nhập vào có ở trạng thái "thai sản" không
-<<<<<<< HEAD
                     $nhanvien = DB::select("SELECT nhanvien.id FROM nhanvien JOIN trangthai ON nhanvien.matrangthai = trangthai.id
-=======
-                    $nhanvien = DB::select("SELECT nhanvien.id FROM nhanvien JOIN trangthai ON nhanvien.matrangthai = trangthai.id 
->>>>>>> dd49e5e3f401ec451589e50d89dd80aa3ad9091d
                     WHERE (trangthai.matrangthai = 'TS' OR trangthai.matrangthai = 'NV') AND nhanvien.id = ".$manv);
                     if($nhanvien) {
                         return response()->json(['check' => true,
