@@ -27,7 +27,7 @@ class KyLuatController extends Controller
         if (Auth::user()) {
             $title = 'Danh sách kỷ luật';
             $kyluats = KyLuat::paginate(5);
-            return view('kyluat.index', compact('kyluats', 'title')); 
+            return view('kyluat.index', compact('kyluats', 'title'));
         } else {
             return redirect()->route('login');
         }
@@ -196,10 +196,10 @@ class KyLuatController extends Controller
                 $user = NhanVien::where('id', $manv)->first();
                 if ($user) {
                     // Kiểm tra xem nhân viên nhập vào có ở trạng thái "thai sản" không
-                    $nhanvien = DB::select("SELECT nhanvien.id FROM nhanvien JOIN trangthai ON nhanvien.matrangthai = trangthai.id 
-                    WHERE trangthai.matrangthai = 'TS' OR trangthai.matrangthai = 'TS' AND nhanvien.id = ".$manv);
+                    $nhanvien = DB::select("SELECT nhanvien.id FROM nhanvien JOIN trangthai ON nhanvien.matrangthai = trangthai.id
+                    WHERE (trangthai.matrangthai = 'TS' OR trangthai.matrangthai = 'NV') AND nhanvien.id = ".$manv);
                     if($nhanvien) {
-                        return response()->json(['check' => true, 
+                        return response()->json(['check' => true,
                         "msg" => 'Nhân viên ở trạng thái thai sản hoặc nghỉ việc', 'manv' => $manv]);
                     }
                 return response()->json(['check' => false, 'msg' => $user->tennv, 'manv' => $manv]);

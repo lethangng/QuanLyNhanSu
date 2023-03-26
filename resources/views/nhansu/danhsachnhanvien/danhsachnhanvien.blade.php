@@ -83,6 +83,7 @@
                                         $d1 = 0;
                                         $d2 = 0;
                                         $d3 = 0;
+                                        
                                     @endphp
                                     @foreach ($chucVu as $item2)
                                         @if ($item->machucvu == $item2->id)
