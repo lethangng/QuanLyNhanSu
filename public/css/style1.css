@@ -231,6 +231,7 @@ td {
     height: 100vh;
     width: auto;
     padding: 10px 14px;
+    z-index: 99;
     background: var(--sidebar-color);
 }
 
@@ -1131,7 +1132,6 @@ body.dark .sidebar header .toggle {
 .table-fixed thead>tr>th {
     float: left;
     font-size: 12px;
-    /* padding-left: 20px !important; */
 }
 .table-fixed .col {
     padding-top: 10px;
