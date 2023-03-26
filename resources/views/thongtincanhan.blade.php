@@ -347,6 +347,10 @@
                             $(".old-password").text(data.error);
                             if ($('#new-password').val() === '') {
                                 $('.new-password').text("Mật khẩu mới bắt buộc phải nhập.")
+                            } else if ($('#new-password').val().length <= 3) {
+                                $('.new-password').text("Mật khẩu mới quá ngắn.")
+                            } else if ($('#new-password').val().length > 255) {
+                                $('.new-password').text("Mật khẩu mới quá dài.")
                             } else {
                                 $('.new-password').text("")
                                 if ($('.re-new-password').val() !== $('#new-password').val()) {
