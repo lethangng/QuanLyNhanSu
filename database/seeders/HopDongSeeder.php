@@ -40,6 +40,21 @@ class HopDongSeeder extends Seeder
                 'manv' => 1005,
                 'ngaybatdau' => '2023-02-16',
                 'ngayketthuc' => null
+            ],
+            [
+                'manv' => 1006,
+                'ngaybatdau' => '2022-02-16',
+                'ngayketthuc' => '2023-03-15'
+            ],
+            [
+                'manv' => 1007,
+                'ngaybatdau' => '2023-02-16',
+                'ngayketthuc' => '2023-03-20'
+            ],
+            [
+                'manv' => 1008,
+                'ngaybatdau' => '2021-02-16',
+                'ngayketthuc' => '2022-03-20'
             ]
         ];
         DB::table('hopdong')->insert($hopdongs);
