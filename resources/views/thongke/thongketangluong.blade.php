@@ -6,7 +6,7 @@
                 <h1>Quản lý báo cáo thống kê</h1>
             </div>
             <div class="container tkhd">
-                <h4>Thống kê hợp đồng</h4>
+                <h4>Thống kê tăng lương</h4>
 
                 <form class="form-tkhd" action="{{ route('thongketangluong') }}" method="POST">
                     @csrf
