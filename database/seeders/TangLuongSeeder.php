@@ -18,7 +18,7 @@ class TangLuongSeeder extends Seeder
         $tangluongs = [
             [
                 'manv' => 1001,
-                'ngaytangluong' => '2023-02-16',
+                'ngaytangluong' => '2023-01-16',
                 'lydo' => 'Tăng bậc lương do 3 năm tăng'
             ],
             [
@@ -38,8 +38,28 @@ class TangLuongSeeder extends Seeder
             ],
             [
                 'manv' => 1005,
-                'ngaytangluong' => '2023-02-16',
+                'ngaytangluong' => '2023-09-16',
                 'lydo' => 'Giảm bậc lương do bị kỷ luật'
+            ],
+            [
+                'manv' => 1006,
+                'ngaytangluong' => '2023-09-16',
+                'lydo' => 'Tăng lương do suất sắc trong thi đua'
+            ],
+            [
+                'manv' => 1007,
+                'ngaytangluong' => '2023-05-16',
+                'lydo' => 'Tăng lương do suất sắc trong thi đua'
+            ],
+            [
+                'manv' => 1008,
+                'ngaytangluong' => '2023-02-16',
+                'lydo' => 'Tăng lương làm tốt tháng 2'
+            ],
+            [
+                'manv' => 1009,
+                'ngaytangluong' => '2023-02-16',
+                'lydo' => 'Tăng lương làm tốt tháng 2'
             ]
         ];
         DB::table('tangluong')->insert($tangluongs);
