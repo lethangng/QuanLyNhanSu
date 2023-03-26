@@ -39,9 +39,9 @@ class NhanVienController extends Controller
             'cccd'=>'required|numeric',
             'sodienthoai'=>'required|numeric',
             'email'=>'required|email',
-            'phongban'=>'required|integer',
+            'phongban'=>'nullable|integer',
             'chucvu'=>'required|integer',
-            'khoa'=>'required|integer',
+            'khoa'=>'nullable|integer',
             'trangthai'=>'required|integer',
             'bacluong'=>'required|integer',
         ], [
@@ -49,9 +49,7 @@ class NhanVienController extends Controller
             'cccd.required'=>'Phải nhập đủ thông tin',
             'sodienthoai.required'=>'Phải nhập đủ thông tin',
             'email.required'=>'Phải nhập đủ thông tin',
-            'phongban.required'=>'Phải nhập đủ thông tin',
             'chucvu.required'=>'Phải nhập đủ thông tin',
-            'khoa.required'=>'Phải nhập đủ thông tin',
             'trangthai.required'=>'Phải nhập đủ thông tin',
             'bacluong.required'=>'Phải nhập đủ thông tin',
             'ngaysinh.date'=>'Phải nhập đúng kiểu ký tự',
@@ -70,9 +68,9 @@ class NhanVienController extends Controller
                 'cccd'=>'required|numeric',
                 'sodienthoai'=>'required|numeric',
                 'email'=>'required|email',
-                'phongban'=>'required|integer',
+                'phongban'=>'nullable|integer',
                 'chucvu'=>'required|integer',
-                'khoa'=>'required|integer',
+                'khoa'=>'nullable|integer',
                 'trangthai'=>'required|integer',
                 'hsl'=>'required|integer',
             ], [
@@ -80,9 +78,7 @@ class NhanVienController extends Controller
                 'cccd.required'=>'Phải nhập đủ thông tin',
                 'sodienthoai.required'=>'Phải nhập đủ thông tin',
                 'email.required'=>'Phải nhập đủ thông tin',
-                'phongban.required'=>'Phải nhập đủ thông tin',
                 'chucvu.required'=>'Phải nhập đủ thông tin',
-                'khoa.required'=>'Phải nhập đủ thông tin',
                 'trangthai.required'=>'Phải nhập đủ thông tin',
                 'hsl.required'=>'Phải nhập đủ thông tin',
                 'ngaysinh.date'=>'Phải nhập đúng kiểu ký tự',
@@ -122,9 +118,12 @@ class NhanVienController extends Controller
                     $nhanVien->email=$request->email;
                     $nhanVien->quequan=$request->quequan;
                     $nhanVien->sdt=$request->sodienthoai;
-                    $nhanVien->maphongban=$request->phongban;
+                    if($request->khoa==""){
+                        $nhanVien->maphongban=$request->phongban;
+                    }else{
+                        $nhanVien->makhoa=$request->khoa;
+                    }
                     $nhanVien->machucvu=$request->chucvu;
-                    $nhanVien->makhoa=$request->khoa;
                     $nhanVien->matrangthai=$request->trangthai;
                     $nhanVien->bacluong=$request->bacluong;
                     $nhanVien->save();
@@ -157,9 +156,12 @@ class NhanVienController extends Controller
                     $nhanVien->hsl=$request->hsl;
                     $nhanVien->quequan=$request->quequan;
                     $nhanVien->sdt=$request->sodienthoai;
-                    $nhanVien->maphongban=$request->phongban;
+                    if($request->khoa==""){
+                        $nhanVien->maphongban=$request->phongban;
+                    }else{
+                        $nhanVien->makhoa=$request->khoa;
+                    }
                     $nhanVien->machucvu=$request->chucvu;
-                    $nhanVien->makhoa=$request->khoa;
                     $nhanVien->matrangthai=$request->trangthai;
                     $nhanVien->save();
                     return redirect()->back()->with('message2', 'thongbao');
@@ -200,9 +202,9 @@ class NhanVienController extends Controller
             'cccd'=>'required|numeric',
             'sodienthoai'=>'required|numeric',
             'email'=>'required|email',
-            'phongban'=>'required|integer',
+            'phongban'=>'nullable|integer',
             'chucvu'=>'required|integer',
-            'khoa'=>'required|integer',
+            'khoa'=>'nullable|integer',
             'trangthai'=>'required|integer',
             'bacluong'=>'required|integer',
         ], [
@@ -210,9 +212,7 @@ class NhanVienController extends Controller
             'cccd.required'=>'Phải nhập đủ thông tin',
             'sodienthoai.required'=>'Phải nhập đủ thông tin',
             'email.required'=>'Phải nhập đủ thông tin',
-            'phongban.required'=>'Phải nhập đủ thông tin',
             'chucvu.required'=>'Phải nhập đủ thông tin',
-            'khoa.required'=>'Phải nhập đủ thông tin',
             'trangthai.required'=>'Phải nhập đủ thông tin',
             'bacluong.required'=>'Phải nhập đủ thông tin',
             'ngaysinh.date'=>'Phải nhập đúng kiểu ký tự',
@@ -231,9 +231,9 @@ class NhanVienController extends Controller
                 'cccd'=>'required|numeric',
                 'sodienthoai'=>'required|numeric',
                 'email'=>'required|email',
-                'phongban'=>'required|integer',
+                'phongban'=>'nullable|integer',
                 'chucvu'=>'required|integer',
-                'khoa'=>'required|integer',
+                'khoa'=>'nullable|integer',
                 'trangthai'=>'required|integer',
                 'hsl'=>'required|integer',
             ], [
@@ -241,9 +241,7 @@ class NhanVienController extends Controller
                 'cccd.required'=>'Phải nhập đủ thông tin',
                 'sodienthoai.required'=>'Phải nhập đủ thông tin',
                 'email.required'=>'Phải nhập đủ thông tin',
-                'phongban.required'=>'Phải nhập đủ thông tin',
                 'chucvu.required'=>'Phải nhập đủ thông tin',
-                'khoa.required'=>'Phải nhập đủ thông tin',
                 'trangthai.required'=>'Phải nhập đủ thông tin',
                 'hsl.required'=>'Phải nhập đủ thông tin',
                 'ngaysinh.date'=>'Phải nhập đúng kiểu ký tự',
@@ -279,9 +277,14 @@ class NhanVienController extends Controller
                     $nhanVien->email=$request->email;
                     $nhanVien->quequan=$request->quequan;
                     $nhanVien->sdt=$request->sodienthoai;
-                    $nhanVien->maphongban=$request->phongban;
+                    if($request->khoa==""){
+                        $nhanVien->maphongban=$request->phongban;
+                        $nhanVien->makhoa=null;
+                    }else{
+                        $nhanVien->makhoa=$request->khoa;
+                        $nhanVien->maphongban=null;
+                    }
                     $nhanVien->machucvu=$request->chucvu;
-                    $nhanVien->makhoa=$request->khoa;
                     $nhanVien->matrangthai=$request->trangthai;
                     $nhanVien->bacluong=$request->bacluong;
                     $nhanVien->hsl=null;
@@ -301,9 +304,14 @@ class NhanVienController extends Controller
                     $nhanVien->email=$request->email;
                     $nhanVien->quequan=$request->quequan;
                     $nhanVien->sdt=$request->sodienthoai;
-                    $nhanVien->maphongban=$request->phongban;
+                    if($request->khoa==""){
+                        $nhanVien->maphongban=$request->phongban;
+                        $nhanVien->makhoa=null;
+                    }else{
+                        $nhanVien->makhoa=$request->khoa;
+                        $nhanVien->maphongban=null;
+                    }
                     $nhanVien->machucvu=$request->chucvu;
-                    $nhanVien->makhoa=$request->khoa;
                     $nhanVien->matrangthai=$request->trangthai;
                     $nhanVien->bacluong=$request->bacluong;
                     $nhanVien->hsl=null;
@@ -336,9 +344,14 @@ class NhanVienController extends Controller
                     $nhanVien->hsl=$request->hsl;
                     $nhanVien->quequan=$request->quequan;
                     $nhanVien->sdt=$request->sodienthoai;
-                    $nhanVien->maphongban=$request->phongban;
+                    if($request->khoa==""){
+                        $nhanVien->maphongban=$request->phongban;
+                        $nhanVien->makhoa=null;
+                    }else{
+                        $nhanVien->makhoa=$request->khoa;
+                        $nhanVien->maphongban=null;
+                    }
                     $nhanVien->machucvu=$request->chucvu;
-                    $nhanVien->makhoa=$request->khoa;
                     $nhanVien->matrangthai=$request->trangthai;
                     $nhanVien->bacluong=null;
                     $nhanVien->update();
@@ -358,9 +371,14 @@ class NhanVienController extends Controller
                     $nhanVien->hsl=$request->hsl;
                     $nhanVien->quequan=$request->quequan;
                     $nhanVien->sdt=$request->sodienthoai;
-                    $nhanVien->maphongban=$request->phongban;
+                    if($request->khoa==""){
+                        $nhanVien->maphongban=$request->phongban;
+                        $nhanVien->makhoa=null;
+                    }else{
+                        $nhanVien->makhoa=$request->khoa;
+                        $nhanVien->maphongban=null;
+                    }
                     $nhanVien->machucvu=$request->chucvu;
-                    $nhanVien->makhoa=$request->khoa;
                     $nhanVien->matrangthai=$request->trangthai;
                     $nhanVien->bacluong=null;
                     $nhanVien->update();

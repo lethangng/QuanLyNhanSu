@@ -60,14 +60,22 @@
                     <div class="label-name">
                         <label for="">Phòng ban:</label>
                     </div>
-                    <select class="inp-tmnv" name="phongban" id="">
-                    @foreach($phongBan as $item)
-                        @if($caNhan->maphongban==$item->id)
-                        <option value="{{$item->id}}" selected>{{$item->tenphongban}}</option>
-                        @else
-                        <option value="{{$item->id}}">{{$item->tenphongban}}</option>
-                        @endif
-                    @endforeach
+                    <select class="inp-tmnv" name="phongban" id="phongban" onchange="checkpb()">
+                    @if($caNhan->maphongban==null)
+                        <option value="" selected></option>
+                        @foreach($phongBan as $item)
+                            <option value="{{$item->id}}">{{$item->tenphongban}}</option>
+                        @endforeach
+                    @else
+                    <option value=""></option>
+                        @foreach($phongBan as $item)
+                            @if($caNhan->maphongban==$item->id)
+                            <option value="{{$item->id}}" selected>{{$item->tenphongban}}</option>
+                            @else
+                            <option value="{{$item->id}}">{{$item->tenphongban}}</option>
+                            @endif
+                        @endforeach
+                    @endif
                     </select>
                     <div class="label-name">
                         <label for="">Chức vụ:</label>
@@ -84,14 +92,22 @@
                     <div class="label-name">
                         <label for="">Khoa:</label>
                     </div>
-                    <select class="inp-tmnv" name="khoa" id="">
-                    @foreach($khoa as $item)
-                        @if($caNhan->makhoa==$item->id)
-                        <option value="{{$item->id}}" selected>{{$item->tenkhoa}}</option>
-                        @else
-                        <option value="{{$item->id}}">{{$item->tenkhoa}}</option>
-                        @endif
-                    @endforeach
+                    <select class="inp-tmnv" name="khoa" id="khoa" onchange="checkkhoa()">
+                    @if($caNhan->makhoa==null)
+                        <option value="" selected></option>
+                        @foreach($khoa as $item)
+                            <option value="{{$item->id}}">{{$item->tenkhoa}}</option>
+                        @endforeach
+                    @else
+                    <option value=""></option>
+                        @foreach($khoa as $item)
+                            @if($caNhan->makhoa==$item->id)
+                            <option value="{{$item->id}}" selected>{{$item->tenkhoa}}</option>
+                            @else
+                            <option value="{{$item->id}}">{{$item->tenkhoa}}</option>
+                            @endif
+                        @endforeach
+                    @endif
                     </select>
                     <div class="label-name">
                         <label for="">Trạng thái:</label>
@@ -201,6 +217,12 @@
             }
 
         });
+        function checkpb(){
+            document.getElementById("khoa").value="";
+        }
+        function checkkhoa(){
+            document.getElementById("phongban").value="";
+        }
     </script>
     @if (\Session::has('message2'))
     <script>

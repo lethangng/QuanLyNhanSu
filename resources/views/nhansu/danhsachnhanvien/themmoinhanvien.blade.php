@@ -56,7 +56,8 @@
                     </div>
                     @empty($phongBan)
                     @endempty
-                    <select class="inp-tmnv" name="phongban" id="">
+                    <select class="inp-tmnv" name="phongban" id="phongban" onchange="checkpb()">
+                        <option value=""></option>
                         @isset($phongBan)
                             @foreach ($phongBan as $item)
                             <option value="{{$item->id}}">{{$item->tenphongban}}</option>
@@ -80,7 +81,8 @@
                     </div>
                     @empty($khoa)
                     @endempty
-                    <select class="inp-tmnv" name="khoa" id="">
+                    <select class="inp-tmnv" name="khoa" id="khoa" onchange="checkkhoa()">
+                        <option value=""></option>
                         @isset($khoa)
                             @foreach ($khoa as $item)
                             <option value="{{$item->id}}">{{$item->tenkhoa}}</option>
@@ -192,6 +194,12 @@
             }
 
         });
+        function checkpb(){
+            document.getElementById("khoa").value="";
+        }
+        function checkkhoa(){
+            document.getElementById("phongban").value="";
+        }
     </script>
     @if (\Session::has('message2'))
     <script>
